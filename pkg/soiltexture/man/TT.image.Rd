@@ -1,0 +1,68 @@
+\name{TT.image}
+\alias{TT.image}
+\title{TT image}
+\description{
+}
+\usage{
+TT.image(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, cex.main = NULL, lang = NULL, xlim = NA, ylim = NA, zlim = NA, col = rev(heat.colors(12)), oldstyle = FALSE, ...)
+}
+\arguments{
+  \item{geo}{
+}
+  \item{x}{
+}
+  \item{add}{
+}
+  \item{tri.sum.tst}{
+}
+  \item{tri.pos.tst}{
+}
+  \item{text.tol}{
+}
+  \item{unit.ps}{
+}
+  \item{unit.tx}{
+}
+  \item{b.lim}{
+}
+  \item{l.lim}{
+}
+  \item{main}{
+}
+  \item{new.mar}{
+}
+  \item{bg}{
+}
+  \item{fg}{
+}
+  \item{cex.main}{
+}
+  \item{lang}{
+}
+  \item{xlim}{
+}
+  \item{ylim}{
+}
+  \item{zlim}{
+}
+  \item{col}{
+}
+  \item{oldstyle}{
+}
+  \item{\dots}{
+}
+}
+\details{
+}
+\value{
+}
+\references{
+}
+\author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
+\note{
+}
+
+
+\seealso{
+}
+\examples{}

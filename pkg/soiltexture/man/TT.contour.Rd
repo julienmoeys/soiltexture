@@ -1,0 +1,86 @@
+\name{TT.contour}
+\alias{TT.contour}
+\title{TT contour}
+\description{
+}
+\usage{
+TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, col = NULL, cex.main = NULL, lang = NULL, nlevels = 10, levels = NA, labels = NULL, xlim = NA, ylim = NA, zlim = NA, labcex = 1, drawlabels = TRUE, method = "flattest", axes = TRUE, frame.plot = NA, lty = NA, lwd = NA, ...)
+}
+\arguments{
+  \item{geo}{
+}
+  \item{x}{
+}
+  \item{add}{
+}
+  \item{tri.sum.tst}{
+}
+  \item{tri.pos.tst}{
+}
+  \item{text.tol}{
+}
+  \item{unit.ps}{
+}
+  \item{unit.tx}{
+}
+  \item{b.lim}{
+}
+  \item{l.lim}{
+}
+  \item{main}{
+}
+  \item{new.mar}{
+}
+  \item{bg}{
+}
+  \item{fg}{
+}
+  \item{col}{
+}
+  \item{cex.main}{
+}
+  \item{lang}{
+}
+  \item{nlevels}{
+}
+  \item{levels}{
+}
+  \item{labels}{
+}
+  \item{xlim}{
+}
+  \item{ylim}{
+}
+  \item{zlim}{
+}
+  \item{labcex}{
+}
+  \item{drawlabels}{
+}
+  \item{method}{
+}
+  \item{axes}{
+}
+  \item{frame.plot}{
+}
+  \item{lty}{
+}
+  \item{lwd}{
+}
+  \item{\dots}{
+}
+}
+\details{
+}
+\value{
+}
+\references{
+}
+\author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
+\note{
+}
+
+
+\seealso{
+}
+\examples{}

@@ -1,0 +1,62 @@
+\name{TT.axis.arrows}
+\alias{TT.axis.arrows}
+\title{TT axis arrows}
+\description{
+}
+\usage{
+TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), a.h.s = TT.get("arrows.head.shift"), a.t.s = TT.get("arrows.text.shift"), a.t.s2 = TT.get("arrows.text.shift2"), a.b.s = TT.get("arrows.base.shift"), text.tol = NULL, tri.sum.tst = FALSE, tri.pos.tst = FALSE, lwd.lab = NULL, arrows.lty = NULL, col.lab = NULL, font.lab = NULL, cex.lab = NULL, family.op = NULL, unit.ps = NULL, unit.tx = NULL, lang = NULL)
+}
+\arguments{
+  \item{geo}{
+}
+  \item{css.lab}{
+}
+  \item{a.l}{
+}
+  \item{a.h.s}{
+}
+  \item{a.t.s}{
+}
+  \item{a.t.s2}{
+}
+  \item{a.b.s}{
+}
+  \item{text.tol}{
+}
+  \item{tri.sum.tst}{
+}
+  \item{tri.pos.tst}{
+}
+  \item{lwd.lab}{
+}
+  \item{arrows.lty}{
+}
+  \item{col.lab}{
+}
+  \item{font.lab}{
+}
+  \item{cex.lab}{
+}
+  \item{family.op}{
+}
+  \item{unit.ps}{
+}
+  \item{unit.tx}{
+}
+  \item{lang}{
+}
+}
+\details{
+}
+\value{
+}
+\references{
+}
+\author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
+\note{
+}
+
+
+\seealso{
+}
+\examples{}

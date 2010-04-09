@@ -1,0 +1,30 @@
+\name{inv.par}
+\alias{inv.par}
+\title{inv par}
+\description{
+}
+\usage{
+inv.par(ic = TRUE, par.opt = c("bg", "col", "col.axis", "col.lab", "col.main", "col.sub", "fg"), ...)
+}
+\arguments{
+  \item{ic}{
+}
+  \item{par.opt}{
+}
+  \item{\dots}{
+}
+}
+\details{
+}
+\value{
+}
+\references{
+}
+\author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
+\note{
+}
+
+
+\seealso{
+}
+\examples{}
