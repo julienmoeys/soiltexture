@@ -251,7 +251,9 @@ texture triangle
 of the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
 texture triangle), "DE.BK94.TT" (German texture triangle), 
 "UK.SSEW.TT" (Soil Survey of England and Wales), "AU.TT" 
-(Australian texture triangle), "BE.TT" (Belgium texture triangle).}
+(Australian texture triangle), "BE.TT" (Belgium texture triangle), 
+"CA.EN.TT" (Canadian texture triangle, with English class abbreviations) and 
+"CA.FR.TT" (Canadian texture triangle, with French class abbreviations).}
   \item{class.lab.show}{Single text string. If equal to "abr" (default) or "full", labels 
 are drawn inside texture class polygons with their full name 
 ("full") or abbreviated name ("abr"). If equal to "none", no label 
@@ -344,7 +346,9 @@ this at your own risks!}
 
 \seealso{
 }
-\examples{# ::: Texture triangles without data
+\examples{require( soiltexture ) 
+
+# ::: Texture triangles without data
 
 # :: Base plot (FAO triangle) 
 TT.plot() 
@@ -395,4 +399,19 @@ TT.plot(
     z.name      = "Z", 
     main        = "Soil texture triangle and Z bubble plot" 
 )   #
+
+# ::: Test all the texture triangles
+
+TT.plot( class.sys = "none" )           # no classification 
+TT.plot( class.sys = "FAO50.TT" )       # FAO 
+TT.plot( class.sys = "USDA.TT" )        # USDA 
+TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
+TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
+TT.plot( class.sys = "DE.BK94.TT" )     # Germany 
+TT.plot( class.sys = "UK.SSEW.TT" )     # UK 
+TT.plot( class.sys = "BE.TT" )          # Belgium 
+TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
+TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
+TT.plot( class.sys = "AU.TT" )          # Australian 
+
 }

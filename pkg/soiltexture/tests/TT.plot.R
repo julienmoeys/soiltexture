@@ -1,3 +1,5 @@
+require( soiltexture ) 
+
 # ::: Texture triangles without data
 
 # :: Base plot (FAO triangle) 
@@ -49,4 +51,19 @@ TT.plot(
     z.name      = "Z", 
     main        = "Soil texture triangle and Z bubble plot" 
 )   #
+
+# ::: Test all the texture triangles
+
+TT.plot( class.sys = "none" )           # no classification 
+TT.plot( class.sys = "FAO50.TT" )       # FAO 
+TT.plot( class.sys = "USDA.TT" )        # USDA 
+TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
+TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
+TT.plot( class.sys = "DE.BK94.TT" )     # Germany 
+TT.plot( class.sys = "UK.SSEW.TT" )     # UK 
+TT.plot( class.sys = "BE.TT" )          # Belgium 
+TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
+TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
+TT.plot( class.sys = "AU.TT" )          # Australian 
+
 

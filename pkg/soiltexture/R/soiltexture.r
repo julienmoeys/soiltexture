@@ -51,12 +51,6 @@
 # |                                                                         |
 # +-------------------------------------------------------------------------+
 # |                                                                         |
-# | Content (Alphabetical list of functions and objects):                   |
-# | -   (to be replaced by a proper R documentation)                        |
-# |                                                                         |
-# |                                                                         |
-# +-------------------------------------------------------------------------+
-# |                                                                         |
 # | FEATURES list:                                                          |
 # | -   Create ternary/triangle plot of point variables defined by a        |
 # |     triplet of variable (which sum to a constant).                      |
@@ -865,6 +859,120 @@ assign(
             blr.tx      = c("SILT","SAND","CLAY"), 
             # 
             base.css.ps.lim = c(0,2,50,2000), 
+            tri.css.ps.lim  = c(0,2,50,2000), 
+            # 
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
+        # 
+        CA.FR.TT = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
+            #
+            main            = "Canada (CA)", 
+            #
+            #                 The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  =-P01-   P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    
+            #                    P12    P13    P14    P15    P16    P17    P18    P19    P20    P21   -P22-   
+            #                    P23    P24    P25    P26   -P27-   
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 1.000, 0.600, 0.600, 0.550, 0.400, 0.400, 0.400, 0.350, 0.350, 0.270, 0.270, 
+                                 0.270, 0.270, 0.200, 0.200, 0.120, 0.120, 0.150, 0.100, 0.070, 0.070, 0.000, 
+                                 0.000, 0.000, 0.000, 0.000, 0.000 ),   
+                "SILT"      = c( 0.000, 0.400, 0.000, 0.000, 0.600, 0.400, 0.150, 0.200, 0.000, 0.730, 0.530, 
+                                 0.500, 0.280, 0.280, 0.000, 0.880, 0.800, 0.000, 0.000, 0.500, 0.410, 1.000, 
+                                 0.800, 0.500, 0.300, 0.150, 0.000 ),   
+                "SAND"      = c( 0.000, 0.000, 0.400, 0.450, 0.000, 0.200, 0.450, 0.450, 0.650, 0.000, 0.200, 
+                                 0.230, 0.450, 0.520, 0.800, 0.000, 0.080, 0.850, 0.900, 0.430, 0.520, 0.000, 
+                                 0.200, 0.500, 0.700, 0.850, 1.000 )    
+                #                http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html
+            ),  #
+            # 
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "ALo"  = list( "name" = "Argile lourde",         "points" = c( 01, 02, 03 ) ), 
+                "ALi"  = list( "name" = "Argile limoneuse",      "points" = c( 02, 05, 06 ) ), 
+                "A"    = list( "name" = "Argile",                "points" = c( 02, 03, 04, 07, 06 ) ), 
+                "AS"   = list( "name" = "Argile sableuse",       "points" = c( 04, 07, 08, 09 ) ), 
+                "LLiA" = list( "name" = "Loam limono-argileux",  "points" = c( 05, 06, 11, 10 ) ), 
+                "LA"   = list( "name" = "Loam argileux",         "points" = c( 06, 07, 08, 13, 12, 11 ) ), 
+                "LSA"  = list( "name" = "Loam sablo-argileux",   "points" = c( 08, 09, 15, 14, 13 ) ), 
+                "LLi"  = list( "name" = "Loam limoneux",         "points" = c( 10, 11, 12, 20, 24, 23, 17, 16 ) ), 
+                "L"    = list( "name" = "Loam",                  "points" = c( 12, 13, 14, 21, 20 ) ), 
+                "LS"   = list( "name" = "Loam sableux",          "points" = c( 14, 15, 18, 25, 24, 20, 21 ) ), 
+                "SL"   = list( "name" = "Sable loameux",         "points" = c( 18, 19, 26, 25 ) ), 
+                "Li"   = list( "name" = "Limon",                 "points" = c( 16, 17, 23, 22 ) ), 
+                "S"    = list( "name" = "Sable",                 "points" = c( 19, 27, 26 ) )  
+                #
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = c(F,T,NA), 
+            tlr.an          = c(45,90,45), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,50,2000), # http://sis.agr.gc.ca/cansis/glossary/separates,_soil.html
+            tri.css.ps.lim  = c(0,2,50,2000), 
+            # 
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
+        #
+        CA.EN.TT = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
+            #
+            main            = "Canada (CA)", 
+            #
+            #                 The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  =-P01-   P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    
+            #                    P12    P13    P14    P15    P16    P17    P18    P19    P20    P21   -P22-   
+            #                    P23    P24    P25    P26   -P27-   
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 1.000, 0.600, 0.600, 0.550, 0.400, 0.400, 0.400, 0.350, 0.350, 0.270, 0.270, 
+                                 0.270, 0.270, 0.200, 0.200, 0.120, 0.120, 0.150, 0.100, 0.070, 0.070, 0.000, 
+                                 0.000, 0.000, 0.000, 0.000, 0.000 ),   
+                "SILT"      = c( 0.000, 0.400, 0.000, 0.000, 0.600, 0.400, 0.150, 0.200, 0.000, 0.730, 0.530, 
+                                 0.500, 0.280, 0.280, 0.000, 0.880, 0.800, 0.000, 0.000, 0.500, 0.410, 1.000, 
+                                 0.800, 0.500, 0.300, 0.150, 0.000 ),   
+                "SAND"      = c( 0.000, 0.000, 0.400, 0.450, 0.000, 0.200, 0.450, 0.450, 0.650, 0.000, 0.200, 
+                                 0.230, 0.450, 0.520, 0.800, 0.000, 0.080, 0.850, 0.900, 0.430, 0.520, 0.000, 
+                                 0.200, 0.500, 0.700, 0.850, 1.000 )    
+                #                http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html
+            ),  #
+            # 
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "HCl"    = list( "name" = "Heavy clay",       "points" = c( 01, 02, 03 ) ), 
+                "SiCl"   = list( "name" = "Silty clay",       "points" = c( 02, 05, 06 ) ), 
+                "Cl"     = list( "name" = "Clay",             "points" = c( 02, 03, 04, 07, 06 ) ), 
+                "SaCl"   = list( "name" = "Sandy clay",       "points" = c( 04, 07, 08, 09 ) ), 
+                "SiClLo" = list( "name" = "Silty clay loam",  "points" = c( 05, 06, 11, 10 ) ), 
+                "ClLo"   = list( "name" = "Clay loam",        "points" = c( 06, 07, 08, 13, 12, 11 ) ), 
+                "SaClLo" = list( "name" = "Sandy clay loam",  "points" = c( 08, 09, 15, 14, 13 ) ), 
+                "SiLo"   = list( "name" = "Silty loam",       "points" = c( 10, 11, 12, 20, 24, 23, 17, 16 ) ), 
+                "L"      = list( "name" = "Loam",             "points" = c( 12, 13, 14, 21, 20 ) ), 
+                "SaLo"   = list( "name" = "Sandy loam",       "points" = c( 14, 15, 18, 25, 24, 20, 21 ) ), 
+                "LoSa"   = list( "name" = "Loamy sand",       "points" = c( 18, 19, 26, 25 ) ), 
+                "Si"     = list( "name" = "Silt",             "points" = c( 16, 17, 23, 22 ) ), 
+                "Sa"     = list( "name" = "Sand",             "points" = c( 19, 27, 26 ) )  
+                #
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = c(F,T,NA), 
+            tlr.an          = c(45,90,45), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,50,2000), # http://sis.agr.gc.ca/cansis/glossary/separates,_soil.html
             tri.css.ps.lim  = c(0,2,50,2000), 
             # 
             unit.ps         = quote(bold(mu) * bold('m')), 
@@ -4342,7 +4450,9 @@ TT.plot <- function
 ### of the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
 ### texture triangle), "DE.BK94.TT" (German texture triangle), 
 ### "UK.SSEW.TT" (Soil Survey of England and Wales), "AU.TT" 
-### (Australian texture triangle), "BE.TT" (Belgium texture triangle).
+### (Australian texture triangle), "BE.TT" (Belgium texture triangle), 
+### "CA.EN.TT" (Canadian texture triangle, with English class abbreviations) and 
+### "CA.FR.TT" (Canadian texture triangle, with French class abbreviations).
 
  class.lab.show=NULL,
 ### Single text string. If equal to "abr" (default) or "full", labels 

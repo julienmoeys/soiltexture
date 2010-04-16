@@ -1,6 +1,6 @@
 rm(list=ls(all=TRUE)) 
-wrapper.path <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/soiltexture/trunk/R_CMD_wrapper.R"
-pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/soiltexture/trunk" 
+wrapper.path <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/R_CMD_wrapper.R"
+pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg" 
 pkg.name     <- "soiltexture" 
 code.files   <- "soiltexture.r" 
 pkg.version  <- "1.0" 
