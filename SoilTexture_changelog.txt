@@ -1,0 +1,99 @@
+The Soil Texture Wizard
+change log. From 2009/10/09. Most recent changes first / on top.
+Julien MOEYS
+
+20100416    Added the Canadian texture triangle to the list of pre-defined 
+            texture triangles.
+
+20100409    Created an r-forge page for the package and uploaded it to SCM 
+            http://r-forge.r-project.org/scm/?group_id=740 
+
+20100409    Finished documenting the function TT.plot with inlinedocs. Package 
+            successfully compiled.
+
+20091221    The parameter 'fg' is now defunct, and replaced by 'col' that accepts 
+            several values (while fg only accepts one). 'fg' still exists as an 
+            option, but shouldn't produce any effect.
+
+20091119    Simplified some redundant code in TT.css2xy(), the function that 
+            transforms clay silt sand data into x-y coordinates.
+
+20091118    Corrected a bug in the function TT.normalise.sum() (that couldn't 
+            handle data.frames)
+
+20091014    Added the Belgian soil texture triangle to the list of pre-defined
+            texture triangles (now 8).
+
+20091013    The TT.mahalanobis() function can now compute a grid of the Mahalanobis 
+            distance on log-ratio trasnformation of soil texture data. New option 
+            alr, default = FALSE, can be set to TRUE for alr transformation.
+
+20091013    Added TT.chemometrics.alr(), for additive log-ratio trasnformation of 
+            soil texture data. This is a copy of the alr() function in the chemometrics 
+            package, with minor modifications for soil texture data. Used internally 
+            in TT.mahalanobis().
+
+20091011    Added TT.normalise.sum(), that normalise the sum of the 3 texture classes
+            to text.sum (100%).
+
+20091011    The options 'pow' and 'q.max.dist' are now set to 0.5 and 50 respectively.
+            This is a stronger smoothing than the previous values.
+
+20091011    TT.iwd() has now a 'q.max.dist' option user to determin 'max.dist' if this 
+            last is set to NULL. max.dist is the maximum euclidian distance, between 
+            a grid point and a data point. If the distance between the grid point and 
+            the data point is higher than max.dist, this point is not used to calculate 
+            the iwd value. max.dist default value is 
+            quantile( x = euclidian.distances, probs = q.max.dist ) 
+        
+20091011    The option value 'z.type = "map"' is now deprecated in TT.plot(). Replaced
+            by TT.iwd() and TT.image(), called outside TT.plot().
+
+20091011    TT.as.image() internal function deprecated. now inside TT.iwd()
+
+20091011    TT.image.shade() internal function deprecated. now inside TT.iwd() 
+
+20091011    TT.iwd.image() renamed to TT.iwd(). The function now output a list with 
+            a x y grid and z value matrix, ready to be plotted by TT.image(). The 
+            function is not plotting the image any more.
+
+20091011    TT.iwd() internal function is deprecated. The name will be attributed to 
+            TT.iwd.image() 
+
+20091010    TT.baseplot() now has a geo option.	
+
+20091010    TT.kde2d() function created. Wrapper for MASS function kde2d(), but 
+            customized for texture triangles. Results can be displayed by 
+            TT.contour(), TT.image(), contour() or image().
+
+20091010    TT.image() function created. Wrapped for image(), but customized 
+            for texture triangles. Used to display x-y-z list data in the same 
+            format as 'x' in contour() or image().
+
+20091010    TT.contour() function created. Wrapped for contour(), but customized 
+            for texture triangles. Used to display x-y-z list data in the same 
+            format as 'x' in contour() or image().
+
+20091010    TT.mahalanobis() function created. Wrapper for the function mahalanobis(), 
+            but customized for texture triangles. Results can be displayed by 
+            TT.contour(), TT.image() [see above], contour() or image(). Calculates the 
+            Mahalanobis distance for 2 of the 3 texture classes, on a regular x-y grid, 
+            backtransformed into clay silt sand, used to calculate the Mahalanobis 
+            distance.
+
+20091010    Added TT.xy.grid() that generates a regular grid on the 
+            x-y axis. Made after part of kde2d
+
+20091009    Modified TT.plot() function so it accepts an optionnal 'geo' option and an 
+            'add' option that behaves like plot(add=TRUE) when non-null. This is intended 
+            to allow overplotting a soil texture triangle over a background plotted by 
+            another function (i.e. heat map, contour map etc.)
+
+20091009    Added TT.locator(). This function is equivalent to the locator() function, 
+            except that it returns clay silt sand coordinates instead.
+
+20091009    Added TT.xy2css() a function to convert x-y coordinates into clay silt sand.
+
+20091009    renamed TT.arrows() to TT.axis.arrows().
+
+
