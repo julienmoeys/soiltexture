@@ -11,16 +11,17 @@ using soil textures data from different soil texture classification or different
 size systems. Eight texture triangles are predefined: USDA; FAO (which is also the
 triangle for the soil map of Europe); Aisne (France); GEPPA (France); German triangle
 (Bodenkundliche Kartieranleitung 1994); Soil Survey of England and Wales (UK); Australian
-triangle; Belgian triangle. The Soil Texture Wizard is initially develloped from
-the functions 'soil.texture()' from the package 'plotrix' by Jim Lemon et al.}
+triangle; Belgian triangle; Canadian triangle. The Soil Texture Wizard is initially
+develloped from the functions 'soil.texture()' from the package 'plotrix' by Jim Lemon
+et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
 Version: \tab 1.0\cr
-Date: \tab 2010-04-16\cr
+Date: \tab 2010-04-23\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
-Depends: \tab R (>= 2.10.1), sp, MASS\cr
+Depends: \tab R (>= 2.11.0), sp, MASS\cr
 Suggests: \tab plotrix\cr
 License: \tab GPL (>=3)\cr
 URL: \tab http://julienmoeys.free.fr/?Soil-textures-triangle\cr}

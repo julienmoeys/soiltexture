@@ -1,10 +1,10 @@
 Package: soiltexture
 Version: 1.0
-Date: 2010-04-16
+Date: 2010-04-23
 Title: Functions for soil texture plot, classification and transformation
 Author: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
 Maintainer: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
-Depends: R (>= 2.10.1), sp, MASS
+Depends: R (>= 2.11.0), sp, MASS
 Suggests: plotrix 
 Description: "The Soil Texture Wizard" is a set of R functions designed to produce 
     texture triangles (also called texture plots, texture diagrams, texture ternary plots), 
@@ -15,7 +15,8 @@ Description: "The Soil Texture Wizard" is a set of R functions designed to produ
     size systems. Eight texture triangles are predefined: USDA; FAO (which is also the 
     triangle for the soil map of Europe); Aisne (France); GEPPA (France); German triangle 
     (Bodenkundliche Kartieranleitung 1994); Soil Survey of England and Wales (UK); Australian 
-    triangle; Belgian triangle. The Soil Texture Wizard is initially develloped from 
-    the functions 'soil.texture()' from the package 'plotrix' by Jim Lemon et al. 
+    triangle; Belgian triangle; Canadian triangle. The Soil Texture Wizard is initially 
+    develloped from the functions 'soil.texture()' from the package 'plotrix' by Jim Lemon 
+    et al. 
 License: GPL (>=3)
 URL: http://julienmoeys.free.fr/?Soil-textures-triangle
