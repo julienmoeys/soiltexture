@@ -33,9 +33,14 @@ texi2dvi.wrapper <- function
     cat( paste( "tools::texi2dvi message ", msg, "\n\n\n" ) ) 
     #
     ## Clean the inout directory
-    if( all( is.null(msg) ) )
+    if( all( is.null(msg) ) ) 
     {   #
-        inout.wd <- file.path( work.wd, inout.dir )
+        if( inout.dir != "" )
+        {   #
+            inout.wd <- file.path( work.wd, inout.dir ) 
+        }else{ 
+            inout.wd <- work.wd 
+        }   #
         #
         files.lst <- list.files( 
             path        = inout.wd, 
@@ -50,7 +55,7 @@ texi2dvi.wrapper <- function
             stop    = files.nbc
         )   #
         #
-        file.name.root2 <- file.path( inout.wd, file.name.root )
+        file.name.root2 <- file.path( inout.wd, paste( file.name.root, "-", sep = "" ) )
         #
         files.pre <- substr( 
             x       = files.lst, 

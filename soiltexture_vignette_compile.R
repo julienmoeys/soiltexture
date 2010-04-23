@@ -5,7 +5,7 @@ work.wd             <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltext
 Sweave.wrapper.fun  <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/Sweave_wrapper.R" 
 file.name.root      <- "soiltexture_vignette"  
 sweave.ext          <- ".Rnw"  
-inout.dir           <- "INOUT"  #  NEW 
+inout.dir           <- ""  
 
 
 
@@ -30,15 +30,15 @@ res <- Sweave.wrapper(
 
 
 
-if( res ) 
-{   #
-    zipMe( 
-        file.name = paste(sep="",file.name.root,".pdf"), 
-        file.dir  = work.wd  
-    )   #
-}else{ 
-    print( "Files not zipped" ) 
-}   #
+# if( res ) 
+# {   #
+#     zipMe( 
+#         file.name = paste(sep="",file.name.root,".pdf"), 
+#         file.dir  = work.wd  
+#     )   #
+# }else{ 
+#     print( "Files not zipped" ) 
+# }   #
 
 
 

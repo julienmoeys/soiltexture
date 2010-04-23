@@ -9,7 +9,7 @@ options(
 )   # 
 
 # The working directory:
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 # And load the xtable package:
 if( !"xtable" %in% .packages(all.available = TRUE) )
@@ -52,7 +52,7 @@ rm( build.nr )
 ###################################################
 old.wd  <- getwd() 
 
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
 {   #
@@ -66,7 +66,7 @@ if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) )
 
 require( package = "soiltexture", character.only = TRUE ) 
 
-setwd(old.wd) 
+# setwd(old.wd) 
 
 TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
 
@@ -217,7 +217,7 @@ source(
 ###################################################
 ### chunk number 15: 
 ###################################################
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 
 ###################################################

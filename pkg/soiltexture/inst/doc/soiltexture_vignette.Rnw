@@ -83,7 +83,7 @@
 \bibliographystyle{plain}
 
 
-\graphicspath{{INOUT/}} 
+% \graphicspath{{INOUT/}} 
 
 
 %INVISIBLY sets a few options for Sweave :: KEEP THIS
@@ -96,7 +96,7 @@ options(
 )   # 
 
 # The working directory:
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 # And load the xtable package:
 if( !"xtable" %in% .packages(all.available = TRUE) )
@@ -126,7 +126,7 @@ require( "xtable" )
 % | Front page build number 
 <<echo=FALSE>>= 
 build.nr <- readLines( 
-    con = file.path( getwd(), "build.txt" ), 
+    con = file.path( getwd(), "version.txt" ), 
     n   = 1 
 )   #
 #
@@ -139,7 +139,7 @@ build.nr <- as.numeric( build.nr )[1] + 1
 
 <<echo=FALSE>>= 
 build.nr <- writeLines( 
-    con     = file.path( getwd(), "build.txt" ), 
+    con     = file.path( getwd(), "version.txt" ), 
     text    = as.character( build.nr )  
 )   #
 #
@@ -160,7 +160,7 @@ rm( build.nr )
 <<COVERFIG,include=false,echo=FALSE,fig=TRUE>>= 
 old.wd  <- getwd() 
 
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
 {   #
@@ -174,7 +174,7 @@ if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) )
 
 require( package = "soiltexture", character.only = TRUE ) 
 
-setwd(old.wd) 
+# setwd(old.wd) 
 
 TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
 @ 
@@ -251,8 +251,8 @@ find some bugs, please contact me at:
 
 \begin{figure}[h] 
 \centering 
-\includegraphics[width=108px,viewport=0 0 322 24]{% 
-    julienmoeysmailaddress-322-24.png} 
+\includegraphics[width=108px,viewport=0 0 382 25]{% 
+    julienmoeysmailaddress-382-25.png} 
 \end{figure} 
 
 
@@ -629,13 +629,8 @@ The main characteristics of the graph (texture triangle) are:
 
 
 
-% % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-% \section{Importing the function and preparing the work directory} 
-
-
-
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\section{Installing the package and preparing the work directory} 
+\section{Installing the package} 
 
 
 
@@ -745,16 +740,16 @@ The examples shown in this vignette are ran with these sources.
 
 
 
-% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{Set the work directory} 
+% % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+% \subsection{Set the work directory} 
 
 
-Here is the working directory we are using in this package vignette 
-(choose the one you like...):
+% Here is the working directory we are using in this package vignette 
+% (choose the one you like...):
 
-<<echo=TRUE>>= 
-setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
-@ 
+% <<echo=TRUE>>= 
+% # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+% @ 
 
 
 
@@ -1107,6 +1102,68 @@ et al.\cite{DEFOURNY2009} and Van Bossuyt\cite{BOSSUYT2009}.\\
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Canadian soil texture classification} 
+
+To display a Canadian texture triangle with English texture class 
+abbreviations, type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "CA.EN.TT" ) 
+@ 
+
+
+For the same triangle with French texture class abbreviations type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "CA.FR.TT" ) 
+@ 
+
+
+The Canadian soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("CA.EN.TT")[["base.css.ps.lim"]][3]}$\mu$meters 
+(\href{http://sis.agr.gc.ca/cansis/glossary/separates,_soil.html}%%%
+{reference}\cite{CANSIS2010}).\\ 
+
+See the table for soil texture classes symbols, in English:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "CA.EN.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Canadian (en) system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Or in French:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "CA.FR.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Canadian (fr) system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+
+A reference image for this texture triangle can be found in 
+\href{http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html#figure1}%%
+{this reference} (not the one used for digitizing the triangle), 
+and the boundaries have been checked using 
+\href{http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html}%%
+{this reference}\cite{CANSIS2010}.\\
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{Soil texture triangle with a texture classes color 
     gradient} 
 
@@ -1188,7 +1245,7 @@ par(old.par)
 @ 
 
 
-And finally the Australian and Belgian soil texture triangle:
+Example with the Australian and Belgian soil texture triangle:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
@@ -1211,6 +1268,30 @@ TT.plot(
 par(old.par)
 @ 
 
+
+And finally the Canadian texture triangle (with English and French 
+abbreviations):
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "CA.EN.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "CA.FR.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 
