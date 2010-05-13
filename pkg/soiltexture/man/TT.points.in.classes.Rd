@@ -4,7 +4,7 @@
 \description{
 }
 \usage{
-TT.points.in.classes(tri.data, class.sys = NULL, PiC.type = NULL, css.names = NULL, text.sum = NULL, base.css.ps.lim = NULL, tri.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, collapse = ", ")
+TT.points.in.classes(tri.data, class.sys = NULL, PiC.type = NULL, css.names = NULL, text.sum = NULL, base.css.ps.lim = NULL, tri.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, collapse = ", ", texture2xy = TRUE)
 }
 \arguments{
   \item{tri.data}{
@@ -38,6 +38,8 @@ TT.points.in.classes(tri.data, class.sys = NULL, PiC.type = NULL, css.names = NU
   \item{tri.pos.tst}{
 }
   \item{collapse}{
+}
+  \item{texture2xy}{
 }
 }
 \details{

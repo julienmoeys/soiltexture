@@ -1,3 +1,5 @@
+# source( "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/R/soiltexture.r" ) 
+# source( "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.r?root=soiltexture" ) 
 # +-------------------------------------------------------------------------+
 # |                                                                         |
 # | Julien MOEYS                                                            |
@@ -821,7 +823,7 @@ assign(
             text.sum        = 100 
         ),  #
         # 
-        BE.TT = list( # Belgian TRIANGLE PARAMETERS :
+        "BE.TT" = list( # Belgian TRIANGLE PARAMETERS :
             #
             main            = "Belgium (BE)", 
             #
@@ -867,7 +869,7 @@ assign(
             text.sum        = 100 
         ),  #
         # 
-        CA.FR.TT = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
+        "CA.FR.TT" = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
             #
             main            = "Canada (CA)", 
             #
@@ -924,7 +926,7 @@ assign(
             text.sum        = 100 
         ),  #
         #
-        CA.EN.TT = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
+        "CA.EN.TT" = list( # Canadian TRIANGLE PARAMETERS : (added 2010-04-16) 
             #
             main            = "Canada (CA)", 
             #
@@ -975,6 +977,60 @@ assign(
             base.css.ps.lim = c(0,2,50,2000), # http://sis.agr.gc.ca/cansis/glossary/separates,_soil.html
             tri.css.ps.lim  = c(0,2,50,2000), 
             # 
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
+        #
+        "ISSS.TT" = list(  #  ISSS Triangle parameters
+            #                 by Wei Shangguan, School of geography, Beijing normal university 
+            #                 and after Verheye, W., and J. Ameryckx. 1984. Mineral fractions 
+            #                 and classificaton of soil texture. Pedologie, 2, 215-225.
+            main            = "ISSS", 
+            # 
+            #                The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            #                  = P13    P14    P15    P16    P17    P18      
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 1.000, 0.450, 0.450, 0.450, 0.250, 0.250, 0.250, 0.250, 0.150, 0.150, 0.150, 0.150,  
+                                 0.050, 0.000, 0.000, 0.000, 0.000, 0.000),  
+                            #
+                "SILT"      = c( 0.000, 0.000, 0.450, 0.550, 0.000, 0.200, 0.450, 0.750, 0.000, 0.200, 0.450, 0.850,  
+                                 0.000, 0.000, 0.150, 0.350, 0.450, 1.000),  
+                            #
+                "SAND"      = c( 0.000, 0.550, 0.100, 0.000, 0.750, 0.550, 0.300, 0.000, 0.850, 0.650, 0.400, 0.000,  
+                                 0.950, 1.000, 0.850, 0.650, 0.550, 0.000)  
+            ),  #
+            #
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "HCl"        = list( "name" = "heavy clay",      "points" = c(01,02,03,04)        ), 
+                "SaCl"       = list( "name" = "sandy clay",      "points" = c(02,05,06)           ), 
+                "LCl"        = list( "name" = "light clay",      "points" = c(02,06,07,03)        ), 
+                "SiCl"       = list( "name" = "silty clay",      "points" = c(03,07,08,04)        ), 
+                "SaClLo"     = list( "name" = "sandy clay loam", "points" = c(05,09,10,06)        ), 
+                "ClLo"       = list( "name" = "clay loam",       "points" = c(06,10,11,07)        ), 
+                "SiClLo"     = list( "name" = "silty clay loam", "points" = c(07,11,12,08)        ), 
+                "LoSa"       = list( "name" = "loamy sand",      "points" = c(09,13,15)           ), 
+                "Sa"         = list( "name" = "sand",            "points" = c(13,14,15)           ), 
+                "SaLo"       = list( "name" = "sandy loam",      "points" = c(09,15,16,10)        ), 
+                "Lo"         = list( "name" = "loam",            "points" = c(10,16,17,11)        ), 
+                "SiLo"       = list( "name" = "silt loam",       "points" = c(11,17,18,12)        )  
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = rep(T,3), 
+            tlr.an          = c(60,60,60), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,20,2000), 
+            tri.css.ps.lim  = c(0,2,20,2000), 
+            #
             unit.ps         = quote(bold(mu) * bold('m')), 
             unit.tx         = quote(bold('%')), 
             #
@@ -4913,7 +4969,8 @@ TT.points.in.classes <- function(
     text.tol        = NULL, 
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
-    collapse        = ", "  
+    collapse        = ", ", 
+    texture2xy      = TRUE  
 ){  #
     if( is.null( class.sys ) ){ class.sys <- TT.get("class.sys") } 
     #
@@ -4992,29 +5049,44 @@ TT.points.in.classes <- function(
         )   #
     }   #
     #
-    classes.points.xy <- TT.css2xy( 
-        tri.data    = TT.data$"tt.points" * text.sum, 
-        geo         = geo, 
-        # 
-        css.names   = css.names, 
-        text.tol    = text.tol, 
+    # Operate trigonometric transformation of the values into 
+    # the x-y pland, or just used 2 texture values?
+    if( texture2xy )
+    {   #
+        classes.points.xy <- TT.css2xy( 
+            tri.data    = TT.data$"tt.points" * text.sum, 
+            geo         = geo, 
+            # 
+            css.names   = css.names, 
+            text.tol    = text.tol, 
+            #
+            tri.sum.tst = tri.sum.tst, 
+            tri.pos.tst = tri.pos.tst, 
+            set.par     = FALSE  
+        )   #
         #
-        tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
-    )   #
-    #
-    data.points.xy <- TT.css2xy( 
-        tri.data    = tri.data, 
-        geo         = geo, 
-        # 
-        css.names   = css.names, 
-        text.tol    = text.tol, 
+        data.points.xy <- TT.css2xy( 
+            tri.data    = tri.data, 
+            geo         = geo, 
+            # 
+            css.names   = css.names, 
+            text.tol    = text.tol, 
+            #
+            tri.sum.tst = tri.sum.tst, 
+            tri.pos.tst = tri.pos.tst, 
+            set.par     = FALSE  
+        )   #
+    }else{ 
+        classes.points.xy <- data.frame( 
+            "xpos" = TT.data$"tt.points"[,"SILT"] * text.sum, 
+            "ypos" = TT.data$"tt.points"[,"CLAY"] * text.sum  
+        )   #
         #
-        tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
-    )   #
+        data.points.xy <- data.frame( 
+            "xpos" = tri.data[,css.names[2]], 
+            "ypos" = tri.data[,css.names[1]]  
+        )   #
+    }   #
     #
     # Vectorisable and custom wrapper for point.in.polygon():
     points.in.class <- function( 
@@ -5032,7 +5104,8 @@ TT.points.in.classes <- function(
             point.x = data.points.xy$"xpos",  
             point.y = data.points.xy$"ypos",  
             pol.x   = xpol,  
-            pol.y   = ypol  
+            pol.y   = ypol, 
+            mode.checked = TRUE 
         )   # 
         #
         return( PiP.res ) 
