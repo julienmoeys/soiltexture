@@ -728,9 +728,8 @@ following command:
 source( 
     paste( 
         sep = "", 
-        "http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php", 
-        "/*checkout*/pkg/soiltexture/R", 
-        "/soiltexture.r?root=soiltexture" 
+        "http://r-forge.r-project.org/scm/viewvc.php/*checkout*", 
+        "/pkg/soiltexture/R/soiltexture.r?&root=soiltexture"
     )   #
 )   #
 @ 
