@@ -2,6 +2,25 @@ The Soil Texture Wizard
 change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 
+20100513    Accuracy problems detected in TT.points.in.classes() for texture data 
+            located right on the boundary of the triangle (or some texture classes), 
+            with some digits after the decimal: due to non-exact trigonometric 
+            calculations (around 1E-15), these points may not be classified 
+            as on the border, or even belonging to the texture class. These 
+            accuracy problems can be partially fixed by a new parameter of 
+            TT.points.in.classes(), 'texture2xy' that can be set to FALSE in 
+            order to get more accurate classifications. Other accuracy problems 
+            still remains, but this time in the underlying point.in.polygon() 
+            function. There is no easy fix to this:
+            <https://stat.ethz.ch/pipermail/r-help/2010-May/239035.html>
+            No fix are planned in the close future to fix this error.
+            Thanks to Wei Shangguan (see below) for pointing this 'bug'.
+
+20100513    Added the ISSS (not the 'Australian ISSS') texture triangle to the 
+            list of pre-defined texture triangles. Many thanks to Wei Shangguan, 
+            PhD student at the School of geography of Beijing normal university 
+            for providing the code of the triangle.
+
 20100416    Added the Canadian texture triangle to the list of pre-defined 
             texture triangles.
 
