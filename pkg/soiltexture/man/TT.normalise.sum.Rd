@@ -1,8 +1,7 @@
 \name{TT.normalise.sum}
 \alias{TT.normalise.sum}
 \title{TT normalise sum}
-\description{
-}
+
 \usage{
 TT.normalise.sum(tri.data, css.names = NULL, text.sum = NULL, text.tol = NULL, tri.pos.tst = NULL, residuals = FALSE)
 }
@@ -20,17 +19,12 @@ TT.normalise.sum(tri.data, css.names = NULL, text.sum = NULL, text.tol = NULL, t
   \item{residuals}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

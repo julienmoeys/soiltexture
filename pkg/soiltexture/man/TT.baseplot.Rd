@@ -1,8 +1,7 @@
 \name{TT.baseplot}
 \alias{TT.baseplot}
 \title{TT baseplot}
-\description{
-}
+
 \usage{
 TT.baseplot(geo = NULL, class.sys = "none", blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, col = NULL, cex.main = NULL, lang = NULL)
 }
@@ -50,17 +49,12 @@ TT.baseplot(geo = NULL, class.sys = "none", blr.clock = NULL, tlr.an = NULL, blr
   \item{lang}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

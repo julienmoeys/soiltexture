@@ -1,10 +1,9 @@
 \name{TT.ticks.lab}
 \alias{TT.ticks.lab}
 \title{TT ticks lab}
-\description{
-}
+
 \usage{
-TT.ticks.lab(geo, at = NULL, text.tol = NULL, tk.ls = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, col.axis = NULL, font.axis = NULL, cex.axis = NULL, family.op = NULL)
+TT.ticks.lab(geo, at = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, tk.ls = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, col.axis = NULL, font.axis = NULL, cex.axis = NULL, family.op = NULL)
 }
 \arguments{
   \item{geo}{
@@ -12,6 +11,10 @@ TT.ticks.lab(geo, at = NULL, text.tol = NULL, tk.ls = NULL, tri.sum.tst = NULL, 
   \item{at}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{tk.ls}{
 }
@@ -28,17 +31,12 @@ TT.ticks.lab(geo, at = NULL, text.tol = NULL, tk.ls = NULL, tri.sum.tst = NULL, 
   \item{family.op}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

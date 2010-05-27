@@ -1,10 +1,9 @@
 \name{TT.iwd}
 \alias{TT.iwd}
 \title{TT iwd}
-\description{
-}
+
 \usage{
-TT.iwd(tri.data, z.name, geo, css.names = NULL, tri.pol.data = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, n = 25, lims = c("points", "triangle")[1], max.dist = NULL, q.max.dist = 0.5, pow = 0.5)
+TT.iwd(tri.data, z.name, geo, css.names = NULL, tri.pol.data = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, n = 25, lims = c("points", "triangle")[1], max.dist = NULL, q.max.dist = 0.5, pow = 0.5)
 }
 \arguments{
   \item{tri.data}{
@@ -18,6 +17,10 @@ TT.iwd(tri.data, z.name, geo, css.names = NULL, tri.pol.data = NULL, text.tol = 
   \item{tri.pol.data}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{tri.sum.tst}{
 }
@@ -36,17 +39,12 @@ TT.iwd(tri.data, z.name, geo, css.names = NULL, tri.pol.data = NULL, text.tol = 
   \item{pow}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

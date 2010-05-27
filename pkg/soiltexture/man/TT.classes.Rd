@@ -1,10 +1,9 @@
 \name{TT.classes}
 \alias{TT.classes}
 \title{TT classes}
-\description{
-}
+
 \usage{
-TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, bg = NULL, class.lab.col = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, class.line.col = NULL, class.lty = NULL, class.lab.show = NULL, cex.lab = NULL, font.lab = NULL, family.op = NULL, lwd.axis = NULL, col.axis = NULL)
+TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, text.sum = NULL, base.css.ps.lim = NULL, blr.tx = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, bg = NULL, class.lab.col = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, class.line.col = NULL, class.lty = NULL, class.lab.show = NULL, cex.lab = NULL, font.lab = NULL, family.op = NULL, lwd.axis = NULL, col.axis = NULL)
 }
 \arguments{
   \item{geo}{
@@ -22,6 +21,12 @@ TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf
   \item{trsf.add.opt2}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{base.css.ps.lim}{
+}
+  \item{blr.tx}{
 }
   \item{tri.sum.tst}{
 }
@@ -52,17 +57,12 @@ TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf
   \item{col.axis}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

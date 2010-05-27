@@ -1,6 +1,6 @@
 \name{TT.plot}
 \alias{TT.plot}
-\title{TT plot}
+\title{Plot soil texture triangles / diagrams.}
 \description{Plot a soil texture triangle (also called soil texture 
 diagrams, or soil texture ternary plots), with or without 
 background soil texture classes boundaries, and with or without
@@ -333,19 +333,14 @@ the default), "fr" (French), "it" (Italian), "es" (Spanish),
 the same as par("mar"). See par("mar") for more details. Use 
 this at your own risks!}
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
+
+
 \examples{require( soiltexture ) 
 
 # ::: Texture triangles without data

@@ -17,7 +17,7 @@ et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
 Version: \tab 1.0\cr
-Date: \tab 2010-05-13\cr
+Date: \tab 2010-05-27\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
@@ -27,9 +27,7 @@ License: \tab GPL (>=3)\cr
 URL: \tab http://julienmoeys.free.fr/?Soil-textures-triangle\cr}
 }
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\references{
-}
+
 \keyword{ package }
-\seealso{
-}
-\examples{}
+
+

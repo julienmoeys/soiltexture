@@ -1,8 +1,7 @@
 \name{TT.xy2css}
 \alias{TT.xy2css}
 \title{TT xy2css}
-\description{
-}
+
 \usage{
 TT.xy2css(xy.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE)
 }
@@ -22,17 +21,12 @@ TT.xy2css(xy.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, t
   \item{set.par}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

@@ -1,8 +1,7 @@
 \name{TT.add}
 \alias{TT.add}
 \title{TT add}
-\description{
-}
+
 \usage{
 TT.add(..., par.list = "TT.par", bkp.par.list = "TT.par.bkp", par.env = TT.env)
 }
@@ -16,17 +15,12 @@ TT.add(..., par.list = "TT.par", bkp.par.list = "TT.par.bkp", par.env = TT.env)
   \item{par.env}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

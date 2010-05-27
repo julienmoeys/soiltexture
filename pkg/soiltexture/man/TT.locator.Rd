@@ -1,8 +1,7 @@
 \name{TT.locator}
 \alias{TT.locator}
 \title{TT locator}
-\description{
-}
+
 \usage{
 TT.locator(geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, set.par = FALSE, n = 512, type = "n", ...)
 }
@@ -26,17 +25,12 @@ TT.locator(geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.t
   \item{\dots}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

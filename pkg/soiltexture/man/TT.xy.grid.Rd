@@ -1,8 +1,7 @@
 \name{TT.xy.grid}
 \alias{TT.xy.grid}
 \title{TT xy grid}
-\description{
-}
+
 \usage{
 TT.xy.grid(x, y, n = 25)
 }
@@ -14,17 +13,12 @@ TT.xy.grid(x, y, n = 25)
   \item{n}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

@@ -1,10 +1,9 @@
 \name{TT.axis.arrows}
 \alias{TT.axis.arrows}
 \title{TT axis arrows}
-\description{
-}
+
 \usage{
-TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), a.h.s = TT.get("arrows.head.shift"), a.t.s = TT.get("arrows.text.shift"), a.t.s2 = TT.get("arrows.text.shift2"), a.b.s = TT.get("arrows.base.shift"), text.tol = NULL, tri.sum.tst = FALSE, tri.pos.tst = FALSE, lwd.lab = NULL, arrows.lty = NULL, col.lab = NULL, font.lab = NULL, cex.lab = NULL, family.op = NULL, unit.ps = NULL, unit.tx = NULL, lang = NULL)
+TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), a.h.s = TT.get("arrows.head.shift"), a.t.s = TT.get("arrows.text.shift"), a.t.s2 = TT.get("arrows.text.shift2"), a.b.s = TT.get("arrows.base.shift"), text.tol = NULL, text.sum = NULL, blr.clock = NULL, tri.sum.tst = FALSE, tri.pos.tst = FALSE, lwd.lab = NULL, arrows.lty = NULL, col.lab = NULL, font.lab = NULL, cex.lab = NULL, family.op = NULL, unit.ps = NULL, unit.tx = NULL, lang = NULL)
 }
 \arguments{
   \item{geo}{
@@ -22,6 +21,10 @@ TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), a.h.s = TT.get(
   \item{a.b.s}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{tri.sum.tst}{
 }
@@ -46,17 +49,12 @@ TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), a.h.s = TT.get(
   \item{lang}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

@@ -1,10 +1,9 @@
 \name{TT.css2xy}
 \alias{TT.css2xy}
 \title{TT css2xy}
-\description{
-}
+
 \usage{
-TT.css2xy(tri.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE)
+TT.css2xy(tri.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, text.sum = NULL, blr.clock = NULL)
 }
 \arguments{
   \item{tri.data}{
@@ -21,18 +20,17 @@ TT.css2xy(tri.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, 
 }
   \item{set.par}{
 }
+  \item{text.sum}{
 }
-\details{
+  \item{blr.clock}{
 }
-\value{
 }
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

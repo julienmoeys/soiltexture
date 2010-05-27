@@ -1,10 +1,9 @@
 \name{TT.ticks}
 \alias{TT.ticks}
 \title{TT ticks}
-\description{
-}
+
 \usage{
-TT.ticks(geo, at = NULL, text.tol = NULL, tk.s = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, lwd.axis = NULL, col.axis = NULL)
+TT.ticks(geo, at = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, tk.s = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, lwd.axis = NULL, col.axis = NULL)
 }
 \arguments{
   \item{geo}{
@@ -12,6 +11,10 @@ TT.ticks(geo, at = NULL, text.tol = NULL, tk.s = NULL, tri.sum.tst = NULL, tri.p
   \item{at}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{tk.s}{
 }
@@ -24,17 +27,12 @@ TT.ticks(geo, at = NULL, text.tol = NULL, tk.s = NULL, tri.sum.tst = NULL, tri.p
   \item{col.axis}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

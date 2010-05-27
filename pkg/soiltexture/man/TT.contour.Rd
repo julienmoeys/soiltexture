@@ -1,10 +1,9 @@
 \name{TT.contour}
 \alias{TT.contour}
 \title{TT contour}
-\description{
-}
+
 \usage{
-TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, col = NULL, cex.main = NULL, lang = NULL, nlevels = 10, levels = NA, labels = NULL, xlim = NA, ylim = NA, zlim = NA, labcex = 1, drawlabels = TRUE, method = "flattest", axes = TRUE, frame.plot = NA, lty = NA, lwd = NA, ...)
+TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, col = NULL, cex.main = NULL, lang = NULL, nlevels = 10, levels = NA, labels = NULL, xlim = NA, ylim = NA, zlim = NA, labcex = 1, drawlabels = TRUE, method = "flattest", axes = TRUE, frame.plot = NA, lty = NA, lwd = NA, blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL, ...)
 }
 \arguments{
   \item{geo}{
@@ -67,20 +66,25 @@ TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol
 }
   \item{lwd}{
 }
+  \item{blr.clock}{
+}
+  \item{tlr.an}{
+}
+  \item{blr.tx}{
+}
+  \item{text.sum}{
+}
+  \item{base.css.ps.lim}{
+}
   \item{\dots}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+
