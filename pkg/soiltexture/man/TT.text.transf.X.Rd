@@ -1,8 +1,7 @@
 \name{TT.text.transf.X}
 \alias{TT.text.transf.X}
 \title{TT text transf X}
-\description{
-}
+
 \usage{
 TT.text.transf.X(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)
 }
@@ -22,17 +21,12 @@ TT.text.transf.X(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, text.tol = 
   \item{tri.pos.tst}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

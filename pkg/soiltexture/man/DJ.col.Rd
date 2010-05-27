@@ -1,8 +1,7 @@
 \name{DJ.col}
 \alias{DJ.col}
 \title{DJ col}
-\description{
-}
+
 \usage{
 DJ.col(cl, w, gray.l = FALSE)
 }
@@ -14,17 +13,12 @@ DJ.col(cl, w, gray.l = FALSE)
   \item{gray.l}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

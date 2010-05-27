@@ -1,8 +1,7 @@
 \name{TT.data.test}
 \alias{TT.data.test}
 \title{TT data test}
-\description{
-}
+
 \usage{
 TT.data.test(tri.data, css.names = NULL, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)
 }
@@ -20,17 +19,12 @@ TT.data.test(tri.data, css.names = NULL, text.sum = NULL, text.tol = NULL, tri.s
   \item{tri.pos.tst}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

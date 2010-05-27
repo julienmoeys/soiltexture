@@ -1,10 +1,9 @@
 \name{TT.grid}
 \alias{TT.grid}
 \title{TT grid}
-\description{
-}
+
 \usage{
-TT.grid(geo = geo, at = NULL, text.tol = NULL, grid.col = NULL, grid.lty = NULL, lwd.axis = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, frame.bg.col = NULL, bg = NULL, col.axis = NULL)
+TT.grid(geo = geo, at = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, grid.col = NULL, grid.lty = NULL, lwd.axis = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, frame.bg.col = NULL, bg = NULL, col.axis = NULL)
 }
 \arguments{
   \item{geo}{
@@ -12,6 +11,10 @@ TT.grid(geo = geo, at = NULL, text.tol = NULL, grid.col = NULL, grid.lty = NULL,
   \item{at}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{grid.col}{
 }
@@ -34,17 +37,12 @@ TT.grid(geo = geo, at = NULL, text.tol = NULL, grid.col = NULL, grid.lty = NULL,
   \item{col.axis}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

@@ -1,10 +1,9 @@
 \name{TT.text}
 \alias{TT.text}
 \title{TT text}
-\description{
-}
+
 \usage{
-TT.text(tri.data, geo, labels = NULL, css.names = NULL, base.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)
+TT.text(tri.data, geo, labels = NULL, css.names = NULL, base.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)
 }
 \arguments{
   \item{tri.data}{
@@ -29,6 +28,10 @@ TT.text(tri.data, geo, labels = NULL, css.names = NULL, base.css.ps.lim = NULL, 
 }
   \item{text.tol}{
 }
+  \item{text.sum}{
+}
+  \item{blr.clock}{
+}
   \item{fg}{
 }
   \item{col}{
@@ -50,17 +53,12 @@ TT.text(tri.data, geo, labels = NULL, css.names = NULL, base.css.ps.lim = NULL, 
   \item{tri.pos.tst}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

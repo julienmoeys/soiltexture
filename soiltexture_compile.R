@@ -14,8 +14,7 @@ source( wrapper.path )
 
 package.skeleton.dx( 
     pkgdir     = file.path( pkg.dir, pkg.name ), 
-    code_files = code.files 
-    # code_files = file.path( pkg.dir, pkg.name, "R", code.files ) 
+    code_files = code.files  
 )   #
 
 
@@ -40,14 +39,17 @@ pkg.install.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir )
 
 
 
-# Check the package
-date() 
-pkg.check.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir ) 
-date() 
-
-
-
 # Re-install and load the package from the new zip archive:
 install.packages.zip( pkg.name = pkg.name, pkg.dir = pkg.dir, pkg.version = pkg.version ) 
+
+
+
+# Check the package
+date() 
+pkg.check.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir, r.cmd.op = "--no-tests" ) 
+date() 
+
+
+
 require( package = pkg.name, character.only = TRUE ) 
 

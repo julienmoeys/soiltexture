@@ -1,10 +1,9 @@
 \name{TT.mahalanobis}
 \alias{TT.mahalanobis}
 \title{TT mahalanobis}
-\description{
-}
+
 \usage{
-TT.mahalanobis(geo, tri.data, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, n = 25, center = NULL, cov.mat = NULL, inverted = FALSE, ..., alr = FALSE, divisorvar = 2)
+TT.mahalanobis(geo, tri.data, css.names = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, n = 25, center = NULL, cov.mat = NULL, inverted = FALSE, ..., alr = FALSE, divisorvar = 2)
 }
 \arguments{
   \item{geo}{
@@ -14,6 +13,10 @@ TT.mahalanobis(geo, tri.data, css.names = NULL, text.tol = NULL, tri.sum.tst = N
   \item{css.names}{
 }
   \item{text.tol}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
   \item{tri.sum.tst}{
 }
@@ -36,17 +39,12 @@ TT.mahalanobis(geo, tri.data, css.names = NULL, text.tol = NULL, tri.sum.tst = N
   \item{divisorvar}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

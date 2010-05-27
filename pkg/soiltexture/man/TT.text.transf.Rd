@@ -1,8 +1,7 @@
 \name{TT.text.transf}
 \alias{TT.text.transf}
 \title{TT text transf}
-\description{
-}
+
 \usage{
 TT.text.transf(tri.data, base.css.ps.lim, dat.css.ps.lim, css.names = NULL, blr.tx = NULL, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL)
 }
@@ -30,17 +29,12 @@ TT.text.transf(tri.data, base.css.ps.lim, dat.css.ps.lim, css.names = NULL, blr.
   \item{trsf.add.opt2}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

@@ -235,7 +235,7 @@ pkg.build.wrapper <- function
 ### located 
  r.cmd= "R CMD build", 
 ### Command send to windows shell. Default is "R CMD build" 
- bat.suffix="RCMDchecks"
+ bat.suffix="RCMDbuild"
 ### Suffix of the batch (.bat) file create for this operation, 
 ### without extension
 ){  #
@@ -330,26 +330,33 @@ pkg.install.wrapper <- function
 
 
 
-pkg.check.wrapper <- function 
+pkg.check.wrapper <- function(
 ### A wrapper function for R CMD check, for checking a package
 ### sources
-(   #
-    pkg.name, 
+
+ pkg.name,
 ### Name of the package, and of the package directory
-    pkg.dir, 
+
+ pkg.dir,
 ### Name of the directory in which the package directory is
 ### located 
-    r.cmd       = "R CMD check", 
+
+ r.cmd="R CMD check",
 ### Command send to windows shell. Default is "R CMD check" 
-    bat.suffix  = "RCMDcheck"
+
+ r.cmd.op="",
+### Options to be passed after r.cmd, like "--no-tests" 
+
+ bat.suffix="RCMDcheck"
 ### Suffix of the batch (.bat) file create for this operation, 
 ### without extension
+
 ){  #
     cmd.checks <- c( 
         "c:", 
         "cd \\", 
         paste( sep = "", "cd ", normalizePath( file.path( pkg.dir ) )), 
-        paste( sep = "", r.cmd, " ", pkg.name )  
+        paste( sep = "", r.cmd, " ", r.cmd.op," ", pkg.name )  
     )   #
     #
     cat( cmd.checks ) 

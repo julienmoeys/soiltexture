@@ -1,10 +1,9 @@
 \name{TT.points}
 \alias{TT.points}
 \title{TT points}
-\description{
-}
+
 \usage{
-TT.points(tri.data, geo, css.names = NULL, z.name = NULL, base.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, pch = NULL, fg = NULL, col = NULL, bg = NULL, cex = NULL, lwd = NULL, points.type = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, z.type = NULL, z.col.hue = NULL, z.cex.range = NULL, z.pch = NULL)
+TT.points(tri.data, geo, css.names = NULL, z.name = NULL, base.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, pch = NULL, fg = NULL, col = NULL, bg = NULL, cex = NULL, lwd = NULL, points.type = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, z.type = NULL, z.col.hue = NULL, z.cex.range = NULL, z.pch = NULL, text.sum = NULL, blr.clock = NULL)
 }
 \arguments{
   \item{tri.data}{
@@ -55,18 +54,17 @@ TT.points(tri.data, geo, css.names = NULL, z.name = NULL, base.css.ps.lim = NULL
 }
   \item{z.pch}{
 }
+  \item{text.sum}{
 }
-\details{
+  \item{blr.clock}{
 }
-\value{
 }
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

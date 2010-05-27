@@ -1,8 +1,7 @@
 \name{TT.dataset}
 \alias{TT.dataset}
 \title{TT dataset}
-\description{
-}
+
 \usage{
 TT.dataset(n, seed.val = NULL, css.names = NULL, text.sum = NULL)
 }
@@ -16,17 +15,12 @@ TT.dataset(n, seed.val = NULL, css.names = NULL, text.sum = NULL)
   \item{text.sum}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

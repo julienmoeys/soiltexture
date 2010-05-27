@@ -1,8 +1,7 @@
 \name{nightC}
 \alias{nightC}
 \title{nightC}
-\description{
-}
+
 \usage{
 nightC(cl, ic = TRUE)
 }
@@ -12,17 +11,12 @@ nightC(cl, ic = TRUE)
   \item{ic}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

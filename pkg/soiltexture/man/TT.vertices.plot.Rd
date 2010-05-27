@@ -1,8 +1,7 @@
 \name{TT.vertices.plot}
 \alias{TT.vertices.plot}
 \title{TT vertices plot}
-\description{
-}
+
 \usage{
 TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL)
 }
@@ -28,17 +27,12 @@ TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL,
   \item{offset}{
 }
 }
-\details{
-}
-\value{
-}
-\references{
-}
+
+
+
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
-\note{
-}
 
 
-\seealso{
-}
-\examples{}
+
+
+

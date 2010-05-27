@@ -2384,7 +2384,9 @@ TT.css2xy <- function(
     #
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
-    set.par         = FALSE  
+    set.par         = FALSE, 
+    text.sum        = NULL, 
+    blr.clock       = NULL  
 ){  #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
@@ -2538,7 +2540,9 @@ TT.points <- function(
     z.type          = NULL, 
     z.col.hue       = NULL, 
     z.cex.range     = NULL, 
-    z.pch           = NULL  
+    z.pch           = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL  
 ){  #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
@@ -2587,7 +2591,9 @@ TT.points <- function(
         geo         = geo, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( !is.null(z.name) & z.type == "bubble" ) 
@@ -2669,7 +2675,9 @@ TT.text <- function(
     text.transf.fun = NULL, 
     trsf.add.opt1   = NULL,   # Additionnal option 1 
     trsf.add.opt2   = NULL,   # Additionnal option 2 
-    text.tol        = NULL,
+    text.tol        = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL, 
     #
     fg              = NULL, 
     col             = NULL, 
@@ -2735,7 +2743,9 @@ TT.text <- function(
         geo         = geo, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     nobs <- dim(xy.coord)[1]
@@ -2764,6 +2774,8 @@ TT.edges <- function(
     geo, 
     #
     text.tol        = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL, 
     #
     col.axis        = NULL, 
     plot.axis       = TRUE,     # plot the axis (not only background)
@@ -2814,7 +2826,9 @@ TT.edges <- function(
         css.names   = css.names, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     xpos    <- tri.TT$"xpos"
@@ -2852,6 +2866,8 @@ TT.lines <- function(
     at.3.e      = 1 - TT.get("at"),     # at.3.e: (End values) logically equal to at.2.s
     #
     text.tol    = NULL, 
+    text.sum    = NULL, 
+    blr.clock   = NULL, 
     #
     tri.sum.tst = NULL, 
     tri.pos.tst = NULL  
@@ -2948,7 +2964,9 @@ TT.lines <- function(
                         text.tol    = text.tol, 
                         tri.sum.tst = tri.sum.tst, 
                         tri.pos.tst = tri.pos.tst, 
-                        set.par     = FALSE  
+                        set.par     = FALSE, 
+                        text.sum    = text.sum, 
+                        blr.clock   = blr.clock  
                     )   #
                 }   #
             )   #
@@ -2965,6 +2983,8 @@ TT.grid <- function(
     at              = NULL, 
     #
     text.tol        = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL, 
     #
     grid.col        = NULL, 
     grid.lty        = NULL, 
@@ -3034,7 +3054,9 @@ TT.grid <- function(
         at.2.e      = at.0, 
         at.3.e      = at.r, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     invisible( lapply( 
@@ -3062,6 +3084,8 @@ TT.ticks <- function(
     at          = NULL, 
     #
     text.tol    = NULL, 
+    text.sum    = NULL, 
+    blr.clock   = NULL, 
     #
     tk.s        = NULL, 
     #
@@ -3094,7 +3118,9 @@ TT.ticks <- function(
         at.2.e      = at.2.e, 
         at.3.e      = at.3.e, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     # NEW NEW NEW
@@ -3133,6 +3159,8 @@ TT.ticks.lab <- function(
     at          = NULL, 
     #
     text.tol    = NULL, 
+    text.sum    = NULL, 
+    blr.clock   = NULL, 
     #
     tk.ls       = NULL, 
     #
@@ -3168,7 +3196,9 @@ TT.ticks.lab <- function(
         at.2.e      = at.2.e, 
         at.3.e      = at.3.e, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     # NEW NEW NEW
@@ -3220,6 +3250,8 @@ TT.axis.arrows <- function(
     a.b.s           = TT.get("arrows.base.shift"), 
     # 
     text.tol        = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL, 
     # 
     tri.sum.tst     = FALSE,    # !!!! Set to FALSE because sums are not equal to 1 with right-triangles oblic-side
     tri.pos.tst     = FALSE,    # !!!! Set to FALSE because values are outside the triangle
@@ -3327,7 +3359,9 @@ TT.axis.arrows <- function(
         at.2.e      = at.2.e, 
         at.3.e      = at.3.e, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     invisible( lapply( 
@@ -3377,7 +3411,9 @@ TT.axis.arrows <- function(
         at.2.e      = at.2.e, 
         at.3.e      = at.3.e, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( any( !plot.TF ) ) 
@@ -3398,7 +3434,9 @@ TT.axis.arrows <- function(
             at.2.e      = at.2.e, 
             at.3.e      = at.3.e, 
             tri.sum.tst = tri.sum.tst, 
-            tri.pos.tst = tri.pos.tst  
+            tri.pos.tst = tri.pos.tst, 
+            text.sum    = text.sum, 
+            blr.clock   = blr.clock  
         )   #
         #
         grid.lns2[ !plot.TF ] <- grid.lnsX[ !plot.TF ]
@@ -3439,7 +3477,9 @@ TT.axis.arrows <- function(
         at.2.e      = at.2.e, 
         at.3.e      = at.3.e, 
         tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst  
+        tri.pos.tst = tri.pos.tst, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( any( !plot.TF ) ) 
@@ -3460,7 +3500,9 @@ TT.axis.arrows <- function(
             at.2.e      = at.2.e, 
             at.3.e      = at.3.e, 
             tri.sum.tst = tri.sum.tst, 
-            tri.pos.tst = tri.pos.tst  
+            tri.pos.tst = tri.pos.tst, 
+            text.sum    = text.sum, 
+            blr.clock   = blr.clock  
         )   #
         #
         grid.lns3[ !plot.TF ] <- grid.lnsX[ !plot.TF ]
@@ -3759,7 +3801,9 @@ TT.baseplot <- function(
         text.tol    = text.tol, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
@@ -3920,7 +3964,9 @@ TT.vertices.plot    <- function(
         family      = family.op, 
         adj         = adj, 
         pos         = pos, 
-        offset      = offset  
+        offset      = offset, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     return( invisible( TT.data ) ) 
@@ -3937,6 +3983,9 @@ TT.classes  <- function(
     trsf.add.opt1   = NULL,   # Additionnal option 1 
     trsf.add.opt2   = NULL,   # Additionnal option 2 
     text.tol        = NULL, 
+    text.sum        = NULL, 
+    base.css.ps.lim = NULL, 
+    blr.tx          = NULL, 
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
     bg              = NULL, 
@@ -4000,7 +4049,9 @@ TT.classes  <- function(
         text.tol    = text.tol, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE  
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     poly.nm <- names( TT.data$"tt.polygons" )
@@ -4144,7 +4195,7 @@ TT.classes  <- function(
 # | FUNCTION: TT.plot()                 |
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 # [ TT.plot(): Produce a ternary plot, with full customisation and soil-texture tools.
-TT.plot <- function
+TT.plot <- function(# Plot soil texture triangles / diagrams.
 ### Plot a soil texture triangle (also called soil texture 
 ### diagrams, or soil texture ternary plots), with or without 
 ### background soil texture classes boundaries, and with or without
@@ -4185,8 +4236,6 @@ TT.plot <- function
 ### value for a given argument in R, use TT.set() (see ?TT.set). 
 ### For instance to change the default value of 'class.sys', type 
 ### TT.set( "class.sys" = "USDA.TT" ).
-
-(   #
 
 # GENERAL Parameters:
 
@@ -4770,7 +4819,9 @@ TT.plot <- function
             lwd.axis        = lwd.axis, 
             tri.sum.tst     = tri.sum.tst, 
             tri.pos.tst     = tri.pos.tst, 
-            bg              = bg  
+            bg              = bg, 
+            text.sum        = text.sum, 
+            blr.clock       = blr.clock  
         )   #
     }   #
     #
@@ -4800,7 +4851,10 @@ TT.plot <- function
             family.op       = family.op, 
             lwd.axis        = lwd.axis, 
             col.axis        = col.axis, 
-            bg              = bg  
+            bg              = bg, 
+            text.sum        = text.sum, 
+            base.css.ps.lim = base.css.ps.lim, 
+            blr.tx          = blr.tx  
         )   #
     }   #
     #
@@ -4819,7 +4873,9 @@ TT.plot <- function
             class.p.bg.hue  = class.p.bg.hue,   # added 2009/05/18 
             frame.bg.col    = frame.bg.col,     # added 2009/05/19 
             bg              = bg,               # added 2009/05/22 
-            col.axis        = col.axis          # added 2009/05/22 
+            col.axis        = col.axis,         # added 2009/05/22 
+            text.sum        = text.sum, 
+            blr.clock       = blr.clock  
         )   #
     }   #
     #
@@ -4849,20 +4905,25 @@ TT.plot <- function
             family.op       = family.op, 
             lwd.axis        = lwd.axis, 
             col.axis        = col.axis, 
-            bg              = bg  
+            bg              = bg, 
+            text.sum        = text.sum, 
+            base.css.ps.lim = base.css.ps.lim, 
+            blr.tx          = blr.tx  
         )   #
     }   #
     #
     # +----------------------------------------------------+
     #
     TT.ticks( 
-        geo                 = geo, 
-        at                  = at, 
-        text.tol            = text.tol, 
-        tk.s                = TT.get("ticks.shift"), 
-        tri.sum.tst         = tri.sum.tst, 
-        lwd.axis            = lwd.axis,         # Added   2009/05/15 
-        col.axis            = col.axis          # Changed 2009/05/18 
+        geo         = geo, 
+        at          = at, 
+        text.tol    = text.tol, 
+        tk.s        = TT.get("ticks.shift"), 
+        tri.sum.tst = tri.sum.tst, 
+        lwd.axis    = lwd.axis,         # Added   2009/05/15 
+        col.axis    = col.axis,         # Changed 2009/05/18 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     TT.ticks.lab( 
@@ -4874,28 +4935,32 @@ TT.plot <- function
         col.axis    = col.axis, 
         font.axis   = font.axis, 
         cex.axis    = cex.axis, 
-        family.op   = family.op  
+        family.op   = family.op, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( arrows.show )
     {   #
         TT.axis.arrows( 
-            geo                 = geo, 
-            css.lab             = css.lab, 
-            a.l                 = TT.get("arrows.lims"), 
-            a.h.s               = TT.get("arrows.head.shift"), 
-            a.t.s               = TT.get("arrows.text.shift"), 
-            a.b.s               = TT.get("arrows.base.shift"), 
-            text.tol            = text.tol,     # useless
-            lwd.lab             = lwd.lab, 
-            arrows.lty          = arrows.lty, 
-            col.lab             = col.lab, 
-            font.lab            = font.lab, 
-            cex.lab             = cex.lab, 
-            family.op           = family.op, 
-            unit.ps             = unit.ps, 
-            unit.tx             = unit.tx, 
-            lang                = lang 
+            geo         = geo, 
+            css.lab     = css.lab, 
+            a.l         = TT.get("arrows.lims"), 
+            a.h.s       = TT.get("arrows.head.shift"), 
+            a.t.s       = TT.get("arrows.text.shift"), 
+            a.b.s       = TT.get("arrows.base.shift"), 
+            text.tol    = text.tol,     # useless
+            lwd.lab     = lwd.lab, 
+            arrows.lty  = arrows.lty, 
+            col.lab     = col.lab, 
+            font.lab    = font.lab, 
+            cex.lab     = cex.lab, 
+            family.op   = family.op, 
+            unit.ps     = unit.ps, 
+            unit.tx     = unit.tx, 
+            lang        = lang, 
+            text.sum    = text.sum, 
+            blr.clock   = blr.clock  
         )   #
     }   #
     #
@@ -4909,7 +4974,9 @@ TT.plot <- function
         lwd.axis        = lwd.axis, 
         tri.sum.tst     = tri.sum.tst, 
         tri.pos.tst     = tri.pos.tst, 
-        bg              = bg  
+        bg              = bg, 
+        text.sum        = text.sum, 
+        blr.clock       = blr.clock  
     )   #
     #
     if( !is.null(tri.data) )
@@ -4938,7 +5005,9 @@ TT.plot <- function
             z.type          = z.type, 
             z.col.hue       = z.col.hue, 
             z.cex.range     = z.cex.range,  
-            z.pch           = z.pch  
+            z.pch           = z.pch, 
+            text.sum        = text.sum, 
+            blr.clock       = blr.clock  
         )   #
     }else{ 
         points.out <- NULL
@@ -5062,7 +5131,9 @@ TT.points.in.classes <- function(
             #
             tri.sum.tst = tri.sum.tst, 
             tri.pos.tst = tri.pos.tst, 
-            set.par     = FALSE  
+            set.par     = FALSE, 
+            text.sum    = text.sum, 
+            blr.clock   = blr.clock  
         )   #
         #
         data.points.xy <- TT.css2xy( 
@@ -5074,7 +5145,9 @@ TT.points.in.classes <- function(
             #
             tri.sum.tst = tri.sum.tst, 
             tri.pos.tst = tri.pos.tst, 
-            set.par     = FALSE  
+            set.par     = FALSE, 
+            text.sum    = text.sum, 
+            blr.clock   = blr.clock  
         )   #
     }else{ 
         classes.points.xy <- data.frame( 
@@ -5321,7 +5394,7 @@ TT.xy2css <- function(
         # ypos    <- tri.data[  , blr.tx[2] ] * sin(tlr.an[2])
         tri.data[  , blr.tx[2] ] <- xy.data[,"ypos"] / sin(tlr.an[2]) 
         #               #
-        if( blr.clock[1] == T )  
+        if( blr.clock[1] == TRUE )  
         {   #           #   * This is the TTT case:
             #xpos    <- tri.data[  , blr.tx[1] ] - ypos/tan(tlr.an[3])
             tri.data[  , blr.tx[1] ] <- xy.data[,"xpos"] + xy.data[,"ypos"]/tan(tlr.an[3])
@@ -5338,7 +5411,7 @@ TT.xy2css <- function(
         #ypos    <- tri.data[  , blr.tx[3] ] * sin(tlr.an[3])
         tri.data[  , blr.tx[3] ] <- xy.data[,"ypos"] / sin(tlr.an[3]) 
         #  
-        if( blr.clock[1] == F )  
+        if( blr.clock[1] == FALSE )  
         {   #           #   * This is the FFF case:
             #xpos    <- tri.data[  , blr.tx[1] ] + ypos/tan(tlr.an[2]) 
             tri.data[  , blr.tx[1] ] <- xy.data[,"xpos"] - xy.data[,"ypos"]/tan(tlr.an[2]) 
@@ -5555,6 +5628,8 @@ TT.mahalanobis <- function(
     tri.data,  
     css.names   = NULL,  
     text.tol    = NULL,  
+    text.sum    = NULL,  
+    blr.clock   = NULL,  
     tri.sum.tst = NULL,  
     tri.pos.tst = NULL,  
     set.par     = FALSE,  
@@ -5566,7 +5641,7 @@ TT.mahalanobis <- function(
     inverted    = FALSE,  
     ..., 
     # Additional parameter related to Mahalanobis
-    alr         = FALSE,  #  If TRUE an additive log-ratio transformation
+    alr         = FALSE, #  If TRUE an additive log-ratio transformation
     #                    #  of the data is performed, and the Mahalanobis 
     #                    #  distance is computed on all classes but css.names[divisorvar] 
     divisorvar  = 2      #  The Mahalanobis distance will be computed 
@@ -5597,7 +5672,14 @@ TT.mahalanobis <- function(
     #
     xy.bound <- TT.css2xy( 
         tri.data        = xy.bound,   
-        geo             = geo  
+        geo             = geo, 
+        text.tol        = text.tol, 
+        css.names       = css.names, 
+        tri.sum.tst     = tri.sum.tst, 
+        tri.pos.tst     = tri.pos.tst, 
+        set.par         = set.par, 
+        text.sum        = text.sum, 
+        blr.clock       = blr.clock  
     )   #
     #
     xy.grid <- TT.xy.grid( 
@@ -5705,6 +5787,8 @@ TT.kde2d <- function(
     tri.data, 
     css.names   = NULL, 
     text.tol    = NULL, 
+    text.sum    = NULL, 
+    blr.clock   = NULL, 
     tri.sum.tst = NULL, 
     tri.pos.tst = NULL, 
     set.par     = FALSE, 
@@ -5737,18 +5821,27 @@ TT.kde2d <- function(
     colnames(xy.bound) <- css.names 
     #
     xy.bound <- TT.css2xy( 
-        tri.data        = xy.bound,   
-        geo             = geo  
+        tri.data    = xy.bound,   
+        geo         = geo, 
+        text.tol    = text.tol, 
+        css.names   = css.names, 
+        tri.sum.tst = tri.sum.tst, 
+        tri.pos.tst = tri.pos.tst, 
+        set.par     = set.par, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     xy.data <- TT.css2xy( 
         tri.data    = tri.data, 
         geo         = geo, 
-        css.names   = css.names, 
         text.tol    = text.tol, 
+        css.names   = css.names, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = set.par  
+        set.par     = set.par, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( lims == "points" )
@@ -5811,6 +5904,8 @@ TT.iwd <- function(
     tri.pol.data    = NULL,     # edges data, same format as tri.data
     #
     text.tol        = NULL, 
+    text.sum        = NULL, 
+    blr.clock       = NULL, 
     #
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
@@ -5839,18 +5934,27 @@ TT.iwd <- function(
     colnames( xy.bound ) <- css.names 
     #
     xy.bound <- TT.css2xy( 
-        tri.data        = xy.bound,   
-        geo             = geo  
+        tri.data    = xy.bound,   
+        geo         = geo, 
+        text.tol    = text.tol, 
+        css.names   = css.names, 
+        tri.sum.tst = tri.sum.tst, 
+        tri.pos.tst = tri.pos.tst, 
+        set.par     = set.par, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     xy.data <- TT.css2xy( 
         tri.data    = tri.data, 
         geo         = geo, 
-        css.names   = css.names, 
         text.tol    = text.tol, 
+        css.names   = css.names, 
         tri.sum.tst = tri.sum.tst, 
         tri.pos.tst = tri.pos.tst, 
-        set.par     = set.par  
+        set.par     = set.par, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
     )   #
     #
     if( lims == "points" )
@@ -5907,7 +6011,7 @@ TT.iwd <- function(
                 if( any(sel) )
                 {   #
                     w.z <- 1/(X^pow)
-                    sum( z.vec * w.z, na.rm = T )/sum( w.z, na.rm = T ) 
+                    sum( z.vec * w.z, na.rm = TRUE )/sum( w.z, na.rm = TRUE ) 
                 }else{ NA } 
             },  #
             z.vec   = xy.data[,"z"] 
@@ -5991,6 +6095,11 @@ TT.contour <- function(
     #col            = par("fg"), 
     lty             = NA, 
     lwd             = NA, 
+    blr.clock       = NULL, 
+    tlr.an          = NULL, 
+    blr.tx          = NULL, 
+    text.sum        = NULL, 
+    base.css.ps.lim = NULL, 
     ...
 ){  #
     if( !is.list( x ) )
@@ -6015,7 +6124,19 @@ TT.contour <- function(
         )   #
     }   #
     #
-    class.sys <- "none"  
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Automatic takes the values in geo and 
+    # attributes them to same name variables
+    TT.geo.set(
+        geo     = geo  
+        #p.env  = environment()  
+    )   # 
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Automatic sets remaining NULL varaibles 
+    auto.set( set.par = set.par ) 
+    #
+    class.sys <- "none" 
     #
     if( !add )
     {   #
@@ -6116,9 +6237,9 @@ TT.contour <- function(
 
 
 # +-------------------------------------+
-# | FUN: TT.contour()                   |
+# | FUN: TT.image()                     |
 # +-------------------------------------+
-# [ TT.contour() :: A wrapper for the contour() function 
+# [ TT.image() :: A wrapper for the contour() function 
 #   adapted to texture triangles (plot preparation).
 #   designed to plot the results of TT.mahalanobis() or 
 #   TT.kde2d() [to be written], before or after plot.
