@@ -4,7 +4,7 @@ Date: 2010-06-01
 Title: Functions for soil texture plot, classification and transformation
 Author: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
 Maintainer: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
-Depends: R (>= 2.11.0), sp, MASS
+Depends: R (>= 2.11.1), sp, MASS
 Suggests: plotrix 
 Description: "The Soil Texture Wizard" is a set of R functions designed to produce 
     texture triangles (also called texture plots, texture diagrams, texture ternary plots), 

@@ -208,7 +208,7 @@ source(
     paste( 
         sep = "", 
         "http://r-forge.r-project.org/scm/viewvc.php/*checkout*", 
-        "/pkg/soiltexture/R/soiltexture.r?&root=soiltexture"
+        "/pkg/soiltexture/R/soiltexture.R?&root=soiltexture"
     )   #
 )   #
 
@@ -881,10 +881,10 @@ par(cex=tmp.cex,cex.axis=tmp.cex,cex.lab=tmp.cex,cex.main=tmp.cex)
 tmp.text <- data.frame( "CLAY" = 20, "SILT" = 15, "SAND" = 65 ) 
 
 plot( 
-    x       = dia2phi( c(2,20,2000) ), 
+    x       = TT.dia2phi( c(2,20,2000) ), 
     y       = cumsum( unlist(tmp.text[1,]) ), 
     ylim    = c(0,100), 
-    xlim    = dia2phi( c(1,2000) ), 
+    xlim    = TT.dia2phi( c(1,2000) ), 
     xaxt    = "n", 
     xlab    =  
 expression( 'Particle size['~ mu * 'm] (log'[2] * 'scale)' ), 
@@ -899,14 +899,14 @@ expression( 'Particle size['~ mu * 'm] (log'[2] * 'scale)' ),
 lines( 
     spline( 
         y   = rev(cumsum( unlist(tmp.text[1,]) )), 
-        x   = dia2phi( c(2000,20,2))
+        x   = TT.dia2phi( c(2000,20,2))
     ),  # 
     col = "green"  
 )   #
 
 segments( 
-    x0  = dia2phi( c(2,20,2000) ), 
-    x1  = dia2phi( c(2,20,2000) ), 
+    x0  = TT.dia2phi( c(2,20,2000) ), 
+    x1  = TT.dia2phi( c(2,20,2000) ), 
     y0  = rep(0,3), 
     y1  = cumsum( unlist(tmp.text[1,]) ), 
     col = "red"  
@@ -921,15 +921,15 @@ new.tmp.text <- TT.text.transf(
 new.silt.c <- cumsum( unlist(new.tmp.text[1,]) )[2]
 
 arrows( 
-    x0  = dia2phi( c(50,50) ), 
-    x1  = dia2phi( c(50,1) ), 
+    x0  = TT.dia2phi( c(50,50) ), 
+    x1  = TT.dia2phi( c(50,1) ), 
     y0  = c(0,new.silt.c), 
     y1  = c(new.silt.c,new.silt.c), 
     col = "blue"  
 )   #
 
 text( 
-    x       = dia2phi( c(2,20,2000) ), 
+    x       = TT.dia2phi( c(2,20,2000) ), 
     y       = cumsum( unlist(tmp.text[1,]) ), 
     pos     = 2, 
     offset  = 1, 
@@ -939,7 +939,7 @@ text(
 )   #
 
 text( 
-    x       = dia2phi( c(50) ), 
+    x       = TT.dia2phi( c(50) ), 
     y       = new.silt.c, 
     pos     = 4, 
     offset  = 1, 
@@ -950,12 +950,12 @@ text(
 
 axis( 
     side    = 1, 
-    at      = dia2phi( c(2,20,50,2000) ), 
+    at      = TT.dia2phi( c(2,20,50,2000) ), 
     labels  = c(2,20,50,2000) 
 )   #
 
 text( 
-    x       = dia2phi( 500 ), 
+    x       = TT.dia2phi( 500 ), 
     y       = 65, 
     #pos    = 4, 
     #offset = 1, 
