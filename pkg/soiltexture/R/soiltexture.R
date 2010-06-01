@@ -1,5 +1,5 @@
 # source( "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/R/soiltexture.r" ) 
-# source( "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.r?root=soiltexture" ) 
+# source( "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.R?revision=19&root=soiltexture" ) 
 # +-------------------------------------------------------------------------+
 # |                                                                         |
 # | Julien MOEYS                                                            |
@@ -105,7 +105,7 @@
 #     install.packages("sp")
 # }   #
 
-require( "sp" )
+# require( "sp" )
 
 
 
@@ -5337,6 +5337,8 @@ TT.points.in.classes <- function(
         )   #
     }   #
     #
+    require( "sp" ) 
+    #
     # Vectorisable and custom wrapper for point.in.polygon():
     points.in.class <- function( 
         X,                  # X = class name
@@ -5916,6 +5918,8 @@ TT.mahalanobis <- function(
         ...  
     )   #
     #
+    require( "sp" ) 
+    #
     PiP <- as.logical(  point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
         point.y = xy.grid[["xypos"]][,"ypos"], 
@@ -6044,6 +6048,8 @@ TT.kde2d <- function(
         "x" = dens.xy[["x"]], 
         "y" = dens.xy[["y"]]  
     )   #
+    #
+    require( "sp" ) 
     #
     PiP <- as.logical(  point.in.polygon( 
         point.x = ex.dens.xy[,"x"],
@@ -6192,6 +6198,8 @@ TT.iwd <- function(
             },  #
             z.vec   = xy.data[,"z"] 
     )   )   #
+    #
+    require( "sp" ) 
     #
     PiP <- as.logical(  point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
