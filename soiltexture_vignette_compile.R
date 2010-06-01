@@ -11,6 +11,10 @@ inout.dir           <- ""
 
 
 
+print("Don't forget to commit the source code to r-forge before compiling the vignette.")
+
+
+
 eval( parse( Sweave.wrapper.fun ) ) 
 
 

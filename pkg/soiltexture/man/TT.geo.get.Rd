@@ -1,7 +1,7 @@
 \name{TT.geo.get}
 \alias{TT.geo.get}
-\title{TT geo get}
-
+\title{Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).}
+\description{Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).}
 \usage{
 TT.geo.get(class.sys = NULL, blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL)
 }

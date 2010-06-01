@@ -1,7 +1,8 @@
 \name{TT.check.ps.lim}
 \alias{TT.check.ps.lim}
-\title{TT check ps lim}
-
+\title{Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. }
+\description{Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. ´
+5 tests performed.}
 \usage{
 TT.check.ps.lim(base.ps.lim, dat.ps.lim, ps.lim.length = c(4, 4))
 }
@@ -10,8 +11,7 @@ TT.check.ps.lim(base.ps.lim, dat.ps.lim, ps.lim.length = c(4, 4))
 }
   \item{dat.ps.lim}{
 }
-  \item{ps.lim.length}{
-}
+  \item{ps.lim.length}{vector of 2 integers. Number of particle size classes + 1. c(base,dat)}
 }
 
 

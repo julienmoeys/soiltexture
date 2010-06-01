@@ -1059,16 +1059,32 @@ assign(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUN:    TT.set()                    |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.set() :: Function to change/set TT parameters
-TT.set <- function(
-    ...,                            # List of parameters to change
-    reset           = FALSE,        # If set to TRUE the parameter list is reset to default
-    par.list        = "TT.par",     # Name of the list containing the parameters
-    bkp.par.list    = "TT.par.bkp", # Name of the backuped list containing the default parameters
-    par.env         = TT.env        # name of the environment containing the parameter lists
+
+
+
+TT.set <- function(# Function to change / set the default package parameters. 
+### Function to change / set the default package parameters as they 
+### are stored in the list TT.par in the environment TT.env. Use 
+### this function to change some deafult parameters for all the 
+### current R cession. Many functions of soiltexture take some of 
+### their parameter values in TT.par.
+
+...,
+### List of parameters and value in the form "par.name1" = par.value1, 
+### "par.name2" = par.value2... List of parameters to change.
+
+reset=FALSE,
+### Single logical. If set to TRUE the parameter list is reset to default
+
+par.list="TT.par",
+### Single character. Name of the list containing the parameters
+
+bkp.par.list="TT.par.bkp",
+### Single character. Name of the backuped list containing the default parameters
+
+par.env=TT.env
+### An R environment. Name of the environment containing the parameter lists (no quotes)
+
 ){  #
     argz <- list(...)
     #
@@ -1123,11 +1139,12 @@ TT.set <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUN:    TT.get()                    |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ Function to retrieve/get TT parameters
-TT.get <- function(
+
+
+
+TT.get <- function(# Function to retrieve / get the default package parameters. 
+### Function to retrieve / get the default package parameters. 
+
     ...,                            # List of parameters to change
     par.list        = "TT.par",     # Name of the list containing the parameters
     bkp.par.list    = "TT.par.bkp", # Name of the backuped list containing the default parameters
@@ -1167,11 +1184,13 @@ TT.get <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUN:    TT.add()                    |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ Function to add a new TT parameters
-TT.add <- function(
+
+
+
+TT.add <- function(# Function to add a new default package parameters. 
+### Function to add a new default package parameters. Mostly used 
+### to add a new texture triangle definition.
+
     ...,                            # List of parameters to change
     par.list        = "TT.par",     # Name of the list containing the parameters
     bkp.par.list    = "TT.par.bkp", # Name of the backuped list containing the default parameters
@@ -1242,11 +1261,12 @@ TT.add <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: TT.str()                       |
-# +-------------------------------------+
-# [ Function to 'stretch' or reshape the range of value of some data set. Usefull for cex parameter in plot
-TT.str <- function( 
+
+
+
+TT.str <- function(# Internal. Stretch or reshape the range of value of some data set. 
+### Function to 'stretch' or reshape the range of value of some data set. Usefull for cex parameter in plot. 
+
     x, 
     str.min = 0, 
     str.max = 1
@@ -1259,48 +1279,50 @@ TT.str <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: nightC()                       |
-# +-------------------------------------+
-# [ Inverse RGB values of a vector of colors
-nightC <- function( 
-    cl,         # vector of colors, html stype "#808080"
-    ic  = TRUE  # Really inverse colors ?
-){  #
-    if( ic ) 
-    {   #
-        cl <- col2rgb(
-            col     = cl, 
-            alpha   = FALSE 
-        )   #
-        #
-        cl <- apply( 
-            X       = cl, 
-            MARGIN  = 2, 
-            FUN     = function(X){ 
-                rep(255,3) - X
-            }   #
-        )   #
-        #
-        cl <- cl/255
-        #
-        rgb( 
-            red     = cl["red",], 
-            green   = cl["green",], 
-            blue    = cl["blue",], 
-        )   #
-    }else{ 
-        cl
-    }   #
-}   #
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: gen.op.set()              |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ gen.op.set(): Retrieve and set default values from options (that do _not_ superseed par())
-gen.op.set  <- function( 
+# # TT.nightC <- function(# Internal. Inverse RGB values of a vector of colors.
+# # ### Inverse RGB values of a vector of colors.
+
+# #     cl,         # vector of colors, html stype "#808080"
+# #     ic  = TRUE  # Really inverse colors ?
+# # ){  #
+# #     if( ic ) 
+# #     {   #
+# #         cl <- col2rgb(
+# #             col     = cl, 
+# #             alpha   = FALSE 
+# #         )   #
+# #         #
+# #         cl <- apply( 
+# #             X       = cl, 
+# #             MARGIN  = 2, 
+# #             FUN     = function(X){ 
+# #                 rep(255,3) - X
+# #             }   #
+# #         )   #
+# #         #
+# #         cl <- cl/255
+# #         #
+# #         rgb( 
+# #             red     = cl["red",], 
+# #             green   = cl["green",], 
+# #             blue    = cl["blue",], 
+# #         )   #
+# #     }else{ 
+# #         cl
+# #     }   #
+# # }   #
+
+
+
+
+
+
+TT.gen.op.set  <- function(# Internal. Retrieve and set default values from options. 
+### Retrieve and set default values from options (that do _not_ superseed par()). 
+
     param, 
     assign.op   = TRUE, 
     p.env       = parent.frame() 
@@ -1356,7 +1378,7 @@ gen.op.set  <- function(
 #       col.axis    = "blue", 
 #       font.axis   = NULL  
 #   ){  #
-#       invres <- gen.op.set(c("cex","cex.lab","col.axis","font.axis"))
+#       invres <- TT.gen.op.set(c("cex","cex.lab","col.axis","font.axis"))
 #       #
 #       list("cex"=cex,"cex.lab"=cex.lab,"col.axis"=col.axis,"font.axis"=font.axis,invres) 
 #   }   #
@@ -1364,16 +1386,17 @@ gen.op.set  <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: par.op.set()              |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ par.op.set(): Retrieve and set default values from options with default in "par()"
-par.op.set  <- function( 
+
+
+
+TT.par.op.set  <- function(# Internal. Retrieve and set default values from options with default in "par()". 
+### Retrieve and set default values from options with default in "par()"
+
     param, 
     assign.op   = TRUE, 
     p.env       = parent.frame() 
 ){  #
-    param.val   <- gen.op.set( 
+    param.val   <- TT.gen.op.set( 
         param       = param, 
         assign.op   = assign.op, 
         p.env       = p.env  
@@ -1419,7 +1442,7 @@ par.op.set  <- function(
 #       font.axis   = NULL, 
 #       family.op   = NULL  
 #   ){  #
-#       invres <- par.op.set(c("cex","cex.lab","col.axis","font.axis","family.op"))
+#       invres <- TT.par.op.set(c("cex","cex.lab","col.axis","font.axis","family.op"))
 #       #
 #       list("cex"=cex,"cex.lab"=cex.lab,"col.axis"=col.axis,"font.axis"=font.axis,"family.op"=family.op,invres) 
 #   }   #
@@ -1427,11 +1450,12 @@ par.op.set  <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: auto.set()                |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ auto.set(): Retrieve and set default values for parameters (par() or not), when NULL 
-auto.set    <- function( 
+
+
+
+TT.auto.set    <- function(# Internal. Retrieve and set default values for parameters (par() or not), when NULL.
+### Retrieve and set default values for parameters (par() or not), when NULL.
+
     fun         = sys.function(which=-1), 
     assign.op   = TRUE, 
     p.env       = parent.frame(), 
@@ -1443,7 +1467,7 @@ auto.set    <- function(
     {   #
         sel.par <- (param %in% names(par())) 
         #
-        l1  <- par.op.set( 
+        l1  <- TT.par.op.set( 
             param       = param[ sel.par ], 
             assign.op   = assign.op, 
             p.env       = p.env
@@ -1456,7 +1480,7 @@ auto.set    <- function(
     #
     sel.TT  <- ((param %in% names(TT.get())) & !sel.par)
     #
-    l2  <- gen.op.set( 
+    l2  <- TT.gen.op.set( 
         param       = param[ sel.TT ], 
         assign.op   = assign.op, 
         p.env       = p.env  
@@ -1473,7 +1497,7 @@ auto.set    <- function(
 #       blr.clock   = NULL, 
 #       tlr.an      = c(50,60,70) 
 #   ){  #
-#       invres <- auto.set(set.par=TRUE) 
+#       invres <- TT.auto.set(set.par=TRUE) 
 #       #
 #       list( 
 #           invres, 
@@ -1489,41 +1513,43 @@ auto.set    <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: inv.par()                      |
-# +-------------------------------------+
-# [ Same as the par() function, but reverse colors
-inv.par <- function( 
-    ic      = TRUE, # Really inverse colors ? To be used for autonated shift
-    par.opt = c("bg","col","col.axis","col.lab","col.main","col.sub","fg"), 
-    ...
-){  #
-    old.par <- par(no.readonly=TRUE) 
-    #
-    dots    <- list(...) 
-    #
-    par.opt <- par.opt[ !(par.opt %in% names(dots)) ] 
-    #
-    if( ic )
-    {   #
-        cl          <- nightC( cl = old.par[ par.opt ], ic = ic ) 
-        cl          <- as.list( cl ) 
-        names( cl ) <- par.opt 
-        cl          <- c(dots,cl) 
-    }else{ cl <- dots }
-    #
-    do.call( what = "par", args = cl )
-    #
-    return( invisible( old.par ) )
-}   #
 
 
 
-# +-------------------------------------+
-# | FUN: DJ.col()                       |
-# +-------------------------------------+
-# [ 'DJ color' A function to obtaine a weight average 'mix' of different colors!
-DJ.col <- function( 
+# # TT.inv.par <- function(# Internal. Same as the par() function, but reverse colors.
+# # ### Same as the par() function, but reverse colors.
+
+# #     ic      = TRUE, # Really inverse colors ? To be used for autonated shift
+# #     par.opt = c("bg","col","col.axis","col.lab","col.main","col.sub","fg"), 
+# #     ...
+# # ){  #
+# #     old.par <- par(no.readonly=TRUE) 
+# #     #
+# #     dots    <- list(...) 
+# #     #
+# #     par.opt <- par.opt[ !(par.opt %in% names(dots)) ] 
+# #     #
+# #     if( ic )
+# #     {   #
+# #         cl          <- TT.nightC( cl = old.par[ par.opt ], ic = ic ) 
+# #         cl          <- as.list( cl ) 
+# #         names( cl ) <- par.opt 
+# #         cl          <- c(dots,cl) 
+# #     }else{ cl <- dots }
+# #     #
+# #     do.call( what = "par", args = cl )
+# #     #
+# #     return( invisible( old.par ) )
+# # }   #
+
+
+
+
+
+
+TT.DJ.col <- function(# A function to obtaine a weight average 'mix' of different colors!
+### A function to obtaine a weight average 'mix' of different colors!
+
     cl,             # vector of colors, html stype "#808080"
     w,              # vector of weight corresponding to the colors
     gray.l  = FALSE # if TRUE Produce a gray level color, instead of a 'colored' color
@@ -1550,11 +1576,11 @@ DJ.col <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: TT.col2hsv()                   |
-# +-------------------------------------+
-# [ 'TT.col2hsv()'  Convert any colors to hsv
-TT.col2hsv  <- function( 
+
+
+TT.col2hsv  <- function(# Convert any colors to hsv. 
+### Convert any colors to hsv. Wrapper around rgb2hsv() and col2rgb(). 
+
     col 
 ){  #
     t(  #
@@ -1571,7 +1597,13 @@ TT.col2hsv  <- function(
 
 
 
-TT.blr.tx.check <- function( 
+
+
+
+TT.blr.tx.check <- function(# Internal. Check the consistency between blr.tx and css.names. 
+### Check the consistency between blr.tx and css.names. All values 
+### in blr.tx should be found in css.names and vice-versa.
+
     blr.tx, 
     css.names  
 ){  #
@@ -1603,7 +1635,12 @@ TT.blr.tx.check <- function(
 
 
 
-TT.blr.ps.lim <- function( 
+
+
+
+TT.blr.ps.lim <- function(# Internal. Create a tabular version of clay silt sand particle size limits. 
+### Create a tabular version of clay silt sand particle size limits. 
+
     blr.tx, 
     css.ps.lim  
 ){  #
@@ -1633,12 +1670,11 @@ TT.blr.ps.lim <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: TT.geo.set()              |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.geo.set(): Internal functions: takes "geo" values 
-#   and assign them individually in the parent function
-TT.geo.set  <- function( 
+
+
+TT.geo.set  <- function(# Internal. Takes "geo" values and assign them individually in the parent function. 
+### Takes "geo" values and assign them individually in the parent function. 
+
     geo, 
     p.env   = parent.frame()  
 ){  #
@@ -1734,11 +1770,12 @@ TT.geo.set  <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: TT.geo.get()              |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.geo.get(): Produce a ternary plot, with full customisation and soil-texture tools.
-TT.geo.get  <- function( 
+
+
+
+TT.geo.get  <- function(# Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
+### Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
+
     class.sys       = NULL,  
     blr.clock       = NULL,  
     tlr.an          = NULL,  
@@ -1800,11 +1837,18 @@ TT.geo.get  <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: TT.data.test()                 |
-# +-------------------------------------+
-# [ TT.data.test() :: Test the validity of the dataframe or matrix to be plottted (sub-function). Stop if invalid
-TT.data.test <- function( 
+
+
+
+TT.data.test <- function(# Test the validity of some soil texture data table (3 texture classes). 
+### Test the validity of some soil texture data table. (1) Test that 
+### it is a data.frame or matrix, (2) Test that column names contains 
+### 'css.names', (3) Test that there are no missing values, (4) that 
+### all values are >= 0, (5) That the sum of the 3 texture class 
+### is >= 'text.sum'*(1-'text.tol') or <= 'text.sum'*(1+'text.tol'). 
+### 'tri.data' may contain other variables than the 3 textuer classes 
+### (ignored).
+
     tri.data, 
     css.names   = NULL, 
     text.sum    = NULL, 
@@ -1814,7 +1858,7 @@ TT.data.test <- function(
     tri.pos.tst = NULL  
 ){  #
     # Set rest of variables:
-    auto.set(set.par=FALSE) 
+    TT.auto.set(set.par=FALSE) 
     #
     # 1. Check if tri.data is a matrix or a data.frame:
     if( !is.data.frame(tri.data) & !is.matrix(tri.data) )
@@ -1901,12 +1945,18 @@ TT.data.test <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: TT.data.test.X()               |
-# +-------------------------------------+
-# [ TT.data.test.X() :: Test the validity of the data.frame or matrix to be plottted (sub-function). Stop if invalid
-#       this version is designed for texture data with more than 3 particle size classes
-TT.data.test.X <- function( 
+
+
+
+TT.data.test.X <- function(# Test the validity of some soil texture data table (X texture classes). 
+### Test the validity of some soil texture data table. (1) Test that 
+### it is a data.frame or matrix, (3) Test that there are no missing 
+### values, (4) that all values are >= 0, (5) That the sum of the 
+### X texture class is >= 'text.sum'*(1-'text.tol') or <= 
+### 'text.sum'*(1+'text.tol'). Contrary to TT.data.test() no test 
+### are performed for the texture classes and columns names, so 
+### 'tri.data' should only contains texture data, and nothing else.
+
     tri.data,   # Only texture data here. No additionnal variables
     text.sum    = NULL, 
     text.tol    = NULL, 
@@ -1915,7 +1965,7 @@ TT.data.test.X <- function(
     tri.pos.tst = NULL  
 ){  #
     # Set rest of variables:
-    auto.set( set.par = FALSE ) 
+    TT.auto.set( set.par = FALSE ) 
     #
     # 1. Check if tri.data is a matrix or a data.frame:
     if( !is.data.frame(tri.data) & !is.matrix(tri.data) )
@@ -1970,31 +2020,49 @@ TT.data.test.X <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: dia2phi()                      |
-# +-------------------------------------+
-# [ dia2phi() :: Convert a soil particle diameter dia [micro-meters] into phi, -log2(dia)
-dia2phi <- function( 
-    dia     # Particle size diameter in micro-meters (will be converted in milli-meters)
+
+
+
+TT.dia2phi <- function(# Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia/1000)
+### Convert a soil particle diameter dia [micro-meters] into 
+### phi = -log2(dia). See also TT.phi2dia().
+
+ dia
+### Particle size diameter in micro-meters (will be converted in milli-meters)
+
 ){  #
-    -logb(dia/1000,base=2) 
+    return( -logb(dia/1000,base=2) ) 
 }   #
 
 
 
-# +-------------------------------------+
-# | FUN: phi2dia()                      |
-# +-------------------------------------+
-# [ phi2dia() :: Convert a soil particle phi value into diameter dia [micro-meters]
-phi2dia <- function( phi  ){ (2^-phi)*1000 }  
 
 
 
-TT.check.ps.lim <- function( 
+TT.phi2dia <- function(# Convert a soil particle phi value into diameter dia [micro-meters]. 
+### Convert a soil particle phi value into diameter dia [micro-meters]. 
+### See also TT.dia2phi(). dia = (2^-phi)*1000. Not used by the package. 
+
+phi
+
+){  #
+    return( (2^-phi)*1000 )
+}   #
+
+
+
+
+
+
+TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
+### Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
+### 5 tests performed.
+
     base.ps.lim,  
     dat.ps.lim,  
-    ps.lim.length = c(4,4)  #   Number of particle size classes + 1 
-    #                       #   c(base,dat)
+ ps.lim.length=c(4,4)
+### vector of 2 integers. Number of particle size classes + 1. c(base,dat)
+
 ){  #
     # if( length( base.ps.lim ) != length( dat.ps.lim ) ) 
     # {   #
@@ -2065,7 +2133,19 @@ TT.check.ps.lim <- function(
 
 
 
-TT.text.transf <- function( 
+
+
+
+TT.text.transf <- function(# Log-linear transformation of a soil texture data table between 2 particle size systems (3 classes).
+### Log-linear transformation of a soil texture data table 
+### ('tri.data') from one 
+### particle size system ('dat.css.ps.lim') into another 
+### ('base.css.ps.lim'). Only 3 texture classes allowed. See 
+### TT.text.transf.X for transformation involving more than 3 
+### particle classes. 'tri.data' may contain other variables 
+### (not in 'css.names'). They are returned unchanged with the 
+### transformed texture data.
+
     tri.data,  
     base.css.ps.lim,  
     dat.css.ps.lim,  
@@ -2079,7 +2159,7 @@ TT.text.transf <- function(
     trsf.add.opt2   = NULL    # unused here (but required) 
 ){  #
     #
-    auto.set( set.par = FALSE ) 
+    TT.auto.set( set.par = FALSE ) 
     # 
     TT.data.test( 
         tri.data    = tri.data, 
@@ -2134,8 +2214,8 @@ TT.text.transf <- function(
         ps.start <- 2 
     }   #
     #
-    base.css.ps.lim2 <- dia2phi(base.css.ps.lim) 
-    dat.css.ps.lim2  <- dia2phi(dat.css.ps.lim) 
+    base.css.ps.lim2 <- TT.dia2phi(base.css.ps.lim) 
+    dat.css.ps.lim2  <- TT.dia2phi(dat.css.ps.lim) 
     #
     tri.data <- t(  apply( 
         X       = tri.data, 
@@ -2171,7 +2251,7 @@ TT.text.transf <- function(
     )   #
     tri.data            <- tri.data[,old.col.nm] 
     #
-    return(tri.data)
+    return( tri.data ) 
 }   #
 
 #     my.text <- data.frame( 
@@ -2224,7 +2304,18 @@ TT.text.transf <- function(
 
 
 
-TT.text.transf.X <- function( 
+
+
+
+TT.text.transf.X <- function(# Log-linear transformation of a soil texture data table between 2 particle size systems (X classes).
+### Log-linear transformation of a soil texture data table 
+### ('tri.data') from one 
+### particle size system ('dat.css.ps.lim') into another 
+### ('base.css.ps.lim'). No limit in the number of texture classes 
+### in the inputed and outputed texture tables. See TT.text.transf 
+### for transformation involving only 3 particle classes. 'tri.data' 
+### can only contain texture data.
+
     tri.data,  
     base.ps.lim,  
     dat.ps.lim,  
@@ -2233,7 +2324,7 @@ TT.text.transf.X <- function(
     tri.sum.tst     = NULL,  
     tri.pos.tst     = NULL   
 ){  #
-    auto.set( set.par = FALSE ) 
+    TT.auto.set( set.par = FALSE ) 
     # 
     TT.data.test.X( 
         tri.data    = tri.data, 
@@ -2271,8 +2362,8 @@ TT.text.transf.X <- function(
         ps.start    <- 2 
     }   #
     #
-    base.ps.lim2 <- dia2phi(base.ps.lim) 
-    dat.ps.lim2  <- dia2phi(dat.ps.lim) 
+    base.ps.lim2 <- TT.dia2phi(base.ps.lim) 
+    dat.ps.lim2  <- TT.dia2phi(dat.ps.lim) 
     #
     old.col.nm   <- colnames( tri.data ) 
     #
@@ -2332,20 +2423,44 @@ TT.text.transf.X <- function(
 
 
 
-# +-------------------------------------+
-# | FUN: TT.deg2rad()                   |
-# +-------------------------------------+
-# [ TT.deg2rad() :: Function to convert angle in degree to angle in radian
-TT.deg2rad <- function( 
-    A   # Angle in Degree
+
+
+
+TT.deg2rad <- function(# Function to convert angle in degree to angle in radian.
+### Function to convert angle in degree to angle in radian.
+
+ A
+### Angle in Degrees
+
 ){  #
     (pi/180)*A
 }   #
 
 
 
-# NEW NEW NEW
-TT.switch <- function( 
+
+
+
+TT.ifelse <- function(# Internal. Flexible version of ifelse. 
+### Flexible version of ifelse. 
+
+ test,
+ yes,
+ no
+ 
+){  #
+    if(test){ res <- yes }else{ res <- no } 
+    return(res)
+}   #
+
+
+
+
+
+
+TT.switch <- function(# Internal. Used in the plot axis drawings.
+### Used in the plot axis drawings.
+
     blr.clock   = TT.get("blr.clock"), 
     c1          = NA, 
     c2          = NA, 
@@ -2363,19 +2478,20 @@ TT.switch <- function(
         "no"    = TT.ifelse( 
             "test"  = blr.clock[ blr.order[3] ], 
             "yes"   = c3,   # Side 1 == Aclock and Side 3 == clock
-            "no"    = c4        # Side 1 == Aclock and Side 3 == Aclock
+            "no"    = c4    # Side 1 == Aclock and Side 3 == Aclock
         )   #
     )   #
 }   #
 
 
 
-# +-------------------------------------+
-# | FUN: TT.css2xy()                    |
-# +-------------------------------------+
-# [ TT.css2xy() :: Function to convert point-data triplets (3 variables) in x and y coordinates
-#       This function need a slight reshape to fit with other function logic (TT.grid. TT.axis.arrows...)
-TT.css2xy <- function( 
+
+
+
+TT.css2xy <- function(# Converts texture data (3 classes) into x-y coordinates. 
+### Converts texture data (3 classes) into x-y coordinates. This 
+### function is the 'heart' of most soiltexture plot functions.
+
     tri.data, 
     geo, 
     css.names       = NULL, 
@@ -2397,7 +2513,7 @@ TT.css2xy <- function(
     )   # 
     #
     # Set rest of variables:
-    auto.set(set.par=set.par) 
+    TT.auto.set(set.par=set.par) 
     #
     blr.tx <- TT.blr.tx.check( 
         blr.tx      = blr.tx, 
@@ -2513,7 +2629,12 @@ TT.css2xy <- function(
 
 
 
-TT.points <- function( 
+
+
+
+TT.points <- function(# Plot a soil texture data table as points on an existing texture plot. 
+### Plot a soil texture data table as points on an existing texture plot. 
+
     tri.data, 
     geo, 
     css.names       = NULL, 
@@ -2542,7 +2663,8 @@ TT.points <- function(
     z.cex.range     = NULL, 
     z.pch           = NULL, 
     text.sum        = NULL, 
-    blr.clock       = NULL  
+    blr.clock       = NULL, 
+    blr.tx          = NULL  
 ){  #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
@@ -2558,7 +2680,7 @@ TT.points <- function(
     }   #   
     #
     # Set the rest of parameters
-    auto.set() 
+    TT.auto.set() 
     #
     # Basic checks
     if( dev.cur() == 1 ) 
@@ -2664,7 +2786,12 @@ TT.points <- function(
 
 
 
-TT.text <- function( 
+
+
+
+TT.text <- function(# Plot text labels for each values of a soil texture data table on an existing texture plot. 
+### Plot text labels for each values of a soil texture data table on an existing texture plot. 
+
     tri.data, 
     geo, 
     labels          = NULL, 
@@ -2689,7 +2816,8 @@ TT.text <- function(
     offset          = NULL, 
     #
     tri.sum.tst     = NULL, 
-    tri.pos.tst     = NULL  
+    tri.pos.tst     = NULL, 
+    blr.tx          = NULL  
 ){  #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
@@ -2710,7 +2838,7 @@ TT.text <- function(
     }   #
     #
     # Set the rest of parameters
-    auto.set() 
+    TT.auto.set() 
     #
     # Basic checks
     if( dev.cur() == 1 ) 
@@ -2770,7 +2898,198 @@ TT.text <- function(
 
 
 
-TT.edges <- function( 
+
+
+TT.baseplot <- function( 
+    geo             = NULL, 
+    class.sys       = "none",  
+    # 
+    # "GEO" parameters
+    blr.clock       = NULL,  
+    tlr.an          = NULL,  
+    blr.tx          = NULL,  
+    text.sum        = NULL,  
+    base.css.ps.lim = NULL, 
+    # 
+    # DATA TESTS:
+    tri.sum.tst     = NULL,  
+    tri.pos.tst     = NULL,  
+    #
+    # ADDITIONAL parameters:
+    text.tol        = NULL,  
+    unit.ps         = NULL,  
+    unit.tx         = NULL,  
+    #
+    b.lim           = NULL,   # default c(0,1) 
+    l.lim           = NULL,   # default c(0,1) 
+    # 
+    main            = NULL,  
+    # 
+    new.mar         = NULL,  
+    # 
+    bg              = NULL,  
+    fg              = NULL,  
+    col             = NULL,  
+    cex.main        = NULL,  
+    #
+    lang            = NULL   
+){  # 
+    css.names   <- c("CLAY","SILT","SAND")
+    # 
+    if( is.null(geo) )
+    {   #
+        geo <- TT.geo.get( 
+            class.sys       = class.sys, 
+            blr.clock       = blr.clock, 
+            tlr.an          = tlr.an, 
+            blr.tx          = blr.tx, 
+            text.sum        = text.sum, 
+            base.css.ps.lim = base.css.ps.lim  
+        )   #
+    }   #
+    # 
+    # Set geographical parameters:
+    TT.geo.set( 
+        geo     = geo  
+        #p.env  = environment()  
+    )   #
+    # 
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Retrieve classes-system (texture triangle) parameters:
+    if( class.sys != "none" ) 
+    {   #
+        TT.data <- TT.get(class.sys) 
+    }   #
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Fix the plot limits:
+    if( any(is.null(b.lim)) ){ b.lim <- TT.get("b.lim") * text.sum } 
+    if( any(is.null(l.lim)) ){ l.lim <- TT.get("l.lim") * text.sum } 
+    r.lim <- text.sum - c( b.lim[1] + l.lim[2], b.lim[1] + l.lim[1] ) 
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Create a "base frame", with coordinates expressed in CLAY SILT SAND
+    base.frame  <- data.frame( 
+        #   #   S1                          S2                          S3 
+        "b" = c(b.lim[1],                   b.lim[2],                   b.lim[1] ), 
+        "l" = c(l.lim[2],                   l.lim[1],                   l.lim[1] ), 
+        "r" = c(text.sum-b.lim[1]-l.lim[2], text.sum-b.lim[2]-l.lim[1], text.sum-b.lim[1]-l.lim[1] ) 
+    )   #
+    colnames(base.frame)    <- blr.tx 
+    #
+    if( is.null(main) )
+    {   #
+        lang.par    <- TT.get("lang.par") 
+        #
+        if( is.null(lang) ){ lang <- TT.get("lang") } 
+        #
+        main        <- lang.par[ lang.par$"lang" == lang , "TT" ] 
+        main        <- parse(text=main)[[1]]    # Added 2009/06/27 
+        #
+        if( class.sys != "none" )
+        {   #
+            main <- paste( 
+                sep = "", 
+                main, 
+                ": ", 
+                TT.data$"main" 
+            )   #
+        }   #
+    }   #   
+    #
+    # Auto-set parameters that are not in par() 
+    TT.auto.set(set.par=FALSE) 
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Convert CLAY SILT SAND coordinates into xy coordinates
+    ghost.TT    <- TT.css2xy( 
+        tri.data    = base.frame, 
+        geo         = geo, 
+        css.names   = css.names, 
+        text.tol    = text.tol, 
+        tri.sum.tst = tri.sum.tst, 
+        tri.pos.tst = tri.pos.tst, 
+        set.par     = FALSE, 
+        text.sum    = text.sum, 
+        blr.clock   = blr.clock  
+    )   #
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Setup new graph margins:
+    #
+    # # default c(5, 2, 4, 2)
+    # # c(bottom, left, top, right)
+    if( is.null(new.mar) )
+    {   #
+        #              c(bottom, left, top, right)
+        new.mar     <- c(5.0, 3.5, 3.0, 3.5)+0.1 
+        #
+        if( if(is.null(main)){FALSE}else{is.na(as.character(main))} )
+        {   #
+            new.mar[3]  <- 0.1 
+        }   #
+        if( tlr.an[2] > tlr.an[3] )
+        {   #
+            new.mar[4] <- 0.1 
+        }else{ 
+            if( tlr.an[2] < tlr.an[3] )
+            {   #
+                new.mar[2] <- 0.1 
+            }else{  # Equality case
+                new.mar[c(2,4)] <- 0.1 
+            }   #
+        }   #
+    }   #
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # Setup other graphical parameters:
+    par.list    <- list( 
+        "mar"   = new.mar, 
+        "pty"   = "s", 
+        "xpd"   = TRUE, 
+        "bg"    = bg, 
+        "fg"    = fg, 
+        "col"   = col  
+    )   #
+    #
+    par.list    <- par.list[ unlist(lapply(X=par.list,FUN=function(X){!is.null(X)})) ] 
+    #
+    # Sets new par() values
+    do.call( what = "par", args = par.list ) 
+    #
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    # | Ghost plot to set the limits of |
+    # | the graph                       | 
+    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
+    plot( 
+        x           = ghost.TT$"xpos", 
+        y           = ghost.TT$"ypos",
+        type        = "n", 
+        axes        = FALSE, 
+        xlim        = range(ghost.TT$"xpos"), 
+        ylim        = min(ghost.TT$"ypos")+c(0,diff(range(ghost.TT$"xpos"))), 
+        main        = main, 
+        cex.main    = cex.main, 
+        xlab        = "", 
+        ylab        = ""  
+    )   #
+    #
+    # Return the geo(metrical) specifications of the plot
+    return( invisible( geo ) ) 
+}   #
+
+#   TT.baseplot() 
+
+
+
+
+
+
+TT.edges <- function(# Internal. Plot the edges (bare axis) of a soil texture triangle. 
+### Plot the edges (bare axis) of a soil texture triangle. This 
+### is not a primary plot function, TT.baseplot() must have been 
+### called before (usually inside TT.plot()).
+
     geo, 
     #
     text.tol        = NULL, 
@@ -2798,7 +3117,7 @@ TT.edges <- function(
     #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic sets remaining NULL varaibles 
-    auto.set() 
+    TT.auto.set() 
     #
     blr.tx <- TT.blr.tx.check( 
         blr.tx      = blr.tx, 
@@ -2813,7 +3132,7 @@ TT.edges <- function(
     #
     if( is.null(frame.bg.col) ) 
     {   #
-        frame.bg.col    <- DJ.col( 
+        frame.bg.col    <- TT.DJ.col( 
             cl      = c(bg,col.axis), 
             w       = c(0.9,0.1), 
             gray.l  = FALSE 
@@ -2847,15 +3166,12 @@ TT.edges <- function(
 
 
 
-TT.ifelse <- function(test,yes,no)
-{   #
-    if(test){ res <- yes }else{ res <- no }
-    return(res)
-}   #
 
 
-# NEW NEW NEW
-TT.lines <- function( 
+
+TT.lines <- function(# Internal. Used to plot line elements of a texture plot axis, ticks, arrows, etc.
+### Used to plot line elements of a texture plot axis, ticks, arrows, etc.
+
     geo         = geo, 
     #
     at.1.s      = TT.get("at"),         # Start values of lines on each side of the triangle
@@ -2882,7 +3198,7 @@ TT.lines <- function(
         #p.env  = environment()  
     )   # 
     #
-    auto.set() 
+    TT.auto.set() 
     #
     blr.tx <- TT.blr.tx.check( 
         blr.tx      = blr.tx, 
@@ -2978,7 +3294,12 @@ TT.lines <- function(
 
 
 
-TT.grid <- function( 
+
+
+
+TT.grid <- function(# Plot a grid at regular texture intervals inside an existing soil texture triangle. 
+### Plot a grid at regular texture intervals inside an existing soil texture triangle.
+
     geo             = geo, 
     at              = NULL, 
     #
@@ -3001,7 +3322,7 @@ TT.grid <- function(
     bg              = NULL,     # added 2009/05/22 
     col.axis        = NULL      # added 2009/05/22 
 ){  #
-    auto.set() 
+    TT.auto.set() 
     #
     # 1. Setting the colors
     if( is.null(grid.col) ) 
@@ -3033,7 +3354,7 @@ TT.grid <- function(
             # Frame backgound color is not NULL 
             }else{ 
                 # gid color as a mix of frame background and frame line colors
-                grid.col    <- DJ.col( 
+                grid.col    <- TT.DJ.col( 
                     cl      = as.character( c(frame.bg.col,col.axis) ), 
                     w       = c(0.9,0.1), 
                     gray.l  = FALSE 
@@ -3079,7 +3400,11 @@ TT.grid <- function(
 
 
 
-TT.ticks <- function( 
+
+
+TT.ticks <- function(# Internal. Plot the axis' ticks of a texture triangle plot. 
+### Plot the axis' ticks of a texture triangle plot. 
+
     geo, 
     at          = NULL, 
     #
@@ -3102,7 +3427,7 @@ TT.ticks <- function(
         #p.env  = environment()  
     )   # 
     #
-    auto.set() 
+    TT.auto.set() 
     #
     at.2.s  <- 1 - at
     at.3.s  <- 0
@@ -3154,13 +3479,19 @@ TT.ticks <- function(
 
 
 
-TT.ticks.lab <- function( 
+
+
+
+TT.ticks.lab <- function(# Internal. Plot the axis ticks' labels of a texture triangle plot. 
+### Plot the axis ticks' labels of a texture triangle plot. 
+
     geo, 
     at          = NULL, 
     #
     text.tol    = NULL, 
     text.sum    = NULL, 
     blr.clock   = NULL, 
+    tlr.an      = NULL, 
     #
     tk.ls       = NULL, 
     #
@@ -3180,7 +3511,7 @@ TT.ticks.lab <- function(
         #p.env  = environment()  
     )   # 
     #
-    auto.set() 
+    TT.auto.set() 
     #
     at.2.s  <- 1 - at
     at.3.s  <- 0
@@ -3239,7 +3570,12 @@ TT.ticks.lab <- function(
 
 
 
-TT.axis.arrows <- function( 
+
+
+
+TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triangle plot. 
+### Plot the axis' arrows of a texture triangle plot. 
+
     geo, 
     #css.names       = NULL, 
     css.lab         = NULL, 
@@ -3252,6 +3588,8 @@ TT.axis.arrows <- function(
     text.tol        = NULL, 
     text.sum        = NULL, 
     blr.clock       = NULL, 
+    tlr.an          = NULL, 
+    base.css.ps.lim = NULL, 
     # 
     tri.sum.tst     = FALSE,    # !!!! Set to FALSE because sums are not equal to 1 with right-triangles oblic-side
     tri.pos.tst     = FALSE,    # !!!! Set to FALSE because values are outside the triangle
@@ -3276,7 +3614,7 @@ TT.axis.arrows <- function(
         #p.env  = environment()  
     )   # 
     #
-    auto.set() 
+    TT.auto.set() 
     #
     blr.tx <- TT.blr.tx.check( 
         blr.tx      = blr.tx, 
@@ -3645,7 +3983,7 @@ TT.dataset <- function(
     css.names   = NULL, 
     text.sum    = NULL 
 ){  #
-    auto.set(set.par=FALSE) 
+    TT.auto.set(set.par=FALSE) 
     #
     require(MASS)
     #
@@ -3689,188 +4027,6 @@ TT.dataset <- function(
     return( as.data.frame( rand.text ) )
 }   #
 
-
-
-
-TT.baseplot <- function( 
-    geo             = NULL, 
-    class.sys       = "none",  
-    # 
-    # "GEO" parameters
-    blr.clock       = NULL,  
-    tlr.an          = NULL,  
-    blr.tx          = NULL,  
-    text.sum        = NULL,  
-    base.css.ps.lim = NULL, 
-    # 
-    # DATA TESTS:
-    tri.sum.tst     = NULL,  
-    tri.pos.tst     = NULL,  
-    #
-    # ADDITIONAL parameters:
-    text.tol        = NULL,  
-    unit.ps         = NULL,  
-    unit.tx         = NULL,  
-    #
-    b.lim           = NULL,   # default c(0,1) 
-    l.lim           = NULL,   # default c(0,1) 
-    # 
-    main            = NULL,  
-    # 
-    new.mar         = NULL,  
-    # 
-    bg              = NULL,  
-    fg              = NULL,  
-    col             = NULL,  
-    cex.main        = NULL,  
-    #
-    lang            = NULL   
-){  # 
-    css.names   <- c("CLAY","SILT","SAND")
-    # 
-    if( is.null(geo) )
-    {   #
-        geo <- TT.geo.get( 
-            class.sys       = class.sys, 
-            blr.clock       = blr.clock, 
-            tlr.an          = tlr.an, 
-            blr.tx          = blr.tx, 
-            text.sum        = text.sum, 
-            base.css.ps.lim = base.css.ps.lim  
-        )   #
-    }   #
-    # 
-    # Set geographical parameters:
-    TT.geo.set( 
-        geo     = geo  
-        #p.env  = environment()  
-    )   #
-    # 
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Retrieve classes-system (texture triangle) parameters:
-    if( class.sys != "none" ) 
-    {   #
-        TT.data <- TT.get(class.sys) 
-    }   #
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Fix the plot limits:
-    if( any(is.null(b.lim)) ){ b.lim <- TT.get("b.lim") * text.sum } 
-    if( any(is.null(l.lim)) ){ l.lim <- TT.get("l.lim") * text.sum } 
-    r.lim <- text.sum - c( b.lim[1] + l.lim[2], b.lim[1] + l.lim[1] ) 
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Create a "base frame", with coordinates expressed in CLAY SILT SAND
-    base.frame  <- data.frame( 
-        #   #   S1                          S2                          S3 
-        "b" = c(b.lim[1],                   b.lim[2],                   b.lim[1] ), 
-        "l" = c(l.lim[2],                   l.lim[1],                   l.lim[1] ), 
-        "r" = c(text.sum-b.lim[1]-l.lim[2], text.sum-b.lim[2]-l.lim[1], text.sum-b.lim[1]-l.lim[1] ) 
-    )   #
-    colnames(base.frame)    <- blr.tx 
-    #
-    if( is.null(main) )
-    {   #
-        lang.par    <- TT.get("lang.par") 
-        #
-        if( is.null(lang) ){ lang <- TT.get("lang") } 
-        #
-        main        <- lang.par[ lang.par$"lang" == lang , "TT" ] 
-        main        <- parse(text=main)[[1]]    # Added 2009/06/27 
-        #
-        if( class.sys != "none" )
-        {   #
-            main <- paste( 
-                sep = "", 
-                main, 
-                ": ", 
-                TT.data$"main" 
-            )   #
-        }   #
-    }   #   
-    #
-    # Auto-set parameters that are not in par() 
-    auto.set(set.par=FALSE) 
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Convert CLAY SILT SAND coordinates into xy coordinates
-    ghost.TT    <- TT.css2xy( 
-        tri.data    = base.frame, 
-        geo         = geo, 
-        css.names   = css.names, 
-        text.tol    = text.tol, 
-        tri.sum.tst = tri.sum.tst, 
-        tri.pos.tst = tri.pos.tst, 
-        set.par     = FALSE, 
-        text.sum    = text.sum, 
-        blr.clock   = blr.clock  
-    )   #
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Setup new graph margins:
-    #
-    # # default c(5, 2, 4, 2)
-    # # c(bottom, left, top, right)
-    if( is.null(new.mar) )
-    {   #
-        #              c(bottom, left, top, right)
-        new.mar     <- c(5.0, 3.5, 3.0, 3.5)+0.1 
-        #
-        if( if(is.null(main)){FALSE}else{is.na(as.character(main))} )
-        {   #
-            new.mar[3]  <- 0.1 
-        }   #
-        if( tlr.an[2] > tlr.an[3] )
-        {   #
-            new.mar[4] <- 0.1 
-        }else{ 
-            if( tlr.an[2] < tlr.an[3] )
-            {   #
-                new.mar[2] <- 0.1 
-            }else{  # Equality case
-                new.mar[c(2,4)] <- 0.1 
-            }   #
-        }   #
-    }   #
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Setup other graphical parameters:
-    par.list    <- list( 
-        "mar"   = new.mar, 
-        "pty"   = "s", 
-        "xpd"   = TRUE, 
-        "bg"    = bg, 
-        "fg"    = fg, 
-        "col"   = col  
-    )   #
-    #
-    par.list    <- par.list[ unlist(lapply(X=par.list,FUN=function(X){!is.null(X)})) ] 
-    #
-    # Sets new par() values
-    do.call( what = "par", args = par.list ) 
-    #
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # | Ghost plot to set the limits of |
-    # | the graph                       | 
-    # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    plot( 
-        x           = ghost.TT$"xpos", 
-        y           = ghost.TT$"ypos",
-        type        = "n", 
-        axes        = FALSE, 
-        xlim        = range(ghost.TT$"xpos"), 
-        ylim        = min(ghost.TT$"ypos")+c(0,diff(range(ghost.TT$"xpos"))), 
-        main        = main, 
-        cex.main    = cex.main, 
-        xlab        = "", 
-        ylab        = ""  
-    )   #
-    #
-    # Return the geo(metrical) specifications of the plot
-    return( invisible( geo ) ) 
-}   #
-
-#   TT.baseplot() 
 
 
 
@@ -3934,7 +4090,10 @@ TT.vertices.plot    <- function(
     family.op   = NULL, 
     adj         = NULL, 
     pos         = NULL, 
-    offset      = NULL  
+    offset      = NULL, 
+    blr.tx      = NULL, 
+    text.sum    = NULL, 
+    blr.clock   = NULL  
 ){  #
     TT.geo.set(
         geo     = geo  
@@ -3942,7 +4101,7 @@ TT.vertices.plot    <- function(
     )   # 
     #
     # Set the rest of parameters
-    auto.set() 
+    TT.auto.set() 
     # 
     TT.data <- TT.get( class.sys ) 
     #
@@ -3966,7 +4125,8 @@ TT.vertices.plot    <- function(
         pos         = pos, 
         offset      = offset, 
         text.sum    = text.sum, 
-        blr.clock   = blr.clock  
+        blr.clock   = blr.clock, 
+        blr.tx      = blr.tx  
     )   #
     #
     return( invisible( TT.data ) ) 
@@ -3986,6 +4146,7 @@ TT.classes  <- function(
     text.sum        = NULL, 
     base.css.ps.lim = NULL, 
     blr.tx          = NULL, 
+    blr.clock       = NULL, 
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
     bg              = NULL, 
@@ -4018,7 +4179,7 @@ TT.classes  <- function(
     )   #
     # 
     # Set remaining parameters:
-    auto.set() 
+    TT.auto.set() 
     # 
     tri.data    <- TT.data$"tt.points" * text.sum 
     # 
@@ -4117,7 +4278,7 @@ TT.classes  <- function(
                 wg  <- c(0.65,0.35) 
             }   #
             #
-            class.line.col <- DJ.col( 
+            class.line.col <- TT.DJ.col( 
                 cl      = c(col.axis,bg), 
                 w       = wg, 
                 gray.l  = FALSE 
@@ -4747,7 +4908,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
     #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatically sets remaining parameters 
-    auto.set() 
+    TT.auto.set() 
     # 
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Test the data table provided:
@@ -4854,7 +5015,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             bg              = bg, 
             text.sum        = text.sum, 
             base.css.ps.lim = base.css.ps.lim, 
-            blr.tx          = blr.tx  
+            blr.tx          = blr.tx, 
+            blr.clock       = blr.clock 
         )   #
     }   #
     #
@@ -4908,7 +5070,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             bg              = bg, 
             text.sum        = text.sum, 
             base.css.ps.lim = base.css.ps.lim, 
-            blr.tx          = blr.tx  
+            blr.tx          = blr.tx, 
+            blr.clock       = blr.clock 
         )   #
     }   #
     #
@@ -4937,30 +5100,33 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
         cex.axis    = cex.axis, 
         family.op   = family.op, 
         text.sum    = text.sum, 
-        blr.clock   = blr.clock  
+        blr.clock   = blr.clock, 
+        tlr.an      = tlr.an  
     )   #
     #
     if( arrows.show )
     {   #
         TT.axis.arrows( 
-            geo         = geo, 
-            css.lab     = css.lab, 
-            a.l         = TT.get("arrows.lims"), 
-            a.h.s       = TT.get("arrows.head.shift"), 
-            a.t.s       = TT.get("arrows.text.shift"), 
-            a.b.s       = TT.get("arrows.base.shift"), 
-            text.tol    = text.tol,     # useless
-            lwd.lab     = lwd.lab, 
-            arrows.lty  = arrows.lty, 
-            col.lab     = col.lab, 
-            font.lab    = font.lab, 
-            cex.lab     = cex.lab, 
-            family.op   = family.op, 
-            unit.ps     = unit.ps, 
-            unit.tx     = unit.tx, 
-            lang        = lang, 
-            text.sum    = text.sum, 
-            blr.clock   = blr.clock  
+            geo             = geo, 
+            css.lab         = css.lab, 
+            a.l             = TT.get("arrows.lims"), 
+            a.h.s           = TT.get("arrows.head.shift"), 
+            a.t.s           = TT.get("arrows.text.shift"), 
+            a.b.s           = TT.get("arrows.base.shift"), 
+            text.tol        = text.tol,     # useless¨
+            base.css.ps.lim = base.css.ps.lim, 
+            tlr.an          = tlr.an, 
+            lwd.lab         = lwd.lab, 
+            arrows.lty      = arrows.lty, 
+            col.lab         = col.lab, 
+            font.lab        = font.lab, 
+            cex.lab         = cex.lab, 
+            family.op       = family.op, 
+            unit.ps         = unit.ps, 
+            unit.tx         = unit.tx, 
+            lang            = lang, 
+            text.sum        = text.sum, 
+            blr.clock       = blr.clock  
         )   #
     }   #
     #
@@ -5007,7 +5173,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             z.cex.range     = z.cex.range,  
             z.pch           = z.pch, 
             text.sum        = text.sum, 
-            blr.clock       = blr.clock  
+            blr.clock       = blr.clock, 
+            blr.tx          = blr.tx  
         )   #
     }else{ 
         points.out <- NULL
@@ -5015,6 +5182,9 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
     #
     return( invisible( geo ) ) 
 }   #
+
+
+
 
 
 
@@ -5039,7 +5209,13 @@ TT.points.in.classes <- function(
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
     collapse        = ", ", 
-    texture2xy      = TRUE  
+ texture2xy=FALSE, 
+### Single logical. Set to FALSE to avoid any transformation of the 
+### texture data (trigonometric) prior to testure data classification. 
+### Setting to FALSE avoid some numerical accuracy problems when 
+### a point is on the border of a texture class.
+    blr.tx          = NULL, 
+    blr.clock       = NULL  
 ){  #
     if( is.null( class.sys ) ){ class.sys <- TT.get("class.sys") } 
     #
@@ -5074,7 +5250,7 @@ TT.points.in.classes <- function(
         #p.env  = environment()  
     )   #
     #
-    auto.set( set.par = FALSE ) 
+    TT.auto.set( set.par = FALSE ) 
     #
     TT.data.test( 
         tri.data    = tri.data, 
@@ -5265,7 +5441,9 @@ TT.xy2css <- function(
     #
     tri.sum.tst     = NULL, 
     tri.pos.tst     = NULL, 
-    set.par         = FALSE  
+    set.par         = FALSE, 
+    blr.clock       = NULL, 
+    text.sum        = NULL  
 ){  #
     if( !(class(xy.data) %in% c("data.frame","matrix")) )
     {   #
@@ -5298,7 +5476,7 @@ TT.xy2css <- function(
     )   # 
     #
     # Set rest of variables:
-    auto.set(set.par=set.par) 
+    TT.auto.set(set.par=set.par) 
     #
     blr.tx <- TT.blr.tx.check( 
         blr.tx      = blr.tx, 
@@ -5425,8 +5603,6 @@ TT.xy2css <- function(
         tri.data[  , blr.tx[2] ] <- text.sum - tri.data[  , blr.tx[3] ] - tri.data[  , blr.tx[1] ] 
     }   #
     #
-    
-    #
     # Test the data provided:
     TT.data.test( 
         tri.data    = tri.data, 
@@ -5492,7 +5668,7 @@ TT.locator <- function(
     )   # 
     #
     # Set rest of variables:
-    auto.set(set.par=set.par) 
+    TT.auto.set(set.par=set.par) 
     # 
     xy.data <- locator(n=n,type=type,...) 
     # 
@@ -5665,7 +5841,7 @@ TT.mahalanobis <- function(
     )   # 
     #
     # Set rest of variables:
-    auto.set(set.par=set.par) 
+    TT.auto.set(set.par=set.par) 
     #
     xy.bound <- TT.get("base.frame") * text.sum 
     colnames( xy.bound ) <- css.names 
@@ -5806,7 +5982,7 @@ TT.kde2d <- function(
     )   # 
     #
     # Set rest of variables:
-    auto.set(set.par=set.par) 
+    TT.auto.set(set.par=set.par) 
     #
     # xy.bound <- TT.css2xy( 
     #     tri.data        = data.frame(
@@ -5928,7 +6104,7 @@ TT.iwd <- function(
     #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic sets remaining NULL varaibles 
-    auto.set( set.par = set.par ) 
+    TT.auto.set( set.par = set.par ) 
     #
     xy.bound <- TT.get("base.frame") * text.sum 
     colnames( xy.bound ) <- css.names 
@@ -6133,8 +6309,8 @@ TT.contour <- function(
     )   # 
     #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    # Automatic sets remaining NULL varaibles 
-    auto.set( set.par = set.par ) 
+    # Automatic sets remaining NULL variables 
+    TT.auto.set( set.par = FALSE ) 
     #
     class.sys <- "none" 
     #
@@ -6267,7 +6443,13 @@ TT.image <- function(
     zlim            = NA, 
     col             = rev( heat.colors(12) ),
     oldstyle        = FALSE, 
-    ...
+    blr.clock       = NULL, 
+    tlr.an          = NULL, 
+    blr.tx          = NULL, 
+    text.sum        = NULL, 
+    base.css.ps.lim = NULL, 
+ ...
+### Additional parameters passed to image().
 ){  #
     if( !is.list( x ) )
     {   #
@@ -6505,7 +6687,7 @@ TT.normalise.sum <- function(
     residuals   = FALSE  
 ){  #
     # Set rest of variables:
-    auto.set( set.par = FALSE ) 
+    TT.auto.set( set.par = FALSE ) 
     #
     TT.data.test( 
         tri.data    = tri.data, 

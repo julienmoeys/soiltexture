@@ -3,7 +3,7 @@
 \title{TT vertices plot}
 
 \usage{
-TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL)
+TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL, blr.tx = NULL, text.sum = NULL, blr.clock = NULL)
 }
 \arguments{
   \item{geo}{
@@ -25,6 +25,12 @@ TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL,
   \item{pos}{
 }
   \item{offset}{
+}
+  \item{blr.tx}{
+}
+  \item{text.sum}{
+}
+  \item{blr.clock}{
 }
 }
 

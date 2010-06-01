@@ -1,7 +1,13 @@
 \name{TT.data.test.X}
 \alias{TT.data.test.X}
-\title{TT data test X}
-
+\title{Test the validity of some soil texture data table (X texture classes). }
+\description{Test the validity of some soil texture data table. (1) Test that 
+it is a data.frame or matrix, (3) Test that there are no missing 
+values, (4) that all values are >= 0, (5) That the sum of the 
+X texture class is >= 'text.sum'*(1-'text.tol') or <= 
+'text.sum'*(1+'text.tol'). Contrary to TT.data.test() no test 
+are performed for the texture classes and columns names, so 
+'tri.data' should only contains texture data, and nothing else.}
 \usage{
 TT.data.test.X(tri.data, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)
 }

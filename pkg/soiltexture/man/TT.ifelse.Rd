@@ -1,7 +1,7 @@
 \name{TT.ifelse}
 \alias{TT.ifelse}
-\title{TT ifelse}
-
+\title{Internal. Flexible version of ifelse. }
+\description{Flexible version of ifelse. }
 \usage{
 TT.ifelse(test, yes, no)
 }
