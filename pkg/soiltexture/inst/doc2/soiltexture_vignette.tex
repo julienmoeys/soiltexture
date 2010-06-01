@@ -102,7 +102,7 @@
 % | Front page build number 
 
 
-\begin{center}\textit{build number 49.}\end{center}
+\begin{center}\textit{build number 50.}\end{center}
 
 
 
@@ -445,7 +445,7 @@ background.
 The soil texture class symbols are:
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:13 2010
+% Tue Jun 01 16:31:57 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -712,7 +712,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:15 2010
+% Tue Jun 01 16:31:59 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -775,7 +775,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:16 2010
+% Tue Jun 01 16:31:59 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -826,7 +826,7 @@ trics for displaying them.}.\\
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:16 2010
+% Tue Jun 01 16:32:00 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -883,7 +883,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:17 2010
+% Tue Jun 01 16:32:00 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -946,7 +946,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:17 2010
+% Tue Jun 01 16:32:01 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1025,7 +1025,7 @@ built considering a silt - sand limit of
 See the table for soil texture classes symbols.\\
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:18 2010
+% Tue Jun 01 16:32:02 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1076,7 +1076,7 @@ See the table for soil texture classes symbols.
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:19 2010
+% Tue Jun 01 16:32:02 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1136,7 +1136,7 @@ and in Flemish.
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:19 2010
+% Tue Jun 01 16:32:03 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1197,7 +1197,7 @@ See the table for soil texture classes symbols, in English:
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:20 2010
+% Tue Jun 01 16:32:04 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1227,7 +1227,7 @@ Or in French:
 
 
 % latex table generated in R 2.11.0 by xtable 1.5-6 package
-% Tue Jun 01 16:22:20 2010
+% Tue Jun 01 16:32:04 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1760,3 +1760,548 @@ plot to the existing plot, in order to replace the color legend:
      add     = TRUE, #  <<-- important
      lwd     = 2  
  )   # 
+ #
+ TT.plot( 
+     geo         = geo, 
+     grid.show   = FALSE, 
+     add         = TRUE  #  <<-- important
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-050}
+
+\texttt{TT.contour()} accepts most of the options existing in 
+\texttt{contour()}.\\
+
+Inverse Weighted Distance interpolation is not really 'state of 
+the art' statistics, but rather a visual way of exploring the data. 
+Interpolation is NOT done on a clay / silt / sand mesh, but rather 
+on a x-y grid in the triangle. So data density is not equal 
+between clay, silt and sand. Moreover, the interpolator might not 
+be the most relevant one.\\
+
+This function is only provided as 'experimental' and it is 
+susceptible to be modified significantly in the future.\\
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Two-dimensional kernel (probability) density 
+    estimation for texture data} 
+
+The \texttt{kde2d()} function of the MASS package by W. N. Venables 
+and B. D. Ripley\cite{MASSREF}, for 2D kernel probability density 
+estimate has been 'wrapped' into the function \texttt{TT.kde2d()} 
+so it becomes usable with texture data and texture triangle. 
+It returns an x-y-z list / grid object that can be plotted with 
+\texttt{TT.contour()} or \texttt{TT.image()}.\\
+
+The same 'sandwich' plot structure as for inverse weight distance 
+estimate of a 4th variable is also valid for contour plot of 
+probability density estimates:
+
+
+% Uncomment this to display the heatmap
+\begin{Schunk}
+\begin{Sinput}
+ geo <- TT.geo.get()  
+ #
+ kde.res <- TT.kde2d( 
+     geo         = geo, 
+     tri.data    = rand.text  
+ )   #
+ #
+ TT.contour( 
+     x       = kde.res, 
+     geo     = geo, 
+     main    = "Probability density estimate of the texture data", 
+     lwd     = 2, 
+     col     = "red"  
+ )   # 
+ #
+ TT.plot( 
+     tri.data    = rand.text, 
+     geo         = geo, 
+     grid.show   = FALSE, 
+     add         = TRUE, #  <<-- important 
+     col         = "gray"
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-051}
+
+Using \texttt{TT.image()} would also work here.\\
+
+As \texttt{kde2d()}, \texttt{TT.kde2d()} accepts a 'n' option that 
+determines the number of values in the x and y axes (The total 
+number of nodes is $n^2$). The parameter 'h' from \texttt{kde2d()} 
+has NOT been implemented into \texttt{TT.kde2d()}, and the default 
+calculation method is used.\\
+
+Please note that the probability density is estimated on the x-y 
+grid of the plot, and NOT on the clay / silt / sand coordinates 
+system. So a different plot geometry may give a slightly different 
+probability density estimate...
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Contour plot of texture data Mahalanobis distance} 
+
+The \texttt{mahalanobis()} function (part of the default R 
+functions) has been 'wrapped' into the function 
+\texttt{TT.mahalanobis()} so it becomes usable with texture data 
+and texture triangle. It returns an x-y-z list / grid object that 
+can be plotted with \texttt{TT.contour()} or \texttt{TT.image()}.\\
+
+Some authors\cite{LARK2007} have recommended that the Mahalanobis 
+distance should be computed on the additive log-ratio transform 
+of soil texture data in order to take into account the fact the 
+3 texture classes are not independent random variables (but rather 
+compositional data). For this reason an option has been added that 
+transform the texture data by an additive log-ratio prior to 
+the computation of the Mahalanobis distance (the default is no 
+transformation of the data). The log-ratio transformation code 
+used here has been taken from the 'chemometrics' package%%%
+\cite{CHEMOMETRICSREF} by Filzmoser and Varmuza (function  
+\texttt{alr()}).\\
+
+The same 'sandwich' plot structure as for inverse weight distance 
+estimate of a 4th variable is also valid for contour plot of 
+probability density estimates. Below is a first example without 
+texture transformation:
+
+
+% Uncomment this to display the heatmap
+\begin{Schunk}
+\begin{Sinput}
+ geo <- TT.geo.get() 
+ #
+ maha <- TT.mahalanobis( 
+     geo         = geo, 
+     tri.data    = rand.text  
+ )   #
+ #
+ TT.contour( 
+     x       = maha, 
+     geo     = geo, 
+     main    = "Texture data Mahalanobis distance", 
+     lwd     = 2, 
+     col     = "blue"  
+ )   # 
+ #
+ TT.plot( 
+     tri.data    = rand.text, 
+     geo         = geo, 
+     grid.show   = FALSE, 
+     add         = TRUE, #  <<-- important 
+     col         = "gray"
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-052}
+
+
+All the options of \texttt{mahalanobis()} are also available in 
+\texttt{TT.mahalanobis()}. The option \texttt{divisorvar} is an 
+integer that determines which texture classes (number 1, 2 or 
+3 in 'css.names') is NOT used to calculate the Mahalanobis distance 
+(using the 3 texture classes crashes the \texttt{mahalanobis()} 
+function).\\
+
+If you want to compute the Mahalanobis distance on texture data 
+transformed with an additive log-ratio, you can set the option 
+\texttt{alr = TRUE} (default = FALSE). The option \texttt{divisorvar} 
+is then an integer used in the log-ratio transformation of texture data,\\
+
+$alr(textureClass_{i}) = log_{10}( textureClass_{i} / textureClass_{divisorvar} )$\\
+
+where \texttt{i} and \texttt{divisorvar} are index of 
+\texttt{css.names}. The Mahalanobis distance is then computed on 
+2 of the 3 log-ratio transformed texture classes 
+(\texttt{css.names[-divisorvar]}).\\
+
+Below is an example of Mahalanobis distance plot with log-ratio 
+transformation:
+
+
+% Uncomment this to display the heatmap
+\begin{Schunk}
+\begin{Sinput}
+ geo <- TT.geo.get() 
+ #
+ maha <- TT.mahalanobis( 
+     geo         = geo, 
+     tri.data    = rand.text, 
+     alr         = TRUE  #  <<-- important 
+ )   #
+ #
+ TT.contour( 
+     x       = maha, 
+     geo     = geo, 
+     main    = "Texture data Mahalanobis distance", 
+     lwd     = 2, 
+     col     = "blue", 
+     levels  = c(0.5,1,2,4,8)  #  <<-- manually set. Otherwise 
+ )   #                                 ugly plot
+ #
+ TT.plot( 
+     tri.data    = rand.text, 
+     geo         = geo, 
+     grid.show   = FALSE, 
+     add         = TRUE,  #  <<-- important 
+     col         = "gray"
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-053}
+
+
+The Mahalanobis distances computed on a regular x-y grid have an 
+extremely skewed distribution, with a few very high values near 
+the borders of the triangle. For this reason the automatic levels 
+of the contour function fails to show anything relevant, and it 
+is recommended that the user manually set the levels, as in the 
+example.\\
+
+\textbf{Please notice that the \texttt{TT.mahalanobis()} has not 
+been tested extensively for practical and theoretical validity.}\\
+
+Using \texttt{TT.image()} would also work here.\\
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Plotting text in a texture triangle} 
+
+As the \texttt{text()} function of R standard plot functions, 
+\texttt{TT.plot()} is completed by a \texttt{TT.text()} function 
+that displays text into an existing texture triangle plot. Its 
+use is similar to \texttt{TT.points()}, apart that it has a 
+\texttt{labels}, and a \texttt{font} option, as the 
+\texttt{text()} function. Below is a simple example:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ # Display the USDA texture triangle:
+ geo     <- TT.plot(class.sys="USDA.TT") 
+ # Create some custom labels:
+ labelz  <- letters[1:dim(my.text)[1]] 
+ labelz 
+\end{Sinput}
+\begin{Soutput}
+ [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
+\end{Soutput}
+\begin{Sinput}
+ # Display the text
+ TT.text( 
+     tri.data    = my.text, 
+     geo         = geo, 
+     labels      = labelz, 
+     font        = 2, 
+     col         = "blue"  
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-054}
+
+
+As for the \texttt{text()} function, it is also possible to set 
+\texttt{adj}, \texttt{pos} and / or \texttt{offset} parameters 
+(not shown here).
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\section{Control of soil texture data in The Soil Texture Wizard} 
+
+Several controls are done (internally) on soil texture data prior 
+to soil texture plots or soil texture classification:
+
+\begin{itemize} 
+    \item Clay, silt and sand column names must correspond to the 
+    names given in the option \texttt{css.names} (default to CLAY, 
+    SILT and SAND); 
+    \item There should not be any \textbf{negative} values in clay, 
+    silt and sand (i.e. values that lies outside the triangle). 
+    This control can be relaxed by setting the option 
+    \texttt{tri.pos.tst} to FALSE;
+    \item All the row sums of the 3 texture classes must be equal 
+    to \textbf{text.sum} (generally 100, for 100\%). In fact, 
+    (absolute) differences lower than \textbf{text.sum * text.tol} 
+    are allowed (with \textbf{text.tol} option default to $1/1000$, 
+    so textures sum must be between 99.9 and 100.1). This text can 
+    be relaxed by setting \texttt{tri.sum.tst} to FALSE;
+    \item No missing values are allowed in the texture data (NA). 
+\end{itemize} 
+
+A test of the data can be conducted externally, using 
+\texttt{TT.data.test}. An error occur if the data don't pass the 
+tests:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.data.test( tri.data = rand.text ) 
+\end{Sinput}
+\end{Schunk}
+
+This function accepts options \texttt{css.names}, 
+\texttt{text.sum}, \texttt{text.tol}, \texttt{tri.sum.tst} and 
+\texttt{tri.pos.tst}.
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Normalizing soil texture data (sum of the 3 texture 
+    classes)} 
+
+If you have a texture data table with some rows where the sum of 
+the 3 texture classes is not 100\%, but you know this is not due 
+to errors in the data, you may want to normalize the sum of the 
+3 texture classes to 100\%. The function \texttt{TT.normalise.sum} 
+do that for you, and return a data table with normalised clay, silt 
+and sand values. The option \texttt{residuals} can be set to TRUE 
+if you want the residuals to be returned (initial row sum - final 
+row sum):
+
+
+\begin{Schunk}
+\begin{Sinput}
+ res <- TT.normalise.sum( tri.data = rand.text ) 
+ #
+ # With output of the residuals:
+ res <- TT.normalise.sum( 
+     tri.data    = rand.text, 
+     residuals   = TRUE  #  <<-- default = FALSE 
+ )   #
+ #
+ colnames( rand.text )
+\end{Sinput}
+\begin{Soutput}
+[1] "CLAY" "SILT" "SAND" "Z"   
+\end{Soutput}
+\begin{Sinput}
+ colnames( res )  #  "Z" has been dropped
+\end{Sinput}
+\begin{Soutput}
+[1] "CLAY"      "SILT"      "SAND"      "residuals"
+\end{Soutput}
+\begin{Sinput}
+ max( res[ , "residuals" ] ) 
+\end{Sinput}
+\begin{Soutput}
+[1] 2.842171e-14
+\end{Soutput}
+\end{Schunk}
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Normalizing soil texture data (sum of X texture classes)} 
+
+[function and section to be written]
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\section{Classify soil texture data: TT.points.\-in.\-classes()} 
+
+The function \texttt{TT.points.\-in.\-classes()} classify a table 
+of soil texture data (\texttt{tri.data}) and returns a table 
+where each row is one soil texture sample, and each column a soil 
+texture class (given the system \texttt{class.sys}). Values are 0 
+when the point is 'out' of the class, 1 when 'in', 2 when 'on a 
+polygon side' and 3 when 'on the polygon corner(s) (vertex / 
+vertices)' (As in the underying function 
+\texttt{point.in.polygon()} from the 'sp' package). 
+In the examples below I will only show the results for the 5 
+first row of the dummy soil texture data created above, with the 
+FAO classification:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.points.in.classes( 
+     tri.data    = my.text[1:5,], 
+     class.sys   = "FAO50.TT"  
+ )   #
+\end{Sinput}
+\begin{Soutput}
+     VF F M MF C
+[1,]  0 0 0  0 1
+[2,]  2 2 0  0 0
+[3,]  0 0 0  0 1
+[4,]  0 0 0  0 1
+[5,]  0 0 1  0 0
+\end{Soutput}
+\end{Schunk}
+
+
+A major interest of the function resides in the fact 
+that it is possible to use another classication very easily, USDA
+in the xample below:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.points.in.classes( 
+     tri.data    = my.text[1:5,], 
+     class.sys   = "USDA.TT"  
+ )   #
+\end{Sinput}
+\begin{Soutput}
+     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
+[1,]  0    0    0    0      0      0  0    0    0  0    0  1
+[2,]  1    0    0    0      0      0  0    0    0  0    0  0
+[3,]  0    0    0    0      0      0  0    0    1  0    0  0
+[4,]  0    0    0    0      0      0  0    0    1  0    0  0
+[5,]  0    0    0    0      0      0  0    1    0  0    0  0
+\end{Soutput}
+\end{Schunk}
+
+
+The result can also be returned in a logical form with the option 
+\texttt{PiC.type = "l"} (for 'logical'. default is "n" as numeric% 
+). Value is TRUE if the sample belong to the class, and FALSE if 
+it is outside the class. In case of a point located at the border 
+of two or more texture classes, several texture classes (columns) 
+are marked TRUE.
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.points.in.classes( 
+     tri.data    = my.text[1:5,], 
+     class.sys   = "FAO50.TT", 
+     PiC.type    = "l" 
+ )   #
+\end{Sinput}
+\begin{Soutput}
+        VF     F     M    MF     C
+[1,] FALSE FALSE FALSE FALSE  TRUE
+[2,]  TRUE  TRUE FALSE FALSE FALSE
+[3,] FALSE FALSE FALSE FALSE  TRUE
+[4,] FALSE FALSE FALSE FALSE  TRUE
+[5,] FALSE FALSE  TRUE FALSE FALSE
+\end{Soutput}
+\end{Schunk}
+
+
+And finally, the results can be a vector of character, of the 
+same length as the number of soil samples, and containing the 
+abbreviation of the texture class(es) to which the sample belongs.
+In case of a sample lying on the border of two classes, the 
+classes abbreviation are concatenated (separated by a comma).
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.points.in.classes( 
+     tri.data    = my.text[1:5,], 
+     class.sys   = "FAO50.TT", 
+     PiC.type    = "t" 
+ )   #
+\end{Sinput}
+\begin{Soutput}
+[1] "C"     "VF, F" "C"     "C"     "M"    
+\end{Soutput}
+\end{Schunk}
+
+Notice that the second value lies between two classes, and that 
+they are outputted separated by a comma.\\
+
+The comma separator can be replaced by any character string, as 
+in the function \texttt{paste()}, with the option 
+\texttt{collapse}:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.points.in.classes( 
+     tri.data    = my.text[1:5,], 
+     class.sys   = "FAO50.TT", 
+     PiC.type    = "t", 
+     collapse    = ";"
+ )   #
+\end{Sinput}
+\begin{Soutput}
+[1] "C"    "VF;F" "C"    "C"    "M"   
+\end{Soutput}
+\end{Schunk}
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\section{Converting soil texture data and systems with different 
+    silt-sand particle size limit} 
+
+'The Soil Texture Wizard' comes with functions to transform soil 
+textures data from 1 particle sizes system (limits between the 
+clay, silt and sand particles) to another particle size system, 
+with a log-linear transformation. For instance, it is 
+possible to convert a textures data table measured in a system 
+that have a silt / sand limit is 60$\mu$m into a system that has 
+a silt / sand limit is 50$\mu$m.\\
+
+It is important to keep in mind several limitations when 
+transforming soil texture data:
+
+\begin{itemize} 
+    \item Transforming soil texture with a 'log-linear 
+    interpolation' consider that the cumulated particle size 
+    (mass) distribution is linear between two consecutive 
+    particle size classes limits, when plotted against a log 
+    transform of the particle size;
+    \item Because of this, \textbf{transforming soil texture is 
+    at best an \textbf{approximation} of what would be obtained 
+    with laboratory measurements};
+    \item The bigger the difference between two particle size 
+    limit used to interpolate a new particle size limit, the more 
+    uncertain the estimation (= the bigger the errors);
+    \item Because of this, the more particle size classes you have 
+    in the initial soil texture data (i.e. the smaller the 
+    differences between 2 successive particle size classes limits), 
+    the more precise the transformation.
+    \item Transforming soil texture data using a log-linear 
+    interpolation is not the most precise method (especially if 
+    you have more than 3 particle size classes). On the other 
+    hand, it is certainly the most simple method. See Nemes et al. 
+    1999 \cite{NEMES1999GEOD} for a comparison of different 
+    methods for soil texture data transformation.
+\end{itemize} 
+
+This package comes with 2 functions for texture transformations:
+
+\begin{itemize} 
+    \item \texttt{TT.text.\-transf()}, that only works with 3 
+    particle size classes, clay, silt and sand. It can be 
+    used independently, for transforming a table of soil texture 
+    data, but it is also 'embedded' into \texttt{TT.plot()} and 
+    \texttt{TT.points.\-in.\-classes()} to allow transparent, on the 
+    fly transformation of soil texture data or soil texture 
+    triangles / classification.
+    \item \texttt{TT.text.\-transf.X()}, that works with 3 or more 
+    particle size classes. The number of particle size classes in 
+    the input data do not need to be equal to the number of 
+    particle size classes in the final system (output). It is not 
+    embedded and not embeddable into \texttt{TT.plot()} and 
+    \texttt{TT.points.\-in.\-classes()}, and it is not doing as many 
+    data consistency tests as \texttt{TT.text.\-transf()}.
+\end{itemize} 
+
+Of course, it is also possible to define your own texture 
+transformation function. If this function works on clay, silt and 
+sand, and if it has the same options as \texttt{TT.text.\-transf()}, 
+it can also be embedded in \texttt{TT.plot()} and 
+\texttt{TT.points.\-in.\-classes()} by changing a simple option.\\
+
+\textbf{If your data have more than 3 particle size classes, 
+you should probably use \texttt{TT.text.\-transf.X()} instead of 
+\texttt{TT.text.\-transf()}}.\\
+
+The figure below / above illustrate how the log-linear 
+interpolation works, and why it is sometimes / often inaccurate.
+
+
