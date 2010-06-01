@@ -1,7 +1,7 @@
 \name{TT.geo.set}
 \alias{TT.geo.set}
-\title{TT geo set}
-
+\title{Internal. Takes "geo" values and assign them individually in the parent function. }
+\description{Takes "geo" values and assign them individually in the parent function. }
 \usage{
 TT.geo.set(geo, p.env = parent.frame())
 }

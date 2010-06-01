@@ -3,7 +3,7 @@
 \title{TT xy2css}
 
 \usage{
-TT.xy2css(xy.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE)
+TT.xy2css(xy.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, set.par = FALSE, blr.clock = NULL, text.sum = NULL)
 }
 \arguments{
   \item{xy.data}{
@@ -19,6 +19,10 @@ TT.xy2css(xy.data, geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, t
   \item{tri.pos.tst}{
 }
   \item{set.par}{
+}
+  \item{blr.clock}{
+}
+  \item{text.sum}{
 }
 }
 

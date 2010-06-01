@@ -1,7 +1,7 @@
 \name{TT.get}
 \alias{TT.get}
-\title{TT get}
-
+\title{Function to retrieve / get the default package parameters. }
+\description{Function to retrieve / get the default package parameters. }
 \usage{
 TT.get(..., par.list = "TT.par", bkp.par.list = "TT.par.bkp", par.env = TT.env)
 }

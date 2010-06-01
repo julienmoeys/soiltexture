@@ -1,7 +1,7 @@
 \name{TT.str}
 \alias{TT.str}
-\title{TT str}
-
+\title{Internal. Stretch or reshape the range of value of some data set. }
+\description{Function to 'stretch' or reshape the range of value of some data set. Usefull for cex parameter in plot. }
 \usage{
 TT.str(x, str.min = 0, str.max = 1)
 }

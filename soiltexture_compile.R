@@ -2,7 +2,7 @@ rm(list=ls(all=TRUE))
 wrapper.path <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/R_CMD_wrapper.R"
 pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg" 
 pkg.name     <- "soiltexture" 
-code.files   <- "soiltexture.r" 
+code.files   <- "soiltexture.R" 
 pkg.version  <- "1.0" 
 pkg.depends  <- c("sp","MASS") 
 
@@ -12,21 +12,21 @@ source( wrapper.path )
 
 
 
+# Change the description file:
+pkg.description( pkg.name = pkg.name, pkg.dir = pkg.dir, 
+                 pkg.version = pkg.version, pkg.depends = pkg.depends ) 
+
+
+
+# Create the package skeleton with inlinedocs
 package.skeleton.dx( 
-    pkgdir     = file.path( pkg.dir, pkg.name ), 
-    code_files = code.files  
+    pkgdir    = file.path( pkg.dir, pkg.name ), 
+    namespace = TRUE  
 )   #
 
 
 
 pkg.remove.wrapper( pkg.name = pkg.name ) 
-
-
-
-# Change the description file:
-pkg.description( pkg.name = pkg.name, pkg.dir = pkg.dir, 
-                 pkg.version = pkg.version, pkg.depends = pkg.depends ) 
-
 
 
 # Build the package
