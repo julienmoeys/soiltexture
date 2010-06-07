@@ -102,7 +102,7 @@
 % | Front page build number 
 
 
-\begin{center}\textit{build number 53.}\end{center}
+\begin{center}\textit{build number 55.}\end{center}
 
 
 
@@ -289,7 +289,10 @@ particle size limit \textbf{varies from country to country}.
 (Atterberg system\cite{MINASNY2001AJSR}\cite{RICHER2008INRA}; 
 'International system'; ISSS\footnote{ISSS: International Society 
 of Soil Science. Now \href{www.iuss.org}{IUSS, International 
-Union of Soil Science}}; Australia\footnote{Strangely, only a 
+Union of Soil Science}\label{ISSSSIZE}. The ISSS particle size 
+system should not be confused with the ISSS texture triangle (See 
+\ref{ISSSTRIANGLE}, p. \pageref{ISSSTRIANGLE})}; Australia\footnote{%%%
+Strangely, only a 
 small number of countries have adopted the so called 
 'international system'}\cite{MINASNY2001AJSR}; Japan% 
 \cite{RICHER2008INRA}), \textbf{2-50$\mu$m} (FAO\footnote{% 
@@ -445,7 +448,7 @@ background.
 The soil texture class symbols are:
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:19 2010
+% Mon Jun 07 16:36:14 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -712,7 +715,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:22 2010
+% Mon Jun 07 16:36:16 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -775,7 +778,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:22 2010
+% Mon Jun 07 16:36:17 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -826,7 +829,7 @@ trics for displaying them.}.\\
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:23 2010
+% Mon Jun 07 16:36:17 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -883,7 +886,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:24 2010
+% Mon Jun 07 16:36:18 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -946,7 +949,7 @@ See the table for soil texture classes symbols.\\
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:24 2010
+% Mon Jun 07 16:36:19 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1025,7 +1028,7 @@ built considering a silt - sand limit of
 See the table for soil texture classes symbols.\\
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:25 2010
+% Mon Jun 07 16:36:19 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1076,7 +1079,7 @@ See the table for soil texture classes symbols.
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:26 2010
+% Mon Jun 07 16:36:20 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1136,7 +1139,7 @@ and in Flemish.
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:26 2010
+% Mon Jun 07 16:36:20 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1197,7 +1200,7 @@ See the table for soil texture classes symbols, in English:
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:27 2010
+% Mon Jun 07 16:36:22 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1227,7 +1230,7 @@ Or in French:
 
 
 % latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Tue Jun 01 16:56:27 2010
+% Mon Jun 07 16:36:22 2010
 \begin{table}[ht]
 \begin{center}
 \begin{tabular}{rll}
@@ -1264,6 +1267,138 @@ and the boundaries have been checked using
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The ISSS soil texture classification} 
+
+To display a ISSS\footnote{ISSS: International Soil Science Society. 
+Now IUSS, International Union of Soil Science. The ISSS soil texture 
+classification / triangle should not be confused with the ISSS 
+particle size classification (See \ref{ISSSSIZE}, p. \pageref{ISSSSIZE})}%%%
+\label{ISSSTRIANGLE} texture triangle, type:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.plot( class.sys = "ISSS.TT" ) 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-036}
+
+
+
+The ISSS soil texture classification has been built 
+considering a silt - sand limit of 
+20$\mu$meters.
+
+
+See the table for soil texture classes symbols:
+
+
+% latex table generated in R 2.11.1 by xtable 1.5-6 package
+% Mon Jun 07 16:36:22 2010
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rll}
+  \hline
+ & abbr & name \\ 
+  \hline
+1 & HCl & heavy clay \\ 
+  2 & SaCl & sandy clay \\ 
+  3 & LCl & light clay \\ 
+  4 & SiCl & silty clay \\ 
+  5 & SaClLo & sandy clay loam \\ 
+  6 & ClLo & clay loam \\ 
+  7 & SiClLo & silty clay loam \\ 
+  8 & LoSa & loamy sand \\ 
+  9 & Sa & sand \\ 
+  10 & SaLo & sandy loam \\ 
+  11 & Lo & loam \\ 
+  12 & SiLo & silt loam \\ 
+   \hline
+\end{tabular}
+\caption{Texture classes of the ISSS system / triangle}
+\end{center}
+\end{table}
+
+Many thanks to Wei Shangguan (PhD, School of geography, Beijing 
+normal university) for providing the code of the ISSS triangle 
+(using an article from Verheye and Ameryckx 1984\cite{VERHEYE1984PEDO}).
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Romanian soil texture classification} 
+
+To display a Romanian texture triangle, type:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.plot( class.sys = "ROM.TT" ) 
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-038}
+
+
+
+The Romanian soil texture classification has been built 
+considering a silt - sand limit of 
+20$\mu$meters.
+
+
+See the table for soil texture classes symbols:
+
+
+% latex table generated in R 2.11.1 by xtable 1.5-6 package
+% Mon Jun 07 16:36:23 2010
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rll}
+  \hline
+ & abbr & name \\ 
+  \hline
+1 & AF & argila fina \\ 
+  2 & AA & argila medie \\ 
+  3 & AP & argila prafoasa \\ 
+  4 & AL & argila lutoasa \\ 
+  5 & TP & lut argilo-prafos \\ 
+  6 & TT & lut argilos mediu \\ 
+  7 & TN & argila nisipoasa \\ 
+  8 & LP & lut prafos \\ 
+  9 & LL & lut mediu \\ 
+  10 & LN & lut nisipo-argilos \\ 
+  11 & SP & praf \\ 
+  12 & SS & lut nisipos prafos \\ 
+  13 & SG+SM+SF & lut nisipos \\ 
+  14 & UG+UM+UF & nisip lutos \\ 
+  15 & NG+NM+NF & nisip \\ 
+   \hline
+\end{tabular}
+\caption{Texture classes of the Romanian system / triangle}
+\end{center}
+\end{table}
+
+Many thanks to Rosca Bogdan (Romanian Academy, Iasi Branch, 
+Geography team) for providing the code of the Romanian triangle.
+
+
+A right angled version of the triangle can be obtained by typing:
+
+
+\begin{Schunk}
+\begin{Sinput}
+ TT.plot( 
+     class.sys = "ROM.TT", 
+     blr.clock   = c(F,T,NA), 
+     tlr.an      = c(45,90,45), 
+     blr.tx      = c("SILT","CLAY","SAND"), 
+ )   #
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-040}
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{Soil texture triangle with a texture classes color 
     gradient} 
 
@@ -1292,7 +1427,7 @@ Example with the USDA and FAO soil texture triangles:
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-036}
+\includegraphics{soiltexture_vignette-041}
 
 
 Example with the French Aisne and French GEPPA soil texture 
@@ -1317,7 +1452,7 @@ triangles:
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-037}
+\includegraphics{soiltexture_vignette-042}
 
 
 Example with the UK (SSEW) and German (BK94) soil texture 
@@ -1342,7 +1477,7 @@ triangles:
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-038}
+\includegraphics{soiltexture_vignette-043}
 
 
 Example with the Australian and Belgian soil texture triangle:
@@ -1366,7 +1501,7 @@ Example with the Australian and Belgian soil texture triangle:
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-039}
+\includegraphics{soiltexture_vignette-044}
 
 
 And finally the Canadian texture triangle (with English and French 
@@ -1391,7 +1526,7 @@ abbreviations):
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-040}
+\includegraphics{soiltexture_vignette-045}
 
 
 
@@ -1427,7 +1562,7 @@ over a USDA texture triangle:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-041}
+\includegraphics{soiltexture_vignette-046}
 
 Beware that the result may not necessarily be very readable when 
 printed, in black and white. Consider to change the line type as 
@@ -1464,7 +1599,7 @@ identical to the previous case:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-042}
+\includegraphics{soiltexture_vignette-047}
 
 
 
@@ -1522,7 +1657,7 @@ The code to display these soil texture data is:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-044}
+\includegraphics{soiltexture_vignette-049}
 
 The option \texttt{tri.data} is a data frame containing numerical 
 values. \texttt{colnames(tri.data)} must match with 
@@ -1549,7 +1684,7 @@ of the soil texture triangle. Bubble plots are good for this:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-045}
+\includegraphics{soiltexture_vignette-050}
 
 
 The option \texttt{z.name} is a character string, the 
@@ -1587,7 +1722,7 @@ generate a (quick and dirty) dummy soil texture datasets, with a
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-047}
+\includegraphics{soiltexture_vignette-052}
 
 
 This function is primarily intended for exploratory data analysis 
@@ -1648,7 +1783,7 @@ example below:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-048}
+\includegraphics{soiltexture_vignette-053}
 
 
 This code is obviously complicated, but it produces a smart 
@@ -1717,7 +1852,7 @@ Plotting a heatmap now follows 4 steps, that somehow works as
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-049}
+\includegraphics{soiltexture_vignette-054}
 
 \texttt{TT.iwd()} has 3 important parameters: 
 \begin{itemize} 
@@ -1768,7 +1903,7 @@ plot to the existing plot, in order to replace the color legend:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-050}
+\includegraphics{soiltexture_vignette-055}
 
 \texttt{TT.contour()} accepts most of the options existing in 
 \texttt{contour()}.\\
@@ -1828,7 +1963,7 @@ probability density estimates:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-051}
+\includegraphics{soiltexture_vignette-056}
 
 Using \texttt{TT.image()} would also work here.\\
 
@@ -1899,7 +2034,7 @@ texture transformation:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-052}
+\includegraphics{soiltexture_vignette-057}
 
 
 All the options of \texttt{mahalanobis()} are also available in 
@@ -1954,7 +2089,7 @@ transformation:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-053}
+\includegraphics{soiltexture_vignette-058}
 
 
 The Mahalanobis distances computed on a regular x-y grid have an 
@@ -2004,7 +2139,7 @@ use is similar to \texttt{TT.points()}, apart that it has a
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-054}
+\includegraphics{soiltexture_vignette-059}
 
 
 As for the \texttt{text()} function, it is also possible to set 
@@ -2305,7 +2440,7 @@ The figure below / above illustrate how the log-linear
 interpolation works, and why it is sometimes / often inaccurate.
 
 
-\includegraphics{soiltexture_vignette-062}
+\includegraphics{soiltexture_vignette-067}
 
 
 
@@ -2544,7 +2679,7 @@ system (classes sizes) as the triangle:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-070}
+\includegraphics{soiltexture_vignette-075}
 
 Notice that the \texttt{dat.css.ps.lim} and \texttt{css.transf} 
 options could be used directly with \texttt{TT.plot()} (not shown 
@@ -2589,7 +2724,7 @@ triangle has a 60$\mu$m silt sand limit).
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-071}
+\includegraphics{soiltexture_vignette-076}
 
 
 We clearly see that clay content is unaffected, but there is a 
@@ -2625,7 +2760,7 @@ is based on a 60$\mu$m limit):
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-072}
+\includegraphics{soiltexture_vignette-077}
 
 
 Now another test where the background silt sand limit is 
@@ -2657,7 +2792,7 @@ transformed:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-073}
+\includegraphics{soiltexture_vignette-078}
 
 
 Now another test with a right-angled triangle (the French GEPPA). 
@@ -2688,7 +2823,7 @@ transformed:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-074}
+\includegraphics{soiltexture_vignette-079}
 
 
 Now another test with the same triangle. The background silt 
@@ -2720,7 +2855,7 @@ transformed, while the second is transformed:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-075}
+\includegraphics{soiltexture_vignette-080}
 
 
 
@@ -2767,7 +2902,7 @@ Visualize the result (all data):
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-077}
+\includegraphics{soiltexture_vignette-082}
 
 
 But don't do (the texture triangle is transformed, not the 
@@ -2809,7 +2944,7 @@ why doing this causes some problems:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-079}
+\includegraphics{soiltexture_vignette-084}
 
 Some points lie outside the transformed soil texture 
 classification, so they apparently don't belong to any class...
@@ -2897,7 +3032,7 @@ Of course it works with \texttt{TT.plot()}:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-081}
+\includegraphics{soiltexture_vignette-086}
 
 
 
@@ -2960,7 +3095,7 @@ using 90 and 45 / 45 angles:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-082}
+\includegraphics{soiltexture_vignette-087}
 
 the option \texttt{tlr.an} accept a vector of numerical, for the 
 Top, Left and Right ANgles respectively.\\
@@ -2993,7 +3128,7 @@ sand on the right:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-083}
+\includegraphics{soiltexture_vignette-088}
 
 
 The option \texttt{blr.tx} accept a vector of character strings. 
@@ -3030,7 +3165,7 @@ the right axis 'neutral' (inside).
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-084}
+\includegraphics{soiltexture_vignette-089}
 
 
 the option \texttt{blr.clock} accept a vector of boolean (TRUE / 
@@ -3060,7 +3195,7 @@ angles, axis directions and clay silt sand positions on the axis:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-085}
+\includegraphics{soiltexture_vignette-090}
 
 
 
@@ -3094,7 +3229,7 @@ the same as the 'standard' display. Here is a practical example
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-086}
+\includegraphics{soiltexture_vignette-091}
 
 
 
@@ -3135,7 +3270,7 @@ German (\texttt{lang = "de"}):
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-087}
+\includegraphics{soiltexture_vignette-092}
 
 
 A second example with Spanish (\texttt{lang = "es"}), 
@@ -3160,11 +3295,11 @@ and Italian (\texttt{lang = "it"}):
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-088}
+\includegraphics{soiltexture_vignette-093}
 
 
-And a third example with Dutch (\texttt{lang = "nl"}) and Flemish 
-(\texttt{lang = "nl"}) or, to be more exact, with the terms used 
+And a 3rd example with Dutch (\texttt{lang = "nl"}) and Flemish 
+(\texttt{lang = "fl"}) or, to be more exact, with the terms used 
 on the Dutch texture triangle and on the Flemish version of the 
 Belgian texture triangle.
 
@@ -3187,11 +3322,11 @@ Belgian texture triangle.
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-089}
+\includegraphics{soiltexture_vignette-094}
 
 
-And finally in Swedish (\texttt{lang = "se"}) and in English, the 
-default language (\texttt{lang = "en"}):
+A 4th example in Swedish (\texttt{lang = "se"}) and in Romanian 
+(\texttt{lang = "ro"}):
 
 
 \begin{Schunk}
@@ -3207,13 +3342,35 @@ default language (\texttt{lang = "en"}):
  # Plot the triangles with different languages:
  TT.plot( 
      class.sys   = "FR.GEPPA.TT", 
+     lang        = "ro" 
+ )   #
+ # Back to old parameters:
+ par(old.par)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{soiltexture_vignette-095}
+
+
+And finally in English, the default language (\texttt{lang = "en"}):
+
+
+\begin{Schunk}
+\begin{Sinput}
+ # Set a 2 by 2 plot matrix (for size):
+ old.par <- par(no.readonly=T)
+ par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+ # Plot the triangles with different languages:
+ TT.plot( 
+     class.sys   = "FR.GEPPA.TT", 
      lang        = "en" 
  )   #
  # Back to old parameters:
  par(old.par)
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-090}
+\includegraphics{soiltexture_vignette-096}
+
+
 
 
 
@@ -3246,7 +3403,7 @@ would NOT always be true (although it is true here).
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-091}
+\includegraphics{soiltexture_vignette-097}
 
 You can see that the column names ARGILE, LIMON and SABLE do not 
 appear on the texture triangle plot. There is always a clear 
@@ -3281,7 +3438,7 @@ label on the good axis).
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-092}
+\includegraphics{soiltexture_vignette-098}
 
 
 The use of expressions allows a finer customization of the axis 
@@ -3304,7 +3461,7 @@ labels, as for any R plot:
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-093}
+\includegraphics{soiltexture_vignette-099}
 
 
 
@@ -3482,7 +3639,7 @@ one you are actually checking!):
  )   #
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-097}
+\includegraphics{soiltexture_vignette-103}
 
 
 Many \texttt{TT.vertices.plot()} options are shared with 
@@ -3551,7 +3708,7 @@ the initial list:
  )   # 
 \end{Sinput}
 \end{Schunk}
-\includegraphics{soiltexture_vignette-099}
+\includegraphics{soiltexture_vignette-105}
 
 
 If you consider creating a completely new triangle, you will need 

@@ -350,8 +350,9 @@ particle size limit \textbf{varies from country to country}.
 (Atterberg system\cite{MINASNY2001AJSR}\cite{RICHER2008INRA}; 
 'International system'; ISSS\footnote{ISSS: International Society 
 of Soil Science. Now \href{www.iuss.org}{IUSS, International 
-Union of Soil Science}. The ISSS particle size system should not 
-be confused with the ISSS texture triangle (See )}; Australia\footnote{%%%
+Union of Soil Science}\label{ISSSSIZE}. The ISSS particle size 
+system should not be confused with the ISSS texture triangle (See 
+\ref{ISSSTRIANGLE}, p. \pageref{ISSSTRIANGLE})}; Australia\footnote{%%%
 Strangely, only a 
 small number of countries have adopted the so called 
 'international system'}\cite{MINASNY2001AJSR}; Japan% 
@@ -1170,7 +1171,8 @@ and the boundaries have been checked using
 To display a ISSS\footnote{ISSS: International Soil Science Society. 
 Now IUSS, International Union of Soil Science. The ISSS soil texture 
 classification / triangle should not be confused with the ISSS 
-particle size classification} texture triangle, type:
+particle size classification (See \ref{ISSSSIZE}, p. \pageref{ISSSSIZE})}%%%
+\label{ISSSTRIANGLE} texture triangle, type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 

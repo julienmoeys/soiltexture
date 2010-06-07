@@ -409,7 +409,7 @@ TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr)
 TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
 TT.plot( class.sys = "AU.TT" )          # Australian 
 TT.plot( class.sys = "ISSS.TT" )        # ISSS 
-TT.plot( class.sys = "ROM.TT" )    # Romanian 
+TT.plot( class.sys = "ROM.TT" )         # Romanian 
 
 # ::: Test all the languages:
 
