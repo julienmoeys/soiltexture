@@ -1,6 +1,13 @@
 The Soil Texture Wizard
 change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
+-----------------------------------------------------------------------------------------
+
+20100607    Added the Romanian texture triangle to the list of pre-defined  texture 
+            triangles, and the Romanian language to the list of possible languages 
+            for the texture triangle title and axis labels. many thanks to 
+            Rosca Bogdan (Romanian Academy, Iasi Branch, Geography team) for providing 
+            the code and translation.
 
 20100513    Accuracy problems detected in TT.points.in.classes() for texture data 
             located right on the boundary of the triangle (or some texture classes), 
@@ -16,9 +23,10 @@ Julien MOEYS
             No fix are planned in the close future to fix this error.
             Thanks to Wei Shangguan (see below) for pointing this 'bug'.
 
-20100513    Added the ISSS (not the 'Australian ISSS') texture triangle to the 
+20100513    Added the ISSS (not to be confused with the 'Australian ISSS') 
+            texture triangle to the 
             list of pre-defined texture triangles. Many thanks to Wei Shangguan, 
-            PhD student at the School of geography of Beijing normal university 
+            PhD from the School of geography of Beijing normal university 
             for providing the code of the triangle.
 
 20100416    Added the Canadian texture triangle to the list of pre-defined 

@@ -350,7 +350,9 @@ particle size limit \textbf{varies from country to country}.
 (Atterberg system\cite{MINASNY2001AJSR}\cite{RICHER2008INRA}; 
 'International system'; ISSS\footnote{ISSS: International Society 
 of Soil Science. Now \href{www.iuss.org}{IUSS, International 
-Union of Soil Science}}; Australia\footnote{Strangely, only a 
+Union of Soil Science}. The ISSS particle size system should not 
+be confused with the ISSS texture triangle (See )}; Australia\footnote{%%%
+Strangely, only a 
 small number of countries have adopted the so called 
 'international system'}\cite{MINASNY2001AJSR}; Japan% 
 \cite{RICHER2008INRA}), \textbf{2-50$\mu$m} (FAO\footnote{% 
@@ -1159,6 +1161,93 @@ A reference image for this texture triangle can be found in
 and the boundaries have been checked using 
 \href{http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html}%%
 {this reference}\cite{CANSIS2010}.\\
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The ISSS soil texture classification} 
+
+To display a ISSS\footnote{ISSS: International Soil Science Society. 
+Now IUSS, International Union of Soil Science. The ISSS soil texture 
+classification / triangle should not be confused with the ISSS 
+particle size classification} texture triangle, type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "ISSS.TT" ) 
+@ 
+
+
+
+The ISSS soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("ISSS.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "ISSS.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the ISSS system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Wei Shangguan (PhD, School of geography, Beijing 
+normal university) for providing the code of the ISSS triangle 
+(using an article from Verheye and Ameryckx 1984\cite{VERHEYE1984PEDO}).
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Romanian soil texture classification} 
+
+To display a Romanian texture triangle, type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "ROM.TT" ) 
+@ 
+
+
+
+The Romanian soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("ROM.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "ROM.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Romanian system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Rosca Bogdan (Romanian Academy, Iasi Branch, 
+Geography team) for providing the code of the Romanian triangle.
+
+
+A right angled version of the triangle can be obtained by typing:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys = "ROM.TT", 
+    blr.clock   = c(F,T,NA), 
+    tlr.an      = c(45,90,45), 
+    blr.tx      = c("SILT","CLAY","SAND"), 
+)   #
+@ 
 
 
 
@@ -2915,8 +3004,8 @@ par(old.par)
 @ 
 
 
-And a third example with Dutch (\texttt{lang = "nl"}) and Flemish 
-(\texttt{lang = "nl"}) or, to be more exact, with the terms used 
+And a 3rd example with Dutch (\texttt{lang = "nl"}) and Flemish 
+(\texttt{lang = "fl"}) or, to be more exact, with the terms used 
 on the Dutch texture triangle and on the Flemish version of the 
 Belgian texture triangle.
 
@@ -2942,8 +3031,8 @@ par(old.par)
 @ 
 
 
-And finally in Swedish (\texttt{lang = "se"}) and in English, the 
-default language (\texttt{lang = "en"}):
+A 4th example in Swedish (\texttt{lang = "se"}) and in Romanian 
+(\texttt{lang = "ro"}):
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
@@ -2960,12 +3049,33 @@ TT.plot(
 # Plot the triangles with different languages:
 TT.plot( 
     class.sys   = "FR.GEPPA.TT", 
+    lang        = "ro" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
+
+
+And finally in English, the default language (\texttt{lang = "en"}):
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix (for size):
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
     lang        = "en" 
 )   #
 
 # Back to old parameters:
 par(old.par)
 @ 
+
+
 
 
 

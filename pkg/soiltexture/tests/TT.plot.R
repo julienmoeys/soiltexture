@@ -65,5 +65,17 @@ TT.plot( class.sys = "BE.TT" )          # Belgium
 TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
 TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
 TT.plot( class.sys = "AU.TT" )          # Australian 
+TT.plot( class.sys = "ISSS.TT" )        # ISSS 
+TT.plot( class.sys = "ROM.TT" )    # Romanian 
 
+# ::: Test all the languages:
 
+TT.plot( class.sys = "USDA.TT", lang = "en" )  #  English, default 
+TT.plot( class.sys = "USDA.TT", lang = "fr" )  #  French 
+TT.plot( class.sys = "USDA.TT", lang = "de" )  #  German 
+TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Spanish 
+TT.plot( class.sys = "USDA.TT", lang = "it" )  #  Italian 
+TT.plot( class.sys = "USDA.TT", lang = "nl" )  #  Dutch 
+TT.plot( class.sys = "USDA.TT", lang = "fl" )  #  Dutch (Belgian) / Flemmish 
+TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Swedish 
+TT.plot( class.sys = "USDA.TT", lang = "ro" )  #  Romanian 

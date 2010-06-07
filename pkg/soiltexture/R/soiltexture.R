@@ -215,25 +215,26 @@ assign(
         lang.par    = data.frame( 
             "lang"  = c(    "en",                           "fr",                       "it", 
                             "es",                           "de",                       "nl",
-                            "se",                           "fl"        ), ##
+                            "se",                           "fl",                       "ro" ), ##
             #
             "CLAY"  = c(    "\"Clay\"",                     "\"Argile\"",               "\"Argilla\"", 
                             "\"Arcilla\"",                  "\"Ton\"",                  "\"Lutum\"", 
-                            "\"Ler\"",                      "\"Klei\""  ), ##
+                            "\"Ler\"",                      "\"Klei\"",                 "\"Argila\"" ), ##
             #
             "SILT"  = c(    "\"Silt\"",                     "\"Limon\"",                "\"Limo\"", 
                             "\"Limo\"",                     "\"Schluff\"",              "\"Silt\"", 
-                            "\"Silt\"",                     "\"Leem\""  ), ##
+                            "\"Silt\"",                     "\"Leem\"",                 "\"Praf\"" ), ##
             #
             "SAND"  = c(    "\"Sand\"",                     "\"Sable\"",                "\"Sabbia\"", 
                             "\"Arena\"",                    "\"Sand\"",                 "\"Zand\"", 
-                            "\"Sand\"",                     "\"Zand\""  ), ##
+                            "\"Sand\"",                     "\"Zand\"",                 "\"Nisip\"" ), ##
             #
             "TT"    = c(    "\"Texture triangle\"",         "\"Triangle de texture\"",  "\"Triangolo della tessitura\"", 
                             "\"Tri\\340ngulo de textura\"", "\"Bodenartendiagramm\"",   "\"Textuurdriehoek\"", 
-                            "\"Texturtriangel\"",           "\"Textuurdriehoek\""  ), ##
+                            "\"Texturtriangel\"",           "\"Textuurdriehoek\"",      "\"Diagrama triunghiulara a texturii\"" ), ##
             stringsAsFactors    = FALSE  
         ),  #
+        # Acknowledgments: Rosca Bogdan, from the Romanian Academy, Iasi Branch, Geography team, provided the Romanian translation (thanks!).
         # 
         # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
         # | TRIANGLE CUSTOMISATION          |
@@ -1019,6 +1020,67 @@ assign(
                 "SaLo"       = list( "name" = "sandy loam",      "points" = c(09,15,16,10)        ), 
                 "Lo"         = list( "name" = "loam",            "points" = c(10,16,17,11)        ), 
                 "SiLo"       = list( "name" = "silt loam",       "points" = c(11,17,18,12)        )  
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = rep(T,3), 
+            tlr.an          = c(60,60,60), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,20,2000), 
+            tri.css.ps.lim  = c(0,2,20,2000), 
+            #
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
+        #
+        "ROM.TT" = list(# ROM TRIANGLE PARAMETERS: Added 2010/06/07 
+            #                  by Rosca Bogdan, Romanian Academy 
+            #                  Iasi Branch, Geography team
+            #
+            main            = "SRTS 2003", 
+            # 
+            #                The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            #                  = P13    P14    P15    P16    P17    P18    P19    P20    P21    P22    P23   
+            #                  = P24    P25    P26    P27 (submits)
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 0.700, 0.700, 0.600, 0.600, 0.600, 0.450, 0.450, 0.450, 0.450, 0.330, 0.330, 0.330,  
+                                 0.330, 0.200, 0.200, 0.200, 0.200, 0.200, 0.120, 0.120, 0.050, 0.050, 0.000,         
+                                 0.000, 1.000, 0.000, 0.000 ),  
+                            #
+                "SILT"      = c( 0.000, 0.300, 0.000, 0.330, 0.400, 0.000, 0.140, 0.330, 0.550, 0.000, 0.140, 0.330,  
+                                 0.670, 0.000, 0.140, 0.330, 0.500, 0.800, 0.000, 0.330, 0.000, 0.330, 0.330,         
+                                 0.500, 0.000, 0.000, 1.000 ),  
+                            #
+                "SAND"      = c( 0.300, 0.000, 0.400, 0.070, 0.000, 0.550, 0.410, 0.220, 0.000, 0.670, 0.530, 0.340,  
+                                 0.000, 0.800, 0.660, 0.470, 0.300, 0.000, 0.880, 0.550, 0.950, 0.620, 0.670,         
+                                 0.500, 0.000, 1.000, 0.000 )  
+            ),  #
+            #
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "AF"        = list( "name" = "argila fina",          "points" = c(01,25,02                 ) ), 
+                "AA"        = list( "name" = "argila medie",         "points" = c(01,03,04,05,02           ) ), 
+                "AP"        = list( "name" = "argila prafoasa",      "points" = c(04,08,09,05              ) ), 
+                "AL"        = list( "name" = "argila lutoasa",       "points" = c(03,06,07,08,04           ) ), 
+                "TP"        = list( "name" = "lut argilo-prafos",    "points" = c(08,12,13,09              ) ), 
+                "TT"        = list( "name" = "lut argilos mediu",    "points" = c(07,11,12,08              ) ), 
+                "TN"        = list( "name" = "argila nisipoasa",     "points" = c(06,10,11,07              ) ), 
+                "LP"        = list( "name" = "lut prafos",           "points" = c(12,16,17,18,13           ) ), 
+                "LL"        = list( "name" = "lut mediu",            "points" = c(11,15,16,12              ) ), 
+                "LN"        = list( "name" = "lut nisipo-argilos",   "points" = c(10,14,15,11              ) ), 
+                "SP"        = list( "name" = "praf",                 "points" = c(17,24,27,18              ) ), 
+                "SS"        = list( "name" = "lut nisipos prafos",   "points" = c(16,20,22,23,24,17        ) ),
+                "SG+SM+SF"  = list( "name" = "lut nisipos",          "points" = c(14,19,20,16,15           ) ),
+                "UG+UM+UF"  = list( "name" = "nisip lutos",          "points" = c(19,21,22,20              ) ),
+                "NG+NM+NF"  = list( "name" = "nisip",                "points" = c(21,26,23,22              ) )            
             ),  #
             #
             # Triangle specific parameters for triangle geometry / appearance
@@ -3985,7 +4047,7 @@ TT.dataset <- function(
 ){  #
     TT.auto.set(set.par=FALSE) 
     #
-    require(MASS)
+    require( "MASS" ) 
     #
     nm      <- c(css.names,"Z") 
     #
@@ -5219,7 +5281,7 @@ TT.points.in.classes <- function(
 ){  #
     if( is.null( class.sys ) ){ class.sys <- TT.get("class.sys") } 
     #
-    require("sp") 
+    require( "sp" ) 
     #
     TT.data <- TT.get(class.sys) 
     #
