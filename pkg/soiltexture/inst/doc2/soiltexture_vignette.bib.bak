@@ -1,7 +1,7 @@
 % This file was created with JabRef 2.5.
 % Encoding: Cp1252
 
-@MISC{CANSIS,
+@MISC{CANSIS2010,
   author = {Agriculture and Agri-Food Canada},
   title = {Glossary -- Canadian Soil Information System},
   howpublished = {Internet},
@@ -385,5 +385,16 @@
   edition = {Fourth},
   note = {ISBN 0-387-95457-0. \url{http://www.stats.ox.ac.uk/pub/MASS4}},
   url = {http://www.stats.ox.ac.uk/pub/MASS4}
+}
+
+@ARTICLE{VERHEYE1984PEDO,
+  author = {W. Verheye and J. Ameryckx},
+  title = {Mineral fractions and classificaton of soil texture.},
+  journal = {Pedologie},
+  year = {1984},
+  volume = {2},
+  pages = {215-225},
+  owner = {julienm},
+  timestamp = {2010.06.07}
 }
 
