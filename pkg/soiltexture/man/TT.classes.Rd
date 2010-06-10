@@ -1,9 +1,11 @@
 \name{TT.classes}
 \alias{TT.classes}
-\title{TT classes}
-
+\title{Plot the texture classes ploygons in a texture triangle plot.}
+\description{Plot the texture classes ploygons in an existing texture 
+triangle plot. Draw the polygons and the labels inside each 
+polygons.}
 \usage{
-TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, text.sum = NULL, base.css.ps.lim = NULL, blr.tx = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, bg = NULL, class.lab.col = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, class.line.col = NULL, class.lty = NULL, class.lab.show = NULL, cex.lab = NULL, font.lab = NULL, family.op = NULL, lwd.axis = NULL, col.axis = NULL)
+TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, text.sum = NULL, base.css.ps.lim = NULL, blr.tx = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, bg = NULL, class.lab.col = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, class.line.col = NULL, class.lty = NULL, class.lab.show = NULL, cex.lab = NULL, font.lab = NULL, family.op = NULL, lwd.axis = NULL, col.axis = NULL, new.centroid = TRUE)
 }
 \arguments{
   \item{geo}{
@@ -58,6 +60,9 @@ TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, text.transf
 }
   \item{col.axis}{
 }
+  \item{new.centroid}{Single logical. If TRUE (default) the new method (Paul Bourke) 
+is used to calculate the centroid. If FALSE the centroid is 
+taken as the mean x and y coordinates of the vertices.}
 }
 
 

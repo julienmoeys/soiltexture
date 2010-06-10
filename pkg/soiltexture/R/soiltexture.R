@@ -2962,7 +2962,11 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
 
 
 
-TT.baseplot <- function( 
+TT.baseplot <- function(# Internal. Create an empty plot scene for a texture triangle.
+### Create an empty plot where a texture triangle can be drawn with 
+### other secondary functions (frame, axis, ...). Also return the 
+### 'geo' parameters needed by these secondary functions.
+
     geo             = NULL, 
     class.sys       = "none",  
     # 
@@ -4035,11 +4039,13 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: TT.dataset()              |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.dataset(): genetate a virtual Clay Silt Sand + Z dataset, with correlations 
-TT.dataset <- function( 
+
+
+
+TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z dataset. 
+### Genetates a virtual cross correlated clay silt sand + Z dataset, 
+### where Z is a virtual 4th variable correlated to the texture.
+
     n, 
     seed.val    = NULL, 
     css.names   = NULL, 
@@ -4092,7 +4098,15 @@ TT.dataset <- function(
 
 
 
-TT.classes.tbl    <- function( 
+
+
+TT.classes.tbl <- function(# Returns the table of classes of a texture classification system.
+### Returns the table of classes of a texture classification system. 
+### Returns the classes abbreviations, names and the vertices numbers 
+### that defines each class. Use TT.vertices.tbl() to retrieve the 
+### clay silt sand coordinates of the triangle classes vertices. 
+###  See also TT.vertices.plot().
+
     class.sys       = "FAO50.TT", 
     collapse        = ", " 
 ){  #
@@ -4121,7 +4135,15 @@ TT.classes.tbl    <- function(
 
 
 
-TT.vertices.tbl    <- function( 
+
+
+
+TT.vertices.tbl <- function(# Returns the table of vertices of a texture classification system.
+### Returns the table of vertices of a texture classification system. 
+### Returns the clay silt sand coordinates of each vertices. Use 
+### TT.classes.tbl() to know the vertices that bounds each texture 
+### class. See also TT.vertices.plot().
+
     class.sys       = "FAO50.TT"  
 ){  #
     TT.data <- TT.get( class.sys ) 
@@ -4142,7 +4164,15 @@ TT.vertices.tbl    <- function(
 
 
 
-TT.vertices.plot    <- function( 
+
+
+
+TT.vertices.plot <- function(# Plot the vertices of a texture classification system. 
+### Plot the vertices of a texture classification system, on top 
+### of an already drawn texture triangle plot. Also plot the 
+### vertices numbers. See TT.vertices.tbl() and TT.classes.tbl() 
+### for a non graphic, tabular equivalent of the plot.
+
     geo, 
     class.sys   = "FAO50.TT", 
     fg          = NULL, 
@@ -4196,7 +4226,95 @@ TT.vertices.plot    <- function(
 
 
 
-TT.classes  <- function(
+
+
+
+TT.polygon.area <- function(# Determines the area of 1 polygon (in x-y coordinates). 
+### Determines the area of 1 non-intersecting polygon (in x-y 
+### coordinates). Used by TT.polygon.centroids(). pol.x[1]:pol.y[1] 
+### is supposed different from pol.x[n]:pol.y[n] (i.e. the polygon 
+### is NOT closed). 
+### After "http://local.wasp.uwa.edu.au/~pbourke/geometry/polyarea/
+### Calculating The Area And Centroid Of A Polygon. Written by 
+### Paul Bourke, July 1988".
+
+ pol.x,
+### Vector of numericals. X coordinates of each vertices of the 
+### polygon.
+
+ pol.y
+### Vector of numericals. Y coordinates of each vertices of the 
+### polygon.
+
+){  # Index range:
+    i <- 1:length(pol.x)
+    #
+    # Close the polygon
+    pol.x <- c(pol.x,pol.x[1]) 
+    pol.y <- c(pol.y,pol.y[1]) 
+    #
+    # Calculate the area
+    A <- 0.5 * sum( pol.x[i] * pol.y[i+1] - pol.x[i+1] * pol.y[i] )
+    #
+    return( A ) 
+    ### Returns a single numerical: area of the polygon.
+}   #
+
+
+
+
+
+
+TT.polygon.centroids <- function(# Determines the centroid of 1 polygon (in x-y coordinates). 
+### Determines the centroid of 1 non-intersecting polygon (in x-y 
+### coordinates). Used to determine the centroid of each texture 
+### class in the texture triangle onces its clay silt sand 
+### coordinates have been converted to x-y coordinates. pol.x[1]:pol.y[1] 
+### is supposed different from pol.x[n]:pol.y[n] (i.e. the polygon 
+### is NOT closed). 
+### After "http://local.wasp.uwa.edu.au/~pbourke/geometry/polyarea/ 
+### Calculating The Area And Centroid Of A Polygon. Written by 
+### Paul Bourke, July 1988".
+
+ pol.x,
+### Vector of numericals. X coordinates of each vertices of the 
+### polygon.
+
+ pol.y
+### Vector of numericals. Y coordinates of each vertices of the 
+### polygon.
+
+){  #
+    i <- 1:length(pol.x)
+    #
+    # Calculate the area:
+    A <- TT.polygon.area( 
+        pol.x = pol.x, 
+        pol.y = pol.y  
+    )   #
+    #
+    # Close the polygon
+    pol.x <- c(pol.x,pol.x[1]) 
+    pol.y <- c(pol.y,pol.y[1]) 
+    #
+    # Calculate the area
+    Cx <- (1/(6*A)) * sum( (pol.x[i]+pol.x[i+1]) * (pol.x[i]*pol.y[i+1] - pol.x[i+1]*pol.y[i]) )  
+    Cy <- (1/(6*A)) * sum( (pol.y[i]+pol.y[i+1]) * (pol.x[i]*pol.y[i+1] - pol.x[i+1]*pol.y[i]) )  
+    #
+    return( c("x"=Cx,"y"=Cy) ) 
+    ### Returns a vector of 2 numericals: x and y coordinates of 
+    ### the polygon's centroid. Vector items are names "x" and "y". 
+}   #
+
+
+
+
+
+TT.classes  <- function(# Plot the texture classes ploygons in a texture triangle plot.
+### Plot the texture classes ploygons in an existing texture 
+### triangle plot. Draw the polygons and the labels inside each 
+### polygons.
+
     geo, 
     class.sys, 
     tri.css.ps.lim  = NULL, 
@@ -4222,7 +4340,12 @@ TT.classes  <- function(
     font.lab        = NULL, 
     family.op       = NULL, 
     lwd.axis        = NULL, 
-    col.axis        = NULL  # NB: not the color of the polygon line. par("col.axis")
+    col.axis        = NULL, # NB: not the color of the polygon line. par("col.axis")
+ new.centroid=TRUE  
+### Single logical. If TRUE (default) the new method (Paul Bourke) 
+### is used to calculate the centroid. If FALSE the centroid is 
+### taken as the mean x and y coordinates of the vertices.
+
 ){  # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Retrieve classes-system (texture triangle) parameters:
     TT.data     <- TT.get(class.sys) 
@@ -4280,19 +4403,37 @@ TT.classes  <- function(
     poly.nm <- names( TT.data$"tt.polygons" )
     #
     # Class centroid computation: used for polygon labels position and background colors
-    cent.xy <- do.call( 
-        "cbind", 
-        lapply( 
-            X   = poly.nm, 
-            FUN = function(X){ 
-                sel.vec <- (TT.data$"tt.polygons"[[ X ]])$"points"
-                cent.x  <- mean( xy.new[ sel.vec , "xpos" ] ) 
-                cent.y  <- mean( xy.new[ sel.vec , "ypos" ] ) 
-                return(c("x"=cent.x,"y"=cent.y))
-            }   #
+    if( new.centroid ) 
+    {   #
+        cent.xy <- do.call(# Changed the 2010/06/10
+            "cbind", 
+            lapply( 
+                X   = poly.nm, 
+                FUN = function(X){ 
+                    sel.vec <- (TT.data$"tt.polygons"[[ X ]])$"points"
+                    #
+                    TT.polygon.centroids(
+                        pol.x = xy.new[ sel.vec , "xpos" ], 
+                        pol.y = xy.new[ sel.vec , "ypos" ] 
+                    )   #
+                }   #
+            )   #
         )   #
-    )   #
-    colnames(cent.xy) <- poly.nm
+    }else{ 
+        cent.xy <- do.call( 
+            "cbind", 
+            lapply( 
+                X   = poly.nm, 
+                FUN = function(X){ 
+                    sel.vec <- (TT.data$"tt.polygons"[[ X ]])$"points"
+                    cent.x  <- mean( xy.new[ sel.vec , "xpos" ] ) 
+                    cent.y  <- mean( xy.new[ sel.vec , "ypos" ] ) 
+                    return(c("x"=cent.x,"y"=cent.y))
+                }   #
+            )   #
+        )   #
+    }   #
+    colnames(cent.xy) <- poly.nm 
     #
     # Set the "night colors" parameter
     night.cols  <-  TT.col2hsv(bg)[,"v"] < 0.5 
@@ -4414,10 +4555,9 @@ TT.classes  <- function(
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | FUNCTION: TT.plot()                 |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.plot(): Produce a ternary plot, with full customisation and soil-texture tools.
+
+
+
 TT.plot <- function(# Plot soil texture triangles / diagrams.
 ### Plot a soil texture triangle (also called soil texture 
 ### diagrams, or soil texture ternary plots), with or without 
@@ -4910,10 +5050,15 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
 # Graph margins:
 
- new.mar=NULL
+ new.mar=NULL,
 ### Vector of 4 numericals. Margin sizes of the plot. Default is 
 ### the same as par("mar"). See par("mar") for more details. Use 
 ### this at your own risks!
+
+ new.centroid=TRUE  
+### Single logical. If TRUE (default) the new method (Paul Bourke) 
+### is used to calculate the centroid. If FALSE the centroid is 
+### taken as the mean x and y coordinates of the vertices.
 
 ){  #
     if( is.null( class.sys ) ){ class.sys <- TT.get("class.sys") } 
@@ -5078,7 +5223,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             text.sum        = text.sum, 
             base.css.ps.lim = base.css.ps.lim, 
             blr.tx          = blr.tx, 
-            blr.clock       = blr.clock 
+            blr.clock       = blr.clock, 
+            new.centroid    = new.centroid  
         )   #
     }   #
     #
@@ -5133,7 +5279,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             text.sum        = text.sum, 
             base.css.ps.lim = base.css.ps.lim, 
             blr.tx          = blr.tx, 
-            blr.clock       = blr.clock 
+            blr.clock       = blr.clock, 
+            new.centroid    = new.centroid  
         )   #
     }   #
     #

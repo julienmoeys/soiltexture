@@ -1,7 +1,9 @@
 \name{TT.baseplot}
 \alias{TT.baseplot}
-\title{TT baseplot}
-
+\title{Internal. Create an empty plot scene for a texture triangle.}
+\description{Create an empty plot where a texture triangle can be drawn with 
+other secondary functions (frame, axis, ...). Also return the 
+'geo' parameters needed by these secondary functions.}
 \usage{
 TT.baseplot(geo = NULL, class.sys = "none", blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, col = NULL, cex.main = NULL, lang = NULL)
 }
