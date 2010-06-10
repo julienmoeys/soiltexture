@@ -1,7 +1,10 @@
 \name{TT.vertices.plot}
 \alias{TT.vertices.plot}
-\title{TT vertices plot}
-
+\title{Plot the vertices of a texture classification system. }
+\description{Plot the vertices of a texture classification system, on top 
+of an already drawn texture triangle plot. Also plot the 
+vertices numbers. See TT.vertices.tbl() and TT.classes.tbl() 
+for a non graphic, tabular equivalent of the plot.}
 \usage{
 TT.vertices.plot(geo, class.sys = "FAO50.TT", fg = NULL, col = NULL, cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, offset = NULL, blr.tx = NULL, text.sum = NULL, blr.clock = NULL)
 }

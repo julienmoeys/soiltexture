@@ -1,7 +1,8 @@
 \name{TT.dataset}
 \alias{TT.dataset}
-\title{TT dataset}
-
+\title{Genetates a virtual cross correlated clay silt sand + Z dataset. }
+\description{Genetates a virtual cross correlated clay silt sand + Z dataset, 
+where Z is a virtual 4th variable correlated to the texture.}
 \usage{
 TT.dataset(n, seed.val = NULL, css.names = NULL, text.sum = NULL)
 }

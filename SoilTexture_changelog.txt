@@ -3,6 +3,10 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+20100610    New function TT.polygon.centroids() used for a smater calculation 
+            of the texture class centroid for better placement of the texture 
+            classes labels (used by TT.classes(), itself used by TT.plot()).
+
 20100607    Added the Romanian texture triangle to the list of pre-defined  texture 
             triangles, and the Romanian language to the list of possible languages 
             for the texture triangle title and axis labels. many thanks to 
