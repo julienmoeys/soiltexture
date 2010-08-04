@@ -193,7 +193,7 @@ the triangle main title.}
 plot (= outside the triangle). See 'frame.bg.col' for the background 
 color inside the triangle frame.}
   \item{fg}{Text string containing an R color code. DEPRECATED. foreground 
-color of the plot (= point fill color).}
+color of the plot (= point fill color). Use 'col' instead.}
   \item{col}{Text string containing an R color code. Same definition as par("col"). Color 
 of the points plotted in the triangle.}
   \item{col.axis}{Text string containing an R color code. Color of the triangle's 
@@ -262,10 +262,14 @@ is drawn.}
 drawn inside texture class polygons.}
   \item{class.line.col}{Text string containing an R color code. Color of the texture 
 class polygon boundary lines. }
-  \item{class.p.bg.col}{Single logical. If FALSE (the default), no color gradient 
+  \item{class.p.bg.col}{Single logical OR vector of R colors (character strings). 
+If FALSE (the default), no color gradient 
 is used inside the texture class polygons. If TRUE, a color 
 gradient is drawn, with the color hue specified in 'class.p.bg.hue' 
-and with saturation and values that vary with texture.}
+and with saturation and values that vary with texture. If 
+'class.p.bg.col' is a vector of R colors of the same length 
+as the number of classes in the triangle, these colors 
+will be used as background color for each texture classe plygons.}
   \item{class.p.bg.hue}{Single numerical. Only used if class.p.bg.col == TRUE (no default). 
 Color hue (between 0 and 1) used to create a color gradient 
 between the different texture class polygons.}
