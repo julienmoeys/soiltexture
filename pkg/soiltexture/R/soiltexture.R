@@ -3393,8 +3393,16 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
     # 1. Setting the colors
     if( is.null(grid.col) ) 
     {   #
+        class.p.bg.col.test <- is.logical( class.p.bg.col ) 
+        if( class.p.bg.col.test )
+        {   #
+            class.p.bg.col.test <- class.p.bg.col 
+        }else{ 
+            class.p.bg.col.test <- TRUE 
+        }   #
+        #
         # There is a color gradient in the texture classes polygons?
-        if( class.p.bg.col ) 
+        if( class.p.bg.col.test ) 
         {   # Check "darkness" of the background:
             night.cols  <-  TT.col2hsv(bg)[,"v"] < 0.5 
             #
@@ -4310,7 +4318,7 @@ TT.polygon.centroids <- function(# Determines the centroid of 1 polygon (in x-y 
 
 
 
-TT.classes  <- function(# Plot the texture classes ploygons in a texture triangle plot.
+TT.classes <- function(# Plot the texture classes ploygons in a texture triangle plot.
 ### Plot the texture classes ploygons in an existing texture 
 ### triangle plot. Draw the polygons and the labels inside each 
 ### polygons.
@@ -4438,35 +4446,56 @@ TT.classes  <- function(# Plot the texture classes ploygons in a texture triangl
     # Set the "night colors" parameter
     night.cols  <-  TT.col2hsv(bg)[,"v"] < 0.5 
     #
-    for( pol in poly.nm )
+    # - Test the type of class.p.bg.col parameter:
+    class.p.bg.col.test <- is.logical( class.p.bg.col ) 
+    if( class.p.bg.col.test )
     {   #
+        class.p.bg.col.test <- class.p.bg.col 
+    }else{ 
+        class.p.bg.col.test <- TRUE 
+    }   #
+    #
+    for( i.pol in 1:length(poly.nm) )
+    {   #
+        pol <- poly.nm[i.pol]
+        #
         sel.vec <- (TT.data$"tt.polygons"[[ pol ]])$"points"
         #
         # Compute a classes-polygon background HSV color range:
-        if( class.p.bg.col )
+        if( class.p.bg.col.test )
         {   #
-            x.range <- range(cent.xy["x",]) 
-            y.range <- range(cent.xy["y",]) 
-            a.x     <- (1-0)/(diff(x.range)) 
-            b.x     <- 1-a.x*x.range[2]
-            a.y     <- (1-0)/(diff(y.range)) 
-            b.y     <- 1-a.y*y.range[2]
-            #
-            # Below: check consitency with TT.grid, if changes
-            if( night.cols )
+            if( !is.character( class.p.bg.col ) )
             {   #
-                class.sat <- 0.95 - (cent.xy["x",pol]*a.x+b.x)*0.45 # range 0.50;0.95 
-                class.val <- 0.35 - (cent.xy["y",pol]*a.y+b.y)*0.15 # range 0.20;0.35 
+                x.range <- range(cent.xy["x",]) 
+                y.range <- range(cent.xy["y",]) 
+                a.x     <- (1-0)/(diff(x.range)) 
+                b.x     <- 1-a.x*x.range[2]
+                a.y     <- (1-0)/(diff(y.range)) 
+                b.y     <- 1-a.y*y.range[2]
+                #
+                # Below: check consitency with TT.grid, if changes
+                if( night.cols )
+                {   #
+                    class.sat <- 0.95 - (cent.xy["x",pol]*a.x+b.x)*0.45 # range 0.50;0.95 
+                    class.val <- 0.35 - (cent.xy["y",pol]*a.y+b.y)*0.15 # range 0.20;0.35 
+                }else{ 
+                    class.sat <- 0.50 + (cent.xy["x",pol]*a.x+b.x)*0.45 # range 0.50;0.95 
+                    class.val <- 0.85 + (cent.xy["y",pol]*a.y+b.y)*0.15 # range 0.85;1.00 
+                }   #
+                #
+                class.p.bg.col2 <- hsv( 
+                    h = class.p.bg.hue,  
+                    s = class.sat,  # max = 0.9 
+                    v = class.val   # max = 0.9 
+                )   #
             }else{ 
-                class.sat <- 0.50 + (cent.xy["x",pol]*a.x+b.x)*0.45 # range 0.50;0.95 
-                class.val <- 0.85 + (cent.xy["y",pol]*a.y+b.y)*0.15 # range 0.85;1.00 
+                if( length(class.p.bg.col) != 1 ) 
+                {   #
+                    class.p.bg.col2 <- class.p.bg.col[i.pol] 
+                }else{ 
+                    class.p.bg.col2 <- class.p.bg.col 
+                }   #
             }   #
-            #
-            class.p.bg.col2 <- hsv( 
-                h = class.p.bg.hue,  
-                s = class.sat,  # max = 0.9 
-                v = class.val   # max = 0.9 
-            )   #
         }else{ 
             class.p.bg.col2 <- NA 
         }   #
@@ -4814,7 +4843,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
  fg=NULL,
 ### Text string containing an R color code. DEPRECATED. foreground 
-### color of the plot (= point fill color).
+### color of the plot (= point fill color). Use 'col' instead.
 
  col=NULL,
 ### Text string containing an R color code. Same definition as par("col"). Color 
@@ -4937,10 +4966,14 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 ### class polygon boundary lines. 
 
  class.p.bg.col=NULL,
-### Single logical. If FALSE (the default), no color gradient 
+### Single logical OR vector of R colors (character strings). 
+### If FALSE (the default), no color gradient 
 ### is used inside the texture class polygons. If TRUE, a color 
 ### gradient is drawn, with the color hue specified in 'class.p.bg.hue' 
-### and with saturation and values that vary with texture.
+### and with saturation and values that vary with texture. If 
+### 'class.p.bg.col' is a vector of R colors of the same length 
+### as the number of classes in the triangle, these colors 
+### will be used as background color for each texture classe plygons.
 
  class.p.bg.hue=NULL,
 ### Single numerical. Only used if class.p.bg.col == TRUE (no default). 
@@ -5196,7 +5229,17 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
     # +----------------------------------------------------+
     # Plot the classes polygon fill/background, but not border
     # before/below the grid lines
-    if( (class.sys != "none") & class.p.bg.col )
+    #
+    # - Define if class.p.bg.col is TRUE (or not a logical)
+    class.p.bg.col.test <- is.logical( class.p.bg.col ) 
+    if( class.p.bg.col.test )
+    {   #
+        class.p.bg.col.test <- class.p.bg.col 
+    }else{ 
+        class.p.bg.col.test <- TRUE 
+    }   #
+    #
+    if( (class.sys != "none") & class.p.bg.col.test ) 
     {   #
         TT.classes(
             geo             = geo, 
