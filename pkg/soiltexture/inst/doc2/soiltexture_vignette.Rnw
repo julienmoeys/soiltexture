@@ -1385,6 +1385,28 @@ par(old.par)
 
 
 
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Soil texture triangle with ¨custom texture classes colors} 
+
+\texttt{class.p.bg.col} can also be used to provide custom background 
+colors for each classes of the texture triangle:
+
+Example with the FAO soil texture triangles:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+TT.plot( 
+    class.sys       = "FAO50.TT", 
+    class.p.bg.col  = c("red","green","blue","pink","purple") 
+)   #
+@ 
+
+
+You can type \texttt{TT.classes.tbl()[,1]} to get the number and 
+order of the texture classes in the triangle.
+
+
+
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \section{Overplotting two soil texture classification systems} 
 
