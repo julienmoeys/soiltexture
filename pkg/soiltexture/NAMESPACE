@@ -1,4 +1,4 @@
-import(sp, MASS)
+import(sp, MASS, drc)
 
 exportPattern("^[[:alpha:]]+")
 
