@@ -79,7 +79,7 @@ color (bubble plot). If NULL, a simple plot is drawn (no
 'bubbles')}
   \item{main}{Single character string or expression. Main title of the plot.}
   \item{blr.tx}{Vector of 3 character strings. The 1st, 2nd and 3rd values must 
-be either CLAY, SILT or SAND, and determines the texture classes 
+be either CLAY, SILT or SAND, and determines the particle size classes 
 associated with the BOTTOM, LEFT and RIGHT axis, respectively. 
 CLAY, SILT and SAND order in the vector is free, but they should 
 all be used one time. The CLAY, SILT and SAND names must appear 
@@ -88,24 +88,24 @@ set by 'css.names') and whatever the labels of the axis in the
 plot (eventually set by 'css.lab') }
   \item{css.lab}{Vector of 3 character strings or 3 expressions. The 1st, 2nd 
 and 3rd values must be text strings or expressions, and determines 
-the axes plot labels for the CLAY, SILT and SAND texture classes, 
+the axes plot labels for the CLAY, SILT and SAND particle size classes, 
 respectively. 'css.lab' values are independent from columns 
 names in 'tri.data' (eventually set by 'css.names') and from 
-whatever the placement of texture classes on each axis 
+whatever the placement of particle size classes on each axis 
 (eventually set by 'blr.tx') }
-  \item{text.sum}{Single numerical. Sum of the 3 texture classes for each texture 
-value (fixed). The real sum of the 3 texture classes in 'tri.data' 
+  \item{text.sum}{Single numerical. Sum of the 3 particle size classes for each texture 
+value (fixed). The real sum of the 3 particle size classes in 'tri.data' 
 should be >= text.sum * (1-text.tol) OR  <= text.sum * (1+text.tol), 
 where 'text.tol' is an argument that can be changed. If some 
 of the texture values don't match this requirement, an error 
 occur (function fails) and TT.plot returns a of bad values with 
-their actual texture classes sum. You can 'normalise' you data 
+their actual particle size classes sum. You can 'normalise' you data 
 table () prior to the use of TT.plot, by using the function 
 TT.normalise.sum(), so all values match the 'text.sum' criteria. 
 See also 'tri.sum.tst' that can be set to FALSE to avoid 
-sum of texture classes tests.}
+sum of particle size classes tests.}
   \item{base.css.ps.lim}{Vector of 4 numericals. Particle size boundaries (upper and lower) 
-of the 3 texture classes (CLAY, SILT and SAND, starting from 
+of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 the lower size of CLAY particles, 0, to the upper size of the 
 SAND particles, 2000), in micrometers, FOR THE BASE PLOT. These 
 particles size class limits are the references and all other 
@@ -116,7 +116,7 @@ texture classification system chosen ('class.sys'). The
 transformation function is set by 'text.transf.fun' and is 
 a log-linear interpolation by default.}
   \item{tri.css.ps.lim}{Vector of 4 numericals. Particle size boundaries (upper and lower) 
-of the 3 texture classes (CLAY, SILT and SAND, starting from 
+of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 the lower size of CLAY particles, 0, to the upper size of the 
 SAND particles, 2000), in micrometers, FOR THE TEXTURE TRIANGLE. 
 If not NULL, different from 'base.css.ps.lim', and 
@@ -127,7 +127,7 @@ be set to the default value of the texture classification system
 chosen ('class.sys'). The transformation function is set by 
 'text.transf.fun' and is a log-linear interpolation by default.}
   \item{dat.css.ps.lim}{Vector of 4 numericals. Particle size boundaries (upper and lower) 
-of the 3 texture classes (CLAY, SILT and SAND, starting from 
+of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 the lower size of CLAY particles, 0, to the upper size of the 
 SAND particles, 2000), in micrometers, FOR THE TEXTURE DATA TABLE
 ('tri.data'). If not NULL, different from 'base.css.ps.lim', and 
@@ -193,7 +193,7 @@ the triangle main title.}
 plot (= outside the triangle). See 'frame.bg.col' for the background 
 color inside the triangle frame.}
   \item{fg}{Text string containing an R color code. DEPRECATED. foreground 
-color of the plot (= point fill color). Use 'col' instead.}
+color of the plot (= point fill color).}
   \item{col}{Text string containing an R color code. Same definition as par("col"). Color 
 of the points plotted in the triangle.}
   \item{col.axis}{Text string containing an R color code. Color of the triangle's 
@@ -302,8 +302,8 @@ automatically created for the bubbles (with this hue). }
 plotted on the triangle if 'z.name' is not NULL. }
   \item{z.pch}{Single numerical or vector of numericals. Point symbol number(s) 
 to be used for the bubbles if 'z.name' is not NULL. }
-  \item{text.tol}{Single numerical. Tolerance on the sum of the 3 texture classes. 
-The real sum of the 3 texture classes in 
+  \item{text.tol}{Single numerical. Tolerance on the sum of the 3 particle size classes. 
+The real sum of the 3 particle size classes in 
 'tri.data' should be >= text.sum * (1-text.tol) OR 
 <= text.sum * (1+text.tol). See 'text.sum' for more details, as 
 well as 'tri.sum.tst' (to prevent texture sum tests).}

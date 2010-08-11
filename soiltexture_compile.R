@@ -4,7 +4,7 @@ pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg"
 pkg.name     <- "soiltexture" 
 code.files   <- "soiltexture.R" 
 pkg.version  <- "1.0" 
-pkg.depends  <- c("sp","MASS") 
+pkg.depends  <- c("sp","MASS","drc") 
 
 
 

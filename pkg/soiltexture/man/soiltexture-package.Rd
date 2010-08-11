@@ -17,11 +17,11 @@ et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
 Version: \tab 1.0\cr
-Date: \tab 2010-08-04\cr
+Date: \tab 2010-08-11\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
-Depends: \tab R (>= 2.11.1), sp, MASS\cr
+Depends: \tab R (>= 2.11.1), sp, MASS, drc\cr
 Suggests: \tab plotrix\cr
 License: \tab GPL (>=3)\cr
 URL: \tab http://julienmoeys.free.fr/?Soil-textures-triangle\cr}

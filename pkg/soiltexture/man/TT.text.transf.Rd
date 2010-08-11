@@ -4,7 +4,7 @@
 \description{Log-linear transformation of a soil texture data table 
 ('tri.data') from one 
 particle size system ('dat.css.ps.lim') into another 
-('base.css.ps.lim'). Only 3 texture classes allowed. See 
+('base.css.ps.lim'). Only 3 particle size classes allowed. See 
 TT.text.transf.X for transformation involving more than 3 
 particle classes. 'tri.data' may contain other variables 
 (not in 'css.names'). They are returned unchanged with the 
