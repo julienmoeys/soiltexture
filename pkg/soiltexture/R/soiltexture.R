@@ -95,19 +95,58 @@
 
 
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | LOAD REQUIRED PACKAGES: sp          |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ sp package is required for his pointinpolygon() function 
+# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+# | LOAD REQUIRED PACKAGES: sp, drc, lattice, magic, nlme, plotrix           |
+# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+
+
+
+# sp package is required for his pointinpolygon() function 
 #   it is used here to determine is a data-point belong to a class-polygon (Soil Texture Class) 
+
+# drc package is required for his drm() function 
+#   it is used here fitting the Particle-size Distribution modes. 
+
+# lattice, magic, nlme and plotrix package is required by drc 
+
 # if( !"sp" %in% as.character( installed.packages()[,1] ) )
 # {   #
 #     install.packages("sp")
 # }   #
 
+# if( !"drc" %in% as.character( installed.packages()[,1] ) )
+# {   #
+#     install.packages("drc")
+# }   #
+
+ 
+# if( !"lattice" %in% as.character( installed.packages()[,1] ) )
+# {   #
+#     install.packages("lattice")
+# }   #
+#    
+# if( !"lattice" %in% as.character( installed.packages()[,1] ) )
+# {   #
+#     install.packages("magic")
+# }   #
+#    
+# if( !"lattice" %in% as.character( installed.packages()[,1] ) )
+# {   #
+#     install.packages("nlme")
+# }   #
+#    
+# if( !"lattice" %in% as.character( installed.packages()[,1] ) )
+# {   #
+#     install.packages("plotrix")
+# }   #
+
 # require( "sp" )
-
-
+# require( "drc" )
+# require( "drc" )
+# require( "lattice" )
+# require( "magic" )
+# require( "nlme" )
+# require( "plotrix" )
 
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 # | ENV: TT.env()                       |
@@ -205,7 +244,7 @@ assign(
         #
         # Input data:
         text.sum        = 100,      # Value of the SUM OF CLAY SILT SAND TEXTURE: either 1 or 100 (or fancy)
-        text.tol        = 1/1000,   # Error tolerance on the sum of the 3 texture classes
+        text.tol        = 1/1000,   # Error tolerance on the sum of the 3 particle size classes
         tri.sum.tst     = TRUE,     # Perform a sum test on the tri-variable data (sums == text.sum) ??
         tri.pos.tst     = TRUE,     # Test if all tri-variable data are positive ??
         # 
@@ -1902,11 +1941,11 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
 
 
 
-TT.data.test <- function(# Test the validity of some soil texture data table (3 texture classes). 
+TT.data.test <- function(# Test the validity of some soil texture data table (3 particle size classes). 
 ### Test the validity of some soil texture data table. (1) Test that 
 ### it is a data.frame or matrix, (2) Test that column names contains 
 ### 'css.names', (3) Test that there are no missing values, (4) that 
-### all values are >= 0, (5) That the sum of the 3 texture class 
+### all values are >= 0, (5) That the sum of the 3 particle size classes 
 ### is >= 'text.sum'*(1-'text.tol') or <= 'text.sum'*(1+'text.tol'). 
 ### 'tri.data' may contain other variables than the 3 textuer classes 
 ### (ignored).
@@ -2010,13 +2049,13 @@ TT.data.test <- function(# Test the validity of some soil texture data table (3 
 
 
 
-TT.data.test.X <- function(# Test the validity of some soil texture data table (X texture classes). 
+TT.data.test.X <- function(# Test the validity of some soil texture data table (X particle size classes). 
 ### Test the validity of some soil texture data table. (1) Test that 
 ### it is a data.frame or matrix, (3) Test that there are no missing 
 ### values, (4) that all values are >= 0, (5) That the sum of the 
-### X texture class is >= 'text.sum'*(1-'text.tol') or <= 
+### X particle size class is >= 'text.sum'*(1-'text.tol') or <= 
 ### 'text.sum'*(1+'text.tol'). Contrary to TT.data.test() no test 
-### are performed for the texture classes and columns names, so 
+### are performed for the particle size classes and columns names, so 
 ### 'tri.data' should only contains texture data, and nothing else.
 
     tri.data,   # Only texture data here. No additionnal variables
@@ -2161,7 +2200,7 @@ TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.l
         ) )   #
     }   #
     #
-    if( base.ps.lim[1] != base.ps.lim[1] ) 
+    if( base.ps.lim[1] != dat.ps.lim[1] ) 
     {   #
         stop( paste( 
             sep="", 
@@ -2195,6 +2234,84 @@ TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.l
 
 
 
+TT.check.ps.lim.Xm <- function(# Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
+### Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
+### 4 tests performed.
+
+    base.ps.lim,  
+    dat.ps.lim,  
+ ps.lim.length=c(4,4)
+### vector of 2 integers. Number of particle size classes + 1. c(base,dat)
+##author<<Wei Shangguan
+
+){  #
+    # if( length( base.ps.lim ) != length( dat.ps.lim ) ) 
+    # {   #
+    #     stop( paste( 
+    #         sep="", 
+    #         "The length of the 'base' particle size classes limits must be equal to\n", 
+    #         "the length of the 'dat' particle size classes limits.\n", 
+    #         "Either check the 'base' particle size classes limits vector,\n", 
+    #         "or check number of column in tri.data.\n"  
+    #     ) )   #
+    # }   #
+    #
+    if( length( base.ps.lim ) != ps.lim.length[1] ) 
+    {   #
+        stop( paste( 
+            sep="", 
+            "The length of the 'base' particle size classes limits must be equal to\n", 
+            ps.lim.length[1], " (number of particle size classes+1; from ps min to ps.max)\n", 
+            "Actual value: ", length( base.ps.lim ), ".\n", 
+            "Either check the 'base' particle size classes limits,\n", 
+            "or check number of column in tri.data.\n"  
+        ) )   #
+    }   #
+    #
+    if( length( dat.ps.lim ) != ps.lim.length[2] ) 
+    {   #
+        stop( paste( 
+            sep="", 
+            "The length of the 'dat' particle size classes limits must be equal to\n", 
+            ps.lim.length[2], " (number of particle size classes +1; from ps min to ps.max)\n", 
+            "Actual value: ", length( dat.ps.lim ), ".\n", 
+            "Either check the 'dat' particle size classes limits,\n", 
+            "or check number of column in tri.data.\n"  
+        ) )   #
+    }   #
+    #
+    if( base.ps.lim[1] != dat.ps.lim[1] ) 
+    {   #
+        stop( paste( 
+            sep="", 
+            "The first value of the 'dat' particle size classes limits must be equal to\n", 
+            "the first value of the 'base' particle size classes limits.\n", 
+            "Actual value, base: ", base.ps.lim[1], ", dat: ", dat.ps.lim[1]  
+        ) )   #
+    }   #
+    #
+    if( base.ps.lim[ps.lim.length[1]] != dat.ps.lim[ps.lim.length[2]] ) 
+    {   #
+        stop( paste( 
+            sep="", 
+            "The last value of the 'dat' particle size classes limits must be equal to\n", 
+            "the last value of the 'base' particle size classes limits.\n", 
+            "Actual value, base: ", base.ps.lim[ps.lim.length[1]], ", dat: ", dat.ps.lim[ps.lim.length[2]]  
+        ) )   #
+    }   #
+    #
+#    if( base.ps.lim[1] == 0 ) 
+#    {   #
+#        if( base.ps.lim[2] < dat.ps.lim[2] )
+#        stop( paste( 
+#            sep="", 
+#            "When the 1st value of 'dat' and 'base' particle size classes limits is 0\n", 
+#            "The 2nd value of the 'base' particle size classes limits must higher or equal to\n", 
+#            "the 2nd value of the 'dat' particle size classes limits.\n"  
+#        ) )   #
+#    }   #
+}   #
+
 
 
 
@@ -2202,7 +2319,7 @@ TT.text.transf <- function(# Log-linear transformation of a soil texture data ta
 ### Log-linear transformation of a soil texture data table 
 ### ('tri.data') from one 
 ### particle size system ('dat.css.ps.lim') into another 
-### ('base.css.ps.lim'). Only 3 texture classes allowed. See 
+### ('base.css.ps.lim'). Only 3 particle size classes allowed. See 
 ### TT.text.transf.X for transformation involving more than 3 
 ### particle classes. 'tri.data' may contain other variables 
 ### (not in 'css.names'). They are returned unchanged with the 
@@ -2373,7 +2490,7 @@ TT.text.transf.X <- function(# Log-linear transformation of a soil texture data 
 ### Log-linear transformation of a soil texture data table 
 ### ('tri.data') from one 
 ### particle size system ('dat.css.ps.lim') into another 
-### ('base.css.ps.lim'). No limit in the number of texture classes 
+### ('base.css.ps.lim'). No limit in the number of partile size classes 
 ### in the inputed and outputed texture tables. See TT.text.transf 
 ### for transformation involving only 3 particle classes. 'tri.data' 
 ### can only contain texture data.
@@ -2485,6 +2602,438 @@ TT.text.transf.X <- function(# Log-linear transformation of a soil texture data 
 
 
 
+# +--------------------------------------+
+# | FUN: TT.text.transf.Xm()             |
+# +--------------------------------------+
+TT.text.transf.Xm <- function(# Transformation of a soil texture data table between 2 particle size systems (X classes)
+### using various Particle Size Distribution (PSD) models including Anderson (AD), Fredlund4P (F4P), Fredlund3P (F3P),
+### modified logistic growth (ML), Offset-Nonrenormalized Lognormal (ONL), Offset-Renormalized Lognormal (ORL),
+### Skaggs (S), van Genuchten type(VG),van Genuchten modified, Weibull (W), Logarithm(L), 
+### Logistic growth (LG), Simple Lognormal (SL),Shiozawa and Compbell (SC). 
+### The performance of PSD models is influenced by many aspects like soil texture class,
+### number and position (or closeness) of observation points, clay content etc.
+### The latter four PSD models perform worse than the former ten. 
+### The AD, F4P, S, and W model is recommended for most of texture classes. 
+### And it will be even better to compare several different PSD models and using the results of the model
+### with the minimum residual sum of squares (or other measures).
+### Sometimes, the fitting will failed for the iteration is not converged or some errors happened.
+### Transformation of a soil texture data table 
+### ('tri.data') from one 
+### particle size system ('dat.ps.lim') into another 
+### ('base.ps.lim'). No limit in the number of texture classes 
+### in the input and output texture tables. See TT.text.transf 
+### for transformation involving only 3 particle classes. 'tri.data' 
+### can only contain texture data.
+##author<<Wei Shangguan
+
+    tri.data,
+    base.ps.lim,
+    dat.ps.lim,
+    text.sum        = NULL,
+    text.tol        = NULL,
+    tri.sum.tst     = NULL,
+    tri.pos.tst     = NULL,
+    psdmodel        = "AD",
+    omethod         = "all",#see optim for available methods, the default "all" is to run all methods and
+                            # choose the best results with minimum residual sum of squares (RSS).
+    tri.sum.norm    = FALSE #Weather the sum of is 
+){#
+    TT.auto.set( set.par = FALSE )
+    #
+    TT.data.test.X(
+        tri.data    = tri.data,
+        text.sum    = text.sum,
+        text.tol    = text.tol,
+        tri.sum.tst = tri.sum.tst,
+        tri.pos.tst = tri.pos.tst
+    )   #
+    #
+    tri.data <- t(  apply(
+        X       = tri.data,
+        MARGIN  = 1,
+        FUN     = function(X){
+            cumsum(X)/100
+        }   #
+    )   )   #
+    #
+    ps.end   <- dim( tri.data )[2] + 1
+    #
+    TT.check.ps.lim.Xm(
+        base.ps.lim     = base.ps.lim,
+        dat.ps.lim      = dat.ps.lim,
+        ps.lim.length   = c(length(base.ps.lim),ps.end)
+    )   #
+    #
+    if( base.ps.lim[1] != 0 )
+    {   #
+        tri.data <- cbind(
+            "ZERO" = rep(0,dim(tri.data)[1]),
+            tri.data
+        )   #
+        #
+        ps.start    <- 1
+    }else{
+        ps.start    <- 2
+    }   #
+    #Particle size diameter in micro-meters (will be converted in milli-meters)
+    base.ps.lim <- base.ps.lim/1000
+    dat.ps.lim <- dat.ps.lim/1000
+#    base.ps.lim2 <- TT.dia2phi(base.ps.lim)
+#    dat.ps.lim2  <- TT.dia2phi(dat.ps.lim)
+    #
+#    old.col.nm   <- colnames( tri.data )
+    
+    #
+    fitpsd <- function(
+    y,
+    xin,
+    xout,
+    psdmodel,
+    method)
+    {   
+        require( "drc" ) # Added 2010/08/11 by JM
+        #
+        #default max and min of initial parameters
+        maxspa1 <- 1
+        minspa1 <- 0.1
+        maxspa2 <- 1
+        minspa2 <- 0.1
+        #erf error function for ONL and ORL model
+        erf <- function(x) 2 * pnorm(x * sqrt(2)) - 1
+        #r0 for S model
+        r0  <- xin[1]
+        #dmax, dmin for W model
+        dmax <- xin[length(xin)]
+        dmin <- r0
+        # Particle Size Distribution (PSD) models
+        AD  <- function(dose, parm)
+            {parm[, 1] + parm[, 2]*atan(parm[, 3]*log10(dose/parm[, 4]))}
+        F4P <- function(dose, parm)
+            {(1-(log(1+parm[,1]/dose)/log(1+parm[,1]/0.0001))^7)/(log(exp(1)+(parm[,2]/dose)^parm[,3]))^parm[,4]}
+        F3P <- function(dose, parm)
+            {(1-(log(1+0.001/dose)/log(1+0.001/0.0001))^7)/(log(exp(1)+(parm[,1]/dose)^parm[,2]))^parm[,3]}
+        ML  <- function(dose, parm)
+            {1/(1+parm[,1]*exp(-parm[,2]*dose^parm[,3]))}
+        ONL <- function(dose, parm)
+            {
+                t   <- (-1)^(log(dose) >= parm[,1]+1)
+                (1+t*erf((log(dose)+parm[,1])/parm[,2]*2^0.5))/2+parm[,3]
+            }
+        ORL <- function(dose, parm)
+            {
+                t   <- (-1)^(log(dose) >= parm[,1]+1)
+                (1-parm[,3])*(1+t*erf((log(dose)+parm[,1])/parm[,2]*2^0.5))/2+parm[,3]
+            }
+        # no ability to predict the content below r0
+        S   <- function(dose, parm)
+            {1/(1+(1/y[1]-1)*exp(-parm[,1]*((dose-r0)/r0)^parm[,2]))}
+        VG  <- function(dose, parm)
+            {(1+(parm[,1]/dose)^parm[,2])^(1/parm[,2]-1)}
+        # old form is right
+        VGM <- function(dose, parm)
+            {y[1]+(1-y[1])*(1+(parm[,1]*dose)^(-parm[,2]))^(-1/parm[,2]-1)}
+        #This is the wrong form of VGM
+#        VGM <- function(dose, parm)
+#            {y[1]+(1-y[1])*(1+(parm[,1]*dose)^(-parm[,2]))^(1/parm[,2]-1)}
+        # no ability to predict the content below dmin
+        W   <- function(dose, parm)
+            {parm[,3]+(1-parm[,3])*(1-exp(-parm[,1]*((dose-dmin)/(dmax-dmin))^parm[,2]))}
+        L   <- function(dose, parm)
+            {parm[,1]*log(dose)+parm[,2]}
+        LG  <- function(dose, parm)
+            {1/(1+parm[,1]*exp(-parm[,2]*dose))}
+        SC  <- function(dose, parm)
+            {
+                t   <-(-1)^(log(dose) >= parm[,1]+1)
+                (1-parm[,3])*(1+t*erf((log(dose)+parm[,1])/parm[,2]*2^0.5))/2+parm[,3]*(1+t*erf((log(dose)+1.96)/1*2^0.5))/2
+            }
+        SL  <- function(dose, parm)
+            {
+                t   <-(-1)^(log(dose) >= parm[,1]+1)
+                (1+t*erf((log(dose)+parm[,1])/parm[,2]*2^0.5))/2
+            }
+
+        if( psdmodel == "AD" )
+        {
+            logi    <- AD
+            pn      <- 4
+            pname   <- c("f0", "b", "c", "r0")
+        }
+        else if ( psdmodel == "F4P" )
+        {
+            logi    <- F4P
+            pn      <- 4
+            pname   <- c("df","a","n","m")
+        }
+        else if ( psdmodel == "F3P" )
+        {
+            logi    <- F3P
+            pn      <- 3
+            pname   <- c("a","n","m")
+        }
+        else if ( psdmodel == "ML" )
+        {
+            logi    <- ML
+            pn      <- 3
+            pname   <- c("a","b","c")
+        }
+        else if ( psdmodel == "ONL" )
+        {
+        logi    <- ONL
+        pn      <- 3
+        pname   <- c("u","o","c")
+        }
+        else if ( psdmodel == "ORL" )
+        {
+            logi    <- ORL
+            pn      <- 3
+            pname   <- c("u","o","e")
+        }
+        else if ( psdmodel == "S" )
+        {
+            logi    <- S
+            pn      <- 2
+            pname   <- c("u","c")
+        }
+        else if ( psdmodel == "VG" )
+        {
+            logi    <- VG
+            pn      <- 2
+            pname   <- c("dg","n")
+            maxspa2 <- 2
+            minspa2 <- 1
+        }
+        else if ( psdmodel == "VGM" )
+        {
+            logi    <- VGM
+            pn      <- 2
+            pname   <- c("dg","n")
+            maxspa1 <- 200
+            minspa1 <- 4
+            maxspa2 <- 2
+            minspa2 <- 0.5
+        }
+        else if ( psdmodel == "W" )
+        {
+            logi    <- W
+            pn      <- 3
+            pname   <- c("a","b","c")
+        }
+        else if ( psdmodel == "L" )
+        {
+            logi    <- L
+            pn      <- 2
+            pname   <- c("a","b")
+        }
+        else if ( psdmodel == "LG" )
+        {
+            logi    <- LG
+            pn      <- 2
+            pname   <- c("a","b")
+        }
+        else if ( psdmodel == "SC" )
+        {
+            logi    <- SC
+            pn      <- 3
+            pname   <- c("u","o","e")
+        }
+        else if ( psdmodel == "SL" )
+        {
+            logi    <- SL
+            pn      <- 2
+            pname   <- c("u","o")
+        }
+        #default lower and upper limit for drc::drm, these values should not set 
+        #at the beginning of the function for pn is set later
+        lowerl <- rep(10e-9,times=pn)
+        upperl <- rep(10e+5,times=pn)
+        #Initailize spa for drc::drm
+        spa <- c(1,1,1,1)
+        #methods used in optim() of drc::drm
+        meth <- c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN")
+        
+        mdev <- 100
+        for( i in 1:5 ) # The nonlinear optimization runs were carried out using at least
+                        # five random initial parameter estimates for all soils. 
+                        #When the final solution for each soil converged to different parameter values,
+                        #the parameter values with the best fitting statistics (RSS) were kept. 
+        {
+            if( method == "all" )# using all optim methods
+            {
+                for( j in 1:5 )
+                {
+                    repeat
+                    {
+                        spa[1:pn-1]     <- runif(n = pn-1,max = maxspa1,min = minspa1)
+                        spa[pn]         <- runif(n = 1,max = maxspa2,min = minspa2)
+                        tt<- try( drm(y ~ xin, fct = list( logi, NULL,pname ), # JM:2010/08/11 changed drc::drm to drm alone
+                                start   = spa[1:pn],
+                                #roust  = "median",
+                                lowerl  = lowerl,
+                                upperl  = upperl,
+                                control = drmc(constr = TRUE,maxIt = 500, # JM:2010/08/11 changed drc::drmc to drmc alone
+                                    noMessage   = TRUE,
+                                    method      = meth[j],
+                                    # method    = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN"),
+                                    #trace      = TRUE
+                                )
+                            )
+                            , silent = TRUE
+                         )
+                        if( !inherits(tt, "try-error") )
+                        {
+                            dev <- sum(residuals(tt)^2)
+                            if( mdev > dev )
+                            {
+                                mdev    <- dev
+                                ttbest  <- tt
+                            }
+                            break
+                        }
+                    }
+                }
+            }
+            else
+            {
+                repeat
+                {
+                    spa[1:pn-1] <- runif(n=pn-1,max = maxspa1,min = minspa1)
+                    spa[pn]     <- runif(n=1,max = maxspa2,min = minspa2)
+                    tt  <- try( drm(y ~ xin, fct = list(logi, NULL, pname), # JM:2010/08/11 changed drc::drm to drm alone
+                            start   = spa[1:pn],
+                            #roust  = "median",
+                            lowerl  = lowerl,
+                            upperl  = upperl,
+                            control = drmc(constr = TRUE,maxIt = 500,# JM:2010/08/11 changed drc::drmc to drmc alone
+                                noMessage   = TRUE,
+                                method      = method,
+                                # method    = c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN"),
+                                #trace      = TRUE
+                            )
+                        )
+                        , silent = TRUE
+                    )
+                    if( !inherits(tt, "try-error") )
+                    {
+                        dev<-sum(residuals(tt)^2)
+                        if( mdev>dev )
+                        {
+                            mdev <- dev
+                            ttbest <- tt
+                        }
+                        break
+                    }
+                }
+            }
+            #when the residual sum of error (deviance) is very small, the iteration is stopped to save time
+            if(mdev < 0.0001) break
+        }
+        if( psdmodel == "AD" ) #predict() has some bug for AD model
+        {
+            pre <- coef(ttbest)[1] + coef(ttbest)[2]*atan(coef(ttbest)[3]*log10(xout/coef(ttbest)[4]))
+        } 
+        else if( psdmodel == "F4P" ) #predict() has some bug for F4P model
+        {
+            pre <- (1-(log(1+coef(ttbest)[1]/xout)/log(1+coef(ttbest)[1]/0.0001))^7)/(log(exp(1)+(coef(ttbest)[2]/xout)^coef(ttbest)[3]))^coef(ttbest)[4]
+        }
+        else if( psdmodel == "F3P" )
+        {
+            pre <- (1-(log(1+0.001/xout)/log(1+0.001/0.0001))^7)/(log(exp(1)+(coef(ttbest)[1]/xout)^coef(ttbest)[2]))^coef(ttbest)[3]
+        }   
+        else if( psdmodel == "ML" )
+        {
+            pre <- 1/(1+coef(ttbest)[1]*exp(-coef(ttbest)[2]*xout^parm[,3]))
+        }
+        else if( psdmodel == "ONL" )
+        {
+           t    <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
+           pre  <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+parm[,3]
+        }
+        else if( psdmodel == "ORL" ) #predict() has some bug for F4P model
+        {
+            t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
+            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]         
+        }
+        else if( psdmodel == "S" ) #predict() has some bug for F4P model
+        {
+            pre <- 1/(1+(1/y[1]-1)*exp(-coef(ttbest)[1]*((xout-r0)/r0)^coef(ttbest)[2]))        
+        }
+        else if( psdmodel == "VG" ) #predict() has some bug for F4P model
+        {
+            pre <- 1(1+(coef(ttbest)[1]/xout)^coef(ttbest)[2])^(1/coef(ttbest)[2]-1)        
+        }
+        else if( psdmodel == "VGM" ) #predict() has some bug for F4P model
+        {
+            pre <- y[1]+(1-y[1])*(1+(coef(ttbest)[1]*xout)^(-coef(ttbest)[2]))^(1/coef(ttbest)[2]-1)        
+        }
+        else if( psdmodel == "W" ) #predict() has some bug for F4P model
+        {
+            pre <- coef(ttbest)[3]+(1-coef(ttbest)[3])*(1-exp(-coef(ttbest)[1]*((xout-dmin)/(dmax-dmin))^coef(ttbest)[2]))        
+        }
+        else if( psdmodel == "L" ) #predict() has some bug for F4P model
+        {
+            pre <- coef(ttbest)[1]*log(xout)+coef(ttbest)[2]        
+        }
+        else if( psdmodel == "LG" ) #predict() has some bug for F4P model
+        {
+            pre <- 1/(1+coef(ttbest)[1]*exp(-coef(ttbest)[2]*xout))        
+        }
+        else if( psdmodel == "SC" ) #predict() has some bug for F4P model
+        {
+            t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
+            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]*(1+t*erf((log(xout)+1.96)/1*2^0.5))/2        
+        }
+        else if( psdmodel == "SL" ) #predict() has some bug for F4P model
+        {
+            t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
+            pre <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2       
+        }
+        #pre are the predicted values, coef(ttbest) are the model paremeters,
+        out <- c(pre[1],pre[2:length(pre)]-pre[1:length(pre)-1])*100
+        #dev is the deviance ( Residual Sum of Squaures)
+        c(out,coef(ttbest),dev=mdev*10000)
+    }
+
+    results <- t(apply(tri.data[1:dim(tri.data)[1],],
+        1,
+        fitpsd,
+        xin     = dat.ps.lim[ ps.start:ps.end ],
+        xout    = base.ps.lim[ ps.start:length(base.ps.lim) ],
+        psdmodel= psdmodel,
+        method  = omethod)
+    )
+#    results <- t(apply(tri.data[1:5,],
+#        1,
+#        fitpsd,
+#        xin     = dat.ps.lim[ ps.start:ps.end ],
+#        xout    = base.ps.lim[ ps.start:length(base.ps.lim) ],
+#        psdmodel= psdmodel,
+#        method  = omethod)
+#    )
+    colnames(results)[1:(length(base.ps.lim)-ps.start+1)]<-
+         paste(sep = "",c(0,base.ps.lim[ ps.start:(length(base.ps.lim)-1)])*1000,"-",base.ps.lim[ ps.start:length(base.ps.lim) ]*1000)
+    results
+}
+
+#     my.text4 <- data.frame( 
+#         "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
+#         "FSILT" = c(02,04,10,15,25,40,35,20,10,05,10,20), 
+#         "CSILT" = c(03,04,05,10,30,45,30,25,05,10,07,23), 
+#         "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10)  
+#     )   #
+#     TT.text.transf.Xm( 
+#       tri.data    = my.text4, 
+#       base.ps.lim = c(0,2,20,50,2000), 
+#       dat.ps.lim  = c(0,2,20,63,2000),  
+#       psdmodel    = "S"
+#     )   #
+#     TT.text.transf.Xm( # JM: does not work on my PC
+#       tri.data    = my.text4, 
+#       base.ps.lim = c(0,1,50,2000), 
+#       dat.ps.lim  = c(0,2,30,60,2000),
+#       psdmodel    = "AD",
+#       omethod     = "Nelder-Mead"  
+#     ) 
 
 
 
@@ -4680,7 +5229,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
  blr.tx=NULL,
 ### Vector of 3 character strings. The 1st, 2nd and 3rd values must 
-### be either CLAY, SILT or SAND, and determines the texture classes 
+### be either CLAY, SILT or SAND, and determines the particle size classes 
 ### associated with the BOTTOM, LEFT and RIGHT axis, respectively. 
 ### CLAY, SILT and SAND order in the vector is free, but they should 
 ### all be used one time. The CLAY, SILT and SAND names must appear 
@@ -4691,30 +5240,30 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
  css.lab=NULL,
 ### Vector of 3 character strings or 3 expressions. The 1st, 2nd 
 ### and 3rd values must be text strings or expressions, and determines 
-### the axes plot labels for the CLAY, SILT and SAND texture classes, 
+### the axes plot labels for the CLAY, SILT and SAND particle size classes, 
 ### respectively. 'css.lab' values are independent from columns 
 ### names in 'tri.data' (eventually set by 'css.names') and from 
-### whatever the placement of texture classes on each axis 
+### whatever the placement of particle size classes on each axis 
 ### (eventually set by 'blr.tx') 
 
  text.sum=NULL,
-### Single numerical. Sum of the 3 texture classes for each texture 
-### value (fixed). The real sum of the 3 texture classes in 'tri.data' 
+### Single numerical. Sum of the 3 particle size classes for each texture 
+### value (fixed). The real sum of the 3 particle size classes in 'tri.data' 
 ### should be >= text.sum * (1-text.tol) OR  <= text.sum * (1+text.tol), 
 ### where 'text.tol' is an argument that can be changed. If some 
 ### of the texture values don't match this requirement, an error 
 ### occur (function fails) and TT.plot returns a of bad values with 
-### their actual texture classes sum. You can 'normalise' you data 
+### their actual particle size classes sum. You can 'normalise' you data 
 ### table () prior to the use of TT.plot, by using the function 
 ### TT.normalise.sum(), so all values match the 'text.sum' criteria. 
 ### See also 'tri.sum.tst' that can be set to FALSE to avoid 
-### sum of texture classes tests.
+### sum of particle size classes tests.
 
 # blr.psize.lim  = NULL,
 
  base.css.ps.lim=NULL,
 ### Vector of 4 numericals. Particle size boundaries (upper and lower) 
-### of the 3 texture classes (CLAY, SILT and SAND, starting from 
+### of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 ### the lower size of CLAY particles, 0, to the upper size of the 
 ### SAND particles, 2000), in micrometers, FOR THE BASE PLOT. These 
 ### particles size class limits are the references and all other 
@@ -4727,7 +5276,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
  tri.css.ps.lim=NULL,
 ### Vector of 4 numericals. Particle size boundaries (upper and lower) 
-### of the 3 texture classes (CLAY, SILT and SAND, starting from 
+### of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 ### the lower size of CLAY particles, 0, to the upper size of the 
 ### SAND particles, 2000), in micrometers, FOR THE TEXTURE TRIANGLE. 
 ### If not NULL, different from 'base.css.ps.lim', and 
@@ -4740,7 +5289,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
  dat.css.ps.lim=NULL,
 ### Vector of 4 numericals. Particle size boundaries (upper and lower) 
-### of the 3 texture classes (CLAY, SILT and SAND, starting from 
+### of the 3 particle size classes (CLAY, SILT and SAND, starting from 
 ### the lower size of CLAY particles, 0, to the upper size of the 
 ### SAND particles, 2000), in micrometers, FOR THE TEXTURE DATA TABLE
 ### ('tri.data'). If not NULL, different from 'base.css.ps.lim', and 
@@ -4843,7 +5392,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 
  fg=NULL,
 ### Text string containing an R color code. DEPRECATED. foreground 
-### color of the plot (= point fill color). Use 'col' instead.
+### color of the plot (= point fill color).
 
  col=NULL,
 ### Text string containing an R color code. Same definition as par("col"). Color 
@@ -5035,8 +5584,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 # TERNARY VARIABLES control tolerance
 
  text.tol=NULL,
-### Single numerical. Tolerance on the sum of the 3 texture classes. 
-### The real sum of the 3 texture classes in 
+### Single numerical. Tolerance on the sum of the 3 particle size classes. 
+### The real sum of the 3 particle size classes in 
 ### 'tri.data' should be >= text.sum * (1-text.tol) OR 
 ### <= text.sum * (1+text.tol). See 'text.sum' for more details, as 
 ### well as 'tri.sum.tst' (to prevent texture sum tests).
@@ -6935,7 +7484,7 @@ TT.image <- function(
 # +-------------------------------------+
 # | FUN: TT.normalise.sum()             |
 # +-------------------------------------+
-# [ TT.normalise.sum() :: normalise the sum of the 3 texture classes 
+# [ TT.normalise.sum() :: normalise the sum of the 3 particle size classes 
 #   in tri.data to text.sum (100%).
 TT.normalise.sum <- function( 
     tri.data, 
@@ -7002,6 +7551,71 @@ TT.normalise.sum <- function(
 
 #     TT.normalise.sum("tri.data"=rand.text,"residuals"=TRUE)[1:20,] 
 
+# +--------------------------------------+
+# | FUN: TT.normalise.sum.X()             |
+# +--------------------------------------+
+# [ TT.normalise.sum.X() :: normalise the sum of the X particle size classes
+#   in tri.data to text.sum (100%).
+TT.normalise.sum.X <- function( 
+    tri.data, 
+    text.sum    = NULL, 
+    text.tol    = NULL, 
+    #
+    tri.pos.tst = NULL, 
+    residuals   = FALSE  
+){  #
+    # Set rest of variables:
+    TT.auto.set( set.par = FALSE ) 
+    #
+    TT.data.test.X( 
+        tri.data    = tri.data, 
+        text.sum    = text.sum, 
+        text.tol    = text.tol, 
+        tri.sum.tst = FALSE, 
+        tri.pos.tst = tri.pos.tst  
+    )   #
+    sum.ini <- apply( 
+        X       = tri.data[,], 
+        MARGIN  = 1, 
+        FUN     = sum  
+    )   #
+    #
+    print(sum.ini)
+    tri.data <- t( apply( 
+        X       = tri.data[,], 
+        MARGIN  = 1, 
+        FUN     = function(X){ 
+            X * (text.sum/sum(X)) 
+        }   #
+    )   )   #
+    sum.end <- apply( 
+        X       = tri.data[,], 
+        MARGIN  = 1, 
+        FUN     = sum  
+    )   #
+    #
+    if( residuals )
+    {   #
+        tri.data <- cbind( 
+            tri.data, 
+            "residuals" = sum.ini - sum.end  
+        )   #
+    }   #
+    #
+    return( tri.data )
+}   #
+
+#    my.text4 <- data.frame(
+#        "CLAY"  = c(05,60,15,04.9,25,05,25,45,65,75,13,47),
+#        "FSILT" = c(02,04.3,10,15,25,40,35,20,10,05,10,20),
+#        "CSILT" = c(03,04,05,10,30,45,30,25,05,10,07.2,23.3),
+#        "SAND"  = c(90.5,32,70,70,20.3,10.9,9.3,9.4,20,10,70,10)
+#    )   #
+#    res <- TT.normalise.sum.X(
+#        tri.data    = my.text4,
+#        residuals   = TRUE
+#    )   #
+#    res
 
 
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
