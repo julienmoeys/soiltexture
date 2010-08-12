@@ -1,6 +1,6 @@
 \name{TT.text.transf.Xm}
 \alias{TT.text.transf.Xm}
-\title{Transformation of a soil texture data table between 2 particle size systems (X classes)}
+\title{Transformations of a soil texture data table between 2 particle size systems (X classes), various methods.}
 \description{using various Particle Size Distribution (PSD) models including Anderson (AD), Fredlund4P (F4P), Fredlund3P (F3P),
 modified logistic growth (ML), Offset-Nonrenormalized Lognormal (ONL), Offset-Renormalized Lognormal (ORL),
 Skaggs (S), van Genuchten type(VG),van Genuchten modified, Weibull (W), Logarithm(L), 
