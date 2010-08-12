@@ -1,6 +1,6 @@
 \name{TT.classes}
 \alias{TT.classes}
-\title{Plot the texture classes ploygons in a texture triangle plot.}
+\title{Plot the texture classes polygons in a texture triangle plot.}
 \description{Plot the texture classes ploygons in an existing texture 
 triangle plot. Draw the polygons and the labels inside each 
 polygons.}
