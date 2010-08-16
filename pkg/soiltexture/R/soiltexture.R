@@ -148,12 +148,21 @@
 # require( "nlme" )
 # require( "plotrix" )
 
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# | ENV: TT.env()                       |
-# +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-# [ TT.env() :: environment for storing, hiding and protecting internal variables and functions
-TT.env <- new.env()
-# TT.env
+
+
+
+
+
+# Environment for storing, hiding and protecting internal variables and functions.
+TT.env <- new.env() 
+
+# assign( 
+#     x       = "TT.env", 
+#     value   = new.env() 
+# )   #
+
+
+
 
 
 
@@ -6409,18 +6418,24 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 
 
 
-TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y coordinaes) in Clay silta and sand coordinates
-    xy.data, # a data.frame with xpos and ypos columns
-    geo, 
-    css.names       = NULL, 
-    #
-    text.tol        = NULL, 
-    #
-    tri.sum.tst     = NULL, 
-    tri.pos.tst     = NULL, 
-    set.par         = FALSE, 
-    blr.clock       = NULL, 
-    text.sum        = NULL  
+TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y coordinaes) in Clay silta and sand coordinates. 
+### Internal. Convert point-data duplets (2 variables, x-y 
+### coordinaes) in Clay silta and sand coordinates. 
+
+ xy.data,
+### a data.frame with xpos and ypos columns
+
+ geo, 
+ css.names       = NULL, 
+ 
+ text.tol        = NULL, 
+ 
+ tri.sum.tst     = NULL, 
+ tri.pos.tst     = NULL, 
+ set.par         = FALSE, 
+ blr.clock       = NULL, 
+ text.sum        = NULL  
+
 ){  #
     if( !(class(xy.data) %in% c("data.frame","matrix")) )
     {   #
@@ -6625,18 +6640,23 @@ TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y c
 
 
 
+
 TT.locator <- function(# Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle.
-    geo, 
-    css.names       = NULL, 
-    #
-    text.tol        = NULL, 
-    #
-    tri.sum.tst     = NULL, 
-    tri.pos.tst     = FALSE, 
-    set.par         = FALSE, 
-    n               = 512, 
-    type            = "n", 
-    ... 
+### Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle. 
+
+ geo, 
+ css.names       = NULL, 
+ 
+ text.tol        = NULL, 
+ 
+ tri.sum.tst     = NULL, 
+ tri.pos.tst     = FALSE, 
+ set.par         = FALSE, 
+ n               = 512, 
+ type            = "n", 
+ ... 
+### Further argumets passed to locator() 
+
 ){  #
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
@@ -7055,28 +7075,31 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 
 
 
-TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
-    tri.data, 
-    z.name, 
-    geo, 
-    #
-    css.names       = NULL, 
-    tri.pol.data    = NULL,     # edges data, same format as tri.data
-    #
-    text.tol        = NULL, 
-    text.sum        = NULL, 
-    blr.clock       = NULL, 
-    #
-    tri.sum.tst     = NULL, 
-    tri.pos.tst     = NULL, 
-    #bg              = NULL, 
-    
-    set.par         = FALSE, 
-    n               = 25, 
-    lims            = c("points","triangle")[1], 
-    max.dist        = NULL, 
-    q.max.dist      = 0.5, 
-    pow             = 0.5  
+TT.iwd <- function(# Inverse weighted distance interpolation on a grid. 
+### Inverse weighted distance interpolation on a grid. 
+
+ tri.data, 
+ z.name, 
+ geo, 
+ 
+ css.names       = NULL, 
+ tri.pol.data    = NULL,     # edges data, same format as tri.data
+ 
+ text.tol        = NULL, 
+ text.sum        = NULL, 
+ blr.clock       = NULL, 
+ 
+ tri.sum.tst     = NULL, 
+ tri.pos.tst     = NULL, 
+ #bg             = NULL, 
+ 
+ set.par         = FALSE, 
+ n               = 25, 
+ lims            = c("points","triangle")[1], 
+ max.dist        = NULL, 
+ q.max.dist      = 0.5, 
+ pow             = 0.5  
+
 ){  # 
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Automatic takes the values in geo and 
