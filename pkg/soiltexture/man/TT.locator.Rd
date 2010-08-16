@@ -1,7 +1,7 @@
 \name{TT.locator}
 \alias{TT.locator}
 \title{Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle.}
-
+\description{Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle. }
 \usage{
 TT.locator(geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, set.par = FALSE, n = 512, type = "n", ...)
 }
@@ -22,8 +22,7 @@ TT.locator(geo, css.names = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.t
 }
   \item{type}{
 }
-  \item{\dots}{
-}
+  \item{\dots}{Further argumets passed to locator() }
 }
 
 

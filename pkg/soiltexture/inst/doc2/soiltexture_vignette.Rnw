@@ -154,10 +154,7 @@ rm( build.nr )
 
 
 
-% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-% | Front page image:
-
-<<COVERFIG,include=false,echo=FALSE,fig=TRUE>>= 
+<<echo=FALSE,results=hide,quite=TRUE>>= 
 old.wd  <- getwd() 
 
 # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
@@ -172,10 +169,21 @@ if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) )
     )   #
 }   #
 
-require( package = "soiltexture", character.only = TRUE ) 
+require( 
+    package = "soiltexture", 
+    character.only = TRUE, 
+    quietly = TRUE 
+)   #
 
 # setwd(old.wd) 
+@ 
 
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+% | Front page image:
+
+<<COVERFIG,include=false,echo=FALSE,fig=TRUE>>= 
 TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
 @ 
 
