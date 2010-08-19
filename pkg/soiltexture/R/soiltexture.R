@@ -2617,21 +2617,21 @@ TT.text.transf.X <- function(# Log-linear transformation of a soil texture data 
 TT.text.transf.Xm <- function(# Transformations of a soil texture data table between 2 particle size systems (X classes), various methods.
 ### using various Particle Size Distribution (PSD) models including Anderson (AD), Fredlund4P (F4P), Fredlund3P (F3P),
 ### modified logistic growth (ML), Offset-Nonrenormalized Lognormal (ONL), Offset-Renormalized Lognormal (ORL),
-### Skaggs (S), van Genuchten type(VG),van Genuchten modified, Weibull (W), Logarithm(L), 
-### Logistic growth (LG), Simple Lognormal (SL),Shiozawa and Compbell (SC). 
+### Skaggs (S), van Genuchten type(VG),van Genuchten modified(VGM), Weibull (W), Logarithm(L),
+### Logistic growth (LG), Simple Lognormal (SL),Shiozawa and Compbell (SC).
 ### The performance of PSD models is influenced by many aspects like soil texture class,
 ### number and position (or closeness) of observation points, clay content etc.
-### The latter four PSD models perform worse than the former ten. 
-### The AD, F4P, S, and W model is recommended for most of texture classes. 
+### The latter four PSD models perform worse than the former ten.
+### The AD, F4P, S, and W model is recommended for most of texture classes.
 ### And it will be even better to compare several different PSD models and using the results of the model
 ### with the minimum residual sum of squares (or other measures).
 ### Sometimes, the fitting will failed for the iteration is not converged or some errors happened.
-### Transformation of a soil texture data table 
-### ('tri.data') from one 
-### particle size system ('dat.ps.lim') into another 
-### ('base.ps.lim'). No limit in the number of texture classes 
-### in the input and output texture tables. See TT.text.transf 
-### for transformation involving only 3 particle classes. 'tri.data' 
+### Transformation of a soil texture data table
+### ('tri.data') from one
+### particle size system ('dat.ps.lim') into another
+### ('base.ps.lim'). No limit in the number of texture classes
+### in the input and output texture tables. See TT.text.transf
+### for transformation involving only 3 particle classes. 'tri.data'
 ### can only contain texture data.
 ##author<<Wei Shangguan
 
@@ -2645,7 +2645,7 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
     psdmodel        = "AD",
     omethod         = "all",#see optim for available methods, the default "all" is to run all methods and
                             # choose the best results with minimum residual sum of squares (RSS).
-    tri.sum.norm    = FALSE #Weather the sum of is 
+    tri.sum.norm    = FALSE #Weather the sum of is
 ){#
     TT.auto.set( set.par = FALSE )
     #
@@ -2691,7 +2691,7 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
 #    dat.ps.lim2  <- TT.dia2phi(dat.ps.lim)
     #
 #    old.col.nm   <- colnames( tri.data )
-    
+
     #
     fitpsd <- function(
     y,
@@ -2699,7 +2699,7 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
     xout,
     psdmodel,
     method)
-    {   
+    {
         require( "drc" ) # Added 2010/08/11 by JM
         #
         #default max and min of initial parameters
@@ -2803,6 +2803,8 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
             logi    <- S
             pn      <- 2
             pname   <- c("u","c")
+            #S model can not deal with first texture data with zero value
+            if(y[1] == 0) y[1] <- 0.0001
         }
         else if ( psdmodel == "VG" )
         {
@@ -2852,7 +2854,7 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
             pn      <- 2
             pname   <- c("u","o")
         }
-        #default lower and upper limit for drc::drm, these values should not set 
+        #default lower and upper limit for drc::drm, these values should not set
         #at the beginning of the function for pn is set later
         lowerl <- rep(10e-9,times=pn)
         upperl <- rep(10e+5,times=pn)
@@ -2860,12 +2862,12 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
         spa <- c(1,1,1,1)
         #methods used in optim() of drc::drm
         meth <- c("Nelder-Mead", "BFGS", "CG", "L-BFGS-B", "SANN")
-        
+
         mdev <- 100
         for( i in 1:5 ) # The nonlinear optimization runs were carried out using at least
-                        # five random initial parameter estimates for all soils. 
+                        # five random initial parameter estimates for all soils.
                         #When the final solution for each soil converged to different parameter values,
-                        #the parameter values with the best fitting statistics (RSS) were kept. 
+                        #the parameter values with the best fitting statistics (RSS) were kept.
         {
             if( method == "all" )# using all optim methods
             {
@@ -2937,18 +2939,19 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
             #when the residual sum of error (deviance) is very small, the iteration is stopped to save time
             if(mdev < 0.0001) break
         }
-        if( psdmodel == "AD" ) #predict() has some bug for AD model
+        #predict() has some bug for PSD model to predict the target values
+        if( psdmodel == "AD" )
         {
             pre <- coef(ttbest)[1] + coef(ttbest)[2]*atan(coef(ttbest)[3]*log10(xout/coef(ttbest)[4]))
-        } 
-        else if( psdmodel == "F4P" ) #predict() has some bug for F4P model
+        }
+        else if( psdmodel == "F4P" )
         {
             pre <- (1-(log(1+coef(ttbest)[1]/xout)/log(1+coef(ttbest)[1]/0.0001))^7)/(log(exp(1)+(coef(ttbest)[2]/xout)^coef(ttbest)[3]))^coef(ttbest)[4]
         }
         else if( psdmodel == "F3P" )
         {
             pre <- (1-(log(1+0.001/xout)/log(1+0.001/0.0001))^7)/(log(exp(1)+(coef(ttbest)[1]/xout)^coef(ttbest)[2]))^coef(ttbest)[3]
-        }   
+        }
         else if( psdmodel == "ML" )
         {
             pre <- 1/(1+coef(ttbest)[1]*exp(-coef(ttbest)[2]*xout^(coef(ttbest)[3])))
@@ -2956,46 +2959,46 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
         else if( psdmodel == "ONL" )
         {
            t    <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
-           pre  <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+(coef(ttbest)[3]) 
+           pre  <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+(coef(ttbest)[3])
         }
-        else if( psdmodel == "ORL" ) #predict() has some bug for F4P model
+        else if( psdmodel == "ORL" )
         {
             t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
-            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]         
+            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]
         }
-        else if( psdmodel == "S" ) #predict() has some bug for F4P model
+        else if( psdmodel == "S" )
         {
-            pre <- 1/(1+(1/y[1]-1)*exp(-coef(ttbest)[1]*((xout-r0)/r0)^coef(ttbest)[2]))        
+            pre <- 1/(1+(1/y[1]-1)*exp(-coef(ttbest)[1]*((xout-r0)/r0)^coef(ttbest)[2]))
         }
-        else if( psdmodel == "VG" ) #predict() has some bug for F4P model
+        else if( psdmodel == "VG" )
         {
-            pre <- 1(1+(coef(ttbest)[1]/xout)^coef(ttbest)[2])^(1/coef(ttbest)[2]-1)        
+            pre <- (1+(coef(ttbest)[1]/xout)^coef(ttbest)[2])^(1/coef(ttbest)[2]-1)
         }
-        else if( psdmodel == "VGM" ) #predict() has some bug for F4P model
+        else if( psdmodel == "VGM" )
         {
-            pre <- y[1]+(1-y[1])*(1+(coef(ttbest)[1]*xout)^(-coef(ttbest)[2]))^(1/coef(ttbest)[2]-1)        
+            pre <- y[1]+(1-y[1])*(1+(coef(ttbest)[1]*xout)^(-coef(ttbest)[2]))^(1/coef(ttbest)[2]-1)
         }
-        else if( psdmodel == "W" ) #predict() has some bug for F4P model
+        else if( psdmodel == "W" )
         {
-            pre <- coef(ttbest)[3]+(1-coef(ttbest)[3])*(1-exp(-coef(ttbest)[1]*((xout-dmin)/(dmax-dmin))^coef(ttbest)[2]))        
+            pre <- coef(ttbest)[3]+(1-coef(ttbest)[3])*(1-exp(-coef(ttbest)[1]*((xout-dmin)/(dmax-dmin))^coef(ttbest)[2]))
         }
-        else if( psdmodel == "L" ) #predict() has some bug for F4P model
+        else if( psdmodel == "L" )
         {
-            pre <- coef(ttbest)[1]*log(xout)+coef(ttbest)[2]        
+            pre <- coef(ttbest)[1]*log(xout)+coef(ttbest)[2]
         }
-        else if( psdmodel == "LG" ) #predict() has some bug for F4P model
+        else if( psdmodel == "LG" )
         {
-            pre <- 1/(1+coef(ttbest)[1]*exp(-coef(ttbest)[2]*xout))        
+            pre <- 1/(1+coef(ttbest)[1]*exp(-coef(ttbest)[2]*xout))
         }
-        else if( psdmodel == "SC" ) #predict() has some bug for F4P model
-        {
-            t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
-            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]*(1+t*erf((log(xout)+1.96)/1*2^0.5))/2        
-        }
-        else if( psdmodel == "SL" ) #predict() has some bug for F4P model
+        else if( psdmodel == "SC" )
         {
             t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
-            pre <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2       
+            pre <- (1-coef(ttbest)[3])*(1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2+coef(ttbest)[3]*(1+t*erf((log(xout)+1.96)/1*2^0.5))/2
+        }
+        else if( psdmodel == "SL" )
+        {
+            t   <- (-1)^(log(xout) >= coef(ttbest)[1]+1)
+            pre <- (1+t*erf((log(xout)+coef(ttbest)[1])/coef(ttbest)[2]*2^0.5))/2
         }
         #pre are the predicted values, coef(ttbest) are the model paremeters,
         out <- c(pre[1],pre[2:length(pre)]-pre[1:length(pre)-1])*100
@@ -3003,17 +3006,22 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
         c(out,coef(ttbest),dev=mdev*10000)
     }
 
-    results <- t(apply(tri.data[1:dim(tri.data)[1],],
-        1,
-        fitpsd,
+    results <- t(apply(
+        X       = tri.data[1:dim(tri.data)[1],],
+
+        MARGIN  = 1,
+        FUN     = fitpsd,
         xin     = dat.ps.lim[ ps.start:ps.end ],
         xout    = base.ps.lim[ ps.start:length(base.ps.lim) ],
         psdmodel= psdmodel,
         method  = omethod)
     )
-#    results <- t(apply(tri.data[1:5,],
-#        1,
-#        fitpsd,
+
+
+#    results <- t(apply(
+#        X       = tri.data[1:5,],
+#        MARGIN  = 1,
+#        FUN     = fitpsd,
 #        xin     = dat.ps.lim[ ps.start:ps.end ],
 #        xout    = base.ps.lim[ ps.start:length(base.ps.lim) ],
 #        psdmodel= psdmodel,
@@ -3024,25 +3032,28 @@ TT.text.transf.Xm <- function(# Transformations of a soil texture data table bet
     results
 }
 
-#     my.text4 <- data.frame( 
-#         "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
-#         "FSILT" = c(02,04,10,15,25,40,35,20,10,05,10,20), 
-#         "CSILT" = c(03,04,05,10,30,45,30,25,05,10,07,23), 
-#         "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10)  
+#     my.text4 <- data.frame(
+#         "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47),
+#         "FSILT" = c(02,04,10,15,25,40,35,20,10,05,10,20),
+#         "CSILT" = c(03,04,05,10,30,45,30,25,05,10,07,23),
+#         "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10)
 #     )   #
-#     TT.text.transf.Xm( 
-#       tri.data    = my.text4, 
-#       base.ps.lim = c(0,2,20,50,2000), 
-#       dat.ps.lim  = c(0,2,20,63,2000),  
+#     TT.text.transf.Xm(
+#       tri.data    = my.text4,
+#       base.ps.lim = c(0,2,20,50,2000),
+#       dat.ps.lim  = c(0,2,20,63,2000),
 #       psdmodel    = "S"
 #     )   #
 #     TT.text.transf.Xm( # JM: does not work on my PC
-#       tri.data    = my.text4, 
-#       base.ps.lim = c(0,1,50,2000), 
+#       tri.data    = my.text4,
+#       base.ps.lim = c(0,1,50,2000),
 #       dat.ps.lim  = c(0,2,30,60,2000),
 #       psdmodel    = "AD",
-#       omethod     = "Nelder-Mead"  
-#     ) 
+#       omethod     = "Nelder-Mead"
+#     )
+
+
+
 
 
 

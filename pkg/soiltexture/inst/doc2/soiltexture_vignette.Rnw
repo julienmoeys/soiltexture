@@ -137,16 +137,6 @@ build.nr <- as.numeric( build.nr )[1] + 1
 \begin{center}\textit{build number \Sexpr{build.nr}.}\end{center}
 
 
-<<echo=FALSE>>= 
-build.nr <- writeLines( 
-    con     = file.path( getwd(), "version.txt" ), 
-    text    = as.character( build.nr )  
-)   #
-#
-rm( build.nr ) 
-@ 
-
-
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 % | Edit here                  |
@@ -170,9 +160,9 @@ if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) )
 }   #
 
 require( 
-    package = "soiltexture", 
+    package        = "soiltexture", 
     character.only = TRUE, 
-    quietly = TRUE 
+    quietly        = TRUE 
 )   #
 
 # setwd(old.wd) 
@@ -735,7 +725,7 @@ you can still load the
 following command:
 
 
-<<echo=TRUE>>= 
+<<echo=TRUE,eval=FALSE>>= 
 source( 
     paste( 
         sep = "", 
