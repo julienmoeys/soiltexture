@@ -1,0 +1,11 @@
+The Soil Texture Wizard
+To do list. From 2010/08/20. Most recent additions first / on top.
+Julien MOEYS
+-----------------------------------------------------------------------------------------
+
+- Convert the vignette into 'pure' Sweave / LaTeX code, and add a 
+  \VignetteIndexEntry statement so the vignette is indexed.
+  
+- Write a little code example for the 'soiltexture-package' help page
+
+- 
