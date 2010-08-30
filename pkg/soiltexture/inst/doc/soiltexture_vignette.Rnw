@@ -20,34 +20,42 @@
 % Load Sweave and color, in order to modify 
 % sweave's environments:
 
-\RequirePackage{Sweave,color,placeins,rotating,subfig} % ,sweave
+\RequirePackage{Sweave} % ,sweave,color,placeins,rotating,subfig
 %\usepackage{underscore}
- 
+\SweaveOpts{width=14,height=14,keep.source=TRUE} 
 % Also modified in the document
 
+% \VignetteIndexEntry{The soil texture wizard: a tutorial}
+% \VignetteDepends{soiltexture}
+% \VignetteKeyword{soil} 
+% \VignetteKeyword{texture} 
+% \VignetteKeyword{plot} 
+% \VignetteKeyword{classification} 
+% \VignetteKeyword{transformation} 
+
 % Define new colors used in the document:
-\definecolor{BrickRed}{rgb}{0.502,0.000,0.000}
-\definecolor{MidnightBlue}{rgb}{0.000,0.000,0.502} 
+% \definecolor{BrickRed}{rgb}{0.502,0.000,0.000}
+% \definecolor{MidnightBlue}{rgb}{0.000,0.000,0.502} 
 % NB: no space after the colors
 
 % Modify the definition of the 'Sinput' environment:
 \RecustomVerbatimEnvironment{Sinput}{Verbatim}{%
-    formatcom   = \color{BrickRed}, % new text color
+%     formatcom   = \color{red},      % new text color
     frame       = leftline,         % vert line on the left
     framerule   = 0.50mm            % width of the vert line
 }   %
 
 % Modify the definition of the 'Scode' environment:
 \RecustomVerbatimEnvironment{Scode}{Verbatim}{%
-    formatcom   = \color{BrickRed}, % new text color
+%     formatcom   = \color{red},      % new text color
     frame       = leftline,         % vert line on the left
     framerule   = 0.50mm            % width of the vert line
 }   %
 
-% Modify the definition of the 'Soutput' environment:
-\RecustomVerbatimEnvironment{Soutput}{Verbatim}{%
-    formatcom = \color{MidnightBlue}% new text color
-}   %
+% % Modify the definition of the 'Soutput' environment:
+% \RecustomVerbatimEnvironment{Soutput}{Verbatim}{%
+%     formatcom = \color{blue}        % new text color
+% }   %
 
 % Modify the spacing between R code and R outputs:
 \fvset{listparameters={\setlength{\topsep}{0pt}}} 
@@ -64,11 +72,11 @@
 
 
 %%% PDF setup -- fill in the title
-\usepackage[dvipdfm, bookmarks, colorlinks, breaklinks, %
-    pdftitle={The soil texture wizard:R functions for plotting, classifying, transforming and exploring soil texture data},%
-    pdfauthor={Julien MOEYS}]{hyperref}  
-\hypersetup{linkcolor=MidnightBlue, citecolor=MidnightBlue, 
-    filecolor=MidnightBlue,urlcolor=MidnightBlue} 
+% \usepackage[dvipdfm, bookmarks, colorlinks, breaklinks, %
+%     pdftitle={The soil texture wizard:R functions for plotting, classifying, transforming and exploring soil texture data},%
+%     pdfauthor={Julien MOEYS}]{hyperref}  
+% \hypersetup{linkcolor=MidnightBlue, citecolor=MidnightBlue, 
+%     filecolor=MidnightBlue,urlcolor=MidnightBlue} 
 % From: http://malecki.wustl.edu/sweaveTemplate.Rnw
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -87,6 +95,30 @@
 
 
 %INVISIBLY sets a few options for Sweave :: KEEP THIS
+<<echo=FALSE>>= 
+# Set a few Sweave options:
+options( 
+    width       = 65,  # width of R output
+    prompt      = " ", # Sign preceding R input in R-GUI
+    continue    = " "  # same, but after 2nd line
+)   # 
+
+# The working directory:
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+
+# And load the xtable package:
+if( !"xtable" %in% .packages(all.available = TRUE) )
+{   #
+    message( paste( sep = "", 
+        "The xtable package is not present in your R install:\n", 
+        "R will now try to connect to one package server\n", 
+        "and propose you a list of package to download\n", 
+        "and install: Choose 'xtable' from the list"
+    )   )   #
+    utils:::menuInstallPkgs() 
+}   #
+require( "xtable" ) 
+@ 
 
 % \SweaveOpts{width=14,height=14,keep.source=TRUE}
 
@@ -99,25 +131,43 @@
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-% | Front page build number 
-
-
-\begin{center}\textit{build number 71.}\end{center}
-
-
-
-% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 % | Edit here                  |
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 
 
 
+<<echo=FALSE,results=hide,quite=TRUE>>= 
+old.wd  <- getwd() 
+
+# setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
+
+if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
+{   #
+    suppressMessages( 
+        install.packages( 
+            pkgs  = "soiltexture"  
+            # repos = "http://R-Forge.R-project.org" 
+        )   #
+    )   #
+}   #
+
+require( 
+    package        = "soiltexture", 
+    character.only = TRUE, 
+    quietly        = TRUE 
+)   #
+
+# setwd(old.wd) 
+@ 
 
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 % | Front page image:
 
+<<COVERFIG,include=false,echo=FALSE,fig=TRUE>>= 
+TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
+@ 
 
 \begin{figure}[b]
 \centering
@@ -163,11 +213,11 @@ at all between the two codes.\\
 
 
 This document is about functions (and package project) written in 
-\href{http://www.R-project.org}{R "language and environment for statistical computing"} 
+R "language and environment for statistical computing" (\texttt{http://www.R-project.org}) 
 (\cite{RDCT2009}), and has been generated with 
-R version 2.11.1 (2010-05-31).\\
+\Sexpr{R.Version()$version.string}.\\
 
-R website: <\url{http://www.R-project.org}>\\
+R website: <\texttt{http://www.R-project.org}>\\
 
 If you don't know about R, it is never too later to start...\\
 
@@ -176,7 +226,7 @@ If you don't know about R, it is never too later to start...\\
 \subsection{About the author} 
 
 I am an agriculture engineer, soil scientist and R programmer. 
-See my website for more details (\url{http://julienmoeys.free.fr/}).\\
+See my website for more details (\texttt{http://julienmoeys.free.fr/}).\\
 
 The R functions presented in this document may not always conform 
 to the 'best R programming practices', they are nevertheless 
@@ -200,12 +250,11 @@ find some bugs, please contact me at:
 \subsection{Credits and License} 
 
 This document, as well as this \textbf{document} source code 
-(written in \href{http://en.wikipedia.org/wiki/Sweave}{Sweave}, 
-\href{http://www.r-project.org}{R} and 
-\href{http://en.wikipedia.org/wiki/LaTeX}{\LaTeX}) are 
-licensed under a \textbf{\href{% 
-http://creativecommons.org/licenses/by-sa/3.0/}{Creative 
-Commons By-SA 3.0 (unported)}}.
+(written in Sweave \footnote{\texttt{http://en.wikipedia.org/wiki/Sweave}}, 
+R \footnote{\texttt{http://www.r-project.org}} and 
+\LaTeX \footnote{\texttt{http://en.wikipedia.org/wiki/LaTeX}}) are 
+licensed under a \textbf{Creative 
+Commons By-SA 3.0 unported \footnote{\texttt{http://creativecommons.org/licenses/by-sa/3.0/}}}.
 
 
 \begin{figure}[h] 
@@ -239,8 +288,7 @@ creativecommons.org}):
 \end{itemize} 
 
 'The soil texture wizard' R \textbf{functions} are licensed under 
-a \href{http://www.gnu.org/licenses/gpl-3.0.html}{GNU General 
-Public License Version 3}.\\
+a GNU General Public License Version 3 (\texttt{http://www.gnu.org/licenses/gpl-3.0.html}).\\
 
 Given the fact that a lot of the work presented here has been done 
 on my free time, and given its highly permissive license, \textbf{% 
@@ -289,16 +337,16 @@ particle size limit \textbf{varies from country to country}.
 \textbf{Silt} particle size range can be \textbf{2-20$\mu$m} 
 (Atterberg system\cite{MINASNY2001AJSR}\cite{RICHER2008INRA}; 
 'International system'; ISSS\footnote{ISSS: International Society 
-of Soil Science. Now \href{www.iuss.org}{IUSS, International 
+of Soil Science. Now  IUSS (\texttt{www.iuss.org}), International 
 Union of Soil Science}\label{ISSSSIZE}. The ISSS particle size 
 system should not be confused with the ISSS texture triangle (See 
-\ref{ISSSTRIANGLE}, p. \pageref{ISSSTRIANGLE})}; Australia\footnote{%%%
+\ref{ISSSTRIANGLE}, p. \pageref{ISSSTRIANGLE}); Australia\footnote{%%%
 Strangely, only a 
 small number of countries have adopted the so called 
 'international system'}\cite{MINASNY2001AJSR}; Japan% 
 \cite{RICHER2008INRA}), \textbf{2-50$\mu$m} (FAO\footnote{% 
-\href{www.fao.org}{Food and Agriculture Organization of the 
-United Nations}}; USA; France\cite{MINASNY2001AJSR}% 
+Food and Agriculture Organization of the United Nations 
+(\texttt{www.fao.org})}; USA; France\cite{MINASNY2001AJSR}% 
 \cite{RICHER2008EGS}), \textbf{2-60$\mu$m} 
 (UK and Sweden\cite{RICHER2008INRA}) or \textbf{2-63$\mu$m} 
 (Germany, Austria, Denmark and The Netherlands% 
@@ -322,9 +370,50 @@ Baize \& Jabiol 1995\cite{BAIZE1995}. The particle size axis
 (abscissa) is log-scale:
 
 
+\SweaveOpts{width=14,height=4,keep.source=TRUE}
+<<echo=FALSE,fig=TRUE,include=TRUE>>= 
+bornes <- c(0,2,20,50,200,2e3,20e3)
+noms   <- c("Cl","FiSi","CoSi","FiSa","CoSa","Gr","St")
+txt.b  <- c("0µm","2µm","20µm","50µm","200µm","2mm","2cm")
 
-\includegraphics{soiltexture_vignette-005}
+tmp <- data.frame(bornes,noms,txt.b)
+tmp$"txt.b" <- as.character(tmp$"txt.b")
 
+par(  "mar"=c(4,1,1,1)+0.1  )  #  c(bottom, left, top, right)
+
+plot( 
+	x		= tmp$"bornes"[-1],  
+	y		= rep(1,dim(tmp[-1,])[1]),  
+	type	= "n",  
+	main	= "",  
+	xlab	= "Soil particule sizes",  
+	ylab	= "",  
+	yaxt	= "n",  xaxt = "n",  
+	log		= "x",  
+	xlim	= c(0.2,75e3), 
+	bty		= "n", 
+	cex.lab = 2  
+)	#
+
+abline(v=tmp$"bornes",lty=3,lwd=c(2,4,2,4,2,4,2))
+abline(h=par("usr")[3:4],lty=1,lwd=4)
+
+mtext( 
+    text    = tmp$"txt.b"[-1], 
+    side    = 1, 
+    line    = rep( 
+        c(0.5,1.25), 
+        (dim(tmp)[1]-1)/2
+    ),  #
+    at  = tmp$"bornes"[-1], 
+    cex = 2  
+)   #
+
+xtxt <- (tmp$"bornes"[1:(length(tmp$"bornes"))]+c(tmp$"bornes"[2:length(tmp$"bornes")],75e3))/2
+
+text(x=xtxt,y=rep(1,length(xtxt)),labels=tmp$"noms",cex=2) 
+@ 
+\SweaveOpts{width=14,height=14,keep.source=TRUE}
 
 
 Soil particles -- and each soil particle size class -- occupy a 
@@ -411,7 +500,17 @@ inside a texture triangle, as shown in the example below for
 the texture 45\% clay, 38\% silt and 17\% sand:
 
 
-\includegraphics{soiltexture_vignette-006}
+<<echo=FALSE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "none", 
+    tri.data    = data.frame( 
+        "CLAY"  = 45, 
+        "SILT"  = 38, 
+        "SAND"  = 17 
+    ),  #
+    main        = NA  
+)   #
+@ 
 
 
 When mapping soil, field pedologists usually estimate texture by 
@@ -444,28 +543,29 @@ system. Here is the representation of the same point as in the
 graph above, but with the FAO soil classification system on the 
 background.
 
-\includegraphics{soiltexture_vignette-007}
+<<echo=FALSE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FAO50.TT", 
+    tri.data    = data.frame( 
+        "CLAY"  = 45, 
+        "SILT"  = 38, 
+        "SAND"  = 17 
+    ),  #
+    main        = NA  
+)   #
+@ 
 
 The soil texture class symbols are:
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:18 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & VF & Very fine \\ 
-  2 & F & Fine \\ 
-  3 & M & Medium \\ 
-  4 & MF & Medium fine \\ 
-  5 & C & Coarse \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the FAO system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the FAO system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 The main characteristics of the graph (texture triangle) are:
 
 \begin{itemize}
@@ -529,44 +629,47 @@ The main characteristics of the graph (texture triangle) are:
 \subsection{Installing the package from r-forge} 
 
 
-The Soil Texture Wizard is now available on \href{http://r-forge.r-project.org/}%%%
-{r-forge}, under the project name \href{http://r-forge.r-project.org/projects/soiltexture/}%%%
-{soiltexture}. \textbf{If you have the latest R version} installed, 
-the package can be intalled with the following commands:
+The Soil Texture Wizard is now available on CRAN 
+\footnote{\texttt{http://cran.r-project.org/package=soiltexture}} 
+and r-forge \footnote{\texttt{http://r-forge.r-project.org/}}, under 
+the project name "soiltexture". The package can be installed from 
+CRAN with the following commands:
 
 
+<<echo=TRUE,eval=FALSE>>= 
+install.packages( pkgs = "soiltexture" ) 
+@ 
 
 
-\begin{Schunk}
-\begin{Sinput}
- install.packages( 
-     pkgs  = "soiltexture", 
-     repos = "http://R-Forge.R-project.org" 
- )   #
-\end{Sinput}
-\end{Schunk}
+And \textbf{if you have the latest R version} installed, and want 
+the latest development version of the package, from r-forge, type 
+the following commands:
 
 
-And it can be loaded with the following command:
+<<echo=TRUE,eval=FALSE>>= 
+install.packages( 
+    pkgs  = "soiltexture", 
+    repos = "http://R-Forge.R-project.org" 
+)   #
+@ 
 
 
-\begin{Schunk}
-\begin{Sinput}
- require( soiltexture ) 
-\end{Sinput}
-\end{Schunk}
+It can then be loaded with the following command:
+
+
+<<echo=TRUE>>= 
+require( soiltexture ) 
+@ 
 
 
 If you get bored of the package, you can unload it and uninstall 
 it with the following commands:
 
 
-\begin{Schunk}
-\begin{Sinput}
- detach( package:soiltexture ) 
- remove.packages( "soiltexture" ) 
-\end{Sinput}
-\end{Schunk}
+<<echo=TRUE,eval=FALSE>>= 
+detach( package:soiltexture ) 
+remove.packages( "soiltexture" ) 
+@ 
 
 
 If you don't have the latest R version, please try to install the 
@@ -575,64 +678,60 @@ for R under MS Windows systems (Zip binaries).
 
 
 
-% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{Installing the package from Windows binaries (.zip)} 
+% % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+% \subsection{Installing the package from Windows binaries (.zip)} 
 
 
-To install and load the package directly from 
-\href{"http://r-forge.r-project.org/bin/windows/contrib/2.10/soiltexture_1.0.zip"}%%%
-{r-forge zip binaries}, 
-you can type the following command:
+% To install and load the package directly from 
+% \href{"http://r-forge.r-project.org/bin/windows/contrib/2.10/soiltexture_1.0.zip"}%%%
+% {r-forge zip binaries}, 
+% you can type the following command:
 
 
-\begin{Schunk}
-\begin{Sinput}
- download.file( 
-     url = 
- "http://r-forge.r-project.org/bin/windows/contrib/2.10/soiltexture_1.0.zip", 
-     destfile = file.path( getwd(), "soiltexture_1.0.zip" ) 
- )   #
- #
- install.packages( 
-     pkgs  = file.path( getwd(), "soiltexture_1.0.zip" ), 
-     repos = NULL 
- )   #
- #
- file.remove( "soiltexture_1.0.zip" ) 
-\end{Sinput}
-\end{Schunk}
+% <<echo=TRUE,eval=FALSE>>= 
+% download.file( 
+%     url = 
+% "http://r-forge.r-project.org/bin/windows/contrib/2.10/soiltexture_1.0.zip", 
+%     destfile = file.path( getwd(), "soiltexture_1.0.zip" ) 
+% )   #
+% #
+% install.packages( 
+%     pkgs  = file.path( getwd(), "soiltexture_1.0.zip" ), 
+%     repos = NULL 
+% )   #
+% #
+% file.remove( "soiltexture_1.0.zip" ) 
+% @ 
 
 
-\textbf{Where 2.10 should be replaced by the latest stable R 
-version and 1.0 by the latest package version on r-forge}. 
+% \textbf{Where 2.10 should be replaced by the latest stable R 
+% version and 1.0 by the latest package version on r-forge}. 
 
 
 
-% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{Load the latest package sources} 
+% % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+% \subsection{Load the latest package sources} 
 
 
-If all the options above failed to intall the soiltexture package, 
-you can still load the 
-\href{http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/soiltexture/R/soiltexture.r?root=soiltexture}%%%
-{latest package sources} in R by using the 
-following command:
+% If all the options above failed to intall the soiltexture package, 
+% you can still load the 
+% \href{http://r-forge.r-project.org/plugins/scmsvn/viewcvs.php/*checkout*/pkg/soiltexture/R/soiltexture.r?root=soiltexture}%%%
+% {latest package sources} in R by using the 
+% following command:
 
 
-\begin{Schunk}
-\begin{Sinput}
- source( 
-     paste( 
-         sep = "", 
-         "http://r-forge.r-project.org/scm/viewvc.php/*checkout*", 
-         "/pkg/soiltexture/R/soiltexture.R?&root=soiltexture"
-     )   #
- )   #
-\end{Sinput}
-\end{Schunk}
+% <<echo=TRUE,eval=FALSE>>= 
+% source( 
+%     paste( 
+%         sep = "", 
+%         "http://r-forge.r-project.org/scm/viewvc.php/*checkout*", 
+%         "/pkg/soiltexture/R/soiltexture.R?&root=soiltexture"
+%     )   #
+% )   #
+% @ 
 
 
-The examples shown in this vignette are ran with these sources.
+% The examples shown in this vignette are ran with these sources.
 
 
 
@@ -668,12 +767,9 @@ Below is the code to display an empty triangle (without
 classification and without data):
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "none" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-015}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "none" ) 
+@ 
 
 
 The option \texttt{class.sys} (characters) determines the soil 
@@ -697,12 +793,9 @@ equivalent to $g.100g^{-1}$.
 To display a USDA texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "USDA.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-016}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "USDA.TT" ) 
+@ 
 
 
 When the option \texttt{class.sys} is set to \texttt{"USDA.TT"}, 
@@ -710,36 +803,20 @@ a soil texture triangle with USDA classification system is used.\\
 
 The USDA soil texture triangle has been built considering a 
 silt - sand limit of 
-50$\mu$meters.\\ 
+\Sexpr{TT.get("USDA.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.\\
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:19 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & Cl & clay \\ 
-  2 & SiCl & silty clay \\ 
-  3 & SaCl & sandy clay \\ 
-  4 & ClLo & clay loam \\ 
-  5 & SiClLo & silty clay loam \\ 
-  6 & SaClLo & sandy clay loam \\ 
-  7 & Lo & loam \\ 
-  8 & SiLo & silty loam \\ 
-  9 & SaLo & sandy loam \\ 
-  10 & Si & silt \\ 
-  11 & LoSa & loamy sand \\ 
-  12 & Sa & sand \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the USDA system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "USDA.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the USDA system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 The reference used to digitize this triangle is the Soil Survey 
 Manual (Soil Survey Staff 1993\cite{USDA1993}).
@@ -753,12 +830,9 @@ Manual (Soil Survey Staff 1993\cite{USDA1993}).
 To display a FAO / HYPRES texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "FAO50.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-018}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "FAO50.TT" ) 
+@ 
 
 
 De Forges et al. 2008\cite{RICHER2008EGS} pointed out the fact 
@@ -767,7 +841,7 @@ to the FAO soil texture triangle has changed over time, 50$\mu$m,
 then 63$\mu$m, and then again 50$\mu$m for some projects. 
 We here consider that the FAO / EU Soil map / HYPRES soil texture 
 triangle has a silt - sand limit of 
-50$\mu$m. As this 
+\Sexpr{TT.get("FAO50.TT")[["base.css.ps.lim"]][3]}$\mu$m. As this 
 choice is somehow arbitrary, we have named the 'FAO' option 
 \texttt{"FAO50.TT"} in order to avoid any confusion. It will be 
 explained later in the document how it is possible to add a custom 
@@ -778,24 +852,15 @@ sand limit.\\
 See the table for soil texture classes symbols.\\
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:20 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & VF & Very fine \\ 
-  2 & F & Fine \\ 
-  3 & M & Medium \\ 
-  4 & MF & Medium fine \\ 
-  5 & C & Coarse \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the FAO system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the FAO system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 The references used to digitize this triangle is the texture 
 triangle provided by the HYPRES project web site 
@@ -811,17 +876,14 @@ triangle provided by the HYPRES project web site
 To display a French 'Aisne' texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "FR.AISNE.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-020}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "FR.AISNE.TT" ) 
+@ 
 
 
 The French Aisne soil texture triangle has been built 
 considering a silt - sand limit of 
-50$\mu$meters.\\ 
+\Sexpr{TT.get("FR.AISNE.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols\footnote{In 
 classes 14 and 15, 'leger' should be replaced by 'léger'. R (and 
@@ -829,34 +891,15 @@ Sweave) can not display french accents easily, and I found no easy
 trics for displaying them.}.\\
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:20 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & ALO & Argile lourde \\ 
-  2 & A & Argile \\ 
-  3 & AL & Argile limoneuse \\ 
-  4 & AS & Argile sableuse \\ 
-  5 & LA & Limon argileux \\ 
-  6 & LAS & Limon argilo-sableux \\ 
-  7 & LSA & Limon sablo-argileux \\ 
-  8 & SA & Sable argileux \\ 
-  9 & LM & Limon moyen \\ 
-  10 & LMS & Limon moyen sableux \\ 
-  11 & LS & Limon sableux \\ 
-  12 & SL & Sable limoneux \\ 
-  13 & S & Sable \\ 
-  14 & LL & Limon leger \\ 
-  15 & LLS & Limon leger sableux \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the French 'Aisne' system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "FR.AISNE.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the French 'Aisne' system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 The references used for digising this triangle is Baize and 
 Jabiol 1995\cite{BAIZE1995} and Jamagne 1967\cite{JAMAGNE1967}. 
 This triangle may be referred as the 'Triangle des textures de la 
@@ -871,51 +914,27 @@ Aisne extension service).
 To display a French 'GEPPA' texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "FR.GEPPA.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-022}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "FR.GEPPA.TT" ) 
+@ 
 
 
 The French GEPPA soil texture triangle has been built 
 considering a silt - sand limit of 
-50$\mu$meters.\\ 
+\Sexpr{TT.get("FR.GEPPA.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.\\
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:21 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & AA & Argile lourde \\ 
-  2 & A & Argileux \\ 
-  3 & As & Argile sableuse \\ 
-  4 & Als & Argile limono-sableuse \\ 
-  5 & Al & Argile limoneuse \\ 
-  6 & AS & Argilo-sableux \\ 
-  7 & LAS & Limon argilo-sableux \\ 
-  8 & La & Limon argileux \\ 
-  9 & Sa & Sable argileux \\ 
-  10 & Sal & Sable argilo-limoneux \\ 
-  11 & Lsa & Limon sablo-argileux \\ 
-  12 & L & Limon \\ 
-  13 & S & Sableux \\ 
-  14 & SS & Sable \\ 
-  15 & Sl & Sable limoneux \\ 
-  16 & Ls & Limon sableux \\ 
-  17 & LL & Limon pur \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the French 'GEPPA' system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "FR.GEPPA.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the French 'GEPPA' system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 This triangle has been digitized after 
 \texttt{sols-de-bretagne.fr} 2009\cite{SOLBRETAGNE2009}. The 
@@ -934,67 +953,29 @@ To display a German Bodenartendiagramm (BK 1994) texture triangle,
 type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "DE.BK94.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-024}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "DE.BK94.TT" ) 
+@ 
 
 
 The German Bodenartendiagramm (BK 1994) soil texture triangle has 
 been built considering a silt - sand limit of 
-63$\mu$meters.\\ 
+\Sexpr{TT.get("DE.BK94.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.\\
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:22 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & Ss & reiner Sand \\ 
-  2 & Su2 & Schwach schluffiger Sand \\ 
-  3 & Sl2 & Schwach lehmiger Sand \\ 
-  4 & Sl3 & Mittel lehmiger Sand \\ 
-  5 & St2 & Schwach toniger Sand \\ 
-  6 & Su3 & Mittel schluffiger Sand \\ 
-  7 & Su4 & Stark schluffiger Sand \\ 
-  8 & Slu & Schluffig-lehmiger Sand \\ 
-  9 & Sl4 & Stark lehmiger Sand \\ 
-  10 & St3 & Mittel toniger Sand \\ 
-  11 & Ls2 & Schwach sandiger Lehm \\ 
-  12 & Ls3 & Mittel sandiger Lehm \\ 
-  13 & Ls4 & Stark sandiger Lehm \\ 
-  14 & Lt2 & Schwach toniger Lehm \\ 
-  15 & Lts & Sandig-toniger Lehm \\ 
-  16 & Ts4 & Stark sandiger Ton \\ 
-  17 & Ts3 & Mittel sandiger Ton \\ 
-  18 & Uu & Reiner Schluff \\ 
-  19 & Us & Sandiger Schluff \\ 
-  20 & Ut2 & Schwach toniger Schluff \\ 
-  21 & Ut3 & Mittel toniger Schluff \\ 
-  22 & Uls & Sandig-lehmiger Schluff \\ 
-  23 & Ut4 & Stark toniger Schluff \\ 
-  24 & Lu & Schluffiger Lehm \\ 
-  25 & Lt3 & Mittel toniger Lehm \\ 
-  26 & Tu3 & Mittel schluffiger Ton \\ 
-  27 & Tu4 & Stark schluffiger Ton \\ 
-  28 & Ts2 & Schwach sandiger Ton \\ 
-  29 & Tl & Lehmiger Ton \\ 
-  30 & Tu2 & Schwach schluffiger Ton \\ 
-  31 & Tt & Reiner Ton \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the German system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "DE.BK94.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the German system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 The references used to digitize this triangle and name the 
-classes are \url{de.wikipedia.org} 2009 \cite{WIKIPEDIADE2009} 
+classes are \texttt{de.wikipedia.org} 2009 \cite{WIKIPEDIADE2009} 
 and \texttt{nibis.ni.schule.de} 2009\cite{BK94ANONYM}. The 
 triangle is also presented in GEOVLEX 2009\cite{GEOVLEX2009} 
 (Online lexicon from the Halle-Wittenberg University) and Bormann 
@@ -1014,44 +995,26 @@ To display a Soil Survey of England and Wales texture triangle
 (UK), type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "UK.SSEW.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-026}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "UK.SSEW.TT" ) 
+@ 
 
 
 UK Soil Survey of England and Wales texture triangle has been 
 built considering a silt - sand limit of 
-60$\mu$meters.\\ 
+\Sexpr{TT.get("UK.SSEW.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.\\
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:22 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & Cl & Clay \\ 
-  2 & SaCl & Sandy clay \\ 
-  3 & SiCl & Silty clay \\ 
-  4 & ClLo & Clay loam \\ 
-  5 & SiClLo & Silty clay loam \\ 
-  6 & SaClLo & Sandy clay loam \\ 
-  7 & SaLo & Sandy loam \\ 
-  8 & SaSiLo & Sandy silt loam \\ 
-  9 & SiLo & Silt loam \\ 
-  10 & LoSa & Loamy sand \\ 
-  11 & Sa & Sand \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the UK system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "UK.SSEW.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the UK system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 The reference used to digitize this triangle is Defra -- Rural 
 Development Service -- Technical Advice Unit 2006\cite{DEFRA2006} 
 (Technical Advice Note 52 -- Soil texture).
@@ -1064,53 +1027,35 @@ Development Service -- Technical Advice Unit 2006\cite{DEFRA2006}
 To display an Autralian texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "AU.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-028}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "AU.TT" ) 
+@ 
 
 
 The Australian soil texture classification has been built 
 considering a silt - sand limit of 
-20$\mu$meters.\\ 
+\Sexpr{TT.get("AU.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:23 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & Cl & Clay \\ 
-  2 & SiCl & Silty clay \\ 
-  3 & SiClLo & Silt clay loam \\ 
-  4 & SiLo & Silty loam \\ 
-  5 & ClLo & Clay loam \\ 
-  6 & Lo & Loam \\ 
-  7 & LoSa & Loamy sand \\ 
-  8 & SaCl & Sandy clay \\ 
-  9 & SaClLo & Sandy clay loam \\ 
-  10 & SaLo & Sandy loam \\ 
-  11 & Sa & Sand \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the Australian system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "AU.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Australian system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 There are probably small errors in the exact placement of some 
 texture classes vertices (expected to be 1 or 2\% of the 'exact 
 value'), due to technical difficulties for reproducing precisely 
 this triangle (reproduced after both Minasny and McBratney 
 2001\cite{MINASNY2001AJSR}, and Holbeche 2008\cite{HOLBECHE2008} 
-(brochure 'Soil Texture-Laboratory Method' from 
-\href{http://soilquality.org.au}{soilquality.org.au}).\\
+(brochure 'Soil Texture-Laboratory Method' from soilquality.org.au 
+\footnote{texttt{http://soilquality.org.au}}).\\
 
 
 
@@ -1120,17 +1065,14 @@ this triangle (reproduced after both Minasny and McBratney
 To display an Belgium texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "BE.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-030}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "BE.TT" ) 
+@ 
 
 
 The Belgian soil texture classification has been built 
 considering a silt - sand limit of 
-50$\mu$meters.\\ 
+\Sexpr{TT.get("BE.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols\footnote{In 
 classes 5, 'leger' should be replaced by 'léger'. R (and 
@@ -1139,26 +1081,15 @@ trics for displaying them.}. The class names are given in French
 and in Flemish.
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:24 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & U & Argile lourde $|$ Zware klei \\ 
-  2 & E & Argile $|$ Klei \\ 
-  3 & A & Limon $|$ Leem \\ 
-  4 & L & Limon sableux $|$ Zandleem \\ 
-  5 & P & Limon sableux leger $|$ Licht zandleem \\ 
-  6 & S & Sable limoneux $|$ Lemig zand \\ 
-  7 & Z & Sable $|$ Zand \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the Belgian system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "BE.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Belgian system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 This texture triangle has been built after images from Defourny 
 et al.\cite{DEFOURNY2009} and Van Bossuyt\cite{BOSSUYT2009}.\\
@@ -1172,98 +1103,58 @@ To display a Canadian texture triangle with English texture class
 abbreviations, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "CA.EN.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-032}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "CA.EN.TT" ) 
+@ 
 
 
 For the same triangle with French texture class abbreviations type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "CA.FR.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-033}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "CA.FR.TT" ) 
+@ 
 
 
 The Canadian soil texture classification has been built 
 considering a silt - sand limit of 
-50$\mu$meters 
-(\href{http://sis.agr.gc.ca/cansis/glossary/separates,_soil.html}%%%
-{reference}\cite{CANSIS2010}).\\ 
+\Sexpr{TT.get("CA.EN.TT")[["base.css.ps.lim"]][3]}$\mu$meters 
+(\footnote{\texttt{http://sis.agr.gc.ca/cansis/glossary/separates,\_soil.html}}; 
+\cite{CANSIS2010}).\\ 
 
 See the table for soil texture classes symbols, in English:
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:25 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & HCl & Heavy clay \\ 
-  2 & SiCl & Silty clay \\ 
-  3 & Cl & Clay \\ 
-  4 & SaCl & Sandy clay \\ 
-  5 & SiClLo & Silty clay loam \\ 
-  6 & ClLo & Clay loam \\ 
-  7 & SaClLo & Sandy clay loam \\ 
-  8 & SiLo & Silty loam \\ 
-  9 & L & Loam \\ 
-  10 & SaLo & Sandy loam \\ 
-  11 & LoSa & Loamy sand \\ 
-  12 & Si & Silt \\ 
-  13 & Sa & Sand \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the Canadian (en) system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "CA.EN.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Canadian (en) system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 Or in French:
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:25 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & ALo & Argile lourde \\ 
-  2 & ALi & Argile limoneuse \\ 
-  3 & A & Argile \\ 
-  4 & AS & Argile sableuse \\ 
-  5 & LLiA & Loam limono-argileux \\ 
-  6 & LA & Loam argileux \\ 
-  7 & LSA & Loam sablo-argileux \\ 
-  8 & LLi & Loam limoneux \\ 
-  9 & L & Loam \\ 
-  10 & LS & Loam sableux \\ 
-  11 & SL & Sable loameux \\ 
-  12 & Li & Limon \\ 
-  13 & S & Sable \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the Canadian (fr) system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "CA.FR.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Canadian (fr) system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 
 A reference image for this texture triangle can be found in 
-\href{http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html#figure1}%%
-{this reference} (not the one used for digitizing the triangle), 
-and the boundaries have been checked using 
-\href{http://sis.agr.gc.ca/cansis/glossary/texture,_soil.html}%%
-{this reference}\cite{CANSIS2010}.\\
+\texttt{sis.agr.gc.ca} \footnote{%%%
+\texttt{http://sis.agr.gc.ca/cansis/glossary/texture,\_soil.html\#figure1}} 
+(not the one used for digitizing the triangle), 
+and the boundaries have been checked with those given on the same 
+web-page \cite{CANSIS2010}.\\
 
 
 
@@ -1277,48 +1168,29 @@ particle size classification (See \ref{ISSSSIZE}, p. \pageref{ISSSSIZE})}%%%
 \label{ISSSTRIANGLE} texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "ISSS.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-036}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "ISSS.TT" ) 
+@ 
 
 
 
 The ISSS soil texture classification has been built 
 considering a silt - sand limit of 
-20$\mu$meters.
+\Sexpr{TT.get("ISSS.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
 
 
 See the table for soil texture classes symbols:
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:26 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & HCl & heavy clay \\ 
-  2 & SaCl & sandy clay \\ 
-  3 & LCl & light clay \\ 
-  4 & SiCl & silty clay \\ 
-  5 & SaClLo & sandy clay loam \\ 
-  6 & ClLo & clay loam \\ 
-  7 & SiClLo & silty clay loam \\ 
-  8 & LoSa & loamy sand \\ 
-  9 & Sa & sand \\ 
-  10 & SaLo & sandy loam \\ 
-  11 & Lo & loam \\ 
-  12 & SiLo & silt loam \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the ISSS system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "ISSS.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the ISSS system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 Many thanks to Wei Shangguan (PhD, School of geography, Beijing 
 normal university) for providing the code of the ISSS triangle 
@@ -1332,51 +1204,29 @@ normal university) for providing the code of the ISSS triangle
 To display a Romanian texture triangle, type:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( class.sys = "ROM.TT" ) 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-038}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "ROM.TT" ) 
+@ 
 
 
 
 The Romanian soil texture classification has been built 
 considering a silt - sand limit of 
-20$\mu$meters.
+\Sexpr{TT.get("ROM.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
 
 
 See the table for soil texture classes symbols:
 
 
-% latex table generated in R 2.11.1 by xtable 1.5-6 package
-% Thu Aug 19 11:30:26 2010
-\begin{table}[ht]
-\begin{center}
-\begin{tabular}{rll}
-  \hline
- & abbr & name \\ 
-  \hline
-1 & AF & argila fina \\ 
-  2 & AA & argila medie \\ 
-  3 & AP & argila prafoasa \\ 
-  4 & AL & argila lutoasa \\ 
-  5 & TP & lut argilo-prafos \\ 
-  6 & TT & lut argilos mediu \\ 
-  7 & TN & argila nisipoasa \\ 
-  8 & LP & lut prafos \\ 
-  9 & LL & lut mediu \\ 
-  10 & LN & lut nisipo-argilos \\ 
-  11 & SP & praf \\ 
-  12 & SS & lut nisipos prafos \\ 
-  13 & SG+SM+SF & lut nisipos \\ 
-  14 & UG+UM+UF & nisip lutos \\ 
-  15 & NG+NM+NF & nisip \\ 
-   \hline
-\end{tabular}
-\caption{Texture classes of the Romanian system / triangle}
-\end{center}
-\end{table}
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "ROM.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Romanian system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
 
 Many thanks to Rosca Bogdan (Romanian Academy, Iasi Branch, 
 Geography team) for providing the code of the Romanian triangle.
@@ -1385,17 +1235,14 @@ Geography team) for providing the code of the Romanian triangle.
 A right angled version of the triangle can be obtained by typing:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys = "ROM.TT", 
-     blr.clock   = c(F,T,NA), 
-     tlr.an      = c(45,90,45), 
-     blr.tx      = c("SILT","CLAY","SAND"), 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-040}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys = "ROM.TT", 
+    blr.clock   = c(F,T,NA), 
+    tlr.an      = c(45,90,45), 
+    blr.tx      = c("SILT","CLAY","SAND"), 
+)   #
+@ 
 
 
 
@@ -1410,129 +1257,129 @@ the option \texttt{class.p.bg.col} (logical) to \texttt{TRUE}.\\
 Example with the USDA and FAO soil texture triangles:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles
- TT.plot( 
-     class.sys       = "USDA.TT", 
-     class.p.bg.col  = TRUE
- )   #
- TT.plot( 
-     class.sys       = "FAO50.TT", 
-     class.p.bg.col  = TRUE
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-041}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "USDA.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "FAO50.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 Example with the French Aisne and French GEPPA soil texture 
 triangles:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles
- TT.plot( 
-     class.sys       = "FR.AISNE.TT", 
-     class.p.bg.col  = TRUE
- )   #
- TT.plot( 
-     class.sys       = "FR.GEPPA.TT", 
-     class.p.bg.col  = TRUE
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-042}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "FR.AISNE.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "FR.GEPPA.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 Example with the UK (SSEW) and German (BK94) soil texture 
 triangles:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles
- TT.plot( 
-     class.sys       = "UK.SSEW.TT", 
-     class.p.bg.col  = TRUE
- )   #
- TT.plot( 
-     class.sys       = "DE.BK94.TT", 
-     class.p.bg.col  = TRUE
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-043}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "UK.SSEW.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "DE.BK94.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 Example with the Australian and Belgian soil texture triangle:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles
- TT.plot( 
-     class.sys       = "AU.TT", 
-     class.p.bg.col  = TRUE
- )   #
- TT.plot( 
-     class.sys       = "BE.TT", 
-     class.p.bg.col  = TRUE
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-044}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "AU.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "BE.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 And finally the Canadian texture triangle (with English and French 
 abbreviations):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles
- TT.plot( 
-     class.sys       = "CA.EN.TT", 
-     class.p.bg.col  = TRUE
- )   #
- TT.plot( 
-     class.sys       = "CA.FR.TT", 
-     class.p.bg.col  = TRUE
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-045}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles
+TT.plot( 
+    class.sys       = "CA.EN.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+TT.plot( 
+    class.sys       = "CA.FR.TT", 
+    class.p.bg.col  = TRUE
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{Soil texture triangle with ¨custom texture classes colors} 
+\subsection{Soil texture triangle with custom texture class colors} 
 
 \texttt{class.p.bg.col} can also be used to provide custom background 
 colors for each classes of the texture triangle:
@@ -1540,15 +1387,12 @@ colors for each classes of the texture triangle:
 Example with the FAO soil texture triangles:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys       = "FAO50.TT", 
-     class.p.bg.col  = c("red","green","blue","pink","purple") 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-046}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+TT.plot( 
+    class.sys       = "FAO50.TT", 
+    class.p.bg.col  = c("red","green","blue","pink","purple") 
+)   #
+@ 
 
 
 You can type \texttt{TT.classes.tbl()[,1]} to get the number and 
@@ -1568,27 +1412,25 @@ order of the texture classes in the triangle.
 Below is the code for plotting a French-Aisne texture triangle 
 over a USDA texture triangle:
 
-\begin{Schunk}
-\begin{Sinput}
- # First plot the USDA texture triangle, and retrieve its 
- #   geometrical features, silently outputted by TT.plot 
- geo <- TT.plot( 
-     class.sys   = "USDA.TT", 
-     main        = "USDA and French Aisne triangles, overplotted"  
- )   # 
- # Then overplot the French Aisne texture triangle, 
- #   and customise the colors so triangles are well distinct.
- TT.classes(
-     geo             = geo, 
-     class.sys       = "FR.AISNE.TT", 
-     # Additional "graphical" options
-     class.line.col  = "red", 
-     class.lab.col   = "red", 
-     lwd.axis        = 2  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-047}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# First plot the USDA texture triangle, and retrieve its 
+#   geometrical features, silently outputted by TT.plot 
+geo <- TT.plot( 
+    class.sys   = "USDA.TT", 
+    main        = "USDA and French Aisne triangles, overplotted"  
+)   # 
+
+# Then overplot the French Aisne texture triangle, 
+#   and customise the colors so triangles are well distinct.
+TT.classes(
+    geo             = geo, 
+    class.sys       = "FR.AISNE.TT", 
+    # Additional "graphical" options
+    class.line.col  = "red", 
+    class.lab.col   = "red", 
+    lwd.axis        = 2  
+)   #
+@ 
 
 Beware that the result may not necessarily be very readable when 
 printed, in black and white. Consider to change the line type as 
@@ -1605,27 +1447,25 @@ Below is the code to plot a French GEPPA texture triangle over a
 French Aisne texture triangle. The code is in fact almost 
 identical to the previous case:
 
-\begin{Schunk}
-\begin{Sinput}
- # First plot the USDA texture triangle, and retrieve its 
- #   geometrical features, silently outputted by TT.plot 
- geo <- TT.plot( 
-     class.sys   = "FR.AISNE.TT", 
-     main        = "French Aisne and GEPPA triangles, overplotted"  
- )   # 
- # Then overplot the French Aisne texture triangle, 
- #   and customise the colors so triangles are well distinct.
- TT.classes(
-     geo             = geo, 
-     class.sys       = "FR.GEPPA.TT", 
-     # Additional "graphical" options
-     class.line.col  = "red", 
-     class.lab.col   = "red", 
-     lwd.axis        = 2  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-048}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# First plot the USDA texture triangle, and retrieve its 
+#   geometrical features, silently outputted by TT.plot 
+geo <- TT.plot( 
+    class.sys   = "FR.AISNE.TT", 
+    main        = "French Aisne and GEPPA triangles, overplotted"  
+)   # 
+
+# Then overplot the French Aisne texture triangle, 
+#   and customise the colors so triangles are well distinct.
+TT.classes(
+    geo             = geo, 
+    class.sys       = "FR.GEPPA.TT", 
+    # Additional "graphical" options
+    class.line.col  = "red", 
+    class.lab.col   = "red", 
+    lwd.axis        = 2  
+)   #
+@ 
 
 
 
@@ -1641,49 +1481,30 @@ First, lets create a table containing (dummy) soil texture data,
 (in \%), as well as dummy organic carbon content (in $g.kg^{-1}$, 
 for later use):
 
-\begin{Schunk}
-\begin{Sinput}
- # Create a dummy data frame of soil textures:
- my.text <- data.frame( 
-     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
-     "SILT"  = c(05,08,15,25,55,85,65,45,15,15,17,43), 
-     "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10), 
-     "OC"    = c(20,14,15,05,12,15,07,21,25,30,05,28)  
- )   #
- # Display the table:
- my.text
-\end{Sinput}
-\begin{Soutput}
-   CLAY SILT SAND OC
-1     5    5   90 20
-2    60    8   32 14
-3    15   15   70 15
-4     5   25   70  5
-5    25   55   20 12
-6     5   85   10 15
-7    25   65   10  7
-8    45   45   10 21
-9    65   15   20 25
-10   75   15   10 30
-11   13   17   70  5
-12   47   43   10 28
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Create a dummy data frame of soil textures:
+my.text <- data.frame( 
+    "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
+    "SILT"  = c(05,08,15,25,55,85,65,45,15,15,17,43), 
+    "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10), 
+    "OC"    = c(20,14,15,05,12,15,07,21,25,30,05,28)  
+)   #
+
+# Display the table:
+my.text
+@ 
 
 The columns names include CLAY, SILT and SAND, so they are 
 explicit for the \texttt{TT.plot} function. 
 The code to display these soil texture data is:
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "FAO50.TT", 
-     tri.data    = my.text, 
-     main        = "Soil texture data" 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-050}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FAO50.TT", 
+    tri.data    = my.text, 
+    main        = "Soil texture data" 
+)   #
+@ 
 
 The option \texttt{tri.data} is a data frame containing numerical 
 values. \texttt{colnames(tri.data)} must match with 
@@ -1700,17 +1521,14 @@ It could be interesting to plot the organic carbon content on top
 of the soil texture triangle. Bubble plots are good for this:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "none", 
-     tri.data    = my.text, 
-     z.name      = "OC", 
-     main        = "Soil texture triangle and OC bubble plot" 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-051}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "none", 
+    tri.data    = my.text, 
+    z.name      = "OC", 
+    main        = "Soil texture triangle and OC bubble plot" 
+)   #
+@ 
 
 
 The option \texttt{z.name} is a character string, the 
@@ -1731,24 +1549,19 @@ generate a (quick and dirty) dummy soil texture datasets, with a
 4th z variable (named 'Z'), correlated to the texture data.
 
 
-\begin{Schunk}
-\begin{Sinput}
- rand.text	<- TT.dataset(n=100,seed.val=1980042401)
-\end{Sinput}
-\end{Schunk}
+<<echo=TRUE>>= 
+rand.text	<- TT.dataset(n=100,seed.val=1980042401)
+@ 
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "none", 
-     tri.data    = rand.text, 
-     z.name      = "Z", 
-     main        = "Soil texture triangle and Z bubble plot" 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-053}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "none", 
+    tri.data    = rand.text, 
+    z.name      = "Z", 
+    main        = "Soil texture triangle and Z bubble plot" 
+)   #
+@ 
 
 
 This function is primarily intended for exploratory data analysis 
@@ -1758,58 +1571,57 @@ nevertheless possible to add 'manually' a legend, as in the
 example below:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "none", 
-     tri.data    = my.text, 
-     z.name      = "OC", 
-     main        = "Soil texture triangle and OC bubble plot" 
- )   #
- # Recompute some internal values:
- z.cex.range <- TT.get("z.cex.range") 
- def.pch     <- par("pch") 
- def.col     <- par("col")
- def.cex     <- TT.get("cex") 
- oc.str      <- TT.str( 
-     my.text[,"OC"], 
-     z.cex.range[1], 
-     z.cex.range[2]
- )   #
- # The legend:
- legend( 
-     x           = 80, 
-     y           = 90, 
-     title       = 
-         expression( bold('OC [g.kg'^-1 ~ ']') ), 
-     legend      = formatC( 
-         c( 
-             min( my.text[,"OC"] ), 
-             quantile(my.text[,"OC"] ,probs=c(25,50,75)/100), 
-             max( my.text[,"OC"] ) 
-         ), 
-         format  = "f", 
-         digits  = 1, 
-         width   = 4, 
-         flag    = "0" 
-     ),  #
-     pt.lwd      = 4, 
-     col         = def.col, 
-     pt.cex      = c( 
-             min( oc.str ), 
-             quantile(oc.str ,probs=c(25,50,75)/100), 
-             max( oc.str ) 
-     ),  #, 
-     pch         = def.pch, 
-     bty         = "o", 
-     bg          = NA, 
-     box.col     = NA, 
-     text.col    = "black", 
-     cex         = def.cex  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-054}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "none", 
+    tri.data    = my.text, 
+    z.name      = "OC", 
+    main        = "Soil texture triangle and OC bubble plot" 
+)   #
+
+# Recompute some internal values:
+z.cex.range <- TT.get("z.cex.range") 
+def.pch     <- par("pch") 
+def.col     <- par("col")
+def.cex     <- TT.get("cex") 
+oc.str      <- TT.str( 
+    my.text[,"OC"], 
+    z.cex.range[1], 
+    z.cex.range[2]
+)   #
+
+# The legend:
+legend( 
+    x           = 80, 
+    y           = 90, 
+    title       = 
+        expression( bold('OC [g.kg'^-1 ~ ']') ), 
+    legend      = formatC( 
+        c( 
+            min( my.text[,"OC"] ), 
+            quantile(my.text[,"OC"] ,probs=c(25,50,75)/100), 
+            max( my.text[,"OC"] ) 
+        ), 
+        format  = "f", 
+        digits  = 1, 
+        width   = 4, 
+        flag    = "0" 
+    ),  #
+    pt.lwd      = 4, 
+    col         = def.col, 
+    pt.cex      = c( 
+            min( oc.str ), 
+            quantile(oc.str ,probs=c(25,50,75)/100), 
+            max( oc.str ) 
+    ),  #, 
+    pch         = def.pch, 
+    bty         = "o", 
+    bg          = NA, 
+    box.col     = NA, 
+    text.col    = "black", 
+    cex         = def.cex  
+)   #
+@ 
 
 
 This code is obviously complicated, but it produces a smart 
@@ -1855,30 +1667,27 @@ Plotting a heatmap now follows 4 steps, that somehow works as
 
 
 % Uncomment this to display the heatmap
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.geo.get() 
- #
- iwd.res <- TT.iwd( 
-     geo         = geo, 
-     tri.data    = rand.text, 
-     z.name      = "Z", 
- )   #
- #
- TT.image( 
-     x       = iwd.res, 
-     geo     = geo, 
-     main    = "Soil texture triangle and Z heatmap" 
- )   # 
- #
- TT.plot( 
-     geo         = geo, 
-     grid.show   = FALSE, 
-     add         = TRUE  #  <<-- important 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-055}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.geo.get() 
+#
+iwd.res <- TT.iwd( 
+    geo         = geo, 
+    tri.data    = rand.text, 
+    z.name      = "Z", 
+)   #
+#
+TT.image( 
+    x       = iwd.res, 
+    geo     = geo, 
+    main    = "Soil texture triangle and Z heatmap" 
+)   # 
+#
+TT.plot( 
+    geo         = geo, 
+    grid.show   = FALSE, 
+    add         = TRUE  #  <<-- important 
+)   #
+@ 
 
 \texttt{TT.iwd()} has 3 important parameters: 
 \begin{itemize} 
@@ -1907,29 +1716,26 @@ plot to the existing plot, in order to replace the color legend:
 
 
 % Uncomment this to display the heatmap
-\begin{Schunk}
-\begin{Sinput}
- TT.image( 
-     x       = iwd.res, 
-     geo     = geo, 
-     main    = "Soil texture triangle and Z heatmap" 
- )   # 
- #
- TT.contour( 
-     x       = iwd.res, 
-     geo     = geo, 
-     add     = TRUE, #  <<-- important
-     lwd     = 2  
- )   # 
- #
- TT.plot( 
-     geo         = geo, 
-     grid.show   = FALSE, 
-     add         = TRUE  #  <<-- important
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-056}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.image( 
+    x       = iwd.res, 
+    geo     = geo, 
+    main    = "Soil texture triangle and Z heatmap" 
+)   # 
+#
+TT.contour( 
+    x       = iwd.res, 
+    geo     = geo, 
+    add     = TRUE, #  <<-- important
+    lwd     = 2  
+)   # 
+#
+TT.plot( 
+    geo         = geo, 
+    grid.show   = FALSE, 
+    add         = TRUE  #  <<-- important
+)   #
+@ 
 
 \texttt{TT.contour()} accepts most of the options existing in 
 \texttt{contour()}.\\
@@ -1963,33 +1769,30 @@ probability density estimates:
 
 
 % Uncomment this to display the heatmap
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.geo.get()  
- #
- kde.res <- TT.kde2d( 
-     geo         = geo, 
-     tri.data    = rand.text  
- )   #
- #
- TT.contour( 
-     x       = kde.res, 
-     geo     = geo, 
-     main    = "Probability density estimate of the texture data", 
-     lwd     = 2, 
-     col     = "red"  
- )   # 
- #
- TT.plot( 
-     tri.data    = rand.text, 
-     geo         = geo, 
-     grid.show   = FALSE, 
-     add         = TRUE, #  <<-- important 
-     col         = "gray"
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-057}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.geo.get()  
+#
+kde.res <- TT.kde2d( 
+    geo         = geo, 
+    tri.data    = rand.text  
+)   #
+#
+TT.contour( 
+    x       = kde.res, 
+    geo     = geo, 
+    main    = "Probability density estimate of the texture data", 
+    lwd     = 2, 
+    col     = "red"  
+)   # 
+#
+TT.plot( 
+    tri.data    = rand.text, 
+    geo         = geo, 
+    grid.show   = FALSE, 
+    add         = TRUE, #  <<-- important 
+    col         = "gray"
+)   #
+@ 
 
 Using \texttt{TT.image()} would also work here.\\
 
@@ -2034,33 +1837,30 @@ texture transformation:
 
 
 % Uncomment this to display the heatmap
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.geo.get() 
- #
- maha <- TT.mahalanobis( 
-     geo         = geo, 
-     tri.data    = rand.text  
- )   #
- #
- TT.contour( 
-     x       = maha, 
-     geo     = geo, 
-     main    = "Texture data Mahalanobis distance", 
-     lwd     = 2, 
-     col     = "blue"  
- )   # 
- #
- TT.plot( 
-     tri.data    = rand.text, 
-     geo         = geo, 
-     grid.show   = FALSE, 
-     add         = TRUE, #  <<-- important 
-     col         = "gray"
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-058}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.geo.get() 
+#
+maha <- TT.mahalanobis( 
+    geo         = geo, 
+    tri.data    = rand.text  
+)   #
+#
+TT.contour( 
+    x       = maha, 
+    geo     = geo, 
+    main    = "Texture data Mahalanobis distance", 
+    lwd     = 2, 
+    col     = "blue"  
+)   # 
+#
+TT.plot( 
+    tri.data    = rand.text, 
+    geo         = geo, 
+    grid.show   = FALSE, 
+    add         = TRUE, #  <<-- important 
+    col         = "gray"
+)   #
+@ 
 
 
 All the options of \texttt{mahalanobis()} are also available in 
@@ -2087,35 +1887,32 @@ transformation:
 
 
 % Uncomment this to display the heatmap
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.geo.get() 
- #
- maha <- TT.mahalanobis( 
-     geo         = geo, 
-     tri.data    = rand.text, 
-     alr         = TRUE  #  <<-- important 
- )   #
- #
- TT.contour( 
-     x       = maha, 
-     geo     = geo, 
-     main    = "Texture data Mahalanobis distance", 
-     lwd     = 2, 
-     col     = "blue", 
-     levels  = c(0.5,1,2,4,8)  #  <<-- manually set. Otherwise 
- )   #                                 ugly plot
- #
- TT.plot( 
-     tri.data    = rand.text, 
-     geo         = geo, 
-     grid.show   = FALSE, 
-     add         = TRUE,  #  <<-- important 
-     col         = "gray"
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-059}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.geo.get() 
+#
+maha <- TT.mahalanobis( 
+    geo         = geo, 
+    tri.data    = rand.text, 
+    alr         = TRUE  #  <<-- important 
+)   #
+#
+TT.contour( 
+    x       = maha, 
+    geo     = geo, 
+    main    = "Texture data Mahalanobis distance", 
+    lwd     = 2, 
+    col     = "blue", 
+    levels  = c(0.5,1,2,4,8)  #  <<-- manually set. Otherwise 
+)   #                                 ugly plot
+#
+TT.plot( 
+    tri.data    = rand.text, 
+    geo         = geo, 
+    grid.show   = FALSE, 
+    add         = TRUE,  #  <<-- important 
+    col         = "gray"
+)   #
+@ 
 
 
 The Mahalanobis distances computed on a regular x-y grid have an 
@@ -2143,29 +1940,23 @@ use is similar to \texttt{TT.points()}, apart that it has a
 \texttt{text()} function. Below is a simple example:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Display the USDA texture triangle:
- geo     <- TT.plot(class.sys="USDA.TT") 
- # Create some custom labels:
- labelz  <- letters[1:dim(my.text)[1]] 
- labelz 
-\end{Sinput}
-\begin{Soutput}
- [1] "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l"
-\end{Soutput}
-\begin{Sinput}
- # Display the text
- TT.text( 
-     tri.data    = my.text, 
-     geo         = geo, 
-     labels      = labelz, 
-     font        = 2, 
-     col         = "blue"  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-060}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# Display the USDA texture triangle:
+geo     <- TT.plot(class.sys="USDA.TT") 
+
+# Create some custom labels:
+labelz  <- letters[1:dim(my.text)[1]] 
+labelz 
+
+# Display the text
+TT.text( 
+    tri.data    = my.text, 
+    geo         = geo, 
+    labels      = labelz, 
+    font        = 2, 
+    col         = "blue"  
+)   #
+@
 
 
 As for the \texttt{text()} function, it is also possible to set 
@@ -2202,11 +1993,9 @@ A test of the data can be conducted externally, using
 tests:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.data.test( tri.data = rand.text ) 
-\end{Sinput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.data.test( tri.data = rand.text ) 
+@ 
 
 This function accepts options \texttt{css.names}, 
 \texttt{text.sum}, \texttt{text.tol}, \texttt{tri.sum.tst} and 
@@ -2228,34 +2017,19 @@ if you want the residuals to be returned (initial row sum - final
 row sum):
 
 
-\begin{Schunk}
-\begin{Sinput}
- res <- TT.normalise.sum( tri.data = rand.text ) 
- #
- # With output of the residuals:
- res <- TT.normalise.sum( 
-     tri.data    = rand.text, 
-     residuals   = TRUE  #  <<-- default = FALSE 
- )   #
- #
- colnames( rand.text )
-\end{Sinput}
-\begin{Soutput}
-[1] "CLAY" "SILT" "SAND" "Z"   
-\end{Soutput}
-\begin{Sinput}
- colnames( res )  #  "Z" has been dropped
-\end{Sinput}
-\begin{Soutput}
-[1] "CLAY"      "SILT"      "SAND"      "residuals"
-\end{Soutput}
-\begin{Sinput}
- max( res[ , "residuals" ] ) 
-\end{Sinput}
-\begin{Soutput}
-[1] 2.842171e-14
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+res <- TT.normalise.sum( tri.data = rand.text ) 
+#
+# With output of the residuals:
+res <- TT.normalise.sum( 
+    tri.data    = rand.text, 
+    residuals   = TRUE  #  <<-- default = FALSE 
+)   #
+#
+colnames( rand.text )
+colnames( res )  #  "Z" has been dropped
+max( res[ , "residuals" ] ) 
+@ 
 
 
 
@@ -2282,22 +2056,12 @@ first row of the dummy soil texture data created above, with the
 FAO classification:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data    = my.text[1:5,], 
-     class.sys   = "FAO50.TT"  
- )   #
-\end{Sinput}
-\begin{Soutput}
-     VF F M MF C
-[1,]  0 0 0  0 1
-[2,]  2 2 0  0 0
-[3,]  0 0 0  0 1
-[4,]  0 0 0  0 1
-[5,]  0 0 1  0 0
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data    = my.text[1:5,], 
+    class.sys   = "FAO50.TT"  
+)   #
+@ 
 
 
 A major interest of the function resides in the fact 
@@ -2305,22 +2069,12 @@ that it is possible to use another classication very easily, USDA
 in the xample below:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data    = my.text[1:5,], 
-     class.sys   = "USDA.TT"  
- )   #
-\end{Sinput}
-\begin{Soutput}
-     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
-[1,]  0    0    0    0      0      0  0    0    0  0    0  1
-[2,]  1    0    0    0      0      0  0    0    0  0    0  0
-[3,]  0    0    0    0      0      0  0    0    1  0    0  0
-[4,]  0    0    0    0      0      0  0    0    1  0    0  0
-[5,]  0    0    0    0      0      0  0    1    0  0    0  0
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data    = my.text[1:5,], 
+    class.sys   = "USDA.TT"  
+)   #
+@ 
 
 
 The result can also be returned in a logical form with the option 
@@ -2331,23 +2085,13 @@ of two or more texture classes, several texture classes (columns)
 are marked TRUE.
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data    = my.text[1:5,], 
-     class.sys   = "FAO50.TT", 
-     PiC.type    = "l" 
- )   #
-\end{Sinput}
-\begin{Soutput}
-        VF     F     M    MF     C
-[1,] FALSE FALSE FALSE FALSE  TRUE
-[2,]  TRUE  TRUE FALSE FALSE FALSE
-[3,] FALSE FALSE FALSE FALSE  TRUE
-[4,] FALSE FALSE FALSE FALSE  TRUE
-[5,] FALSE FALSE  TRUE FALSE FALSE
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data    = my.text[1:5,], 
+    class.sys   = "FAO50.TT", 
+    PiC.type    = "l" 
+)   #
+@ 
 
 
 And finally, the results can be a vector of character, of the 
@@ -2357,18 +2101,13 @@ In case of a sample lying on the border of two classes, the
 classes abbreviation are concatenated (separated by a comma).
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data    = my.text[1:5,], 
-     class.sys   = "FAO50.TT", 
-     PiC.type    = "t" 
- )   #
-\end{Sinput}
-\begin{Soutput}
-[1] "C"     "VF, F" "C"     "C"     "M"    
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data    = my.text[1:5,], 
+    class.sys   = "FAO50.TT", 
+    PiC.type    = "t" 
+)   #
+@ 
 
 Notice that the second value lies between two classes, and that 
 they are outputted separated by a comma.\\
@@ -2378,19 +2117,14 @@ in the function \texttt{paste()}, with the option
 \texttt{collapse}:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data    = my.text[1:5,], 
-     class.sys   = "FAO50.TT", 
-     PiC.type    = "t", 
-     collapse    = ";"
- )   #
-\end{Sinput}
-\begin{Soutput}
-[1] "C"    "VF;F" "C"    "C"    "M"   
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data    = my.text[1:5,], 
+    class.sys   = "FAO50.TT", 
+    PiC.type    = "t", 
+    collapse    = ";"
+)   #
+@ 
 
 
 
@@ -2466,7 +2200,99 @@ The figure below / above illustrate how the log-linear
 interpolation works, and why it is sometimes / often inaccurate.
 
 
-\includegraphics{soiltexture_vignette-068}
+<<echo=FALSE,fig=TRUE,include=TRUE>>= 
+tmp.cex <- 1.5
+old.par <- par(no.readonly = TRUE)
+par(cex=tmp.cex,cex.axis=tmp.cex,cex.lab=tmp.cex,cex.main=tmp.cex)
+
+tmp.text <- data.frame( "CLAY" = 20, "SILT" = 15, "SAND" = 65 ) 
+
+plot( 
+    x       = TT.dia2phi( c(2,20,2000) ), 
+    y       = cumsum( unlist(tmp.text[1,]) ), 
+    ylim    = c(0,100), 
+    xlim    = TT.dia2phi( c(1,2000) ), 
+    xaxt    = "n", 
+    xlab    =  
+expression( 'Particle size['~ mu * 'm] (log'[2] * 'scale)' ), 
+    ylab    = "Cumulated particle size distribution [%]", 
+    bty     = "n", 
+    type    = "b", 
+    main    = 
+"Principle of particle size log-linear transformation", 
+    cex     = tmp.cex  
+)   #
+
+lines( 
+    spline( 
+        y   = rev(cumsum( unlist(tmp.text[1,]) )), 
+        x   = TT.dia2phi( c(2000,20,2))
+    ),  # 
+    col = "green"  
+)   #
+
+segments( 
+    x0  = TT.dia2phi( c(2,20,2000) ), 
+    x1  = TT.dia2phi( c(2,20,2000) ), 
+    y0  = rep(0,3), 
+    y1  = cumsum( unlist(tmp.text[1,]) ), 
+    col = "red"  
+)   #
+
+new.tmp.text <- TT.text.transf( 
+    tri.data        = tmp.text,  
+    base.css.ps.lim = c(0,2,50,2000),  
+    dat.css.ps.lim  = c(0,2,20,2000)   
+)   #
+
+new.silt.c <- cumsum( unlist(new.tmp.text[1,]) )[2]
+
+arrows( 
+    x0  = TT.dia2phi( c(50,50) ), 
+    x1  = TT.dia2phi( c(50,1) ), 
+    y0  = c(0,new.silt.c), 
+    y1  = c(new.silt.c,new.silt.c), 
+    col = "blue"  
+)   #
+
+text( 
+    x       = TT.dia2phi( c(2,20,2000) ), 
+    y       = cumsum( unlist(tmp.text[1,]) ), 
+    pos     = 2, 
+    offset  = 1, 
+    labels  = c("Clay","Silt","Sand"), 
+    col     = "red", 
+    cex     = tmp.cex  
+)   #
+
+text( 
+    x       = TT.dia2phi( c(50) ), 
+    y       = new.silt.c, 
+    pos     = 4, 
+    offset  = 1, 
+    labels  = "new Silt", 
+    col     = "blue", 
+    cex     = tmp.cex  
+)   #
+
+axis( 
+    side    = 1, 
+    at      = TT.dia2phi( c(2,20,50,2000) ), 
+    labels  = c(2,20,50,2000) 
+)   #
+
+text( 
+    x       = TT.dia2phi( 500 ), 
+    y       = 65, 
+    #pos    = 4, 
+    #offset = 1, 
+    labels  = "real distribution?", 
+    col     = "green", 
+    cex     = tmp.cex  
+)   #
+
+par(old.par) 
+@ 
 
 
 
@@ -2477,19 +2303,9 @@ interpolation works, and why it is sometimes / often inaccurate.
 Here are the non transformed data (reminder):
 
 
-\begin{Schunk}
-\begin{Sinput}
- my.text[1:5,]   
-\end{Sinput}
-\begin{Soutput}
-  CLAY SILT SAND OC
-1    5    5   90 20
-2   60    8   32 14
-3   15   15   70 15
-4    5   25   70  5
-5   25   55   20 12
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+my.text[1:5,]   
+@ 
 
 
 Now the (dummy) data will be transformed, assuming that they have 
@@ -2499,67 +2315,40 @@ Please don't forget this is not an 'exact' transformation, but
 rather an estimation:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.text.transf( 
- 	tri.data        = my.text[1:5,],  
- 	base.css.ps.lim = c(0,2,50,2000),  
- 	dat.css.ps.lim  = c(0,2,63,2000)   
- )   #
-\end{Sinput}
-\begin{Soutput}
-  CLAY      SILT     SAND OC
-1    5  4.665054 90.33495 20
-2   60  7.464087 32.53591 14
-3   15 13.995163 71.00484 15
-4    5 23.325271 71.67473  5
-5   25 51.315597 23.68440 12
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.text.transf( 
+	tri.data        = my.text[1:5,],  
+	base.css.ps.lim = c(0,2,50,2000),  
+	dat.css.ps.lim  = c(0,2,63,2000)   
+)   #
+@ 
 
 
 Lets create a copy of the dummy data table, with new French 
 columns names.
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Copy the data.frame
- my.text.fr  <- my.text 
- # Curent columns names:
- colnames(my.text.fr) 
-\end{Sinput}
-\begin{Soutput}
-[1] "CLAY" "SILT" "SAND" "OC"  
-\end{Soutput}
-\begin{Sinput}
- # New columns names: 
- colnames(my.text.fr) <- c("ARGILE","LIMON","SABLE","CO") 
-\end{Sinput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Copy the data.frame
+my.text.fr  <- my.text 
+# Curent columns names:
+colnames(my.text.fr) 
+# New columns names: 
+colnames(my.text.fr) <- c("ARGILE","LIMON","SABLE","CO") 
+@ 
 
 
 It is also possible to transform it:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.text.transf( 
-     tri.data        = my.text.fr[1:5,],  
-     base.css.ps.lim = c(0,2,50,2000),  
-     dat.css.ps.lim  = c(0,2,63,2000),  
-     css.names       = c("ARGILE","LIMON","SABLE")   
- )   #
-\end{Sinput}
-\begin{Soutput}
-  ARGILE     LIMON    SABLE CO
-1      5  4.665054 90.33495 20
-2     60  7.464087 32.53591 14
-3     15 13.995163 71.00484 15
-4      5 23.325271 71.67473  5
-5     25 51.315597 23.68440 12
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.text.transf( 
+    tri.data        = my.text.fr[1:5,],  
+    base.css.ps.lim = c(0,2,50,2000),  
+    dat.css.ps.lim  = c(0,2,63,2000),  
+    css.names       = c("ARGILE","LIMON","SABLE")   
+)   #
+@ 
 
 As you can see, OC values are kept and returned untransformed in 
 the outputted data.frame.
@@ -2597,29 +2386,19 @@ We need first to create a dummy dataset with more than 3 particle
 size classes:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Create a random fraction between 0 and 1
- r.frac <- runif(n=dim(my.text)[1]) 
- #
- my.text4 <- cbind( 
-     "CLAY"          = my.text[,"CLAY"], 
-     "FINE_SILT"     = my.text[,"SILT"] * r.frac, 
-     "COARSE_SILT"   = my.text[,"SILT"] * (1-r.frac), 
-     "SAND"          = my.text[,"SAND"]  
- )   #
- #
- my.text4[1:5,] 
-\end{Sinput}
-\begin{Soutput}
-     CLAY FINE_SILT COARSE_SILT SAND
-[1,]    5  1.993923  3.00607682   90
-[2,]   60  7.983799  0.01620122   32
-[3,]   15  2.907617 12.09238343   70
-[4,]    5 10.414043 14.58595668   70
-[5,]   25 34.866125 20.13387494   20
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Create a random fraction between 0 and 1
+r.frac <- runif(n=dim(my.text)[1]) 
+#
+my.text4 <- cbind( 
+    "CLAY"          = my.text[,"CLAY"], 
+    "FINE_SILT"     = my.text[,"SILT"] * r.frac, 
+    "COARSE_SILT"   = my.text[,"SILT"] * (1-r.frac), 
+    "SAND"          = my.text[,"SAND"]  
+)   #
+#
+my.text4[1:5,] 
+@ 
 
 
 Transform this data frame, from a system where the silt - sand 
@@ -2627,23 +2406,13 @@ limit is at 63$\mu$m to a system where the silt - sand limit is
 at 50$\mu$m:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.text.transf.X( 
-     tri.data        = my.text4[1:5,], 
-     base.ps.lim = c(0,2,20,50,2000),  
-     dat.ps.lim  = c(0,2,20,63,2000)   
- )   #
-\end{Sinput}
-\begin{Soutput}
-  C1        C2          C3       C4
-1  5  1.993923  2.40058780 90.60549
-2 60  7.983799  0.01293795 32.00326
-3 15  2.907617  9.65671534 72.43567
-4  5 10.414043 11.64802889 72.93793
-5 25 34.866125 16.07847618 24.05540
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.text.transf.X( 
+    tri.data        = my.text4[1:5,], 
+    base.ps.lim = c(0,2,20,50,2000),  
+    dat.ps.lim  = c(0,2,20,63,2000)   
+)   #
+@ 
 
 
 Notice the differences in options name as compared to 
@@ -2656,23 +2425,13 @@ data do not need to be identical to the number of particle size
 classes in the output:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.text.transf.X( 
-     tri.data        = my.text4[1:5,], 
-     base.ps.lim = c(0,2,50,2000),  
-     dat.ps.lim  = c(0,2,20,63,2000)   
- )   #
-\end{Sinput}
-\begin{Soutput}
-  C1        C2       C3
-1  5  4.394511 90.60549
-2 60  7.996737 32.00326
-3 15 12.564332 72.43567
-4  5 22.062072 72.93793
-5 25 50.944601 24.05540
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.text.transf.X( 
+    tri.data        = my.text4[1:5,], 
+    base.ps.lim = c(0,2,50,2000),  
+    dat.ps.lim  = c(0,2,20,63,2000)   
+)   #
+@ 
 
 
 
@@ -2685,27 +2444,25 @@ the fly', if they have been measured in another particle size
 system (classes sizes) as the triangle:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # First, plot the data without transformation:
- geo <- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     tri.data    = my.text, 
-     col         = "red", 
-     main        = "Transformed and untransformed data"
- )   #
- # Then, re-plot them with transformation:
- TT.points( 
-     tri.data        = my.text, 
-     geo             = geo, 
-     dat.css.ps.lim  = c(0,2,63,2000),  
-     css.transf      = TRUE, 
-     col             = "blue", 
-     pch             = 3  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-076}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# First, plot the data without transformation:
+geo <- TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    tri.data    = my.text, 
+    col         = "red", 
+    main        = "Transformed and untransformed data"
+)   #
+
+# Then, re-plot them with transformation:
+TT.points( 
+    tri.data        = my.text, 
+    geo             = geo, 
+    dat.css.ps.lim  = c(0,2,63,2000),  
+    css.transf      = TRUE, 
+    col             = "blue", 
+    pch             = 3  
+)   #
+@ 
 
 Notice that the \texttt{dat.css.ps.lim} and \texttt{css.transf} 
 options could be used directly with \texttt{TT.plot()} (not shown 
@@ -2727,30 +2484,28 @@ plot (red) is transformed as it should have been (because the UK
 triangle has a 60$\mu$m silt sand limit).
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Not transformed
- geo <- TT.plot( 
-     class.sys   = "UK.SSEW.TT", 
-     base.css.ps.lim = c(0,2,50,2000), 
-     main        = 
-         "Dummy transformation of the UK texture triangle"  
- )   # 
- # Transformed
- TT.classes(
-     geo             = geo, 
-     class.sys       = "UK.SSEW.TT", 
-     css.transf      = TRUE, 
-     # Additional "graphical" options
-     class.line.col  = "red", 
-     class.lab.col   = "red", 
-     lwd.axis        = 2, 
-     class.lab.show  = "none", 
-     class.lty       = 2 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-077}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# Not transformed
+geo <- TT.plot( 
+    class.sys   = "UK.SSEW.TT", 
+    base.css.ps.lim = c(0,2,50,2000), 
+    main        = 
+        "Dummy transformation of the UK texture triangle"  
+)   # 
+
+# Transformed
+TT.classes(
+    geo             = geo, 
+    class.sys       = "UK.SSEW.TT", 
+    css.transf      = TRUE, 
+    # Additional "graphical" options
+    class.line.col  = "red", 
+    class.lab.col   = "red", 
+    lwd.axis        = 2, 
+    class.lab.show  = "none", 
+    class.lty       = 2 
+)   #
+@ 
 
 
 We clearly see that clay content is unaffected, but there is a 
@@ -2765,28 +2520,26 @@ the same particle size system, 50$\mu$m (while the UK triangle
 is based on a 60$\mu$m limit):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # No transformation needed or stated
- geo <- TT.plot( 
-     class.sys   = "USDA.TT", 
-     main        = 
-         "USDA and transformed UK triangle, overplotted"  
- )   # 
- # Transformed
- TT.classes(
-     geo             = geo, 
-     class.sys       = "UK.SSEW.TT", 
-     css.transf      = TRUE,  #  <<-- important
-     # Additional "graphical" options
-     class.line.col  = "blue", 
-     class.lab.col   = "blue", 
-     lwd.axis        = 2, 
-     class.lty       = 2 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-078}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# No transformation needed or stated
+geo <- TT.plot( 
+    class.sys   = "USDA.TT", 
+    main        = 
+        "USDA and transformed UK triangle, overplotted"  
+)   # 
+
+# Transformed
+TT.classes(
+    geo             = geo, 
+    class.sys       = "UK.SSEW.TT", 
+    css.transf      = TRUE,  #  <<-- important
+    # Additional "graphical" options
+    class.line.col  = "blue", 
+    class.lab.col   = "blue", 
+    lwd.axis        = 2, 
+    class.lty       = 2 
+)   #
+@ 
 
 
 Now another test where the background silt sand limit is 
@@ -2796,29 +2549,27 @@ transformed (because it is not needed), while the 2nd is
 transformed: 
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Untransformed
- geo <- TT.plot( 
-     class.sys   = "USDA.TT", 
-     main        = 
-         "(Dummy) transformation of the USDA texture triangle"  
- )   # 
- # Transformed
- TT.classes(
-     geo             = geo, 
-     class.sys       = "USDA.TT", 
-     tri.css.ps.lim  = c(0,2,20,2000), 
-     css.transf      = TRUE,  #  <<-- important
-     # Additional "graphical" options
-     class.line.col  = "blue", 
-     class.lab.col   = "blue", 
-     lwd.axis        = 2, 
-     class.lty       = 2 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-079}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# Untransformed
+geo <- TT.plot( 
+    class.sys   = "USDA.TT", 
+    main        = 
+        "(Dummy) transformation of the USDA texture triangle"  
+)   # 
+
+# Transformed
+TT.classes(
+    geo             = geo, 
+    class.sys       = "USDA.TT", 
+    tri.css.ps.lim  = c(0,2,20,2000), 
+    css.transf      = TRUE,  #  <<-- important
+    # Additional "graphical" options
+    class.line.col  = "blue", 
+    class.lab.col   = "blue", 
+    lwd.axis        = 2, 
+    class.lty       = 2 
+)   #
+@ 
 
 
 Now another test with a right-angled triangle (the French GEPPA). 
@@ -2828,28 +2579,26 @@ transformed (because it is not needed), while the 2nd is
 transformed: 
 
 
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     blr.tx      = c("SAND","CLAY","SILT"), 
-     main        = 
-         "(Dummy) transformation of the GEPPA texture triangle"  
- )   # 
- TT.classes(
-     geo             = geo, 
-     class.sys       = "FR.GEPPA.TT", 
-     tri.css.ps.lim  = c(0,2,20,2000), 
-     css.transf      = TRUE,  #  <<-- important
-     # Additional "graphical" options
-     class.line.col  = "blue", 
-     class.lab.col   = "blue", 
-     lwd.axis        = 2, 
-     class.lty       = 2 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-080}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    blr.tx      = c("SAND","CLAY","SILT"), 
+    main        = 
+        "(Dummy) transformation of the GEPPA texture triangle"  
+)   # 
+
+TT.classes(
+    geo             = geo, 
+    class.sys       = "FR.GEPPA.TT", 
+    tri.css.ps.lim  = c(0,2,20,2000), 
+    css.transf      = TRUE,  #  <<-- important
+    # Additional "graphical" options
+    class.line.col  = "blue", 
+    class.lab.col   = "blue", 
+    lwd.axis        = 2, 
+    class.lty       = 2 
+)   #
+@ 
 
 
 Now another test with the same triangle. The background silt 
@@ -2858,30 +2607,28 @@ has a 50$\mu$m silt sand limit. The fist triangle is not
 transformed, while the second is transformed:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Not transformed
- geo <- TT.plot( 
-     class.sys       = "FR.GEPPA.TT", 
-     blr.tx          = c("SAND","CLAY","SILT"), 
-     base.css.ps.lim  = c(0,2,20,2000), 
-     main        = 
-         "(Dummy) transformation of the GEPPA texture triangle"  
- )   # 
- # Transformed
- TT.classes(
-     geo             = geo, 
-     class.sys       = "FR.GEPPA.TT", 
-     css.transf      = TRUE,  #  <<-- important
-     # Additional "graphical" options
-     class.line.col  = "blue", 
-     class.lab.col   = "blue", 
-     lwd.axis        = 2, 
-     class.lty       = 2 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-081}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+# Not transformed
+geo <- TT.plot( 
+    class.sys       = "FR.GEPPA.TT", 
+    blr.tx          = c("SAND","CLAY","SILT"), 
+    base.css.ps.lim  = c(0,2,20,2000), 
+    main        = 
+        "(Dummy) transformation of the GEPPA texture triangle"  
+)   # 
+
+# Transformed
+TT.classes(
+    geo             = geo, 
+    class.sys       = "FR.GEPPA.TT", 
+    css.transf      = TRUE,  #  <<-- important
+    # Additional "graphical" options
+    class.line.col  = "blue", 
+    class.lab.col   = "blue", 
+    lwd.axis        = 2, 
+    class.lty       = 2 
+)   #
+@ 
 
 
 
@@ -2896,81 +2643,55 @@ according to a transformed soil texture triangle / classification,
 but this is NOT recommended, for results consistency}.
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data        = my.text[1:5,], 
-     class.sys       = "USDA.TT", 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     css.transf      = TRUE   #  <<-- important
- )   #
-\end{Sinput}
-\begin{Soutput}
-     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
-[1,]  0    0    0    0      0      0  0    0    1  0    0  0
-[2,]  1    0    0    0      0      0  0    0    0  0    0  0
-[3,]  0    0    0    0      0      0  0    0    1  0    0  0
-[4,]  0    0    0    0      0      0  0    0    1  0    0  0
-[5,]  0    0    0    0      0      0  0    1    0  0    0  0
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data        = my.text[1:5,], 
+    class.sys       = "USDA.TT", 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    css.transf      = TRUE   #  <<-- important
+)   #
+@ 
 
 Visualize the result (all data):
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys       = "USDA.TT", 
-     tri.data        = my.text, 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     css.transf      = TRUE,  #  <<-- important
-     col             = "red"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-083}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys       = "USDA.TT", 
+    tri.data        = my.text, 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    css.transf      = TRUE,  #  <<-- important
+    col             = "red"  
+)   # 
+@
 
 
 But don't do (the texture triangle is transformed, not the 
 data, and that is not good at all):
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.points.in.classes( 
-     tri.data        = my.text[1:5,], 
-     class.sys       = "USDA.TT", 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     base.css.ps.lim = c(0,2,20,2000), 
-     css.transf      = TRUE  
- )   #
-\end{Sinput}
-\begin{Soutput}
-     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
-[1,]  0    0    0    0      0      0  0    0    0  0    0  1
-[2,]  1    0    0    0      0      0  0    0    0  0    0  0
-[3,]  0    0    0    0      0      0  0    0    1  0    0  0
-[4,]  0    0    0    0      0      0  0    0    1  0    0  0
-[5,]  0    0    0    0      0      0  0    0    0  0    0  0
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.points.in.classes( 
+    tri.data        = my.text[1:5,], 
+    class.sys       = "USDA.TT", 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    base.css.ps.lim = c(0,2,20,2000), 
+    css.transf      = TRUE  
+)   #
+@ 
 
 Visualize the difference (all data) -- and you will understant 
 why doing this causes some problems:
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys       = "USDA.TT", 
-     tri.data        = my.text, 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     base.css.ps.lim = c(0,2,20,2000), 
-     css.transf      = TRUE, 
-     col             = "red"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-085}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys       = "USDA.TT", 
+    tri.data        = my.text, 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    base.css.ps.lim = c(0,2,20,2000), 
+    css.transf      = TRUE, 
+    col             = "red"  
+)   # 
+@
 
 Some points lie outside the transformed soil texture 
 classification, so they apparently don't belong to any class...
@@ -3013,52 +2734,40 @@ needed (as these 'options slots' are also ready for use in
 Here is a simple example:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Create a new function, in fact the copy of TT.text.transf()
- TT.text.transf2 <- TT.text.transf
- # Imagine some changes in TT.text.transf2...
- 
- # Use your new function (will give identical results)
- TT.points.in.classes( 
-     tri.data        = my.text[1:5,], 
-     class.sys       = "USDA.TT", 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     base.css.ps.lim = c(0,2,20,2000), 
-     css.transf      = TRUE, 
-     text.transf.fun = "TT.text.transf2"  #  <<-- important
- )   #
-\end{Sinput}
-\begin{Soutput}
-     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
-[1,]  0    0    0    0      0      0  0    0    0  0    0  1
-[2,]  1    0    0    0      0      0  0    0    0  0    0  0
-[3,]  0    0    0    0      0      0  0    0    1  0    0  0
-[4,]  0    0    0    0      0      0  0    0    1  0    0  0
-[5,]  0    0    0    0      0      0  0    0    0  0    0  0
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Create a new function, in fact the copy of TT.text.transf()
+TT.text.transf2 <- TT.text.transf
+
+# Imagine some changes in TT.text.transf2...
+
+# Use your new function (will give identical results)
+TT.points.in.classes( 
+    tri.data        = my.text[1:5,], 
+    class.sys       = "USDA.TT", 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    base.css.ps.lim = c(0,2,20,2000), 
+    css.transf      = TRUE, 
+    text.transf.fun = "TT.text.transf2"  #  <<-- important
+)   #
+@ 
 
 
 Of course it works with \texttt{TT.plot()}:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys       = "USDA.TT", 
-     tri.data        = my.text, 
-     dat.css.ps.lim  = c(0,2,20,2000), 
-     base.css.ps.lim = c(0,2,20,2000), 
-     css.transf      = TRUE, 
-     col             = "red", 
-     text.transf.fun = "TT.text.transf2", #  <<-- important
-     main            = 
-         "Test of a (dummy) new transformation function"
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-087}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys       = "USDA.TT", 
+    tri.data        = my.text, 
+    dat.css.ps.lim  = c(0,2,20,2000), 
+    base.css.ps.lim = c(0,2,20,2000), 
+    css.transf      = TRUE, 
+    col             = "red", 
+    text.transf.fun = "TT.text.transf2", #  <<-- important
+    main            = 
+        "Test of a (dummy) new transformation function"
+)   # 
+@
 
 
 
@@ -3112,16 +2821,13 @@ as I know, geometrically possible):
 Below is a code example to project the USDA soil texture triangle 
 using 90 and 45 / 45 angles:
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "USDA.TT", 
-     tlr.an      = c(45,90,45), 
-     main        = "Re-projected USDA triangle (angles)"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-088}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "USDA.TT", 
+    tlr.an      = c(45,90,45), 
+    main        = "Re-projected USDA triangle (angles)"  
+)   # 
+@ 
 
 the option \texttt{tlr.an} accept a vector of numerical, for the 
 Top, Left and Right ANgles respectively.\\
@@ -3145,16 +2851,13 @@ texture triangle, with clay at the bottom, silt on the left and
 sand on the right:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "FR.AISNE.TT", 
-     blr.tx      = c("CLAY","SILT","SAND"), 
-     main        = "Re-projected French Aisne triangle (axis)"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-089}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FR.AISNE.TT", 
+    blr.tx      = c("CLAY","SILT","SAND"), 
+    main        = "Re-projected French Aisne triangle (axis)"  
+)   # 
+@ 
 
 
 The option \texttt{blr.tx} accept a vector of character strings. 
@@ -3182,16 +2885,13 @@ with the bottom axis anticlockwise, the left axis clockwise and
 the right axis 'neutral' (inside).
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "FAO50.TT", 
-     blr.clock   = c(FALSE,TRUE,NA), 
-     main        = "Re-projected FAO triangle (axis directions)"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-090}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FAO50.TT", 
+    blr.clock   = c(FALSE,TRUE,NA), 
+    main        = "Re-projected FAO triangle (axis directions)"  
+)   # 
+@ 
 
 
 the option \texttt{blr.clock} accept a vector of boolean (TRUE / 
@@ -3210,18 +2910,15 @@ FAO or French Aisne soil texture triangle, that is with custom
 angles, axis directions and clay silt sand positions on the axis:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     tlr.an      = c(60,60,60), 
-     blr.tx      = c("SAND","CLAY","SILT"), 
-     blr.clock   = c(TRUE,TRUE,TRUE), 
-     main        = "Fully re-projected GEPPA triangle"  
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-091}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    tlr.an      = c(60,60,60), 
+    blr.tx      = c("SAND","CLAY","SILT"), 
+    blr.clock   = c(TRUE,TRUE,TRUE), 
+    main        = "Fully re-projected GEPPA triangle"  
+)   # 
+@ 
 
 
 
@@ -3238,24 +2935,24 @@ the same as the 'standard' display. Here is a practical example
 (not an explanation of this strange phenomenon!):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different geometries:
- TT.plot( class.sys = "USDA.TT" ) 
- TT.plot( 
-     class.sys   = "USDA.TT", 
-     blr.tx      = c("SILT","SAND","CLAY"), 
-     blr.clock   = c(FALSE,FALSE,FALSE), 
-     main        = "USDA triangle with a different geometry"  
- )   # 
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-092}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different geometries:
+TT.plot( class.sys = "USDA.TT" ) 
+
+TT.plot( 
+    class.sys   = "USDA.TT", 
+    blr.tx      = c("SILT","SAND","CLAY"), 
+    blr.clock   = c(FALSE,FALSE,FALSE), 
+    main        = "USDA triangle with a different geometry"  
+)   # 
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 
@@ -3278,50 +2975,50 @@ Here is a first example with French (\texttt{lang = "fr"}) and
 German (\texttt{lang = "de"}):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "fr" 
- )   #
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "de" 
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-093}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "fr" 
+)   #
+
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "de" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 A second example with Spanish (\texttt{lang = "es"}), 
 and Italian (\texttt{lang = "it"}):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "es" 
- )   #
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "it" 
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-094}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "es" 
+)   #
+
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "it" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 And a 3rd example with Dutch (\texttt{lang = "nl"}) and Flemish 
@@ -3330,71 +3027,70 @@ on the Dutch texture triangle and on the Flemish version of the
 Belgian texture triangle.
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix:
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "nl" 
- )   #
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "fl" 
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-095}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix:
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "nl" 
+)   #
+
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "fl" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 A 4th example in Swedish (\texttt{lang = "se"}) and in Romanian 
 (\texttt{lang = "ro"}):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix (for size):
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "se" 
- )   #
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "ro" 
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-096}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix (for size):
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "se" 
+)   #
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "ro" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 And finally in English, the default language (\texttt{lang = "en"}):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Set a 2 by 2 plot matrix (for size):
- old.par <- par(no.readonly=T)
- par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
- # Plot the triangles with different languages:
- TT.plot( 
-     class.sys   = "FR.GEPPA.TT", 
-     lang        = "en" 
- )   #
- # Back to old parameters:
- par(old.par)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-097}
+<<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
+# Set a 2 by 2 plot matrix (for size):
+old.par <- par(no.readonly=T)
+par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
+
+# Plot the triangles with different languages:
+TT.plot( 
+    class.sys   = "FR.GEPPA.TT", 
+    lang        = "en" 
+)   #
+
+# Back to old parameters:
+par(old.par)
+@ 
 
 
 
@@ -3420,16 +3116,13 @@ columns names}, so \texttt{css.names == colnames(my.text.fr)}
 would NOT always be true (although it is true here).
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     tri.data    = my.text.fr, 
-     class.sys   = "FAO50.TT", 
-     css.names   = c("ARGILE","LIMON","SABLE") 
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-098}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    tri.data    = my.text.fr, 
+    class.sys   = "FAO50.TT", 
+    css.names   = c("ARGILE","LIMON","SABLE") 
+)   #
+@ 
 
 You can see that the column names ARGILE, LIMON and SABLE do not 
 appear on the texture triangle plot. There is always a clear 
@@ -3452,42 +3145,36 @@ triangle system used. The function automatically places the good
 label on the good axis). 
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     tri.data    = my.text.fr, 
-     class.sys   = "FAO50.TT", 
-     css.names   = c("ARGILE","LIMON","SABLE"), 
-     css.lab     = c("l'argile [%]","Le limon [%]","Le sable [%]"), 
-     main        = 
-         "A texture triangle with (dummy) custom axis names"  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-099}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    tri.data    = my.text.fr, 
+    class.sys   = "FAO50.TT", 
+    css.names   = c("ARGILE","LIMON","SABLE"), 
+    css.lab     = c("l'argile [%]","Le limon [%]","Le sable [%]"), 
+    main        = 
+        "A texture triangle with (dummy) custom axis names"  
+)   #
+@ 
 
 
 The use of expressions allows a finer customization of the axis 
 labels, as for any R plot:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     tri.data    = my.text.fr, 
-     class.sys   = "FAO50.TT", 
-     css.names   = c("ARGILE","LIMON","SABLE"), 
-     css.lab     = expression( 
-         bold(sqrt('Argile'^2)~'[%]'), 
-         bold(sqrt('Limon'^2)~'[%]'), 
-         bold(sqrt('Sable'^2)~'[%]')
-     ),  #
-     main        = 
-         "A texture triangle with (dummy) custom axis names"  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-100}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    tri.data    = my.text.fr, 
+    class.sys   = "FAO50.TT", 
+    css.names   = c("ARGILE","LIMON","SABLE"), 
+    css.lab     = expression( 
+        bold(sqrt('Argile'^2)~'[%]'), 
+        bold(sqrt('Limon'^2)~'[%]'), 
+        bold(sqrt('Sable'^2)~'[%]')
+    ),  #
+    main        = 
+        "A texture triangle with (dummy) custom axis names"  
+)   #
+@ 
 
 
 
@@ -3510,55 +3197,19 @@ of a given texture triangle (as it is implemented in the 'The
 Soil Texture Wizard'):
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Fisrt, retrieve all the data about 
- #   the USDA texture triangle
- tmp <- TT.get("USDA.TT") 
- # It is not displayed here because it is to big
- #   The list names are:
- names(tmp) 
-\end{Sinput}
-\begin{Soutput}
- [1] "main"            "tt.points"       "tt.polygons"    
- [4] "blr.clock"       "tlr.an"          "blr.tx"         
- [7] "base.css.ps.lim" "tri.css.ps.lim"  "unit.ps"        
-[10] "unit.tx"         "text.sum"       
-\end{Soutput}
-\begin{Sinput}
- # If we drop "tt.points" and "tt.polygons", that will be 
- #   presented later, the list size is more reasonable
- tmp[ !names(tmp) %in% c("tt.points","tt.polygons") ]
-\end{Sinput}
-\begin{Soutput}
-$main
-[1] "USDA"
+<<echo=TRUE>>= 
+# Fisrt, retrieve all the data about 
+#   the USDA texture triangle
+tmp <- TT.get("USDA.TT") 
 
-$blr.clock
-[1] TRUE TRUE TRUE
+# It is not displayed here because it is to big
+#   The list names are:
+names(tmp) 
 
-$tlr.an
-[1] 60 60 60
-
-$blr.tx
-[1] "SAND" "CLAY" "SILT"
-
-$base.css.ps.lim
-[1]    0    2   50 2000
-
-$tri.css.ps.lim
-[1]    0    2   50 2000
-
-$unit.ps
-bold(mu) * bold("m")
-
-$unit.tx
-bold("%")
-
-$text.sum
-[1] 100
-\end{Soutput}
-\end{Schunk}
+# If we drop "tt.points" and "tt.polygons", that will be 
+#   presented later, the list size is more reasonable
+tmp[ !names(tmp) %in% c("tt.points","tt.polygons") ]
+@ 
 
 
 Most of the list's names correspond to \texttt{TT.plot()}'s 
@@ -3575,34 +3226,16 @@ information about each soil texture class of a given soil texture
 classification / triangle:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Retrieve and save the table:
- tmp2 <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
- # Display the first part:
- tmp2[,1:2] 
-\end{Sinput}
-\begin{Soutput}
-     abbr name         
-[1,] "VF" "Very fine"  
-[2,] "F"  "Fine"       
-[3,] "M"  "Medium"     
-[4,] "MF" "Medium fine"
-[5,] "C"  "Coarse"     
-\end{Soutput}
-\begin{Sinput}
- # Then display the last column (and the 1st again):
- tmp2[,c(1,3)] 
-\end{Sinput}
-\begin{Soutput}
-     abbr points              
-[1,] "VF" "2, 1, 3"           
-[2,] "F"  "4, 2, 3, 6"        
-[3,] "M"  "7, 4, 5, 11, 10, 8"
-[4,] "MF" "11, 5, 6, 12"      
-[5,] "C"  "9, 7, 8, 10"       
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Retrieve and save the table:
+tmp2 <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+
+# Display the first part:
+tmp2[,1:2] 
+
+# Then display the last column (and the 1st again):
+tmp2[,c(1,3)] 
+@ 
 
 
 The 1st column is the classes abbreviation, the 2nd column is the 
@@ -3616,26 +3249,9 @@ extracts the vertices coordinates (as clay silt and sand content)
 from the triangle definition:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.vertices.tbl( class.sys = "FAO50.TT" ) 
-\end{Sinput}
-\begin{Soutput}
-   points CLAY SILT SAND
-1       1 1.00 0.00 0.00
-2       2 0.60 0.00 0.40
-3       3 0.60 0.40 0.00
-4       4 0.35 0.00 0.65
-5       5 0.35 0.50 0.15
-6       6 0.35 0.65 0.00
-7       7 0.18 0.00 0.82
-8       8 0.18 0.17 0.65
-9       9 0.00 0.00 1.00
-10     10 0.00 0.35 0.65
-11     11 0.00 0.85 0.15
-12     12 0.00 1.00 0.00
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+TT.vertices.tbl( class.sys = "FAO50.TT" ) 
+@ 
 
 
 The 'points' number outputted by \texttt{TT.classes.tbl()} 
@@ -3650,22 +3266,20 @@ numbers on top of a texture triangle (preferable the same as the
 one you are actually checking!):
 
 
-\begin{Schunk}
-\begin{Sinput}
- geo <- TT.plot( 
-     class.sys   = "FAO50.TT", 
-     main        = "Vertices numbers. USDA texture triangle"
- )   # 
- TT.vertices.plot( 
-     geo         = geo, 
-     class.sys   = "FAO50.TT", 
-     col         = "red", 
-     cex         = 2, 
-     font        = 2  
- )   #
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-104}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+geo <- TT.plot( 
+    class.sys   = "FAO50.TT", 
+    main        = "Vertices numbers. USDA texture triangle"
+)   # 
+
+TT.vertices.plot( 
+    geo         = geo, 
+    class.sys   = "FAO50.TT", 
+    col         = "red", 
+    cex         = 2, 
+    font        = 2  
+)   #
+@
 
 
 Many \texttt{TT.vertices.plot()} options are shared with 
@@ -3693,48 +3307,33 @@ triangle. There, it will be saved and usable as any texture
 triangle (at least until R is shut down).
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Step 1 
- FAO63 <- TT.get("FAO50.TT") 
- #
- # Visualize the data that will be modified
- FAO63[[ "base.css.ps.lim" ]] 
-\end{Sinput}
-\begin{Soutput}
-[1]    0    2   50 2000
-\end{Soutput}
-\begin{Sinput}
- FAO63[[ "tri.css.ps.lim" ]] 
-\end{Sinput}
-\begin{Soutput}
-[1]    0    2   50 2000
-\end{Soutput}
-\begin{Sinput}
- #
- # Step 2 
- FAO63[[ "base.css.ps.lim" ]][3] <- 63 
- FAO63[[ "tri.css.ps.lim" ]][3]  <- 63 
- #
- # Step 3: Load the new texture triangle
- TT.add( "FAO63.TT" = FAO63 ) 
-\end{Sinput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Step 1 
+FAO63 <- TT.get("FAO50.TT") 
+#
+# Visualize the data that will be modified
+FAO63[[ "base.css.ps.lim" ]] 
+FAO63[[ "tri.css.ps.lim" ]] 
+#
+# Step 2 
+FAO63[[ "base.css.ps.lim" ]][3] <- 63 
+FAO63[[ "tri.css.ps.lim" ]][3]  <- 63 
+#
+# Step 3: Load the new texture triangle
+TT.add( "FAO63.TT" = FAO63 ) 
+@ 
 
 
 This (not so) new texture triangle is now usable as any other in 
 the initial list:
 
 
-\begin{Schunk}
-\begin{Sinput}
- TT.plot( 
-     class.sys   = "FAO63.TT", 
-     main        = "Modified FAO soil texture triangle"
- )   # 
-\end{Sinput}
-\end{Schunk}
-\includegraphics{soiltexture_vignette-106}
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys   = "FAO63.TT", 
+    main        = "Modified FAO soil texture triangle"
+)   # 
+@
 
 
 If you consider creating a completely new triangle, you will need 
@@ -3744,56 +3343,28 @@ definitions.\\
 This definition is a list of parameters:
 
 
-\begin{Schunk}
-\begin{Sinput}
- # Get the definition of the FAO50 texture triangle
- FAO50 <- TT.get( "FAO50.TT" ) 
- #
- # Check its class (list) 
- class( FAO50 ) 
-\end{Sinput}
-\begin{Soutput}
-[1] "list"
-\end{Soutput}
-\begin{Sinput}
- #
- # Check its parameters names 
- names( FAO50 ) 
-\end{Sinput}
-\begin{Soutput}
- [1] "main"            "tt.points"       "tt.polygons"    
- [4] "blr.clock"       "tlr.an"          "blr.tx"         
- [7] "base.css.ps.lim" "tri.css.ps.lim"  "unit.ps"        
-[10] "unit.tx"         "text.sum"       
-\end{Soutput}
-\begin{Sinput}
- #
- # Check its parameters class 
- for( i in 1:length(FAO50) )
- {   #
-     print( 
-         paste( 
-             names( FAO50 )[i], 
-             class( FAO50[[i]] ), 
-             sep = ": "
-         )   #
-     )   # 
- }   #
-\end{Sinput}
-\begin{Soutput}
-[1] "main: character"
-[1] "tt.points: data.frame"
-[1] "tt.polygons: list"
-[1] "blr.clock: logical"
-[1] "tlr.an: numeric"
-[1] "blr.tx: character"
-[1] "base.css.ps.lim: numeric"
-[1] "tri.css.ps.lim: numeric"
-[1] "unit.ps: call"
-[1] "unit.tx: call"
-[1] "text.sum: numeric"
-\end{Soutput}
-\end{Schunk}
+<<echo=TRUE>>= 
+# Get the definition of the FAO50 texture triangle
+FAO50 <- TT.get( "FAO50.TT" ) 
+#
+# Check its class (list) 
+class( FAO50 ) 
+#
+# Check its parameters names 
+names( FAO50 ) 
+#
+# Check its parameters class 
+for( i in 1:length(FAO50) )
+{   #
+    print( 
+        paste( 
+            names( FAO50 )[i], 
+            class( FAO50[[i]] ), 
+            sep = ": "
+        )   #
+    )   # 
+}   #
+@ 
 
 All elements are (probably) self explicit, or have been presented 
 earlier in the document (as options of \texttt{TT.plot()} for 
