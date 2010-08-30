@@ -25,7 +25,7 @@ package.skeleton.dx(
 )   #
 
 file.copy(
-    from      = file.path( pkg.dir, pkg.name, "inst", "doc2", "TT.env.Rd" ), 
+    from      = file.path( pkg.dir, pkg.name, "inst", "doc", "TT.env.Rd" ), 
     to        = file.path( pkg.dir, pkg.name, "man", "TT.env.Rd" ), 
     overwrite = TRUE  
 )   #

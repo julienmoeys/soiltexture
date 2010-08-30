@@ -17,7 +17,7 @@ et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
 Version: \tab 1.0\cr
-Date: \tab 2010-08-20\cr
+Date: \tab 2010-08-30\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
