@@ -1,0 +1,467 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HEAD></HEAD><HTML><BODY>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package soiltexture:  Contents">
+<param name="Local" value="00Index.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package soiltexture:  R objects">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="soiltexture-package">
+<param name="Local" value="soiltexture-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.add">
+<param name="Local" value="TT.add.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.auto.set">
+<param name="Local" value="TT.auto.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.axis.arrows">
+<param name="Local" value="TT.axis.arrows.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.baseplot">
+<param name="Local" value="TT.baseplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.blr.ps.lim">
+<param name="Local" value="TT.blr.ps.lim.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.blr.tx.check">
+<param name="Local" value="TT.blr.tx.check.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.check.ps.lim">
+<param name="Local" value="TT.check.ps.lim.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.check.ps.lim.Xm">
+<param name="Local" value="TT.check.ps.lim.Xm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.chemometrics.alr">
+<param name="Local" value="TT.chemometrics.alr.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.classes">
+<param name="Local" value="TT.classes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.classes.tbl">
+<param name="Local" value="TT.classes.tbl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.col2hsv">
+<param name="Local" value="TT.col2hsv.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.contour">
+<param name="Local" value="TT.contour.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.css2xy">
+<param name="Local" value="TT.css2xy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.data.test">
+<param name="Local" value="TT.data.test.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.data.test.X">
+<param name="Local" value="TT.data.test.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.dataset">
+<param name="Local" value="TT.dataset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.deg2rad">
+<param name="Local" value="TT.deg2rad.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.dia2phi">
+<param name="Local" value="TT.dia2phi.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.DJ.col">
+<param name="Local" value="TT.DJ.col.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.edges">
+<param name="Local" value="TT.edges.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.env">
+<param name="Local" value="TT.env.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.gen.op.set">
+<param name="Local" value="TT.gen.op.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.geo.get">
+<param name="Local" value="TT.geo.get.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.geo.set">
+<param name="Local" value="TT.geo.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.get">
+<param name="Local" value="TT.get.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.grid">
+<param name="Local" value="TT.grid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.ifelse">
+<param name="Local" value="TT.ifelse.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.image">
+<param name="Local" value="TT.image.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.iwd">
+<param name="Local" value="TT.iwd.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.kde2d">
+<param name="Local" value="TT.kde2d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.lines">
+<param name="Local" value="TT.lines.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.locator">
+<param name="Local" value="TT.locator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.mahalanobis">
+<param name="Local" value="TT.mahalanobis.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.normalise.sum">
+<param name="Local" value="TT.normalise.sum.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.normalise.sum.X">
+<param name="Local" value="TT.normalise.sum.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.par.op.set">
+<param name="Local" value="TT.par.op.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.phi2dia">
+<param name="Local" value="TT.phi2dia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.plot">
+<param name="Local" value="TT.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.points">
+<param name="Local" value="TT.points.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.points.in.classes">
+<param name="Local" value="TT.points.in.classes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.polygon.area">
+<param name="Local" value="TT.polygon.area.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.polygon.centroids">
+<param name="Local" value="TT.polygon.centroids.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.set">
+<param name="Local" value="TT.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.str">
+<param name="Local" value="TT.str.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.switch">
+<param name="Local" value="TT.switch.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.text">
+<param name="Local" value="TT.text.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.text.transf">
+<param name="Local" value="TT.text.transf.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.text.transf.X">
+<param name="Local" value="TT.text.transf.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.text.transf.Xm">
+<param name="Local" value="TT.text.transf.Xm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.ticks">
+<param name="Local" value="TT.ticks.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.ticks.lab">
+<param name="Local" value="TT.ticks.lab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.vertices.plot">
+<param name="Local" value="TT.vertices.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.vertices.tbl">
+<param name="Local" value="TT.vertices.tbl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.xy.grid">
+<param name="Local" value="TT.xy.grid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT.xy2css">
+<param name="Local" value="TT.xy2css.html">
+</OBJECT>
+</UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Package soiltexture:  Titles">
+</OBJECT>
+<UL>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="A function to obtaine a weight average 'mix' of different colors!">
+<param name="Local" value="TT.DJ.col.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Calculated the 2D probabilty density on an x-y grid.">
+<param name="Local" value="TT.kde2d.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Calculates the Mahalanobis distance between clay silt and sand.">
+<param name="Local" value="TT.mahalanobis.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Classify a table of soil texture data according to a soil texture triangle.">
+<param name="Local" value="TT.points.in.classes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Compute the additive log-ratio transformation of compositional data.">
+<param name="Local" value="TT.chemometrics.alr.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia/1000)">
+<param name="Local" value="TT.dia2phi.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Convert a soil particle phi value into diameter dia [micro-meters]. ">
+<param name="Local" value="TT.phi2dia.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Convert any colors to hsv. ">
+<param name="Local" value="TT.col2hsv.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Converts texture data (3 classes) into x-y coordinates. ">
+<param name="Local" value="TT.css2xy.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Determines the area of 1 polygon (in x-y coordinates). ">
+<param name="Local" value="TT.polygon.area.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Determines the centroid of 1 polygon (in x-y coordinates). ">
+<param name="Local" value="TT.polygon.centroids.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to add a new default package parameters. ">
+<param name="Local" value="TT.add.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to change / set the default package parameters. ">
+<param name="Local" value="TT.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to convert angle in degree to angle in radian.">
+<param name="Local" value="TT.deg2rad.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Function to retrieve / get the default package parameters. ">
+<param name="Local" value="TT.get.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Functions for soil texture plot, classification and transformation">
+<param name="Local" value="soiltexture-package.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Genetates a virtual cross correlated clay silt sand + Z dataset. ">
+<param name="Local" value="TT.dataset.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle.">
+<param name="Local" value="TT.locator.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. ">
+<param name="Local" value="TT.check.ps.lim.Xm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Check the consistency between blr.tx and css.names. ">
+<param name="Local" value="TT.blr.tx.check.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Convert point-data duplets (2 variables, x-y coordinaes) in Clay silta and sand coordinates. ">
+<param name="Local" value="TT.xy2css.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Create a grid in the x-y coordinate system. ">
+<param name="Local" value="TT.xy.grid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Create a tabular version of clay silt sand particle size limits. ">
+<param name="Local" value="TT.blr.ps.lim.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Create an empty plot scene for a texture triangle.">
+<param name="Local" value="TT.baseplot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Flexible version of ifelse. ">
+<param name="Local" value="TT.ifelse.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Plot the axis ticks' labels of a texture triangle plot. ">
+<param name="Local" value="TT.ticks.lab.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Plot the axis' arrows of a texture triangle plot. ">
+<param name="Local" value="TT.axis.arrows.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Plot the axis' ticks of a texture triangle plot. ">
+<param name="Local" value="TT.ticks.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Plot the edges (bare axis) of a soil texture triangle. ">
+<param name="Local" value="TT.edges.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).">
+<param name="Local" value="TT.geo.get.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Retrieve and set default values for parameters (par() or not), when NULL.">
+<param name="Local" value="TT.auto.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Retrieve and set default values from options with default in "par()". ">
+<param name="Local" value="TT.par.op.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Retrieve and set default values from options. ">
+<param name="Local" value="TT.gen.op.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Stretch or reshape the range of value of some data set. ">
+<param name="Local" value="TT.str.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Takes "geo" values and assign them individually in the parent function. ">
+<param name="Local" value="TT.geo.set.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Used in the plot axis drawings.">
+<param name="Local" value="TT.switch.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Internal. Used to plot line elements of a texture plot axis, ticks, arrows, etc.">
+<param name="Local" value="TT.lines.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Inverse weighted distance interpolation on a grid. ">
+<param name="Local" value="TT.iwd.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Log-linear transformation of a soil texture data table between 2 particle size systems (3 classes).">
+<param name="Local" value="TT.text.transf.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Log-linear transformation of a soil texture data table between 2 particle size systems (X classes).">
+<param name="Local" value="TT.text.transf.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Normalises the sum of the 3 particle size classes.">
+<param name="Local" value="TT.normalise.sum.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Normalises the sum of the X particle size classes.">
+<param name="Local" value="TT.normalise.sum.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot a grid at regular texture intervals inside an existing soil texture triangle. ">
+<param name="Local" value="TT.grid.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot a soil texture data table as points on an existing texture plot. ">
+<param name="Local" value="TT.points.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot soil texture triangles / diagrams.">
+<param name="Local" value="TT.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot text labels for each values of a soil texture data table on an existing texture plot. ">
+<param name="Local" value="TT.text.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot the texture classes polygons in a texture triangle plot.">
+<param name="Local" value="TT.classes.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Plot the vertices of a texture classification system. ">
+<param name="Local" value="TT.vertices.plot.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Returns the table of classes of a texture classification system.">
+<param name="Local" value="TT.classes.tbl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Returns the table of vertices of a texture classification system.">
+<param name="Local" value="TT.vertices.tbl.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Test the validity of some soil texture data table (3 particle size classes). ">
+<param name="Local" value="TT.data.test.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Test the validity of some soil texture data table (X particle size classes). ">
+<param name="Local" value="TT.data.test.X.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Transformations of a soil texture data table between 2 particle size systems (X classes), various methods.">
+<param name="Local" value="TT.text.transf.Xm.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="TT env">
+<param name="Local" value="TT.env.html">
+</OBJECT>
+<LI> <OBJECT type="text/sitemap">
+<param name="Name" value="Wrapper for the contour() function adapted to texture triangles.">
+<param name="Local" value="TT.image.html">
+</OBJECT>
+</UL>
+</UL>
+</BODY></HTML>

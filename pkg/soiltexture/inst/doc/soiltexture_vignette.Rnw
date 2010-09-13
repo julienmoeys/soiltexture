@@ -1617,7 +1617,7 @@ legend(
     pch         = def.pch, 
     bty         = "o", 
     bg          = NA, 
-    box.col     = NA, 
+    #box.col    = NA, # Uncomment this to remove the legend box
     text.col    = "black", 
     cex         = def.cex  
 )   #
