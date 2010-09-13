@@ -224,26 +224,33 @@ pkg.description <- function(
 
 
 
-pkg.build.wrapper <- function 
+pkg.build.wrapper <- function( 
 ### A wrapper function for R CMD build, for building a package 
 ### from sources
-(   #
- pkg.name, 
+
+ pkg.name,
 ### Name of the package, and of the package directory
- pkg.dir, 
+
+ pkg.dir,
 ### Name of the directory in which the package directory is
 ### located 
- r.cmd= "R CMD build", 
+
+ r.cmd="R CMD build",
 ### Command send to windows shell. Default is "R CMD build" 
- bat.suffix="RCMDbuild"
+
+ bat.suffix="RCMDbuild",
 ### Suffix of the batch (.bat) file create for this operation, 
 ### without extension
+
+ r.cmd.op=""
+### Options to be passed after r.cmd, like "--no-tests" 
+
 ){  #
     cmd.build <- c( 
         "c:", 
         "cd \\", 
-        paste( sep = "", "cd ", normalizePath( file.path( pkg.dir ) )), 
-        paste( sep = "", r.cmd, " ", pkg.name )  
+        paste( sep = "", "cd \"", normalizePath( file.path( pkg.dir ) ), "\"" ), 
+        paste( sep = "", r.cmd, " ", r.cmd.op, " ", pkg.name )  
     )   #
     #
     cat( cmd.build ) 
@@ -262,6 +269,8 @@ pkg.build.wrapper <- function
         con  = bat.build, 
         sep  = "\n"  
     )   #
+    #
+    # print( as.character( bat.build ) )
     #
     sys.res <- system( 
         command     = bat.build,  #
@@ -296,7 +305,7 @@ pkg.install.wrapper <- function
     cmd.install <- c( 
         "c:", 
         "cd \\", 
-        paste( sep = "", "cd ", normalizePath( file.path( pkg.dir ) )), 
+        paste( sep = "", "cd \"", normalizePath( file.path( pkg.dir ) ), "\"" ), 
         paste( sep = "", r.cmd, " ", pkg.name )  
     )   #
     #
@@ -355,7 +364,7 @@ pkg.check.wrapper <- function(
     cmd.checks <- c( 
         "c:", 
         "cd \\", 
-        paste( sep = "", "cd ", normalizePath( file.path( pkg.dir ) )), 
+        paste( sep = "", "cd \"", normalizePath( file.path( pkg.dir ) ), "\"" ), 
         paste( sep = "", r.cmd, " ", r.cmd.op," ", pkg.name )  
     )   #
     #
