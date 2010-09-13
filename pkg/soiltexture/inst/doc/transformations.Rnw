@@ -45,7 +45,8 @@ install.packages("soiltexture")
 And loaded with the following commands:
 
 <<echo=TRUE,eval=TRUE>>=
-require("soiltexture") 
+require( "soiltexture" ) 
+require( "drc" )
 @
 
 

@@ -18,7 +18,8 @@ particle size system ('dat.ps.lim') into another
 ('base.ps.lim'). No limit in the number of texture classes
 in the input and output texture tables. See TT.text.transf
 for transformation involving only 3 particle classes. 'tri.data'
-can only contain texture data.}
+can only contain texture data.
+This function requires the "drc" package to be installed.}
 \usage{
 TT.text.transf.Xm(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, psdmodel = "AD", omethod = "all", tri.sum.norm = FALSE)
 }
@@ -39,8 +40,8 @@ TT.text.transf.Xm(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, text.tol =
 }
   \item{psdmodel}{
 }
-  \item{omethod}{
-}
+  \item{omethod}{see optim for available methods, the default "all" is to run all methods and 
+choose the best results with minimum residual sum of squares (RSS).}
   \item{tri.sum.norm}{
 }
 }
@@ -53,7 +54,8 @@ Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}
 
 
 
-\examples{require( soiltexture ) 
+\examples{require( "soiltexture" ) 
+require( "drc" )
 
 my.text4 <- data.frame( 
     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 

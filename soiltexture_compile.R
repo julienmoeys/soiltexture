@@ -1,20 +1,28 @@
 rm(list=ls(all=TRUE)) 
-wrapper.path <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/R_CMD_wrapper.R"
 pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg" 
 pkg.name     <- "soiltexture" 
-code.files   <- "soiltexture.R" 
-pkg.version  <- "1.01" 
-pkg.depends  <- c("sp","MASS","drc") 
+pkg.version  <- "1.02" 
+pkg.depends  <- c("sp","MASS") 
+pkg.suggests <- "drc" 
+RVersion     <- "R (>= 2.4.1)" 
+# r.path       <- "C:/Program Files/_SCIENCE/R_PROJECT_2-4-1/bin" 
+r.path       <- ""  #  Use curent R version
 
 
 
-source( wrapper.path )  
+require( "rcmdwrapper" ) # See rcmdwrapper_1.1.zip
 
 
 
 # Change the description file:
-pkg.description( pkg.name = pkg.name, pkg.dir = pkg.dir, 
-                 pkg.version = pkg.version, pkg.depends = pkg.depends ) 
+pkg.description( 
+    pkg.name     = pkg.name, 
+    pkg.dir      = pkg.dir, 
+    pkg.version  = pkg.version, 
+    pkg.depends  = pkg.depends, 
+    pkg.suggests = pkg.suggests, 
+    RVersion     = RVersion  
+)   #
 
 
 
@@ -36,12 +44,20 @@ pkg.remove.wrapper( pkg.name = pkg.name )
 
 
 # Build the package
-pkg.build.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir ) 
+pkg.build.wrapper( 
+    pkg.name = pkg.name, 
+    pkg.dir  = pkg.dir, 
+    r.path   = r.path
+)   #
 
 
 
 # Install the package:
-pkg.install.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir ) 
+pkg.install.wrapper( 
+    pkg.name = pkg.name, 
+    pkg.dir  = pkg.dir, 
+    r.path   = r.path
+)   #
 
 
 
@@ -52,7 +68,12 @@ install.packages.zip( pkg.name = pkg.name, pkg.dir = pkg.dir, pkg.version = pkg.
 
 # Check the package
 date() 
-pkg.check.wrapper( pkg.name = pkg.name, pkg.dir = pkg.dir, r.cmd.op = "--no-tests" ) 
+pkg.check.wrapper( 
+    pkg.name = pkg.name, 
+    pkg.dir  = pkg.dir, 
+    r.cmd.op = "--no-tests", 
+    r.path   = r.path
+)   #
 date() 
 
 

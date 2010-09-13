@@ -1,4 +1,5 @@
-require( soiltexture ) 
+require( "soiltexture" ) 
+require( "drc" )
 
 my.text4 <- data.frame( 
     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
