@@ -1,16 +1,19 @@
-texi2dvi.wrapper <- function 
+texi2dvi.wrapper <- function(# Internal. Wrapper for tools:texi2dvi.
 ### This function is a wrapper to tools:texi2dvi that also deletes 
 ### the images when the pdf file was created
 
-(   # 
     file.name.root, 
 ### Root of the sweave (and tex) file name (without extention) 
+
     work.wd, 
 ### Path of the working directory 
+
     inout.dir, 
 ### Path of the subdirectory in which the images are outputted 
+
     tex.ext     = ".tex"
 ### Tex file extesion. Any other value than ".tex" may not work 
+
 ){  #
     old.dir <- getwd() 
     #
@@ -88,23 +91,27 @@ texi2dvi.wrapper <- function
 
 
 
-Sweave.wrapper <- function 
+Sweave.wrapper <- function(# Wrapper around Stangle, Sweave and tools::texi2dvi 
 ### Sweave.wrapper is a function that performs different 
 ### operations otherwise done step by step with Stangle, Sweave and 
 ### tools::texi2dvi, and that do a bit of cleaning in the folder 
 ### after that (delete images)
-    
-(   #
+
     file.name.root, 
 ### Root of the sweave (and tex) file name (without extention) 
+
     work.wd, 
 ### Path of the working directory 
+
     inout.dir, 
 ### Path of the subdirectory in which the images are outputted 
+
     sweave.ext  = ".Rnw", 
 ### Sweave file extesion. Any other value than ".Rnw" may not work 
+
     tex.ext     = ".tex"
 ### Tex file extesion. Any other value than ".tex" may not work 
+
 ){  #
     old.dir <- getwd() 
     #

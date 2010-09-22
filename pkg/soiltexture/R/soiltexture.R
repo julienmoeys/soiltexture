@@ -5716,6 +5716,11 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
         tri.css.ps.lim  <- TT.data[["tri.css.ps.lim"]] 
     }   #
     #
+    if( any( is.null(base.css.ps.lim) ) )
+    {   #
+        base.css.ps.lim  <- tri.css.ps.lim 
+    }   #
+    #
     if( any( is.null(dat.css.ps.lim) ) )
     {   #
         dat.css.ps.lim  <- base.css.ps.lim  # Equal to tri.css.ps.lim, 
@@ -5748,7 +5753,7 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
             tri.data        = tri.data,  
             base.css.ps.lim = base.css.ps.lim,  
             dat.css.ps.lim  = dat.css.ps.lim,  
-            css.names       = css.names,  
+            css.names       = css.names, 
             blr.tx          = blr.tx,  
             text.sum        = text.sum,  
             text.tol        = text.tol,  
@@ -5762,9 +5767,9 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
             tri.data        = TT.data$"tt.points",  
             base.css.ps.lim = base.css.ps.lim,  
             dat.css.ps.lim  = tri.css.ps.lim,  
-            css.names       = css.names,  
+            css.names       = NULL, # TT.data$"tt.points" names are not necessarily identical to those in css.name
             blr.tx          = blr.tx,  
-            text.sum        = 1,  ###
+            text.sum        = 1, 
             text.tol        = text.tol,  
             tri.sum.tst     = tri.sum.tst,  
             tri.pos.tst     = tri.pos.tst,  

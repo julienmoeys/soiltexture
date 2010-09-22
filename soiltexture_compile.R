@@ -10,6 +10,7 @@ r.path       <- ""  #  Use curent R version
 
 
 
+
 require( "rcmdwrapper" ) # See rcmdwrapper_1.1.zip
 
 
@@ -61,8 +62,13 @@ pkg.install.wrapper(
 
 
 
-# Re-install and load the package from the new zip archive:
-install.packages.zip( pkg.name = pkg.name, pkg.dir = pkg.dir, pkg.version = pkg.version ) 
+# Re-install and load the package from the new zip archive 
+# _before_ the tests are conducted
+install.packages.zip( 
+    pkg.name    = pkg.name, 
+    pkg.dir     = pkg.dir, 
+    pkg.version = pkg.version
+)   #
 
 
 
