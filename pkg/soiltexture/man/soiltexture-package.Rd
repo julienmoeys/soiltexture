@@ -17,13 +17,13 @@ et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
 Version: \tab 1.02\cr
-Date: \tab 2010-09-22\cr
+Date: \tab 2010-09-30\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Depends: \tab R (>= 2.4.1), sp, MASS\cr
 Suggests: \tab drc\cr
-License: \tab GPL (>=3)\cr
+License: \tab AGPL (>=3)\cr
 URL: \tab http://soiltexture.r-forge.r-project.org/\cr}
 }
 \author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>}

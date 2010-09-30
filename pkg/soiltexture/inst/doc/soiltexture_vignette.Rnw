@@ -288,7 +288,7 @@ creativecommons.org}):
 \end{itemize} 
 
 'The soil texture wizard' R \textbf{functions} are licensed under 
-a GNU General Public License Version 3 (\texttt{http://www.gnu.org/licenses/gpl-3.0.html}).\\
+a Affero GNU General Public License Version 3 (\texttt{http://www.gnu.org/licenses/agpl.html}).\\
 
 Given the fact that a lot of the work presented here has been done 
 on my free time, and given its highly permissive license, \textbf{% 
