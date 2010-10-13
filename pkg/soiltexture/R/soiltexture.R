@@ -5280,7 +5280,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
     #
     # - Define if class.p.bg.col is TRUE (or not a logical)
     class.p.bg.col.test <- is.logical( class.p.bg.col ) 
-    if( class.p.bg.col.test )
+    if( class.p.bg.col.test ) 
     {   #
         class.p.bg.col.test <- class.p.bg.col 
     }else{ 
