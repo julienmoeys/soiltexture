@@ -1,216 +1,350 @@
 
-
-
-
-
-
-
-
 <a href="http://r-forge.r-project.org"><img style="border: 0px solid ; width: 210px; height: 54px;" alt="r-forge" src="http://r-forge.r-project.org/themes/rforge/imagesrf/logo.png"></a><br>
-
-
-
-
-
-
-
 <h2>Welcome to The Soil Texture Wizard project!</h2>
-
-
-
-
-
-
-
 <img style="width: 500px; height: 500px;" alt="Unofficial USDA texture triangle made with the soiltexture package" src="http://r-forge.r-project.org/scm/viewvc.php/*checkout*/www/EN_TEXTURE_TRIANGLE_USDA_GRAD_UNOFFICIAL_CC-BY-SA-3-small.png?root=soiltexture"><br>
-
-
-
-
 <br>
-
-
-
-
-<span style="font-weight: bold;">The Soil Texture Wizard</span> is a set of R functions designed to produce 
-texture triangle plots. It also allows to classify soil textures data 
-according to a classification, and to transform them according to 
-different texture particle size class systems.
-<br>
-
-
-
-
-
-
-
-<br>
-
-
-
-
-
-
-
-This page is under construction!<br>
-
-
-
-
-
-
-
+<span style="font-weight: bold;">The Soil Texture Wizard</span> is a
+set of R functions designed to produce texture triangle plots. It also
+allows to classify soil textures data according to a classification,
+and to transform them according to different texture particle size
+class systems.<br>
+<h2>In short<br>
+</h2>
 <ul>
-
-
-
-
-
-
-
-  <li>A <span style="font-weight: bold;">detailed project description</span> can be found on the <a target="_blank" href="http://julienmoeys.free.fr/?Soil-textures-triangle">project's administrator website</a> (page that should be move here).</li>
-
-
-
-
-
-
-
-  <li>The <a target="_blank" style="font-weight: bold;" href="http://r-forge.r-project.org/R/?group_id=740">package binaries</a> should be&nbsp;available on r-forge soon.</li>
-
-
-
-
-
-
-
-  <li>The <span style="font-weight: bold;">package source</span> are available on the <a target="_blank" href="http://r-forge.r-project.org/scm/?group_id=740">project SCM page</a>.</li>
-
-
-
-
-
-
-
-  <li>The <strong>project summary page</strong> you can find <a href="http://r-forge.r-project.org/projects/soiltexture/" target="_blank">here</a>.<a href="http://r-forge.r-project.org/projects/soiltexture/"><strong></strong></a></li>
-
-
-
-
-  <li>The <span style="font-weight: bold;">package vignette</span> (tutorial) can be found <a target="_blank" href="http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/inst/doc/soiltexture_vignette.pdf?root=soiltexture">here</a>.</li>
-
-  <li>The <span style="font-weight: bold;">logfile of changes made to the package</span> can be found <a href="http://r-forge.r-project.org/scm/viewvc.php/*checkout*/SoilTexture_changelog.txt?root=soiltexture" target="_blank">here</a>.</li>
-
-
-
-
-
-
-
+<li>A <span style="font-weight: bold;">detailed project description</span>
+can be found on the <a target="_blank" href="http://julienmoeys.free.fr/?Soil-textures-triangle">project's
+administrator website</a> (page that should be move here).</li>
+<li>Download &amp; install the <a style="font-weight: bold;" href="http://cran.r-project.org/web/packages/soiltexture/index.html" target="_blank">soiltexture package from CRAN</a> (<a style="font-style: italic;" href="#Package_installation">see
+instructions here</a>).<br>
+</li>
+<li>Read the <a href="http://cran.r-project.org/web/packages/soiltexture/soiltexture.pdf" target="_blank"><span style="font-weight: bold;">package vignette</span></a>
+(comprehensive tutorial).</li>
+<li>Ask questions <a style="font-weight: bold;" href="https://r-forge.r-project.org/mail/?group_id=740" target="_blank">on
+the package's forum page</a>.</li>
+<li>If you are an R develloper, you may:<br>
+</li>
+<ul>
+<li>Have a look at the <a href="http://r-forge.r-project.org/projects/soiltexture/" target="_blank">project summary page</a> on r-forge.</li>
 </ul>
-
-For <span style="font-weight: bold;">installing the package</span>, try first:<br>
-
+<ul>
+<li>Download the <a target="_blank" href="http://r-forge.r-project.org/R/?group_id=740">latest package
+binaries</a> to install the package on Windows, Linux or MacOS.</li>
+</ul>
+<ul>
+<li>Inspect t<span style="text-decoration: underline;"></span>he <span style="font-weight: bold;">package source</span> are available on the <a target="_blank" href="http://r-forge.r-project.org/scm/?group_id=740">project
+SCM page</a>.</li>
+</ul>
+<ul>
+<li>Check the<span style="font-weight: bold;"> </span><a href="http://r-forge.r-project.org/scm/viewvc.php/*checkout*/SoilTexture_changelog.txt?root=soiltexture" target="_blank">logfile of changes made to the package.</a></li>
+</ul>
+</ul>
+<h2>Related projects</h2>
+Other projects exists that provides useful soil-related R functions
+(toolboxes for the pedometrician):<br>
+<ul>
+<li><a href="http://aqp.r-forge.r-project.org/" target="_blank">aqp</a>.
+'Algorithms for Quantitative Pedology';<br>
+</li>
+<li><a href="http://soilwater.r-forge.r-project.org/" target="_blank">soilwater</a>.
+Provides soil water retention functions and soil hydraulic conductivity
+functions and pedotransfer functions to estimate their parameter from
+easily available soil properties;</li>
+</ul>
+Other packages that may interest soil scientists are:<br>
+<ul>
+<li><a href="http://cran.r-project.org/web/packages/soil.spec/index.html" target="_blank">soil.spec</a>. Soil spectral data exploration and
+regression functions;</li>
+<li><a href="http://cran.r-project.org/web/packages/HydroMe/" target="_blank">HydroMe</a><span style="text-decoration: underline;">.</span>
+Estimation of Soil Hydraulic Parameters from Experimental Data;</li>
+<li><a href="http://cran.r-project.org/web/packages/SoPhy/index.html" target="_blank">SoPhy</a>. A <span style="font-style: italic;">defunct</span>
+package that implemented a 2D water infiltration model into R;</li>
+</ul>
+<h2><a name="Package_installation"></a>Package installation</h2>
+For <span style="font-weight: bold;">installing the package</span>,
+try first:<br>
 <br>
-
-<span style="font-family: monospace;"></span><code>&nbsp;&nbsp;&nbsp; install.packages("soiltexture", repos = "http://R-Forge.R-project.org")<br>
-
+<span style="font-family: monospace;"></span><code>&nbsp;&nbsp;&nbsp;
+install.packages("soiltexture", repos = "http://R-Forge.R-project.org")<br>
 </code><br class="">
-
-If it doesn't work, or if you don't have the latest release of R, try instead:<br class="">
-
+If it doesn't work, or if you don't have the latest release of R, try
+instead:<br class="">
 <code><br>
-
-</code><span style="font-family: monospace;"></span><code>&nbsp;&nbsp;&nbsp; install.packages("soiltexture", repos = "http://R-Forge.R-project.org", type = "source")<br>
-
+</code><span style="font-family: monospace;"></span><code>&nbsp;&nbsp;&nbsp;
+install.packages("soiltexture", repos = "http://R-Forge.R-project.org",
+type = "source")<br>
 <br>
-
-If it doesn't work, try to load the sources instead (this method don't install the help page):<br>
-
-</code><span style="font-family: monospace;"><br></span><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; source(
+If it doesn't work, try to load the sources instead (this method does
+not install the help page):<br>
+</code><span style="font-family: monospace;"><br>
+</span><span style="font-family: monospace;">&nbsp;&nbsp;&nbsp; source(
 "<a href="https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.R?root=soiltexture" target="_blank">https://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.R?root=soiltexture</a>"
-)</span><br><span style="font-family: monospace;">
-
-
-
-
-<br>
-
-
-
-
+)</span><span style="font-family: monospace;"><br>
 </span>
-
-
-<span style="font-weight: bold;">Roadmap</span> (suceptible to changes):<br>
-
-
-
-
-
-
+<h2><span class="spip_out">Features list</span></h2>
+<p class="spip">"The Soil Texture Wizard" is an integrated set of
+functions for the <a href="http://www.r-project.org/" class="spip_out">R
+software for statistical computing</a>, that allows to:</p>
 
 <ul>
-
-
-
-
-
-
-
-  <li>The functions provided by the soiltexture package are considered
-as beta / almost stable, but they need to be tested by more users.</li>
-
-
-
-
-
-
-
-  <li>The main function TT.plot() is now documented.</li>
-
-
-
-
-
-
-
-  <li>The documentation is under construction for the rest of the package (using <a href="http://inlinedocs.r-forge.r-project.org/">inlinedocs</a>), and will be gradually completed.</li>
-
-
-
-
-
-
-
-  <li>...</li>
-
-
-
-
-
-
-
+<li><strong class="spip">Create</strong> clear, readable <strong class="spip">soil texture triangles graphics</strong> (also called <a href="http://en.wikipedia.org/wiki/Ternary_plot" class="spip_out">ternary
+plots</a> or soil texture diagrams), with proper axis labels, either
+"neutral", or with one of the <strong class="spip">8 soil texture
+classification systems actually pre-defined</strong>:
+</li>
+</ul>
+<ul style="margin-left: 40px;">
+<li>USDA; <br>
+</li>
+<li>FAO (which is also the triangle for the soil map of Europe); <br>
+</li>
+<li>Aisne (France); <br>
+</li>
+<li>GEPPA (France); <br>
+</li>
+<li>German triangle (Bodenkundliche Kartieranleitung 1994); <br>
+</li>
+<li>Soil Survey of England and Wales (UK); <br>
+</li>
+<li>Australian triangle; <br>
+</li>
+<li>Belgian triangle (<font color="#ff3333">new 2009/10/15</font>). <br>
+</li>
+<li>Canadian triangle (<font color="#ff3333">new 2010/04/16</font>). <br>
+</li>
+<li>ISSS triangle (<font color="#ff3333">new 2010/05/13</font>).</li>
+<li>Romanian texture triangle (<span style="color: red;">new
+2010-06-09</span>).<br>
+</li>
+</ul>
+<p style="margin-left: 40px;" class="spip">Many thanks to Wei
+Shangguan, PhD student at the School of geography of Beijing normal
+university for providing the code of ISSS the triangle, and to Rosca
+Bogdan (from Romanian Academy, Iasi Branch, Geography team) for
+providing the code for the Romanian triangle.<br>
+</p>
+<ul>
+<li><strong class="spip">Implement new texture triangles or create
+personalized texture triangles</strong>, that will be usable as any of
+the above mentioned soil textures triangle (graphs, classification,
+etc.);</li>
+</ul>
+<ul>
+<li>Numerous graphical possibilities to <strong class="spip">display
+soil texture data in a texture triangle</strong>, following an option
+system similar to R plot(), points() and text() functions:
+</li>
+</ul>
+<ul style="margin-left: 40px;">
+<li>Simple graphics (points);</li>
+<li>Bubble charts (points sizes and colors are proportional to a 4th
+variable);</li>
+<li>Graph with text instead of points.</li>
+</ul>
+<ul>
+<li><strong class="spip">Calculate the texture class(es)</strong> (<strong class="spip">= classification</strong>) to which belong soil texture
+data, in 1 of the 7 predefined system / classification / triangle (or
+your own custom triangle);</li>
+</ul>
+<ul>
+<li><strong class="spip">Transform</strong> soil textures data <strong class="spip">from 1 particle sizes system</strong> (limits between the
+clay, silt and sand particles) <strong class="spip">to another
+particle size system</strong>, with a log-linear transformation (<u>estimation</u>).
+For instance, it is possible to convert a textures data table measured
+in a system that have a silt / sand limit is 60 micrometers into a
+system that has a silt / sand limit is 50 micrometers. <strong class="spip">It is also possible to define your own texture
+transformation function, and use it for on-the-fly transformation of
+data in texture plots or for texture classification.</strong>;</li>
+</ul>
+<ul>
+<li>Display a texture triangle / classification <strong class="spip">in
+a (triangle) geometry different from its default (triangle) geometry</strong>.
+For instance, a texture triangle / classification usually displayed in
+an isosceles triangle can be displayed in a right-angled triangle. The
+geometrical parameters that can be changed are:</li>
+</ul>
+<ul style="margin-left: 40px;">
+<li>The 3 angles of the triangle (free); </li>
+<li>The "direction" of increasing textures for each axes (clockwise,
+anti-clockwise or "centripetal"); </li>
+<li>The location of the 3 texture classes (clay, silt and sand) on
+the 3 axes (abscissae, left or right axis).</li>
+</ul>
+<p style="margin-left: 40px;" class="spip"><strong class="spip">Over-plot
+/ superimpose</strong> 2 different texture triangles / classifications
+into one single plot, whatever their initial "geometry" (for instance
+the German right-angled soil texture triangle and the USDA isosceles
+texture triangle can be over-plotted (into a given geometry));</p>
+<ul>
+<li>On the fly transformation of textures data particle size when
+plotting a soil texture triangle;</li>
+</ul>
+<ul>
+<li>On the fly transformation of a triangle particle size when
+over-plotting 2 (different) texture triangles;</li>
 </ul>
 
-
-
-<span style="font-weight: bold;">
-
-
-
-Feedbacks</span> on the package are&nbsp;welcome (<a href="http://r-forge.r-project.org/users/jmoeys/" target="_blank">contact details here</a>).<br>
-
+<ul>
+<li><strong class="spip">Contour plot</strong> or <strong class="spip">image plot</strong> of:
+</li>
+</ul>
+<ul style="margin-left: 40px;">
+<li>2D kernel density estimation (based on R-MASS kde2d function) (<font color="#ff3333">new 2009/10/13</font>) <br>
+</li>
+<li>Mahalanobis distance (based on R mahalanobis function), with or
+without additive log-ratio transformation (<font color="#ff3333">new
+2009/10/13</font>) <br>
+</li>
+<li>Inverse weighted distance estimate / smoothing of a 4th variable;</li>
+</ul>
+<ul>
+<li>Normalisation of texture datas sum of the 3 texture classes
+to 100% (<font color="#ff3333">new 2009/10/13</font>).</li>
+</ul>
+<ul>
+<li><strong class="spip">Chose between 7 languages for the plot title
+and the 3 axes legends</strong> (English, French, Swedish, German,
+Spanish, Italian and Dutch), with a simple option;</li>
+</ul>
+<ul>
+<li>Most of the functions are <strong class="spip">optimised for
+speed</strong>, and are thus suitable for <strong class="spip">mass /
+batch treatment of soil textures data</strong>:
+</li>
+</ul>
+<ul style="margin-left: 40px;">
+<li>3400 soil textures data transformed per second;<br>
+</li>
+<li>14000 soil textures data "classified" per second;</li>
+</ul>
+<div style="margin-left: 80px;">(Under Windows XP, Intel Core 2 Duo,
+2,66 Ghz, 3,23 Gb of RAM)</div>
+<h2><span class="spip_out">Other works and softwares on soil textures
+(triangles)</span></h2>
+<p class="spip">Numerous other works and softwares exist that deal with
+soil textures and soil textures triangles. Nevertheless, to my
+knowledge, <strong class="spip">The Soil Texture Wizard is the only
+tool that offers an integrated set of functionalities for soil textures
+(smart graphs + classification + multi-triangle + multi-geometry)</strong>.</p>
+<h3><strong class="spip">Ternary graphs (without soil textures classes)</strong>:</h3>
+<strong class="spip">triangle.plot()</strong> and <strong class="spip">triangle.biplot()</strong>
+functions, from the <strong class="spip">R package <a href="http://cran.univ-lyon1.fr/web/packages/ade4/index.html" class="spip_out">ADE4</a></strong>, by Daniel Chessel, Anne-Beatrice
+Dufour and Stephane Dray. These functions are not specialised in soil
+textures plots (and can not plot soil texture classes), but offer of
+nice "<strong class="spip">zoom</strong>" feature that dont exist in
+The Soil Texture Wizard, nor in the PLOTRIX package (see below). For
+illustrations, see the <a href="http://addictedtor.free.fr/graphiques/RGraphGallery.php?graph=34" class="spip_out">web-page on triangle.plot() on the R Graph Gallery,
+by Romain Francois</a>.<br>
 <br>
-
+<strong class="spip">ternaryplot()</strong> function in the <strong class="spip">R package <a href="http://cran.univ-lyon1.fr/web/packages/vcd/" class="spip_out">VCD</a></strong>
+by David Meyer, Achim Zeileis and Kurt Hornik. For illustrations, see
+the <a href="http://addictedtor.free.fr/graphiques/RGraphGallery.php?graph=96" class="spip_out">web-page on ternaryplot() on the R Graph Gallery, by
+Romain Francois</a>.<strong class="spip"><br>
+</strong>
+<h3><strong class="spip">Ternary graphs (with soil textures classes)</strong>:</h3>
+The functions <strong class="spip">soil.texture()</strong> and <strong class="spip">soil.texture.uk()</strong> from the <strong class="spip">R
+package <a href="http://cran.r-project.org/web/packages/plotrix/index.html" class="spip_out">PLOTRIX</a></strong>, by Jim Lemon <i class="spip">et
+al</i>. It allows to create graphs, with or without soil textures data,
+following the <strong class="spip">USDA</strong> or the <strong class="spip">UK</strong> soil texture triangles. There is also an
+underlying ternary plot function that can be used without soil texture
+classes. It is nevertheless not possible to project the triangles into
+another geometry, nor to transform or classify soil textures data. <strong class="spip">The R functions presented here ("The Soil Texture
+Wizard") are originally (i.e. 3 years ago) derived from some functions
+of the PLOTRIX package</strong>. Now, there probably not a single
+common line of code, and the 2 set of functions are unfortunately not
+compatible. But The Soil Texture Wizard obviously wouldnt exist if I
+havent been able to freely adapt the code from PLOTRIX (reason why
+free and open-source licences are so great). For illustrations of
+PLOTRIX, see the <a href="http://addictedtor.free.fr/graphiques/RGraphGallery.php?graph=76" class="spip_out">web-page on soil.texture() on the R Graph Gallery, by
+Romain Francois</a>.
+<h3><strong class="spip">Automatic classification</strong>:<br>
+</h3>
+<p class="spip"><strong class="spip"><a href="http://www.christopherteh.com/tal/index.html" class="spip_out">Texture
+Autolookup</a>, by <a href="http://www.christopherteh.com/" class="spip_out">Christopher Teh Boon Sung</a></strong> is a
+standalone program, with a graphical user interface, that can classify
+soil textures following the USDA, UK, Canadian, FAO texture triangles,
+or 7 other systems. The work has been published in two articles of
+"Communications in Soil and Plant Analysis", in 1996 and 2003. The
+software also allows to plot / visualise soil texture data (but the
+plot function is not very advanced), in 2 different triangle geometries.</p>
+<strong class="spip"><a href="http://nowlin.css.msu.edu/software/triangle_form.html" class="spip_out">TRIANGLE, "A Program For Soil Textural Classification"</a>,
+by Aris Gerakis and Brian Baer</strong> allows to classify soil
+textures data after the USDA soil texture triangle (<a href="http://soil.scijournals.org/cgi/content/abstract/63/4/807" class="spip_out">published in the Soil Science Society of America
+Journal in 1999</a>).
+<p class="spip"><strong class="spip"><a href="http://grass.osgeo.org/wiki/GRASS_AddOns#r.soils.texture" class="spip_out">r.soils.texture</a></strong> is a [Grass-GIS
+http://grass.osgeo.org/] add-on for classifying raster files of soil
+textures with 3 classification systems (USDA, FAO, ISSS). Note that
+this is not R code.</p>
+<h3><strong class="spip">Articles related to soil texture triangles or
+systems</strong></h3>
+<p class="spip"><strong class="spip">Richer de Forges A., Feller C.,
+Jamagne M. &amp; Arrouays D.</strong>, 2008. "Perdus dans le triangle
+des textures" (<a href="http://www.inra.fr/internet/Hebergement/afes/EGS/" class="spip_out">Études et Gestion des Sols</a>, 15:2, pp. 97-111)
+(en: "<strong class="spip">Lost in the textures triangle</strong>") are
+presenting a gallery of 29 soil textures triangles, either still in use
+nowadays or that were used in the past, from France and other
+countries, and comparing the location of soil texture triangles limits
+between several triangles. The article also presents a table comparing
+the particle size limits (for clay, silt and sand fractions) between
+numerous countries. See also <a href="http://www.prodinra.inra.fr/prodinra/pinra/data/2008/08/PROD2008387413ba_20080819120904968.pdf" class="spip_out"><strong class="spip">their poster in English</strong></a>.
+The "comparison" work has been done with a geographic information
+system (ArcGIS?).</p>
+<strong class="spip">B. Minasny and A.B. McBratney. The australian soil
+texture boomerang: a comparison of the australian and usda/fao soil
+particle-size classication systems</strong>. Australian Journal of Soil
+Research, 39:1443-1451, 2001. <a href="http://www.publish.csiro.au/nid/84/paper/SR00065.htm" class="spip_out">LINK</a>.
+<p class="spip"><strong class="spip">A. Nemes, J.H.M. Wösten, A. Lilly,
+and J.H. Oude Voshaar. Evaluation
+of different procedures to interpolate particle-size distributions to
+achieve compatibility within soil databases</strong>. Geoderma,
+90:187-202, 1999. <a href="http://dx.doi.org/10.1016/S0016-7061%2899%2900014-2" class="spip_out">LINK</a>.</p>
+<h2><span style="font-weight: bold;"></span></h2>
+<h2><span style="font-weight: bold;">Roadmap<br>
+</span></h2>
+<h2><span style="font-weight: bold;"></span></h2>
+&nbsp;(suceptible to changes):<br>
+<ul>
+<li>The functions provided by the soiltexture package are considered
+as beta / almost stable, but they need to be tested by more users.</li>
+<li>The main function TT.plot() is now documented.</li>
+<li>TT.points.in.classes() is also documented.<br>
+</li>
+<li>The documentation is under construction for the rest of the
+package (using <a href="http://inlinedocs.r-forge.r-project.org/">inlinedocs</a>),
+and will be gradually completed.</li>
+<li>...</li>
+</ul>
+<h2><span class="spip_out">Feedbacks, contact, license, credit and
+(absence of) guaranty</span></h2>
+<h3><span style="font-weight: bold;">Feedbacks</span> &amp; contacts<br>
+</h3>
+Feedbacks on the package are always welcome:
+<ul>
+<li>On the <a href="https://r-forge.r-project.org/mail/?group_id=740" target="_blank">package forum page</a>.</li>
+<li>Write an e-mail to the author:&nbsp; jules_m78-soiltexture {<span style="font-style: italic;">AT</span>} yahoo {<span style="font-style: italic;">DOT</span>} fr</li>
+<li>Visit the <a href="http://julienmoeys.free.fr" target="_blank">author's
+webpage</a>.<br>
+</li>
+</ul>
+<h3>Credits</h3>
+See the latest package <a href="http://r-forge.r-project.org/scm/viewvc.php/pkg/soiltexture/DESCRIPTION?view=markup&amp;root=soiltexture" target="_blank">DESCRIPTION</a> for a list of the authors to credit if
+you cite / mesion this package.<br>
+<h3>License &amp; garantees</h3>
+This package is a Free &amp; Open Source Software (<a href="http://www.gnu.org/licenses/agpl.html" target="_blank">GNU
+Affero GPL &gt;= 3</a>). Its documentation is licensed under a <a href="http://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creatice
+Commons BY-SA</a>. You are free to copy, distribute and modify this
+package, but please make sure you make it clear that your version is
+different from the original (i.e. cite the original authors, give the
+package another name, and make it clear the original authors don't
+endorse the changes).<br>
+<br>
+The R functions and the documents presented here have been created and
+tested carefully but, given the free distribution of this work and the
+highly permissive license, the author is not providing any guarantee of
+exactitude of the data and functions, and decline any responsibility
+regarding the use that could be done with that work.<br>
+<br>
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/"><img alt="Creative Commons License" style="border-width: 0pt;" src="http://i.creativecommons.org/l/by-sa/3.0/80x15.png"></a><br>
-
-This webpage is licenced under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Licence</a>.<br>
-
-
-
+This webpage is licenced under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons
+Licence</a>.<br>
 <br>
-
-
-
 <a title="Document made with KompoZer" href="http://kompozer.net/"><img style="border: 0px solid ; width: 80px; height: 15px;" alt="Document made with KompoZer" src="http://r-forge.r-project.org/scm/viewvc.php/*checkout*/www/kompozer_80x15.png?root=soiltexture"></a>
