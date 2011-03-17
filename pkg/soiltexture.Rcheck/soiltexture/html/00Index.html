@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><title>R: Functions for soil texture plot, classification and
+transformation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="../../../doc/html/R.css">
+</head><body>
+<h1> Functions for soil texture plot, classification and
+transformation
+<img class="toplogo" src="../../../doc/html/logo.jpg" alt="[R logo]"></h1>
+</h1>
+<hr>
+<div align="center">
+<a href="../../../doc/html/packages.html"><img src="../../../doc/html/left.jpg" alt="[Up]" width="30" height="30" border="0"></a>
+<a href="../../../doc/html/index.html"><img src="../../../doc/html/up.jpg" alt="[Top]" width="30" height="30" border="0"></a>
+</div><h2>Documentation for package &lsquo;soiltexture&rsquo; version 1.03</h2>
+
+<ul><li><a href="../DESCRIPTION">DESCRIPTION file</a>.</li>
+<li><a href="../doc/index.html">Overview of user guides and package vignettes</a>; browse <a href="../doc">directory</a>.</li>
+</ul>
+
+<h2>Help Pages</h2>
+
+
+<table width="100%">
+<tr><td width="25%"><a href="soiltexture-package.html">soiltexture-package</a></td>
+<td>Functions for soil texture plot, classification and transformation</td></tr>
+<tr><td width="25%"><a href="TT.add.html">TT.add</a></td>
+<td>Function to add a new default package parameters.</td></tr>
+<tr><td width="25%"><a href="TT.auto.set.html">TT.auto.set</a></td>
+<td>Internal. Retrieve and set default values for parameters (par() or not), when NULL.</td></tr>
+<tr><td width="25%"><a href="TT.axis.arrows.html">TT.axis.arrows</a></td>
+<td>Internal. Plot the axis' arrows of a texture triangle plot.</td></tr>
+<tr><td width="25%"><a href="TT.baseplot.html">TT.baseplot</a></td>
+<td>Internal. Create an empty plot scene for a texture triangle.</td></tr>
+<tr><td width="25%"><a href="TT.blr.ps.lim.html">TT.blr.ps.lim</a></td>
+<td>Internal. Create a tabular version of clay silt sand particle size limits.</td></tr>
+<tr><td width="25%"><a href="TT.blr.tx.check.html">TT.blr.tx.check</a></td>
+<td>Internal. Check the consistency between blr.tx and css.names.</td></tr>
+<tr><td width="25%"><a href="TT.check.ps.lim.html">TT.check.ps.lim</a></td>
+<td>Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'.</td></tr>
+<tr><td width="25%"><a href="TT.check.ps.lim.Xm.html">TT.check.ps.lim.Xm</a></td>
+<td>Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'.</td></tr>
+<tr><td width="25%"><a href="TT.chemometrics.alr.html">TT.chemometrics.alr</a></td>
+<td>Compute the additive log-ratio transformation of compositional data.</td></tr>
+<tr><td width="25%"><a href="TT.classes.html">TT.classes</a></td>
+<td>Plot the texture classes polygons in a texture triangle plot.</td></tr>
+<tr><td width="25%"><a href="TT.classes.tbl.html">TT.classes.tbl</a></td>
+<td>Returns the table of classes of a texture classification system.</td></tr>
+<tr><td width="25%"><a href="TT.col2hsv.html">TT.col2hsv</a></td>
+<td>Convert any colors to hsv.</td></tr>
+<tr><td width="25%"><a href="TT.contour.html">TT.contour</a></td>
+<td>Wrapper for the contour() function adapted to texture triangles.</td></tr>
+<tr><td width="25%"><a href="TT.css2xy.html">TT.css2xy</a></td>
+<td>Converts texture data (3 classes) into x-y coordinates.</td></tr>
+<tr><td width="25%"><a href="TT.data.test.html">TT.data.test</a></td>
+<td>Test the validity of some soil texture data table (3 particle size classes).</td></tr>
+<tr><td width="25%"><a href="TT.data.test.X.html">TT.data.test.X</a></td>
+<td>Test the validity of some soil texture data table (X particle size classes).</td></tr>
+<tr><td width="25%"><a href="TT.dataset.html">TT.dataset</a></td>
+<td>Genetates a virtual cross correlated clay silt sand + Z dataset.</td></tr>
+<tr><td width="25%"><a href="TT.deg2rad.html">TT.deg2rad</a></td>
+<td>Function to convert angle in degree to angle in radian.</td></tr>
+<tr><td width="25%"><a href="TT.dia2phi.html">TT.dia2phi</a></td>
+<td>Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia/1000)</td></tr>
+<tr><td width="25%"><a href="TT.DJ.col.html">TT.DJ.col</a></td>
+<td>A function to obtaine a weight average 'mix' of different colors!</td></tr>
+<tr><td width="25%"><a href="TT.edges.html">TT.edges</a></td>
+<td>Internal. Plot the edges (bare axis) of a soil texture triangle.</td></tr>
+<tr><td width="25%"><a href="TT.env.html">TT.env</a></td>
+<td>TT env</td></tr>
+<tr><td width="25%"><a href="TT.gen.op.set.html">TT.gen.op.set</a></td>
+<td>Internal. Retrieve and set default values from options.</td></tr>
+<tr><td width="25%"><a href="TT.geo.get.html">TT.geo.get</a></td>
+<td>Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).</td></tr>
+<tr><td width="25%"><a href="TT.geo.set.html">TT.geo.set</a></td>
+<td>Internal. Takes "geo" values and assign them individually in the parent function.</td></tr>
+<tr><td width="25%"><a href="TT.get.html">TT.get</a></td>
+<td>Function to retrieve / get the default package parameters.</td></tr>
+<tr><td width="25%"><a href="TT.grid.html">TT.grid</a></td>
+<td>Plot a grid at regular texture intervals inside an existing soil texture triangle.</td></tr>
+<tr><td width="25%"><a href="TT.ifelse.html">TT.ifelse</a></td>
+<td>Internal. Flexible version of ifelse.</td></tr>
+<tr><td width="25%"><a href="TT.image.html">TT.image</a></td>
+<td>Wrapper for the contour() function adapted to texture triangles.</td></tr>
+<tr><td width="25%"><a href="TT.iwd.html">TT.iwd</a></td>
+<td>Inverse weighted distance interpolation on a grid.</td></tr>
+<tr><td width="25%"><a href="TT.kde2d.html">TT.kde2d</a></td>
+<td>Calculated the 2D probabilty density on an x-y grid.</td></tr>
+<tr><td width="25%"><a href="TT.lines.html">TT.lines</a></td>
+<td>Internal. Used to plot line elements of a texture plot axis, ticks, arrows, etc.</td></tr>
+<tr><td width="25%"><a href="TT.locator.html">TT.locator</a></td>
+<td>Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle.</td></tr>
+<tr><td width="25%"><a href="TT.mahalanobis.html">TT.mahalanobis</a></td>
+<td>Calculates the Mahalanobis distance between clay silt and sand.</td></tr>
+<tr><td width="25%"><a href="TT.normalise.sum.html">TT.normalise.sum</a></td>
+<td>Normalises the sum of the 3 particle size classes.</td></tr>
+<tr><td width="25%"><a href="TT.normalise.sum.X.html">TT.normalise.sum.X</a></td>
+<td>Normalises the sum of the X particle size classes.</td></tr>
+<tr><td width="25%"><a href="TT.par.op.set.html">TT.par.op.set</a></td>
+<td>Internal. Retrieve and set default values from options with default in "par()".</td></tr>
+<tr><td width="25%"><a href="TT.phi2dia.html">TT.phi2dia</a></td>
+<td>Convert a soil particle phi value into diameter dia [micro-meters].</td></tr>
+<tr><td width="25%"><a href="TT.plot.html">TT.plot</a></td>
+<td>Plot soil texture triangles / diagrams.</td></tr>
+<tr><td width="25%"><a href="TT.points.html">TT.points</a></td>
+<td>Plot a soil texture data table as points on an existing texture plot.</td></tr>
+<tr><td width="25%"><a href="TT.points.in.classes.html">TT.points.in.classes</a></td>
+<td>Classify a table of soil texture data according to a soil texture triangle.</td></tr>
+<tr><td width="25%"><a href="TT.polygon.area.html">TT.polygon.area</a></td>
+<td>Determines the area of 1 polygon (in x-y coordinates).</td></tr>
+<tr><td width="25%"><a href="TT.polygon.centroids.html">TT.polygon.centroids</a></td>
+<td>Determines the centroid of 1 polygon (in x-y coordinates).</td></tr>
+<tr><td width="25%"><a href="TT.set.html">TT.set</a></td>
+<td>Function to change / set the default package parameters.</td></tr>
+<tr><td width="25%"><a href="TT.str.html">TT.str</a></td>
+<td>Internal. Stretch or reshape the range of value of some data set.</td></tr>
+<tr><td width="25%"><a href="TT.switch.html">TT.switch</a></td>
+<td>Internal. Used in the plot axis drawings.</td></tr>
+<tr><td width="25%"><a href="TT.text.html">TT.text</a></td>
+<td>Plot text labels for each values of a soil texture data table on an existing texture plot.</td></tr>
+<tr><td width="25%"><a href="TT.text.transf.html">TT.text.transf</a></td>
+<td>Log-linear transformation of a soil texture data table between 2 particle size systems (3 classes).</td></tr>
+<tr><td width="25%"><a href="TT.text.transf.X.html">TT.text.transf.X</a></td>
+<td>Log-linear transformation of a soil texture data table between 2 particle size systems (X classes).</td></tr>
+<tr><td width="25%"><a href="TT.text.transf.Xm.html">TT.text.transf.Xm</a></td>
+<td>Transformations of a soil texture data table between 2 particle size systems (X classes), various methods.</td></tr>
+<tr><td width="25%"><a href="TT.ticks.html">TT.ticks</a></td>
+<td>Internal. Plot the axis' ticks of a texture triangle plot.</td></tr>
+<tr><td width="25%"><a href="TT.ticks.lab.html">TT.ticks.lab</a></td>
+<td>Internal. Plot the axis ticks' labels of a texture triangle plot.</td></tr>
+<tr><td width="25%"><a href="TT.vertices.plot.html">TT.vertices.plot</a></td>
+<td>Plot the vertices of a texture classification system.</td></tr>
+<tr><td width="25%"><a href="TT.vertices.tbl.html">TT.vertices.tbl</a></td>
+<td>Returns the table of vertices of a texture classification system.</td></tr>
+<tr><td width="25%"><a href="TT.xy.grid.html">TT.xy.grid</a></td>
+<td>Internal. Create a grid in the x-y coordinate system.</td></tr>
+<tr><td width="25%"><a href="TT.xy2css.html">TT.xy2css</a></td>
+<td>Internal. Convert point-data duplets (2 variables, x-y coordinaes) in Clay silta and sand coordinates.</td></tr>
+</table>
+</body></html>

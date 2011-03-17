@@ -1,0 +1,299 @@
+
+R version 2.12.1 (2010-12-16)
+Copyright (C) 2010 The R Foundation for Statistical Computing
+ISBN 3-900051-07-0
+Platform: i386-pc-mingw32/i386 (32-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "soiltexture"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> options(pager = "console")
+> library('soiltexture')
+Loading required package: sp
+Loading required package: MASS
+> 
+> assign(".oldSearch", search(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("TT.plot")
+> ### * TT.plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: TT.plot
+> ### Title: Plot soil texture triangles / diagrams.
+> ### Aliases: TT.plot
+> 
+> ### ** Examples
+> require( soiltexture ) 
+> 
+> # ::: Texture triangles without data
+> 
+> # :: Base plot (FAO triangle) 
+> TT.plot() 
+> 
+> # same as
+> TT.plot( class.sys = "FAO50.TT" ) 
+> 
+> # :: Same plot, but with USDA texture triangle 
+> TT.plot( class.sys = "USDA.TT" ) 
+> 
+> # :: Same plot, but with a color gradient 
+> TT.plot( 
++     class.sys       = "USDA.TT", 
++     class.p.bg.col  = TRUE
++ )   #
+> 
+> # :: No texture classification system
+> TT.plot( class.sys = "none" ) 
+> 
+> # ::: Texture triangles with texture data 
+> 
+> # :: 1st create a dummy texture dataset 
+> my.text <- data.frame( 
++     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
++     "SILT"  = c(05,08,15,25,55,85,65,45,15,15,17,43), 
++     "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10), 
++     "OC"    = c(20,14,15,05,12,15,07,21,25,30,05,28)  
++ )   #
+> 
+> # :: And plot it on a French Aisne texture triangle
+> #    with a title
+> TT.plot( 
++     class.sys   = "FR.AISNE.TT", 
++     tri.data    = my.text, 
++     main        = "Soil texture data" 
++ )   #
+> 
+> # ::: Bubble plots (4th variable) 
+> 
+> # :: 1st generate a dummy texture dataset with a 4th variable 
+> #    with TT.dataset() 
+> rand.text   <- TT.dataset( n = 100, seed.val = 1980042401 ) 
+> 
+> # :: Plot the dummy dataset as a bubble plot
+> TT.plot( 
++     class.sys   = "none", 
++     tri.data    = rand.text, 
++     z.name      = "Z", 
++     main        = "Soil texture triangle and Z bubble plot" 
++ )   #
+> 
+> # ::: Test all the texture triangles
+> 
+> TT.plot( class.sys = "none" )           # no classification 
+> TT.plot( class.sys = "FAO50.TT" )       # FAO 
+> TT.plot( class.sys = "USDA.TT" )        # USDA 
+> TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
+> TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
+> TT.plot( class.sys = "DE.BK94.TT" )     # Germany 
+> TT.plot( class.sys = "UK.SSEW.TT" )     # UK 
+> TT.plot( class.sys = "BE.TT" )          # Belgium 
+> TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
+> TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
+> TT.plot( class.sys = "AU.TT" )          # Australian 
+> TT.plot( class.sys = "ISSS.TT" )        # ISSS 
+> TT.plot( class.sys = "ROM.TT" )         # Romanian 
+> 
+> # ::: Test all the languages:
+> 
+> TT.plot( class.sys = "USDA.TT", lang = "en" )  #  English, default 
+> TT.plot( class.sys = "USDA.TT", lang = "fr" )  #  French 
+> TT.plot( class.sys = "USDA.TT", lang = "de" )  #  German 
+> TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Spanish 
+> TT.plot( class.sys = "USDA.TT", lang = "it" )  #  Italian 
+> TT.plot( class.sys = "USDA.TT", lang = "nl" )  #  Dutch 
+> TT.plot( class.sys = "USDA.TT", lang = "fl" )  #  Dutch (Belgian) / Flemmish 
+> TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Swedish 
+> TT.plot( class.sys = "USDA.TT", lang = "ro" )  #  Romanian 
+> 
+> 
+> cleanEx()
+> nameEx("TT.points.in.classes")
+> ### * TT.points.in.classes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: TT.points.in.classes
+> ### Title: Classify a table of soil texture data according to a soil
+> ###   texture triangle.
+> ### Aliases: TT.points.in.classes
+> 
+> ### ** Examples
+> require( "soiltexture" ) 
+> 
+> # Create a dummy data frame of soil textures:
+> my.text <- data.frame( 
++     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
++     "SILT"  = c(05,08,15,25,55,85,65,45,15,15,17,43), 
++     "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10), 
++     "OC"    = c(20,14,15,05,12,15,07,21,25,30,05,28)  
++ )   #
+> 
+> # Display the table:
+> my.text
+   CLAY SILT SAND OC
+1     5    5   90 20
+2    60    8   32 14
+3    15   15   70 15
+4     5   25   70  5
+5    25   55   20 12
+6     5   85   10 15
+7    25   65   10  7
+8    45   45   10 21
+9    65   15   20 25
+10   75   15   10 30
+11   13   17   70  5
+12   47   43   10 28
+> 
+> # Classify according to the FAO classification
+> TT.points.in.classes( 
++     tri.data    = my.text[1:5,], 
++     class.sys   = "FAO50.TT"  
++ )   #
+     VF F M MF C
+[1,]  0 0 0  0 1
+[2,]  2 2 0  0 0
+[3,]  0 0 0  0 1
+[4,]  0 0 0  0 1
+[5,]  0 0 1  0 0
+> 
+> # Classify according to the USDA classification
+> TT.points.in.classes( 
++     tri.data    = my.text[1:5,], 
++     class.sys   = "USDA.TT"  
++ )   #
+     Cl SiCl SaCl ClLo SiClLo SaClLo Lo SiLo SaLo Si LoSa Sa
+[1,]  0    0    0    0      0      0  0    0    0  0    0  1
+[2,]  1    0    0    0      0      0  0    0    0  0    0  0
+[3,]  0    0    0    0      0      0  0    0    1  0    0  0
+[4,]  0    0    0    0      0      0  0    0    1  0    0  0
+[5,]  0    0    0    0      0      0  0    1    0  0    0  0
+> 
+> # Classify according to the FAO classification, returns logicals
+> TT.points.in.classes( 
++     tri.data    = my.text[1:5,], 
++     class.sys   = "FAO50.TT", 
++     PiC.type    = "l" 
++ )   #
+        VF     F     M    MF     C
+[1,] FALSE FALSE FALSE FALSE  TRUE
+[2,]  TRUE  TRUE FALSE FALSE FALSE
+[3,] FALSE FALSE FALSE FALSE  TRUE
+[4,] FALSE FALSE FALSE FALSE  TRUE
+[5,] FALSE FALSE  TRUE FALSE FALSE
+> 
+> # Classify according to the FAO classification, returns text
+> TT.points.in.classes( 
++     tri.data    = my.text[1:5,], 
++     class.sys   = "FAO50.TT", 
++     PiC.type    = "t" 
++ )   #
+[1] "C"     "VF, F" "C"     "C"     "M"    
+> 
+> # Classify according to the FAO classification, returns text, 
+> #   custom class separator in case of points belonging to 
+> #   several classes.
+> TT.points.in.classes( 
++     tri.data    = my.text[1:5,], 
++     class.sys   = "FAO50.TT", 
++     PiC.type    = "t", 
++     collapse    = ";"
++ )   #
+[1] "C"    "VF;F" "C"    "C"    "M"   
+> 
+> 
+> cleanEx()
+> nameEx("TT.text.transf.Xm")
+> ### * TT.text.transf.Xm
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: TT.text.transf.Xm
+> ### Title: Transformations of a soil texture data table between 2 particle
+> ###   size systems (X classes), various methods.
+> ### Aliases: TT.text.transf.Xm
+> 
+> ### ** Examples
+> require( "soiltexture" ) 
+> require( "drc" )
+Loading required package: drc
+Loading required package: lattice
+Loading required package: magic
+Loading required package: abind
+Loading required package: nlme
+Loading required package: plotrix
+
+'drc' has been loaded.
+
+Please cite R and 'drc' if used for a publication,
+for references type 'citation()' and 'citation('drc')'.
+
+
+Attaching package: 'drc'
+
+The following object(s) are masked from 'package:stats':
+
+    getInitial
+
+> 
+> my.text4 <- data.frame( 
++     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
++     "FSILT" = c(02,04,10,15,25,40,35,20,10,05,10,20), 
++     "CSILT" = c(03,04,05,10,30,45,30,25,05,10,07,23), 
++     "SAND"  = c(90,32,70,70,20,10,10,10,20,10,70,10)  
++ )   #
+> 
+> TT.text.transf.Xm( 
++   tri.data    = my.text4, 
++   base.ps.lim = c(0,2,20,50,2000), 
++   dat.ps.lim  = c(0,2,20,63,2000),  
++   psdmodel    = "S"
++ )   #
+      0-2      2-20     20-50  50-2000 u:(Intercept) c:(Intercept)          dev
+ [1,]   5  1.718724  2.342204 90.79636    0.06391450     0.7240714 1.111711e-01
+ [2,]  60  3.396300  3.620271 32.61385    0.02698102     0.7615188 6.204688e-01
+ [3,]  15  7.463354  6.542317 69.87809    0.15232597     0.5370503 9.744153e+00
+ [4,]   5 12.876525  9.871823 70.76811    0.66820088     0.3429847 8.368476e+00
+ [5,]  25 25.000037 23.464118 26.53584    0.25276356     0.6687300 1.711309e-09
+ [6,]   5 40.000063 38.210770 16.78917    0.88575999     0.5145776 4.519167e-09
+ [7,]  25 35.000025 24.898650 15.10132    0.36637780     0.6427521 8.764436e-10
+ [8,]  45 20.000625 20.086983 14.91239    0.11870914     0.8794311 4.964997e-07
+ [9,]  65  9.345128  4.829979 20.15663    0.15304886     0.4857011 1.230567e+00
+[10,]  75  5.017744  7.453060 12.52920    0.02609033     1.0941713 3.574312e-04
+[11,]  13  8.241150  7.112657 70.67650    0.19247905     0.5101876 5.026362e+00
+[12,]  47 20.000087 18.486922 14.51299    0.12997725     0.8429071 9.748690e-09
+> 
+> # TT.text.transf.Xm( 
+> #   tri.data    = my.text4, 
+> #   base.ps.lim = c(0,1,50,2000), 
+> #   dat.ps.lim  = c(0,2,30,60,2000),
+> #   psdmodel    = "AD",
+> #   omethod     = "Nelder-Mead"  
+> # ) 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cat("Time elapsed: ", proc.time() - get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  7.77 0.11 8.27 NA NA 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
