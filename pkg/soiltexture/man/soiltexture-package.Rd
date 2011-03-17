@@ -16,8 +16,8 @@ develloped from the functions 'soil.texture()' from the package 'plotrix' by Jim
 et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
-Version: \tab 1.02\cr
-Date: \tab 2010-10-13\cr
+Version: \tab 1.03\cr
+Date: \tab 2011-03-17\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr

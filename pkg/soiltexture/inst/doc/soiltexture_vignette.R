@@ -1,6 +1,7 @@
 ###################################################
 ### chunk number 1: 
 ###################################################
+#line 99 "soiltexture_vignette.Rnw"
 # Set a few Sweave options:
 options( 
     width       = 65,  # width of R output
@@ -28,6 +29,7 @@ require( "xtable" )
 ###################################################
 ### chunk number 2: 
 ###################################################
+#line 140 "soiltexture_vignette.Rnw"
 old.wd  <- getwd() 
 
 # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
@@ -54,12 +56,14 @@ require(
 ###################################################
 ### chunk number 3: COVERFIG
 ###################################################
+#line 169 "soiltexture_vignette.Rnw"
 TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
 
 
 ###################################################
 ### chunk number 4: 
 ###################################################
+#line 375 "soiltexture_vignette.Rnw"
 bornes <- c(0,2,20,50,200,2e3,20e3)
 noms   <- c("Cl","FiSi","CoSi","FiSa","CoSa","Gr","St")
 txt.b  <- c("0µm","2µm","20µm","50µm","200µm","2mm","2cm")
@@ -105,6 +109,7 @@ text(x=xtxt,y=rep(1,length(xtxt)),labels=tmp$"noms",cex=2)
 ###################################################
 ### chunk number 5: 
 ###################################################
+#line 504 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "none", 
     tri.data    = data.frame( 
@@ -119,6 +124,7 @@ TT.plot(
 ###################################################
 ### chunk number 6: 
 ###################################################
+#line 547 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FAO50.TT", 
     tri.data    = data.frame( 
@@ -133,6 +139,7 @@ TT.plot(
 ###################################################
 ### chunk number 7: 
 ###################################################
+#line 561 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -144,12 +151,14 @@ xtable(
 ###################################################
 ### chunk number 8:  eval=FALSE
 ###################################################
+## #line 640 "soiltexture_vignette.Rnw"
 ## install.packages( pkgs = "soiltexture" ) 
 
 
 ###################################################
 ### chunk number 9:  eval=FALSE
 ###################################################
+## #line 650 "soiltexture_vignette.Rnw"
 ## install.packages( 
 ##     pkgs  = "soiltexture", 
 ##     repos = "http://R-Forge.R-project.org" 
@@ -159,12 +168,14 @@ xtable(
 ###################################################
 ### chunk number 10: 
 ###################################################
+#line 661 "soiltexture_vignette.Rnw"
 require( soiltexture ) 
 
 
 ###################################################
 ### chunk number 11:  eval=FALSE
 ###################################################
+## #line 670 "soiltexture_vignette.Rnw"
 ## detach( package:soiltexture ) 
 ## remove.packages( "soiltexture" ) 
 
@@ -172,18 +183,21 @@ require( soiltexture )
 ###################################################
 ### chunk number 12: 
 ###################################################
+#line 771 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "none" ) 
 
 
 ###################################################
 ### chunk number 13: 
 ###################################################
+#line 797 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "USDA.TT" ) 
 
 
 ###################################################
 ### chunk number 14: 
 ###################################################
+#line 812 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "USDA.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -195,12 +209,14 @@ xtable(
 ###################################################
 ### chunk number 15: 
 ###################################################
+#line 834 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "FAO50.TT" ) 
 
 
 ###################################################
 ### chunk number 16: 
 ###################################################
+#line 856 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -212,12 +228,14 @@ xtable(
 ###################################################
 ### chunk number 17: 
 ###################################################
+#line 880 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "FR.AISNE.TT" ) 
 
 
 ###################################################
 ### chunk number 18: 
 ###################################################
+#line 895 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "FR.AISNE.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -229,12 +247,14 @@ xtable(
 ###################################################
 ### chunk number 19: 
 ###################################################
+#line 918 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "FR.GEPPA.TT" ) 
 
 
 ###################################################
 ### chunk number 20: 
 ###################################################
+#line 930 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "FR.GEPPA.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -246,12 +266,14 @@ xtable(
 ###################################################
 ### chunk number 21: 
 ###################################################
+#line 957 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "DE.BK94.TT" ) 
 
 
 ###################################################
 ### chunk number 22: 
 ###################################################
+#line 969 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "DE.BK94.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -263,12 +285,14 @@ xtable(
 ###################################################
 ### chunk number 23: 
 ###################################################
+#line 999 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "UK.SSEW.TT" ) 
 
 
 ###################################################
 ### chunk number 24: 
 ###################################################
+#line 1010 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "UK.SSEW.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -280,12 +304,14 @@ xtable(
 ###################################################
 ### chunk number 25: 
 ###################################################
+#line 1031 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "AU.TT" ) 
 
 
 ###################################################
 ### chunk number 26: 
 ###################################################
+#line 1043 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "AU.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -297,12 +323,14 @@ xtable(
 ###################################################
 ### chunk number 27: 
 ###################################################
+#line 1069 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "BE.TT" ) 
 
 
 ###################################################
 ### chunk number 28: 
 ###################################################
+#line 1085 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "BE.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -314,18 +342,21 @@ xtable(
 ###################################################
 ### chunk number 29: 
 ###################################################
+#line 1107 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "CA.EN.TT" ) 
 
 
 ###################################################
 ### chunk number 30: 
 ###################################################
+#line 1115 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "CA.FR.TT" ) 
 
 
 ###################################################
 ### chunk number 31: 
 ###################################################
+#line 1129 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "CA.EN.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -337,6 +368,7 @@ xtable(
 ###################################################
 ### chunk number 32: 
 ###################################################
+#line 1142 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "CA.FR.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -348,12 +380,14 @@ xtable(
 ###################################################
 ### chunk number 33: 
 ###################################################
+#line 1172 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "ISSS.TT" ) 
 
 
 ###################################################
 ### chunk number 34: 
 ###################################################
+#line 1186 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "ISSS.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -365,12 +399,14 @@ xtable(
 ###################################################
 ### chunk number 35: 
 ###################################################
+#line 1208 "soiltexture_vignette.Rnw"
 TT.plot( class.sys = "ROM.TT" ) 
 
 
 ###################################################
 ### chunk number 36: 
 ###################################################
+#line 1222 "soiltexture_vignette.Rnw"
 tex.tbl <- TT.classes.tbl( class.sys = "ROM.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
@@ -382,6 +418,7 @@ xtable(
 ###################################################
 ### chunk number 37: 
 ###################################################
+#line 1239 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys = "ROM.TT", 
     blr.clock   = c(F,T,NA), 
@@ -393,6 +430,7 @@ TT.plot(
 ###################################################
 ### chunk number 38: 
 ###################################################
+#line 1261 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -415,6 +453,7 @@ par(old.par)
 ###################################################
 ### chunk number 39: 
 ###################################################
+#line 1286 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -437,6 +476,7 @@ par(old.par)
 ###################################################
 ### chunk number 40: 
 ###################################################
+#line 1311 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -459,6 +499,7 @@ par(old.par)
 ###################################################
 ### chunk number 41: 
 ###################################################
+#line 1335 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -481,6 +522,7 @@ par(old.par)
 ###################################################
 ### chunk number 42: 
 ###################################################
+#line 1360 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -503,6 +545,7 @@ par(old.par)
 ###################################################
 ### chunk number 43: 
 ###################################################
+#line 1391 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys       = "FAO50.TT", 
     class.p.bg.col  = c("red","green","blue","pink","purple") 
@@ -512,6 +555,7 @@ TT.plot(
 ###################################################
 ### chunk number 44: 
 ###################################################
+#line 1416 "soiltexture_vignette.Rnw"
 # First plot the USDA texture triangle, and retrieve its 
 #   geometrical features, silently outputted by TT.plot 
 geo <- TT.plot( 
@@ -534,6 +578,7 @@ TT.classes(
 ###################################################
 ### chunk number 45: 
 ###################################################
+#line 1451 "soiltexture_vignette.Rnw"
 # First plot the USDA texture triangle, and retrieve its 
 #   geometrical features, silently outputted by TT.plot 
 geo <- TT.plot( 
@@ -556,6 +601,7 @@ TT.classes(
 ###################################################
 ### chunk number 46: 
 ###################################################
+#line 1485 "soiltexture_vignette.Rnw"
 # Create a dummy data frame of soil textures:
 my.text <- data.frame( 
     "CLAY"  = c(05,60,15,05,25,05,25,45,65,75,13,47), 
@@ -571,6 +617,7 @@ my.text
 ###################################################
 ### chunk number 47: 
 ###################################################
+#line 1502 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FAO50.TT", 
     tri.data    = my.text, 
@@ -581,6 +628,7 @@ TT.plot(
 ###################################################
 ### chunk number 48: 
 ###################################################
+#line 1525 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "none", 
     tri.data    = my.text, 
@@ -592,12 +640,14 @@ TT.plot(
 ###################################################
 ### chunk number 49: 
 ###################################################
+#line 1553 "soiltexture_vignette.Rnw"
 rand.text	<- TT.dataset(n=100,seed.val=1980042401)
 
 
 ###################################################
 ### chunk number 50: 
 ###################################################
+#line 1558 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "none", 
     tri.data    = rand.text, 
@@ -609,6 +659,7 @@ TT.plot(
 ###################################################
 ### chunk number 51: 
 ###################################################
+#line 1575 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "none", 
     tri.data    = my.text, 
@@ -654,16 +705,16 @@ legend(
     pch         = def.pch, 
     bty         = "o", 
     bg          = NA, 
-    box.col     = NA, 
+    #box.col    = NA, # Uncomment this to remove the legend box
     text.col    = "black", 
     cex         = def.cex  
 )   #
 
 
-
 ###################################################
 ### chunk number 52: 
 ###################################################
+#line 1671 "soiltexture_vignette.Rnw"
 geo <- TT.geo.get() 
 #
 iwd.res <- TT.iwd( 
@@ -688,6 +739,7 @@ TT.plot(
 ###################################################
 ### chunk number 53: 
 ###################################################
+#line 1720 "soiltexture_vignette.Rnw"
 TT.image( 
     x       = iwd.res, 
     geo     = geo, 
@@ -711,6 +763,7 @@ TT.plot(
 ###################################################
 ### chunk number 54: 
 ###################################################
+#line 1773 "soiltexture_vignette.Rnw"
 geo <- TT.geo.get()  
 #
 kde.res <- TT.kde2d( 
@@ -738,6 +791,7 @@ TT.plot(
 ###################################################
 ### chunk number 55: 
 ###################################################
+#line 1841 "soiltexture_vignette.Rnw"
 geo <- TT.geo.get() 
 #
 maha <- TT.mahalanobis( 
@@ -765,6 +819,7 @@ TT.plot(
 ###################################################
 ### chunk number 56: 
 ###################################################
+#line 1891 "soiltexture_vignette.Rnw"
 geo <- TT.geo.get() 
 #
 maha <- TT.mahalanobis( 
@@ -794,6 +849,7 @@ TT.plot(
 ###################################################
 ### chunk number 57: 
 ###################################################
+#line 1944 "soiltexture_vignette.Rnw"
 # Display the USDA texture triangle:
 geo     <- TT.plot(class.sys="USDA.TT") 
 
@@ -814,12 +870,14 @@ TT.text(
 ###################################################
 ### chunk number 58: 
 ###################################################
+#line 1997 "soiltexture_vignette.Rnw"
 TT.data.test( tri.data = rand.text ) 
 
 
 ###################################################
 ### chunk number 59: 
 ###################################################
+#line 2021 "soiltexture_vignette.Rnw"
 res <- TT.normalise.sum( tri.data = rand.text ) 
 #
 # With output of the residuals:
@@ -836,6 +894,7 @@ max( res[ , "residuals" ] )
 ###################################################
 ### chunk number 60: 
 ###################################################
+#line 2060 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
     class.sys   = "FAO50.TT"  
@@ -845,6 +904,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 61: 
 ###################################################
+#line 2073 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
     class.sys   = "USDA.TT"  
@@ -854,6 +914,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 62: 
 ###################################################
+#line 2089 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
     class.sys   = "FAO50.TT", 
@@ -864,6 +925,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 63: 
 ###################################################
+#line 2105 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
     class.sys   = "FAO50.TT", 
@@ -874,6 +936,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 64: 
 ###################################################
+#line 2121 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
     class.sys   = "FAO50.TT", 
@@ -885,6 +948,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 65: 
 ###################################################
+#line 2204 "soiltexture_vignette.Rnw"
 tmp.cex <- 1.5
 old.par <- par(no.readonly = TRUE)
 par(cex=tmp.cex,cex.axis=tmp.cex,cex.lab=tmp.cex,cex.main=tmp.cex)
@@ -981,12 +1045,14 @@ par(old.par)
 ###################################################
 ### chunk number 66: 
 ###################################################
+#line 2307 "soiltexture_vignette.Rnw"
 my.text[1:5,]   
 
 
 ###################################################
 ### chunk number 67: 
 ###################################################
+#line 2319 "soiltexture_vignette.Rnw"
 TT.text.transf( 
 	tri.data        = my.text[1:5,],  
 	base.css.ps.lim = c(0,2,50,2000),  
@@ -997,6 +1063,7 @@ TT.text.transf(
 ###################################################
 ### chunk number 68: 
 ###################################################
+#line 2332 "soiltexture_vignette.Rnw"
 # Copy the data.frame
 my.text.fr  <- my.text 
 # Curent columns names:
@@ -1008,6 +1075,7 @@ colnames(my.text.fr) <- c("ARGILE","LIMON","SABLE","CO")
 ###################################################
 ### chunk number 69: 
 ###################################################
+#line 2345 "soiltexture_vignette.Rnw"
 TT.text.transf( 
     tri.data        = my.text.fr[1:5,],  
     base.css.ps.lim = c(0,2,50,2000),  
@@ -1019,6 +1087,7 @@ TT.text.transf(
 ###################################################
 ### chunk number 70: 
 ###################################################
+#line 2390 "soiltexture_vignette.Rnw"
 # Create a random fraction between 0 and 1
 r.frac <- runif(n=dim(my.text)[1]) 
 #
@@ -1035,6 +1104,7 @@ my.text4[1:5,]
 ###################################################
 ### chunk number 71: 
 ###################################################
+#line 2410 "soiltexture_vignette.Rnw"
 TT.text.transf.X( 
     tri.data        = my.text4[1:5,], 
     base.ps.lim = c(0,2,20,50,2000),  
@@ -1045,6 +1115,7 @@ TT.text.transf.X(
 ###################################################
 ### chunk number 72: 
 ###################################################
+#line 2429 "soiltexture_vignette.Rnw"
 TT.text.transf.X( 
     tri.data        = my.text4[1:5,], 
     base.ps.lim = c(0,2,50,2000),  
@@ -1055,6 +1126,7 @@ TT.text.transf.X(
 ###################################################
 ### chunk number 73: 
 ###################################################
+#line 2448 "soiltexture_vignette.Rnw"
 # First, plot the data without transformation:
 geo <- TT.plot( 
     class.sys   = "FR.GEPPA.TT", 
@@ -1077,6 +1149,7 @@ TT.points(
 ###################################################
 ### chunk number 74: 
 ###################################################
+#line 2488 "soiltexture_vignette.Rnw"
 # Not transformed
 geo <- TT.plot( 
     class.sys   = "UK.SSEW.TT", 
@@ -1102,6 +1175,7 @@ TT.classes(
 ###################################################
 ### chunk number 75: 
 ###################################################
+#line 2524 "soiltexture_vignette.Rnw"
 # No transformation needed or stated
 geo <- TT.plot( 
     class.sys   = "USDA.TT", 
@@ -1125,6 +1199,7 @@ TT.classes(
 ###################################################
 ### chunk number 76: 
 ###################################################
+#line 2553 "soiltexture_vignette.Rnw"
 # Untransformed
 geo <- TT.plot( 
     class.sys   = "USDA.TT", 
@@ -1149,6 +1224,7 @@ TT.classes(
 ###################################################
 ### chunk number 77: 
 ###################################################
+#line 2583 "soiltexture_vignette.Rnw"
 geo <- TT.plot( 
     class.sys   = "FR.GEPPA.TT", 
     blr.tx      = c("SAND","CLAY","SILT"), 
@@ -1172,6 +1248,7 @@ TT.classes(
 ###################################################
 ### chunk number 78: 
 ###################################################
+#line 2611 "soiltexture_vignette.Rnw"
 # Not transformed
 geo <- TT.plot( 
     class.sys       = "FR.GEPPA.TT", 
@@ -1197,6 +1274,7 @@ TT.classes(
 ###################################################
 ### chunk number 79: 
 ###################################################
+#line 2647 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data        = my.text[1:5,], 
     class.sys       = "USDA.TT", 
@@ -1208,6 +1286,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 80: 
 ###################################################
+#line 2658 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys       = "USDA.TT", 
     tri.data        = my.text, 
@@ -1220,6 +1299,7 @@ TT.plot(
 ###################################################
 ### chunk number 81: 
 ###################################################
+#line 2673 "soiltexture_vignette.Rnw"
 TT.points.in.classes( 
     tri.data        = my.text[1:5,], 
     class.sys       = "USDA.TT", 
@@ -1232,6 +1312,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 82: 
 ###################################################
+#line 2686 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys       = "USDA.TT", 
     tri.data        = my.text, 
@@ -1245,6 +1326,7 @@ TT.plot(
 ###################################################
 ### chunk number 83: 
 ###################################################
+#line 2738 "soiltexture_vignette.Rnw"
 # Create a new function, in fact the copy of TT.text.transf()
 TT.text.transf2 <- TT.text.transf
 
@@ -1264,6 +1346,7 @@ TT.points.in.classes(
 ###################################################
 ### chunk number 84: 
 ###################################################
+#line 2759 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys       = "USDA.TT", 
     tri.data        = my.text, 
@@ -1280,6 +1363,7 @@ TT.plot(
 ###################################################
 ### chunk number 85: 
 ###################################################
+#line 2825 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "USDA.TT", 
     tlr.an      = c(45,90,45), 
@@ -1290,6 +1374,7 @@ TT.plot(
 ###################################################
 ### chunk number 86: 
 ###################################################
+#line 2855 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FR.AISNE.TT", 
     blr.tx      = c("CLAY","SILT","SAND"), 
@@ -1300,6 +1385,7 @@ TT.plot(
 ###################################################
 ### chunk number 87: 
 ###################################################
+#line 2889 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FAO50.TT", 
     blr.clock   = c(FALSE,TRUE,NA), 
@@ -1310,6 +1396,7 @@ TT.plot(
 ###################################################
 ### chunk number 88: 
 ###################################################
+#line 2914 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FR.GEPPA.TT", 
     tlr.an      = c(60,60,60), 
@@ -1322,6 +1409,7 @@ TT.plot(
 ###################################################
 ### chunk number 89: 
 ###################################################
+#line 2939 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1343,6 +1431,7 @@ par(old.par)
 ###################################################
 ### chunk number 90: 
 ###################################################
+#line 2979 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1365,6 +1454,7 @@ par(old.par)
 ###################################################
 ### chunk number 91: 
 ###################################################
+#line 3004 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1387,6 +1477,7 @@ par(old.par)
 ###################################################
 ### chunk number 92: 
 ###################################################
+#line 3031 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix:
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1409,6 +1500,7 @@ par(old.par)
 ###################################################
 ### chunk number 93: 
 ###################################################
+#line 3056 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix (for size):
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1432,6 +1524,7 @@ par(old.par)
 ###################################################
 ### chunk number 94: 
 ###################################################
+#line 3081 "soiltexture_vignette.Rnw"
 # Set a 2 by 2 plot matrix (for size):
 old.par <- par(no.readonly=T)
 par("mfcol" = c(1,2),"mfrow"=c(1,2)) 
@@ -1449,6 +1542,7 @@ par(old.par)
 ###################################################
 ### chunk number 95: 
 ###################################################
+#line 3120 "soiltexture_vignette.Rnw"
 TT.plot( 
     tri.data    = my.text.fr, 
     class.sys   = "FAO50.TT", 
@@ -1459,6 +1553,7 @@ TT.plot(
 ###################################################
 ### chunk number 96: 
 ###################################################
+#line 3149 "soiltexture_vignette.Rnw"
 TT.plot( 
     tri.data    = my.text.fr, 
     class.sys   = "FAO50.TT", 
@@ -1472,6 +1567,7 @@ TT.plot(
 ###################################################
 ### chunk number 97: 
 ###################################################
+#line 3165 "soiltexture_vignette.Rnw"
 TT.plot( 
     tri.data    = my.text.fr, 
     class.sys   = "FAO50.TT", 
@@ -1489,6 +1585,7 @@ TT.plot(
 ###################################################
 ### chunk number 98: 
 ###################################################
+#line 3201 "soiltexture_vignette.Rnw"
 # Fisrt, retrieve all the data about 
 #   the USDA texture triangle
 tmp <- TT.get("USDA.TT") 
@@ -1505,6 +1602,7 @@ tmp[ !names(tmp) %in% c("tt.points","tt.polygons") ]
 ###################################################
 ### chunk number 99: 
 ###################################################
+#line 3230 "soiltexture_vignette.Rnw"
 # Retrieve and save the table:
 tmp2 <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
 
@@ -1518,12 +1616,14 @@ tmp2[,c(1,3)]
 ###################################################
 ### chunk number 100: 
 ###################################################
+#line 3253 "soiltexture_vignette.Rnw"
 TT.vertices.tbl( class.sys = "FAO50.TT" ) 
 
 
 ###################################################
 ### chunk number 101: 
 ###################################################
+#line 3270 "soiltexture_vignette.Rnw"
 geo <- TT.plot( 
     class.sys   = "FAO50.TT", 
     main        = "Vertices numbers. USDA texture triangle"
@@ -1541,6 +1641,7 @@ TT.vertices.plot(
 ###################################################
 ### chunk number 102: 
 ###################################################
+#line 3311 "soiltexture_vignette.Rnw"
 # Step 1 
 FAO63 <- TT.get("FAO50.TT") 
 #
@@ -1559,6 +1660,7 @@ TT.add( "FAO63.TT" = FAO63 )
 ###################################################
 ### chunk number 103: 
 ###################################################
+#line 3332 "soiltexture_vignette.Rnw"
 TT.plot( 
     class.sys   = "FAO63.TT", 
     main        = "Modified FAO soil texture triangle"
@@ -1568,6 +1670,7 @@ TT.plot(
 ###################################################
 ### chunk number 104: 
 ###################################################
+#line 3347 "soiltexture_vignette.Rnw"
 # Get the definition of the FAO50 texture triangle
 FAO50 <- TT.get( "FAO50.TT" ) 
 #

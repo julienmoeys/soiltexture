@@ -1699,7 +1699,7 @@ TT.col2hsv  <- function(# Convert any colors to hsv.
                 col     = col, 
                 alpha   = FALSE
             ),  #
-            gamma           = 1, 
+            #gamma          = 1, 
             maxColorValue   = 255  
         )   #
     )   #
