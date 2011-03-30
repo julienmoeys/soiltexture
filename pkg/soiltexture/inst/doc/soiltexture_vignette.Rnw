@@ -374,10 +374,10 @@ Baize \& Jabiol 1995\cite{BAIZE1995}. The particle size axis
 <<echo=FALSE,fig=TRUE,include=TRUE>>= 
 bornes <- c(0,2,20,50,200,2e3,20e3)
 noms   <- c("Cl","FiSi","CoSi","FiSa","CoSa","Gr","St")
-txt.b  <- c("0µm","2µm","20µm","50µm","200µm","2mm","2cm")
+txt.b  <- expression( 0*mu*m, 2*mu*m, 20*mu*m, 50*mu*m, 200*mu*m, 2*'mm', 2*'cm')
 
-tmp <- data.frame(bornes,noms,txt.b)
-tmp$"txt.b" <- as.character(tmp$"txt.b")
+tmp <- data.frame(bornes,noms) # ,txt.b
+#tmp$"txt.b" <- as.character(tmp$"txt.b")
 
 par(  "mar"=c(4,1,1,1)+0.1  )  #  c(bottom, left, top, right)
 
@@ -399,7 +399,7 @@ abline(v=tmp$"bornes",lty=3,lwd=c(2,4,2,4,2,4,2))
 abline(h=par("usr")[3:4],lty=1,lwd=4)
 
 mtext( 
-    text    = tmp$"txt.b"[-1], 
+    text    = txt.b[-1], 
     side    = 1, 
     line    = rep( 
         c(0.5,1.25), 
@@ -465,13 +465,13 @@ about soil texture (and using these functions):
 
 Some country have a particle size classes system that differ from 
 the common 'clay silt sand' triplet. Sweden is using a system 
-with 4 particle size classes: Ler [0-2$\mu$m], Mjäla [2-20$\mu$m], 
+with 4 particle size classes: Ler [0-2$\mu$m], Mj\"ala [2-20$\mu$m], 
 Mo [20-200$\mu$m] and Sand [200-2000$\mu$m] (See table 1 p.9 in 
 Lidberg 2009\cite{LIDBERG2009}). 
 Ler corresponds to clay. When considering the International or 
-Australian particle size system (silt-sand limit 20$\mu$m), Mjäla 
+Australian particle size system (silt-sand limit 20$\mu$m), Mj\"ala 
 is silt, and 'Mo + Sand' is sand. When considering other systems 
-with a silt-sand limit at 50$\mu$m, 60$\mu$m or 63$\mu$m, Mjäla 
+with a silt-sand limit at 50$\mu$m, 60$\mu$m or 63$\mu$m, Mj\"ala 
 is ~fine-silt, Mo is ~'coarse-silt + fine sand', and Sand is 
 ~coarse-sand.\\
 
@@ -886,7 +886,7 @@ considering a silt - sand limit of
 \Sexpr{TT.get("FR.AISNE.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols\footnote{In 
-classes 14 and 15, 'leger' should be replaced by 'léger'. R (and 
+classes 14 and 15, 'leger' should be replaced by 'l\'eger'. R (and 
 Sweave) can not display french accents easily, and I found no easy 
 trics for displaying them.}.\\
 
@@ -940,7 +940,7 @@ This triangle has been digitized after
 \texttt{sols-de-bretagne.fr} 2009\cite{SOLBRETAGNE2009}. The 
 website refers to an illustration from Baize and Jabiol 1995%
 \cite{BAIZE1995}. 'GEPPA' means 'Groupe d'Etude pour les 
-Problèmes de Pédologie Appliquée' (en: Group for the study of 
+Probl\`emes de P\'edologie Appliqu\'ee' (en: Group for the study of 
 applied pedology problems / questions).
 
 
@@ -980,7 +980,7 @@ and \texttt{nibis.ni.schule.de} 2009\cite{BK94ANONYM}. The
 triangle is also presented in GEOVLEX 2009\cite{GEOVLEX2009} 
 (Online lexicon from the Halle-Wittenberg University) and Bormann 
 2007\cite{BORMANN2007} (for quadruple check). The 
-triangle is referred as Bodenartendiagramm 'Korngrö\ss endreieck' 
+triangle is referred as Bodenartendiagramm 'Korngr\"o\ss endreieck' 
 from Bodenkundliche Kartieranleitung 1994.
 
 \clearpage % otherwise the table 'eats' next triangle
@@ -1075,7 +1075,7 @@ considering a silt - sand limit of
 \Sexpr{TT.get("BE.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols\footnote{In 
-classes 5, 'leger' should be replaced by 'léger'. R (and 
+classes 5, 'leger' should be replaced by 'l\'eger'. R (and 
 Sweave) can not display french accents easily, and I found no easy 
 trics for displaying them.}. The class names are given in French 
 and in Flemish.
