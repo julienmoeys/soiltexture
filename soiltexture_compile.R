@@ -1,7 +1,7 @@
 rm(list=ls(all=TRUE)) 
 pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg" 
 pkg.name     <- "soiltexture" 
-pkg.version  <- "1.0.4" 
+pkg.version  <- "1.2.2" 
 pkg.depends  <- c("sp","MASS") 
 pkg.suggests <- "drc" 
 RVersion     <- "R (>= 2.4.1)" 
