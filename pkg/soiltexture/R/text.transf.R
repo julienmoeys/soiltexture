@@ -368,8 +368,11 @@ tri.sum.norm=FALSE
             {
                 for( j in 1:5 )
                 {
+                    countR <- 0  # Added by Julien Moeys on 2011/11/01
                     repeat
-                    {
+                    {   
+                        countR <- countR + 1 # Added by Julien Moeys on 2011/11/01
+                        
                         spa[1:pn-1]     <- runif(n = pn-1,max = maxspa1,min = minspa1)
                         spa[pn]         <- runif(n = 1,max = maxspa2,min = minspa2)
                         tt<- try( drc:::drm(y ~ xin, fct = list( logi, NULL,pname ), # JM:2010/08/11 changed drc::drm to drm alone
@@ -395,14 +398,19 @@ tri.sum.norm=FALSE
                                 ttbest  <- tt
                             }
                             break
-                        }
+                        } #
+                        
+                        if( countR >= 100 ){ break } # Added by Julien Moeys on 2011/11/01
                     }
                 }
             }
             else
             {
+                countR <- 0  # Added by Julien Moeys on 2011/11/01
                 repeat
                 {
+                    countR <- countR + 1 # Added by Julien Moeys on 2011/11/01
+                    
                     spa[1:pn-1] <- runif(n=pn-1,max = maxspa1,min = minspa1)
                     spa[pn]     <- runif(n=1,max = maxspa2,min = minspa2)
                     tt  <- try( drc:::drm(y ~ xin, fct = list(logi, NULL, pname), # JM:2010/08/11 changed drc::drm to drm alone
@@ -429,6 +437,8 @@ tri.sum.norm=FALSE
                         }
                         break
                     }
+                    
+                    if( countR >= 100 ){ break } # Added by Julien Moeys on 2011/11/01
                 }
             }
             #when the residual sum of error (deviance) is very small, the iteration is stopped to save time
