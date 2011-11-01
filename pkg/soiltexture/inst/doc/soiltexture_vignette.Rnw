@@ -1176,7 +1176,7 @@ TT.plot( class.sys = "ISSS.TT" )
 
 The ISSS soil texture classification has been built 
 considering a silt - sand limit of 
-\Sexpr{TT.get("ISSS.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
+\Sexpr{TT.get("ISSS.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\
 
 
 See the table for soil texture classes symbols:
@@ -1212,7 +1212,7 @@ TT.plot( class.sys = "ROM.TT" )
 
 The Romanian soil texture classification has been built 
 considering a silt - sand limit of 
-\Sexpr{TT.get("ROM.TT")[["base.css.ps.lim"]][3]}$\mu$meters.
+\Sexpr{TT.get("ROM.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\
 
 
 See the table for soil texture classes symbols:
@@ -1229,7 +1229,7 @@ xtable(
 
 
 Many thanks to Rosca Bogdan (Romanian Academy, Iasi Branch, 
-Geography team) for providing the code of the Romanian triangle.
+Geography team) for providing the code of the Romanian triangle.\\
 
 
 A right angled version of the triangle can be obtained by typing:
@@ -1243,6 +1243,62 @@ TT.plot(
     blr.tx      = c("SILT","CLAY","SAND"), 
 )   #
 @ 
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Polish soil texture classification} 
+
+To display a Polish texture triangle (Systematyka gleb Polski, 1989, 
+for non-alluvial soils), type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+if( Sys.info()["sysname"] != "Mac" ){ 
+    TT.plot( class.sys = "PL.TT" ) 
+}   #
+@ 
+
+
+
+NB: \textit{With Mac computers, and due to encoding issues, the Polish 
+triangle is not included with the default triangles, and the graphs 
+above and table below will thus not be displayed}.\\
+
+
+
+<<echo=FALSE,results=hide,quiet=TRUE>>= 
+if( Sys.info()["sysname"] != "Mac" ){ 
+    if( Sys.info()["sysname"] != "Mac" ){
+        plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3]
+    }else{
+        plLim <- "..." 
+    }   # 
+}   #
+@ 
+
+The Romanian soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{plLim}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+if( Sys.info()["sysname"] != "Mac" ){ 
+    tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) 
+    xtable( 
+        x       = tex.tbl[,-3],  #
+        caption = "Texture classes of the Romanian system / triangle", 
+        label   = NULL  
+    )   #
+}   #
+@ 
+
+
+Many thanks to Wiktor Zelazny for providing the code of the 
+Polish triangle (and the Polish language translation).
 
 
 
@@ -3074,6 +3130,10 @@ par(old.par)
 @ 
 
 
+The polish language can be obtained by typing \texttt{lang = "pl"} 
+on all platforms by Mac.\\
+
+
 And finally in English, the default language (\texttt{lang = "en"}):
 
 
@@ -3091,8 +3151,6 @@ TT.plot(
 # Back to old parameters:
 par(old.par)
 @ 
-
-
 
 
 

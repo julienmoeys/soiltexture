@@ -1,5 +1,5 @@
 c:
 cd \
-cd "C:\_RTOOLS\SWEAVE_WORK\SOIL_TEXTURES\rforge\pkg" 
+cd "C:\_R_PACKAGES\soiltexture\pkg" 
 R CMD INSTALL --build soiltexture 
 pause

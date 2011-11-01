@@ -1,9 +1,9 @@
 # Running the latest part of this script (zipMe) requires to have 
 # 7zip installed and available on Windows path.
 rm(list=ls(all=TRUE)) 
-work.wd             <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst"  
+work.wd             <- "C:/_R_PACKAGES/soiltexture/pkg/soiltexture/inst"  
 subdir1             <- "doc" 
-Sweave.wrapper.fun  <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/Sweave_wrapper.R" 
+Sweave.wrapper.fun  <- "C:/_R_PACKAGES/soiltexture/Sweave_wrapper.R" 
 file.name.root      <- "soiltexture_vignette"  
 sweave.ext          <- ".Rnw"  
 inout.dir           <- ""  
