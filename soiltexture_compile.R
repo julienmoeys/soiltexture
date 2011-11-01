@@ -1,8 +1,8 @@
 rm(list=ls(all=TRUE)) 
-pkg.dir      <- "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg" 
-pkg.dir      <- "/home/jules/_WORK/R_PACKAGES/soiltexture/pkg" 
+pkg.dir      <- "C:/_R_PACKAGES/soiltexture/pkg" 
+# pkg.dir      <- "/home/jules/_WORK/R_PACKAGES/soiltexture/pkg" 
 pkg.name     <- "soiltexture" 
-pkg.version  <- "1.2.3" 
+pkg.version  <- "1.2.4" 
 pkg.depends  <- c("sp","MASS") 
 pkg.suggests <- "drc" 
 RVersion     <- "R (>= 2.4.1)" 
@@ -43,47 +43,4 @@ file.copy(
 
 
 pkg.remove.wrapper( pkg.name = pkg.name ) 
-
-
-# # Build the package
-# pkg.build.wrapper( 
-#     pkg.name = pkg.name, 
-#     pkg.dir  = pkg.dir, 
-#     r.path   = r.path
-# )   #
-
-
-
-# # Install the package:
-# pkg.install.wrapper( 
-#     pkg.name = pkg.name, 
-#     pkg.dir  = pkg.dir, 
-#     r.path   = r.path
-# )   #
-
-
-
-# # Re-install and load the package from the new zip archive 
-# # _before_ the tests are conducted
-# install.packages.zip( 
-#     pkg.name    = pkg.name, 
-#     pkg.dir     = pkg.dir, 
-#     pkg.version = pkg.version
-# )   #
-
-
-
-# # Check the package
-# date() 
-# pkg.check.wrapper( 
-#     pkg.name = pkg.name, 
-#     pkg.dir  = pkg.dir, 
-#     r.cmd.op = "--no-tests", 
-#     r.path   = r.path
-# )   #
-# date() 
-
-
-
-# require( package = pkg.name, character.only = TRUE ) 
 

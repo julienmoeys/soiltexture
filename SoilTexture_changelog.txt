@@ -3,6 +3,12 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+20111101    Fixed a potential infinite loop problem in the texture transformation 
+            functions based on "drc"
+
+20111101    Improved handling / loading of the Polish triangle (is not working under 
+            Mac). Added the polih triangle to the vignette.
+
 20100610    New function TT.polygon.centroids() used for a smater calculation 
             of the texture class centroid for better placement of the texture 
             classes labels (used by TT.classes(), itself used by TT.plot()).
