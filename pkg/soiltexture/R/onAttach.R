@@ -5,7 +5,7 @@
     cat( "'", pkgname, "' loaded.\n" ) 
     #
     # Setup the polish triangle and language setting
-    if( Sys.info()["sysname"] != "Mac" )
+    if( !(tolower(Sys.info()["sysname"]) %in% c("mac","darwin")) )
     {   #
         source( system.file( "polish_triangle.r", package = pkgname ), encoding = "UTF-8" ) 
         source( system.file( "polish_language.r", package = pkgname ), encoding = "UTF-8" ) 
