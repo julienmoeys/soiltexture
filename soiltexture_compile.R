@@ -2,7 +2,7 @@ rm(list=ls(all=TRUE))
 pkg.dir      <- "C:/_R_PACKAGES/soiltexture/pkg" 
 # pkg.dir      <- "/home/jules/_WORK/R_PACKAGES/soiltexture/pkg" 
 pkg.name     <- "soiltexture" 
-pkg.version  <- "1.2.4" 
+pkg.version  <- "1.2.5" 
 pkg.depends  <- c("sp","MASS") 
 pkg.suggests <- "drc" 
 RVersion     <- "R (>= 2.4.1)" 

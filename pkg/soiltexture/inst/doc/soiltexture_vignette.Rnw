@@ -557,6 +557,10 @@ TT.plot(
 
 The soil texture class symbols are:
 
+<<echo=FALSE>>= 
+library( "xtable" ) 
+@ 
+
 <<echo=FALSE,results=tex>>= 
 tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
 xtable( 

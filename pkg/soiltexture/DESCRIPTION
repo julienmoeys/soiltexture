@@ -1,6 +1,6 @@
 Package: soiltexture
-Version: 1.2.4
-Date: 2011-11-01
+Version: 1.2.5
+Date: 2011-11-09
 Title: Functions for soil texture plot, classification and transformation
 Author: Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.
 Maintainer: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
