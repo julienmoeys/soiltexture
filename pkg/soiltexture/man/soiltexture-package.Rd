@@ -16,8 +16,8 @@ triangle. The Soil Texture Wizard is initially develloped from the functions 'so
 from the package 'plotrix' by Jim Lemon et al.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
-Version: \tab 1.2.4\cr
-Date: \tab 2011-11-01\cr
+Version: \tab 1.2.5\cr
+Date: \tab 2011-11-09\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr

@@ -1677,10 +1677,10 @@ TT.DJ.col <- function(# A function to obtaine a weight average 'mix' of differen
     if( gray.l ){ m.cl[] <- rep(mean(m.cl),3) }     # 1:3 stands here in case of alpha value...
     #
     rgb( 
-        r               = m.cl["red"], 
-        g               = m.cl["green"], 
-        b               = m.cl["blue"], 
-        maxColorValue   = 255  
+        red           = m.cl["red"], 
+        green         = m.cl["green"], 
+        blue          = m.cl["blue"], 
+        maxColorValue = 255  
     )   #
 }   #
 
@@ -1902,7 +1902,7 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
     null.geo.par    <- unlist(  lapply( 
             X   = geo.par, 
             FUN = function(X){ 
-                is.null( get(x=X,env=p.env) ) 
+                is.null( get(x=X,envir=p.env) ) 
             }   #
     )   )   #
     #
@@ -1922,14 +1922,14 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
             silent  <- lapply( 
                 X   = geo.par, 
                 FUN = function(X){ 
-                    assign(x=X,value=TT.data[[X]],env=p.env)
+                    assign(x=X,value=TT.data[[X]],envir=p.env)
                 }   #
             )   #
         }else{ 
             silent  <- lapply( 
                 X   = geo.par, 
                 FUN = function(X){ 
-                    assign(x=X,value=TT.get(X),env=p.env) 
+                    assign(x=X,value=TT.get(X),envir=p.env) 
                 }   #
             )   #
         }   #
@@ -3469,9 +3469,9 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
                 bg.hsv      <- col2rgb( bg, alpha = FALSE )[,1]/255 
                 #
                 grid.col    <- rgb( 
-                    r   = bg.hsv["red"], 
-                    g   = bg.hsv["green"], 
-                    b   = bg.hsv["blue"]  
+                    red   = bg.hsv["red"], 
+                    green = bg.hsv["green"], 
+                    blue  = bg.hsv["blue"]  
                 )   #
             # Frame backgound color is not NULL 
             }else{ 
@@ -4268,7 +4268,7 @@ TT.vertices.plot <- function(# Plot the vertices of a texture classification sys
         col         = col, 
         cex         = cex, 
         font        = font, 
-        family      = family.op, 
+        family.op   = family.op, 
         adj         = adj, 
         pos         = pos, 
         offset      = offset, 

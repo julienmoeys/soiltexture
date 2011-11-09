@@ -3,6 +3,9 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+20111109    New attempt to fix problems while loading the Polish texture triangle 
+            under Mac/Darwin and freeBSD.
+
 20111101    Fixed a potential infinite loop problem in the texture transformation 
             functions based on "drc"
 
