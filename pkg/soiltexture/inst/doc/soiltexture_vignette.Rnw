@@ -825,6 +825,8 @@ xtable(
 The reference used to digitize this triangle is the Soil Survey 
 Manual (Soil Survey Staff 1993\cite{USDA1993}).
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -872,6 +874,8 @@ triangle provided by the HYPRES project web site
 (CanSIS) also provides some details on this triangle 
 (\cite{CANSIS2009}).
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -910,6 +914,8 @@ This triangle may be referred as the 'Triangle des textures de la
 Chambre d'Agriculture de l'Aisne' (en: texture triangle of the 
 Aisne extension service).
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -946,6 +952,8 @@ website refers to an illustration from Baize and Jabiol 1995%
 \cite{BAIZE1995}. 'GEPPA' means 'Groupe d'Etude pour les 
 Probl\`emes de P\'edologie Appliqu\'ee' (en: Group for the study of 
 applied pedology problems / questions).
+
+\clearpage % otherwise the table may 'eats' next triangle
 
 
 
@@ -992,6 +1000,63 @@ from Bodenkundliche Kartieranleitung 1994.
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The German 'Standortserkundungsanweisung' (SEA 1974) %
+    soil texture classification for forest soils} 
+
+To display a German 'Standortserkundungsanweisung' (SEA 1974) 
+texture triangle for forest soils, type:
+
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "DE.SEA74.TT" ) 
+@ 
+
+
+
+<<echo=FALSE,results=hide,quiet=TRUE>>= 
+plLim <- TT.get("DE.SEA74.TT")[["base.css.ps.lim"]][3]
+@ 
+
+The SEA 1974 soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{plLim}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "DE.SEA74.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the German SEA 1974 system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Rainer Petzold (Staatsbetrieb Sachsenforst) for 
+providing the code of the SEA 1974 triangle.
+
+
+The original isosceles version of the triangle can be obtained by typing:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys = "DE.SEA74.TT", 
+    blr.clock   = rep(T,3), 
+    tlr.an      = rep(60,3), 
+    blr.tx      = c("SAND","CLAY","SILT"), 
+)   #
+@ 
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{UK Soil Survey of England and Wales texture 
     classification} 
 
@@ -1022,6 +1087,8 @@ xtable(
 The reference used to digitize this triangle is Defra -- Rural 
 Development Service -- Technical Advice Unit 2006\cite{DEFRA2006} 
 (Technical Advice Note 52 -- Soil texture).
+
+\clearpage % otherwise the table may 'eats' next triangle
 
 
 
@@ -1061,6 +1128,8 @@ this triangle (reproduced after both Minasny and McBratney
 (brochure 'Soil Texture-Laboratory Method' from soilquality.org.au 
 \footnote{texttt{http://soilquality.org.au}}).\\
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -1097,6 +1166,8 @@ xtable(
 
 This texture triangle has been built after images from Defourny 
 et al.\cite{DEFOURNY2009} and Van Bossuyt\cite{BOSSUYT2009}.\\
+
+\clearpage % otherwise the table may 'eats' next triangle
 
 
 
@@ -1160,6 +1231,8 @@ A reference image for this texture triangle can be found in
 and the boundaries have been checked with those given on the same 
 web-page \cite{CANSIS2010}.\\
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -1196,9 +1269,11 @@ xtable(
 @ 
 
 
-Many thanks to Wei Shangguan (PhD, School of geography, Beijing 
+Many thanks to Wei Shangguan (School of geography, Beijing 
 normal university) for providing the code of the ISSS triangle 
 (using an article from Verheye and Ameryckx 1984\cite{VERHEYE1984PEDO}).
+
+\clearpage % otherwise the table may 'eats' next triangle
 
 
 
@@ -1248,6 +1323,8 @@ TT.plot(
 )   #
 @ 
 
+\clearpage % otherwise the table may 'eats' next triangle
+
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
@@ -1257,31 +1334,43 @@ To display a Polish texture triangle (Systematyka gleb Polski, 1989,
 for non-alluvial soils), type:
 
 
+% <<echo=TRUE,fig=TRUE,include=TRUE>>= 
+% if( Sys.info()["sysname"] != "Mac" ){ 
+%     TT.plot( class.sys = "PL.TT" ) 
+% }   #
+% @ 
+
+
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-if( Sys.info()["sysname"] != "Mac" ){ 
-    TT.plot( class.sys = "PL.TT" ) 
-}   #
+TT.plot( class.sys = "PL.TT" ) 
 @ 
 
 
 
-NB: \textit{With Mac computers, and due to encoding issues, the Polish 
-triangle is not included with the default triangles, and the graphs 
-above and table below will thus not be displayed}.\\
+NB: \textit{Due to encoding issues, the Polish triangle 
+with be displayed with original polish character under Windows 
+and Linux systems only. For other platforms (Mac, freeBSD) 
+only latin character are used}.\\
+
+
+
+% <<echo=FALSE,results=hide,quiet=TRUE>>= 
+% if( Sys.info()["sysname"] != "Mac" ){ 
+%     if( Sys.info()["sysname"] != "Mac" ){
+%         plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3]
+%     }else{
+%         plLim <- "..." 
+%     }   # 
+% }   #
+% @ 
 
 
 
 <<echo=FALSE,results=hide,quiet=TRUE>>= 
-if( Sys.info()["sysname"] != "Mac" ){ 
-    if( Sys.info()["sysname"] != "Mac" ){
-        plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3]
-    }else{
-        plLim <- "..." 
-    }   # 
-}   #
+plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3]
 @ 
 
-The Romanian soil texture classification has been built 
+The Polish soil texture classification has been built 
 considering a silt - sand limit of 
 \Sexpr{plLim}$\mu$meters.\\
 
@@ -1289,20 +1378,33 @@ considering a silt - sand limit of
 See the table for soil texture classes symbols:
 
 
+% <<echo=FALSE,results=tex>>= 
+% if( Sys.info()["sysname"] != "Mac" ){ 
+%     tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) 
+%     xtable( 
+%         x       = tex.tbl[,-3],  #
+%         caption = "Texture classes of the Polish system / triangle", 
+%         label   = NULL  
+%     )   #
+% }   #
+% @ 
+
+
 <<echo=FALSE,results=tex>>= 
-if( Sys.info()["sysname"] != "Mac" ){ 
-    tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) 
-    xtable( 
-        x       = tex.tbl[,-3],  #
-        caption = "Texture classes of the Romanian system / triangle", 
-        label   = NULL  
-    )   #
-}   #
+tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Polish system / triangle", 
+    label   = NULL  
+)   #
 @ 
+
 
 
 Many thanks to Wiktor Zelazny for providing the code of the 
 Polish triangle (and the Polish language translation).
+
+\clearpage % otherwise the table may 'eats' next triangle
 
 
 
