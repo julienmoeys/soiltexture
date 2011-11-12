@@ -3,6 +3,9 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+20111112    Added the German (GDR) texture triangle for forest soils: 
+            "Standortserkundungsanweisung SEA 1974 (DE)" 
+
 20111109    New attempt to fix problems while loading the Polish texture triangle 
             under Mac/Darwin and freeBSD.
 

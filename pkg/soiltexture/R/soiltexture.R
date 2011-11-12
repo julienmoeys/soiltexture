@@ -1145,6 +1145,60 @@ assign(
             unit.tx         = quote(bold('%')), 
             #
             text.sum        = 100 
+        ),  #
+        #
+        DE.SEA74.TT  = list( # GDR Forest soils TRIANGLE PARAMETERS :
+            #
+            main            = "Standortserkundungsanweisung SEA 1974 (DE)", 
+            #
+            #                 The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes. The clay definition of points 08, 09, 10 closely follows the
+            #                   triangle, plotted in SEA 1974, conforms to the GDR standard (TGL 24300-05:1985-06), but
+            #                   is 1 Percent larger than the actual German texture triangle in DE.BK94.TT :
+            #                  P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12    P13    
+            #                  P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24    P25
+            "tt.points"     = data.frame( 
+                "CLAY"  =   c( 1.000, 0.450, 0.450, 0.300, 0.300, 0.300, 0.300, 0.180, 0.180, 0.180, 0.150, 0.120, 0.050, 
+                               0.000, 0.000, 0.000, 0.000, 0.050, 0.100, 0.025, 0.050, 0.080, 0.080, 0.000, 0.000),
+                "SILT"  =   c( 0.000, 0.550, 0.000, 0.700, 0.550, 0.150, 0.000, 0.820, 0.550, 0.150, 0.000, 0.150, 0.550, 
+                               0.550, 0.200, 0.100, 0.000, 0.000, 0.000, 0.075, 0.150, 0.800, 0.920, 1.000, 0.800),  
+                "SAND"  =   c( 0.000, 0.000, 0.550, 0.000, 0.150, 0.550, 0.700, 0.000, 0.270, 0.670, 0.850, 0.730, 0.400, 
+                               0.450, 0.800, 0.900, 1.000, 0.950, 0.900, 0.900, 0.800, 0.120, 0.000, 0.000, 0.200)  
+            ),  #
+            # 
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "L"   = list( "name" = "Lehm",                "points" = c(10, 06, 05, 09 ) ), 
+                "stL" = list( "name" = "sandig-toniger Lehm", "points" = c(11, 07, 06, 10, 12 ) ), 
+                "sL"  = list( "name" = "sandiger Lehm",       "points" = c(12, 10, 09, 13 ) ), 
+                "S"   = list( "name" = "Sand",                "points" = c(17, 18, 20, 16 ) ), 
+                "alS" = list( "name" = "anlehmiger Sand",     "points" = c(18, 19, 21, 15, 16, 20 ) ), 
+                "lS"  = list( "name" = "lehmiger Sand",       "points" = c(19, 11, 12, 13, 14, 15, 21 ) ), 
+                "T"   = list( "name" = "Ton",                 "points" = c(03, 01, 02 ) ), 
+                "uT"  = list( "name" = "schluffiger Ton",     "points" = c(05, 02, 04 ) ), 
+                "lT"  = list( "name" = "lehmiger Ton",        "points" = c(03, 02, 05, 06 ) ), 
+                "sT"  = list( "name" = "sandiger Ton",        "points" = c(07, 03, 06 ) ), 
+                "U"   = list( "name" = "Schluff",             "points" = c(25, 22, 23, 24 ) ), 
+                "UL"  = list( "name" = "Schlufflehm",         "points" = c(09, 05, 04, 08 ) ), 
+                "lU"  = list( "name" = "lehmiger Schluff",    "points" = c(14, 13, 09, 08, 23, 22, 25 ) ) 
+                #
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = c(F,T,NA), 
+            tlr.an          = c(45,90,45), 
+            #
+            blr.tx      = c("CLAY","SILT","SAND"), 
+            # 
+            base.css.ps.lim = c(0,2,63,2000), 
+            tri.css.ps.lim  = c(0,2,63,2000), 
+            # 
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
         )   #
         #
         # +-------------------------------------------------------------------------+
