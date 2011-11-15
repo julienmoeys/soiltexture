@@ -1004,7 +1004,7 @@ from Bodenkundliche Kartieranleitung 1994.
     soil texture classification for forest soils} 
 
 To display a German 'Standortserkundungsanweisung' (SEA 1974) 
-texture triangle for forest soils, type:
+texture triangle for forest soils\cite{SEA1974}, type:
 
 
 
@@ -1037,7 +1037,7 @@ xtable(
 
 
 Many thanks to Rainer Petzold (Staatsbetrieb Sachsenforst) for 
-providing the code of the SEA 1974 triangle.
+providing the code of this triangle.
 
 
 The original isosceles version of the triangle can be obtained by typing:
@@ -1046,6 +1046,63 @@ The original isosceles version of the triangle can be obtained by typing:
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
     class.sys = "DE.SEA74.TT", 
+    blr.clock   = rep(T,3), 
+    tlr.an      = rep(60,3), 
+    blr.tx      = c("SAND","CLAY","SILT"), 
+)   #
+@ 
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The German 'landwirtschaftliche Böden' (TGL 24300-05, 1985) %
+    soil texture classification for arable soils} 
+
+To display a German TGL 1985 texture triangle for arable soils\cite{TGL1985}, 
+type:
+
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "DE.TGL85.TT" ) 
+@ 
+
+
+
+<<echo=FALSE,results=hide,quiet=TRUE>>= 
+plLim <- TT.get("DE.TGL85.TT")[["base.css.ps.lim"]][3]
+@ 
+
+The TGL 1985 soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{plLim}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "DE.TGL85.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the German TGL 1985 system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Rainer Petzold (Staatsbetrieb Sachsenforst) for 
+providing the code of this triangle.
+
+
+The original isosceles version of the triangle can be obtained by typing:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( 
+    class.sys = "DE.TGL85.TT", 
     blr.clock   = rep(T,3), 
     tlr.an      = rep(60,3), 
     blr.tx      = c("SAND","CLAY","SILT"), 
