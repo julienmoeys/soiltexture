@@ -2,7 +2,7 @@
  libname, 
  pkgname  
 ){  #
-    cat( "'", pkgname, "' loaded.\n" ) 
+    #cat( "'", pkgname, "' loaded.\n" ) 
     #
     # Setup the polish triangle and language setting
     ## if( !(tolower(Sys.info()["sysname"]) %in% c("mac","darwin")) ) 
