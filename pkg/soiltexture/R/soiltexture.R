@@ -1203,7 +1203,7 @@ assign(
         #
         "DE.TGL85.TT" = list( # GDR Arable soils TRIANGLE PARAMETERS :
             #
-            main = "TGL 24300-05, landwirtschaftliche Böden (DE)", 
+            main = "TGL 24300-05, landwirtschaftliche Boeden (DE)", 
             #
             #                 The list below specify the CSS coordinates of the different POINTS
             #                   that are used to draw soil texture classes. One points can be 
