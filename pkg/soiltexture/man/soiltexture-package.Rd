@@ -9,20 +9,19 @@ soil texture triangle / classification into any triangle geometry (isosceles,
 right-angled triangles, etc.). This set of function is expected to be useful to people
 using soil textures data from different soil texture classification or different particle
 size systems. Several texture triangles are predefined: USDA; FAO (which is also the
-triangle for the soil map of Europe); Aisne (France); GEPPA (France); German triangle
-(Bodenkundliche Kartieranleitung 1994); Soil Survey of England and Wales (UK); Australian
-triangle; Belgian triangle; Canadian triangle; ISSS triangle; Romanian triangle; Polish
-triangle. The Soil Texture Wizard is initially develloped from the functions 'soil.texture()'
-from the package 'plotrix' by Jim Lemon et al.}
+triangle for the soil map of Europe); Aisne (France); GEPPA (France); German triangles
+"Bodenkundliche Kartieranleitung 1994", "SEA 1974" and "TGL 1985"; Soil
+Survey of England and Wales; Australian triangle; Belgian triangle; Canadian triangle;
+ISSS triangle; Romanian triangle; Polish triangle.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
-Version: \tab 1.2.5\cr
-Date: \tab 2011-11-09\cr
+Version: \tab 1.2.6\cr
+Date: \tab 2011-11-17\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Depends: \tab R (>= 2.4.1), sp, MASS\cr
-Suggests: \tab drc\cr
+Suggests: \tab drc, plotrix\cr
 License: \tab AGPL (>=3)\cr
 URL: \tab http://soiltexture.r-forge.r-project.org/\cr}
 }
