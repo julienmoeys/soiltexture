@@ -1057,7 +1057,7 @@ TT.plot(
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{The German 'landwirtschaftliche Böden' (TGL 24300-05, 1985) %
+\subsection{The German 'landwirtschaftliche B\"{o}den' (TGL 24300-05, 1985) %
     soil texture classification for arable soils} 
 
 To display a German TGL 1985 texture triangle for arable soils\cite{TGL1985}, 
