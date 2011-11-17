@@ -433,4 +433,5 @@ TT.plot( class.sys = "USDA.TT", lang = "nl" )  #  Dutch
 TT.plot( class.sys = "USDA.TT", lang = "fl" )  #  Dutch (Belgian) / Flemmish 
 TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Swedish 
 TT.plot( class.sys = "USDA.TT", lang = "ro" )  #  Romanian 
-TT.plot( class.sys = "USDA.TT", lang = "pl" )  #  Polish } 
+TT.plot( class.sys = "USDA.TT", lang = "pl" )  #  Polish 
+}
