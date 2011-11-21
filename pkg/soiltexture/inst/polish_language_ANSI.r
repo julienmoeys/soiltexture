@@ -3,7 +3,8 @@ lang.par2 <- data.frame(
     "CLAY"  = "\"Il\"", 
     "SILT"  = "\"Pyl\"", 
     "SAND"  = "\"Piasek\"", 
-    "TT"    = "\"Trójkat Fereta\"", 
+    "TT"    = "\"Trojkat Fereta\"", 
     stringsAsFactors    = FALSE  
 )   #
+
 
