@@ -1,4 +1,4 @@
-# source( "C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/R/soiltexture.r" ) 
+# source( "C:/_R_PACKAGES/soiltexture/pkg/soiltexture/R/soiltexture.R" ) 
 # source( "http://r-forge.r-project.org/scm/viewvc.php/*checkout*/pkg/soiltexture/R/soiltexture.R?revision=19&root=soiltexture" ) 
 # +-------------------------------------------------------------------------+
 # |                                                                         |
@@ -263,23 +263,23 @@ assign(
         lang.par    = data.frame( 
             "lang"  = c(    "en",                           "fr",                       "it", 
                             "es",                           "de",                       "nl",
-                            "se",                           "fl",                       "ro" ), ##
+                            "se",                           "fl",                       "ro" ),   
             #
-            "CLAY"  = c(    "\"Clay\"",                     "\"Argile\"",               "\"Argilla\"", 
-                            "\"Arcilla\"",                  "\"Ton\"",                  "\"Lutum\"", 
-                            "\"Ler\"",                      "\"Klei\"",                 "\"Argila\"" ), ##
+            "CLAY"  = c(    "Clay",                     "Argile",               "Argilla", 
+                            "Arcilla",                  "Ton",                  "Lutum", 
+                            "Ler",                      "Klei",                 "Argila" ),   
             #
-            "SILT"  = c(    "\"Silt\"",                     "\"Limon\"",                "\"Limo\"", 
-                            "\"Limo\"",                     "\"Schluff\"",              "\"Silt\"", 
-                            "\"Silt\"",                     "\"Leem\"",                 "\"Praf\"" ), ##
+            "SILT"  = c(    "Silt",                     "Limon",                "Limo", 
+                            "Limo",                     "Schluff",              "Silt", 
+                            "Silt",                     "Leem",                 "Praf" ),   
             #
-            "SAND"  = c(    "\"Sand\"",                     "\"Sable\"",                "\"Sabbia\"", 
-                            "\"Arena\"",                    "\"Sand\"",                 "\"Zand\"", 
-                            "\"Sand\"",                     "\"Zand\"",                 "\"Nisip\"" ), ##
+            "SAND"  = c(    "Sand",                     "Sable",                "Sabbia", 
+                            "Arena",                    "Sand",                 "Zand", 
+                            "Sand",                     "Zand",                 "Nisip" ),   
             #
-            "TT"    = c(    "\"Texture triangle\"",         "\"Triangle de texture\"",  "\"Triangolo della tessitura\"", 
-                            "\"Tri\\340ngulo de textura\"", "\"Bodenartendiagramm\"",   "\"Textuurdriehoek\"", 
-                            "\"Texturtriangel\"",           "\"Textuurdriehoek\"",      "\"Diagrama triunghiulara a texturii\"" ), ##
+            "TT"    = c(    "Texture triangle",         "Triangle de texture",  "Triangolo della tessitura", 
+                            "Triangulo de textura",     "Bodenartendiagramm",   "Textuurdriehoek", 
+                            "Texturtriangel",           "Textuurdriehoek",      "Diagrama triunghiulara a texturii" ),   
             stringsAsFactors    = FALSE  
         ),  #
         # Acknowledgments: Rosca Bogdan, from the Romanian Academy, Iasi Branch, Geography team, provided the Romanian translation (thanks!).
