@@ -26,26 +26,26 @@ TT.add(
         #
         #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
         "tt.polygons"   = list( 
-            "i"         = list( "name" = "il wlasciwy",            "points" = c(01,03,05,02)       ), 
-            "ip"        = list( "name" = "il pylasty",             "points" = c(03,10,09,05)       ), 
-            "gc"        = list( "name" = "glina ciezka",           "points" = c(02,05,07,06)       ), 
-            "gcp"       = list( "name" = "glina ciezka pylasta",           "points" = c(05,09,07)          ), 
-            "gs"        = list( "name" = "glina srednia",          "points" = c(06,07,12,11)       ), 
-            "gsp"       = list( "name" = "glina srednia pylasta",          "points" = c(07,09,13,12)       ), 
+            "i"         = list( "name" = "il wlasciwy",                            "points" = c(01,03,05,02)       ), 
+            "ip"        = list( "name" = "il pylasty",                             "points" = c(03,10,09,05)       ), 
+            "gc"        = list( "name" = "glina ciezka",                           "points" = c(02,05,07,06)       ), 
+            "gcp"       = list( "name" = "glina ciezka pylasta",                   "points" = c(05,09,07)          ), 
+            "gs"        = list( "name" = "glina srednia",                          "points" = c(06,07,12,11)       ), 
+            "gsp"       = list( "name" = "glina srednia pylasta",                  "points" = c(07,09,13,12)       ), 
             "gl"        = list( "name" = "glina lekka silnie spiaszczona",         "points" = c(11,12,16,15)       ), 
             "glp"       = list( "name" = "glina lekka silnie spiaszczona pylasta", "points" = c(12,13,17,16)       ), 
             "gp"        = list( "name" = "glina lekka slabo spiaszczona",          "points" = c(15,16,19,18)       ), 
             "gpp"       = list( "name" = "glina lekka slabo spiaszczona pylasta",  "points" = c(16,17,20,19)       ), 
-            "pgm"       = list( "name" = "piasek gliniasty mocny",         "points" = c(18,19,22,21)       ), 
+            "pgm"       = list( "name" = "piasek gliniasty mocny",                 "points" = c(18,19,22,21)       ), 
             "pgpm"      = list( "name" = "piasek gliniasty mocny pylasty",         "points" = c(19,20,23,22)       ), 
-            "pgl"       = list( "name" = "piasek gliniasty lekki",         "points" = c(21,22,25,24)       ), 
+            "pgl"       = list( "name" = "piasek gliniasty lekki",                 "points" = c(21,22,25,24)       ), 
             "pglp"      = list( "name" = "piasek gliniasty lekki pylasty",         "points" = c(22,23,26,25)       ), 
-            "ps"        = list( "name" = "piasek slabogliniasty",          "points" = c(24,25,28,27)       ), 
+            "ps"        = list( "name" = "piasek slabogliniasty",                  "points" = c(24,25,28,27)       ), 
             "psp"       = list( "name" = "piasek slabogliniasty pylasty",          "points" = c(25,26,29,28)       ), 
-            "pl"        = list( "name" = "piasek lekki",           "points" = c(27,28,31,30)       ), 
-            "plp"       = list( "name" = "piasek lekki pylasty",           "points" = c(28,29,32,31)       ), 
-            "pli"       = list( "name" = "pyl ilasty",             "points" = c(09,10,14,13)       ), 
-            "plz"       = list( "name" = "pyl zwykly",             "points" = c(13,14,33,32)       )  
+            "pl"        = list( "name" = "piasek lekki",                           "points" = c(27,28,31,30)       ), 
+            "plp"       = list( "name" = "piasek lekki pylasty",                   "points" = c(28,29,32,31)       ), 
+            "pli"       = list( "name" = "pyl ilasty",                             "points" = c(09,10,14,13)       ), 
+            "plz"       = list( "name" = "pyl zwykly",                             "points" = c(13,14,33,32)       )  
         ),  #
         #
         # Triangle specific parameters for triangle geometry / appearance

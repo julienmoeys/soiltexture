@@ -11,8 +11,8 @@
         source( system.file( "polish_triangle.r", package = pkgname ), encoding = "UTF-8" ) 
         source( system.file( "polish_language.r", package = pkgname ), encoding = "UTF-8" ) 
     }else{ 
-        source( system.file( "polish_triangle_ANSI.r", package = pkgname ), encoding = "UTF-8" ) 
-        source( system.file( "polish_language_ANSI.r", package = pkgname ), encoding = "UTF-8" ) 
+        source( system.file( "polish_triangle_ANSI.r", package = pkgname ) ) 
+        source( system.file( "polish_language_ANSI.r", package = pkgname ) ) 
     }   #
     #
     lang.par <- TT.get( "lang.par" ) 
