@@ -427,7 +427,7 @@ TT.plot( class.sys = "DE.TGL85.TT" )    # German TGL 1985
 TT.plot( class.sys = "USDA.TT", lang = "en" )  #  English, default 
 TT.plot( class.sys = "USDA.TT", lang = "fr" )  #  French 
 TT.plot( class.sys = "USDA.TT", lang = "de" )  #  German 
-TT.plot( class.sys = "USDA.TT", lang = "se" )  #  Spanish 
+TT.plot( class.sys = "USDA.TT", lang = "es" )  #  Spanish 
 TT.plot( class.sys = "USDA.TT", lang = "it" )  #  Italian 
 TT.plot( class.sys = "USDA.TT", lang = "nl" )  #  Dutch 
 TT.plot( class.sys = "USDA.TT", lang = "fl" )  #  Dutch (Belgian) / Flemmish 

@@ -5,11 +5,12 @@ Julien MOEYS
 
 o version 1.2.7 
 
-  20120106  no visible change (fixed package dependance in vignette)
+  20120106  no visible change (fixed package dependance in vignette) + corrected TT.plot()
+            example for Spanish language.
 
 o version 1.2.6 
 
-  20111112    Added the German (GDR) texture triangle for forest soils: 
+  20111112  Added the German (GDR) texture triangle for forest soils: 
             "Standortserkundungsanweisung SEA 1974 (DE)" 
 
 o older versions
