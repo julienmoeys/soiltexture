@@ -27,6 +27,7 @@
 
 % \VignetteIndexEntry{The soil texture wizard: a tutorial}
 % \VignetteDepends{soiltexture}
+% \VignetteDepends{xtable}
 % \VignetteKeyword{soil} 
 % \VignetteKeyword{texture} 
 % \VignetteKeyword{plot} 
