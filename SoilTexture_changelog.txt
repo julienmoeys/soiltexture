@@ -3,6 +3,10 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+o version 1.2.8 
+
+  20120125 New attempt to fix xtable package dependence in the vignette.
+
 o version 1.2.7 
 
   20120106  no visible change (fixed package dependance in vignette) + corrected TT.plot()

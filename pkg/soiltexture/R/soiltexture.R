@@ -4273,9 +4273,11 @@ TT.classes.tbl <- function(# Returns the table of classes of a texture classific
 ###  See also TT.vertices.plot().
 
     class.sys       = "FAO50.TT", 
-    collapse        = ", " 
+    collapse        = NULL 
 ){  #
     TT.data <- TT.get( class.sys ) 
+    #
+    if( is.null(collapse) ){ collapse = ", " }
     #
     tbl <- do.call( 
         what    = "rbind", 
@@ -5772,7 +5774,7 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 ### OUTSIDE the texture triangle (i.e. that some texture values may 
 ### be negative).
 
- collapse=", ",
+ collapse=NULL,
 ### Single character string. If PiC.type = "t" and a sample lie 
 ### on the edge of 2 texture classes, then both will be outputed 
 ### in a single character string, separated by 'collapse'. Example of 
@@ -5810,6 +5812,8 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
     require( "sp" ) 
     #
     TT.data <- TT.get(class.sys) 
+    #
+    if( is.null(collapse) ){ collapse = ", " } 
     #
     geo <- TT.geo.get( 
         class.sys       = class.sys, 
