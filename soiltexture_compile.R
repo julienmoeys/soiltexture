@@ -2,9 +2,9 @@ rm(list=ls(all=TRUE))
 pkg.dir      <- "C:/_R_PACKAGES/soiltexture/pkg" 
 # pkg.dir      <- "/home/jules/_WORK/R_PACKAGES/soiltexture/pkg" 
 pkg.name     <- "soiltexture" 
-pkg.version  <- "1.2.7" 
+pkg.version  <- "1.2.8" 
 pkg.depends  <- c("sp","MASS") 
-pkg.suggests <- c("drc","plotrix") 
+pkg.suggests <- c("drc","plotrix","xtable") 
 RVersion     <- "R (>= 2.4.1)" 
 # r.path       <- "C:/Program Files/_SCIENCE/R_PROJECT_2-4-1/bin" 
 r.path       <- ""  #  Use curent R version
