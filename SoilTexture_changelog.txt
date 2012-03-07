@@ -3,6 +3,10 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+o version 1.2.9 
+
+  20120307 Removed a useless usage of installed.packages()
+
 o version 1.2.8 
 
   20120125 New attempt to fix xtable package dependence in the vignette.

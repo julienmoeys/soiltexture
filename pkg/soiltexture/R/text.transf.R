@@ -179,14 +179,15 @@ tri.sum.norm=FALSE
     #
 #    old.col.nm   <- colnames( tri.data )
     
-    # Added 2010/06/13 Julien Moeys
-    if( !"drc" %in%  as.character( installed.packages()[,1] ) ) 
-    {   #
-        stop( "The function 'TT.text.transf.Xm' needs the package 'drc'\n Please install it ( install.packages(\"drc\") )" ) 
-    }else{ 
-        require( "drc" ) 
-    }   #
-    
+    # # Added 2010/06/13 Julien Moeys # Removed on 2012/03/07 by Julien Moeys
+    # if( !"drc" %in%  as.character( installed.packages()[,1] ) ) 
+    # {   #
+    #     stop( "The function 'TT.text.transf.Xm' needs the package 'drc'\n Please install it ( install.packages(\"drc\") )" ) 
+    # }else{ 
+    #     require( "drc" ) 
+    # }   #
+    #
+    require( "drc" ) 
     #
     fitpsd <- function(
     y,

@@ -15,7 +15,7 @@ Survey of England and Wales; Australian triangle; Belgian triangle; Canadian tri
 ISSS triangle; Romanian triangle; Polish triangle.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
-Version: \tab 1.2.8\cr
+Version: \tab 1.2.9\cr
 Date: \tab 2012-03-07\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
