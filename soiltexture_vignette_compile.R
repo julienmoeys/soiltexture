@@ -9,7 +9,8 @@ if( tolower(Sys.info()["sysname"]) == "windows" ){
     Sweave.wrapper.fun  <- "/home/jules/Documents/_WORK/R_PACKAGES/soiltexture/Sweave_wrapper.R"        
 }   #
 subdir1             <- "doc"
-file.name.root      <- "soiltexture_vignette"  
+file.name.root      <- "soiltexture_vignette" 
+# file.name.root      <- "transformations"  
 sweave.ext          <- ".Rnw"  
 inout.dir           <- ""  
 
