@@ -18,7 +18,24 @@ inout.dir           <- ""
 
 print("Don't forget to commit the source code to r-forge before compiling the vignette.")
 
+# library( "tools" ) 
 
+# options(error = recover) 
+
+# # buildVignettes(
+# #     package = "soiltexture", 
+# #     dir     = "C:/_R_PACKAGES/soiltexture/pkg/soiltexture", 
+# #     lib.loc = "C:/_R_PACKAGES/soiltexture/pkg/", 
+# #     quiet   = TRUE, 
+# #     clean   = TRUE 
+# # )   #
+
+# res <- checkVignettes(
+#     package = "soiltexture", 
+#     dir     = "C:/_R_PACKAGES/soiltexture/pkg/soiltexture"  
+# )   #
+
+# res 
 
 eval( parse( Sweave.wrapper.fun ) ) 
 
@@ -30,6 +47,13 @@ res <- Sweave.wrapper(
     inout.dir       = inout.dir 
 )   #
 
+file.remove( list.files( file.path( work.wd, subdir1 ), "\\.tex$", full.names = TRUE ) )
+file.remove( list.files( file.path( work.wd, subdir1 ), "\\.bib.bak$", full.names = TRUE ) )
+file.remove( list.files( file.path( work.wd, subdir1 ), "\\.R$", full.names = TRUE ) )
+
+library("tools")
+res <- compactPDF( paths = file.path( work.wd, subdir1 ), gs_quality = "ebook" ) # paste(sep="",file.name.root,".pdf") 
+res 
 
 
 ### If LaTeX failed because the pdf file was open, run:

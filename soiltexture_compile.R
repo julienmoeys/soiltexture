@@ -34,13 +34,17 @@ package.skeleton.dx(
     namespace = TRUE  
 )   #
 
+# file.copy(
+#     from      = file.path( pkg.dir, pkg.name, "inst", "doc", "TT.env.Rd" ), 
+#     to        = file.path( pkg.dir, pkg.name, "man", "TT.env.Rd" ), 
+#     overwrite = TRUE  
+# )   #
+
 file.copy(
-    from      = file.path( pkg.dir, pkg.name, "inst", "doc", "TT.env.Rd" ), 
+    from      = file.path( pkg.dir, "..", "prepare", "TT.env.Rd" ), 
     to        = file.path( pkg.dir, pkg.name, "man", "TT.env.Rd" ), 
     overwrite = TRUE  
 )   #
-
-
 
 pkg.remove.wrapper( pkg.name = pkg.name ) 
 
