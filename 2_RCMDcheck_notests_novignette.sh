@@ -1,5 +1,5 @@
 cd "/home/jules/Documents/_WORK/R_PACKAGES/soiltexture/pkg"
-R CMD check --no-tests --no-vignettes soiltexture 
+R CMD check --no-tests --no-vignettes --as-cran soiltexture 
 echo "press any key to continue"; read line
 
 

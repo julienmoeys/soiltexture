@@ -1,5 +1,6 @@
 c:
 cd \
 cd "C:\_R_PACKAGES\soiltexture\pkg" 
-R CMD build soiltexture 
+echo R_QPDF="qpdf -dPDFSETTINGS=/ebook" 
+R CMD build --compact-vignettes  soiltexture 
 pause

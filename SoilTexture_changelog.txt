@@ -5,7 +5,8 @@ Julien MOEYS
 
 o version 1.2.9 
 
-  20120307 Removed a useless usage of installed.packages()
+  20120307 Removed a useless usage of installed.packages() 
+  20120308 Compact the vignettes before R CMD build 
 
 o version 1.2.8 
 

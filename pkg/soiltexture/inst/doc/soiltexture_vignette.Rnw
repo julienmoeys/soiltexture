@@ -237,14 +237,14 @@ for most uses.\\
 At this stage of development, some bugs should still be expected. 
 The code has been written in 3 years, and tested quite extensively 
 since then, but it has never been used by other people. If you 
-find some bugs, please contact me at:
+find some bugs, please contact me at: \texttt{jules\_78-soiltexture@AT@yahoo.fr}.
 
 
-\begin{figure}[h] 
-\centering 
-\includegraphics[width=108px,viewport=0 0 382 25]{% 
-    julienmoeysmailaddress-382-25.png} 
-\end{figure} 
+% \begin{figure}[h] 
+% \centering 
+% \includegraphics[width=108px,viewport=0 0 382 25]{% 
+%     julienmoeysmailaddress-382-25.png} 
+% \end{figure} 
 
 
 
@@ -258,11 +258,11 @@ licensed under a \textbf{Creative
 Commons By-SA 3.0 unported \footnote{\texttt{http://creativecommons.org/licenses/by-sa/3.0/}}}.
 
 
-\begin{figure}[h] 
-\centering 
-\includegraphics[width=88px,viewport=0 0 88 31]{% 
-    CC-By-SA-nonported-88x31.PNG} 
-\end{figure} 
+% \begin{figure}[h] 
+% \centering 
+% \includegraphics[width=88px,viewport=0 0 88 31]{% 
+%     CC-By-SA-nonported-88x31.PNG} 
+% \end{figure} 
 
 
 In short, this means (\textit{extract from the abovementioned url at 
