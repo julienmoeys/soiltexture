@@ -872,6 +872,63 @@ assign(
             text.sum        = 100 
         ),  #
         # 
+        "AU2.TT" = list( # Australian TRIANGLE PARAMETERS :
+            main            = "Autralia (AU)", 
+            #
+            # The coordinates of this triangle were kindly provided by Budiman Minasni
+            #    as a replacememnt for the original implementation of the Australian 
+            #    texture triangle.
+            #
+            #                 The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  P01    P02    P03    P04    P05    P06    P07  
+            #                  P08    P09    P10    P11    P12    P13    P14  
+            #                  P15    P16    P17    P18    P19  
+            "tt.points"     = data.frame( 
+                "CLAY"  =   c( 0.510, 0.300, 0.400, 0.750, 1.000, 0.400, 0.260, 
+                               0.260, 0.000, 0.000, 0.120, 0.085, 0.000, 0.000, 
+                               0.080, 0.100, 0.210, 0.170, 0.260 ), 
+                "SILT"  =   c( 0.000, 0.070, 0.250, 0.250, 0.000, 0.600, 0.740, 
+                               0.250, 0.250, 1.000, 0.250, 0.040, 0.075, 0.000, 
+                               0.000, 0.130, 0.100, 0.000, 0.000 ), 
+                "SAND"  =   c( 0.490, 0.630, 0.350, 0.000, 0.000, 0.000, 0.000, 
+                               0.490, 0.750, 0.000, 0.630, 0.875, 0.925, 1.000, 
+                               0.920, 0.770, 0.690, 0.830, 0.740 ) 
+            ),  #
+            # 
+            #
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "C"   = list( "name" = "Clay",            "points" = c(01, 02, 03, 04, 05, 01) ),  
+                "ZC"  = list( "name" = "Silty clay",      "points" = c(03, 06, 04, 03) ),  
+                "ZCL" = list( "name" = "Silty clay loam", "points" = c(08, 07, 06, 03, 08) ),  
+                "ZL"  = list( "name" = "Silty loam",      "points" = c(09, 10, 07, 08, 11, 09) ),  
+                "LS"  = list( "name" = "Loamy sand",      "points" = c(13, 09, 11, 12) ),  
+                "S"   = list( "name" = "Sand",            "points" = c(14, 13, 12, 15, 14) ),  
+                "SL"  = list( "name" = "Sandy loam",      "points" = c(15, 16, 17, 18, 15) ),  
+                "L"   = list( "name" = "Loam",            "points" = c(16, 11, 08, 17, 16) ),  
+                "SCL" = list( "name" = "Sandy clay loam", "points" = c(18, 17, 02, 19, 18) ),  
+                "CL"  = list( "name" = "Clay loam",       "points" = c(17, 08, 03, 02) ),  
+                "SC"  = list( "name" = "Sandy clay",      "points" = c(19, 02, 01, 19) )   
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = c(F,T,NA), 
+            tlr.an          = c(45,90,45), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,20,2000), 
+            tri.css.ps.lim  = c(0,2,20,2000), 
+            #
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
+        #
         "BE.TT" = list( # Belgian TRIANGLE PARAMETERS :
             #
             main            = "Belgium (BE)", 

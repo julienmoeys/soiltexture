@@ -6,13 +6,8 @@ are stored in the list TT.par in the environment TT.env. Use
 this function to change some deafult parameters for all the 
 current R cession. Many functions of soiltexture take some of 
 their parameter values in TT.par.}
-\usage{
-TT.set(...,
-reset = FALSE,
-par.list = "TT.par",
-bkp.par.list = "TT.par.bkp",
-par.env = TT.env)
-}
+\usage{TT.set(..., reset = FALSE, par.list = "TT.par", bkp.par.list = "TT.par.bkp", 
+    par.env = TT.env)}
 \arguments{
   \item{\dots}{List of parameters and value in the form "par.name1" = par.value1, 
 "par.name2" = par.value2... List of parameters to change.}

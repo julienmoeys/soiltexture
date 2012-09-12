@@ -8,15 +8,8 @@ particle size system ('dat.css.ps.lim') into another
 in the inputed and outputed texture tables. See TT.text.transf 
 for transformation involving only 3 particle classes. 'tri.data' 
 can only contain texture data.}
-\usage{
-TT.text.transf.X(tri.data,
-base.ps.lim,
-dat.ps.lim,
-text.sum = NULL,
-text.tol = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL)
-}
+\usage{TT.text.transf.X(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, 
+    text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL)}
 \arguments{
   \item{tri.data}{
 }

@@ -4,11 +4,7 @@
 \description{Create a grid in the x-y coordinate system. Most of the function 
 is a reshaped extract from kde2d() from the MASS package, by 
 Venables & Ripley (+ modifications)}
-\usage{
-TT.xy.grid(x,
-y,
-n = 25)
-}
+\usage{TT.xy.grid(x, y, n = 25)}
 \arguments{
   \item{x}{
 }

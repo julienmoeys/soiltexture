@@ -142,23 +142,25 @@ old.wd  <- getwd()
 
 # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
-if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
-{   #
-    suppressMessages( 
-        install.packages( 
-            pkgs  = "soiltexture"  
-            # repos = "http://R-Forge.R-project.org" 
-        )   #
-    )   #
-}   #
+#if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
+#{   #
+#    suppressMessages( 
+#        install.packages( 
+#            pkgs  = "soiltexture"  
+#            # repos = "http://R-Forge.R-project.org" 
+#        )   #
+#    )   #
+#}   #
 
-require( 
-    package        = "soiltexture", 
-    character.only = TRUE, 
-    quietly        = TRUE 
-)   #
+#require( 
+#    package        = "soiltexture", 
+#    character.only = TRUE, 
+#    quietly        = TRUE 
+#)   #
 
 # setwd(old.wd) 
+
+library( "soiltexture" )
 @ 
 
 
@@ -1157,19 +1159,19 @@ To display an Autralian texture triangle, type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-TT.plot( class.sys = "AU.TT" ) 
+TT.plot( class.sys = "AU2.TT" ) 
 @ 
 
 
 The Australian soil texture classification has been built 
 considering a silt - sand limit of 
-\Sexpr{TT.get("AU.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
+\Sexpr{TT.get("AU2.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.
 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "AU.TT" ) 
+tex.tbl <- TT.classes.tbl( class.sys = "AU2.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
     caption = "Texture classes of the Australian system / triangle", 
@@ -1177,14 +1179,19 @@ xtable(
 )   #
 @ 
 
+The clay silt sand coordinates of the vertices of this triangle have been kindly 
+provided by Budiman Minasny. This should correct the small errors in the previous 
+implementation of the triangle (\texttt{AU.TT}). The previous version is still 
+available for eventual backward compatibility (but it is not presented here any 
+more).\\
 
-There are probably small errors in the exact placement of some 
-texture classes vertices (expected to be 1 or 2\% of the 'exact 
-value'), due to technical difficulties for reproducing precisely 
-this triangle (reproduced after both Minasny and McBratney 
-2001\cite{MINASNY2001AJSR}, and Holbeche 2008\cite{HOLBECHE2008} 
-(brochure 'Soil Texture-Laboratory Method' from soilquality.org.au 
-\footnote{texttt{http://soilquality.org.au}}).\\
+% There are probably small errors in the exact placement of some 
+% texture classes vertices (expected to be 1 or 2\% of the 'exact 
+% value'), due to technical difficulties for reproducing precisely 
+% this triangle (reproduced after both Minasny and McBratney 
+% 2001\cite{MINASNY2001AJSR}, and Holbeche 2008\cite{HOLBECHE2008} 
+% (brochure 'Soil Texture-Laboratory Method' from soilquality.org.au 
+% \footnote{texttt{http://soilquality.org.au}}).\\
 
 \clearpage % otherwise the table may 'eats' next triangle
 
@@ -1558,7 +1565,7 @@ par("mfcol" = c(1,2),"mfrow"=c(1,2))
 
 # Plot the triangles
 TT.plot( 
-    class.sys       = "AU.TT", 
+    class.sys       = "AU2.TT", 
     class.p.bg.col  = TRUE
 )   #
 

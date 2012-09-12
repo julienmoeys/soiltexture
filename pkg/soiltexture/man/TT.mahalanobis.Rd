@@ -6,24 +6,10 @@ distance between clay silt and sand, on a regular x-y grid
 (back-transformed to Clay silt and sand for Mahalanobis 
 calculation). The underlying function is mahalanobis() by 
 R Development Core Team (2009)}
-\usage{
-TT.mahalanobis(geo,
-tri.data,
-css.names = NULL,
-text.tol = NULL,
-text.sum = NULL,
-blr.clock = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-set.par = FALSE,
-n = 25,
-center = NULL,
-cov.mat = NULL,
-inverted = FALSE,
-...,
-alr = FALSE,
-divisorvar = 2)
-}
+\usage{TT.mahalanobis(geo, tri.data, css.names = NULL, text.tol = NULL, 
+    text.sum = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, 
+    set.par = FALSE, n = 25, center = NULL, cov.mat = NULL, inverted = FALSE, 
+    ..., alr = FALSE, divisorvar = 2)}
 \arguments{
   \item{geo}{
 }

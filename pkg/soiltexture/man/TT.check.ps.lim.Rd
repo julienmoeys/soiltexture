@@ -3,12 +3,8 @@
 \title{Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. }
 \description{Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
 5 tests performed.}
-\usage{
-TT.check.ps.lim(base.ps.lim,
-dat.ps.lim,
-ps.lim.length = c(4,
-4))
-}
+\usage{TT.check.ps.lim(base.ps.lim, dat.ps.lim, ps.lim.length = c(4, 
+    4))}
 \arguments{
   \item{base.ps.lim}{
 }

@@ -20,18 +20,9 @@ in the input and output texture tables. See TT.text.transf
 for transformation involving only 3 particle classes. 'tri.data'
 can only contain texture data.
 This function requires the "drc" package to be installed.}
-\usage{
-TT.text.transf.Xm(tri.data,
-base.ps.lim,
-dat.ps.lim,
-text.sum = NULL,
-text.tol = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-psdmodel = "AD",
-omethod = "all",
-tri.sum.norm = FALSE)
-}
+\usage{TT.text.transf.Xm(tri.data, base.ps.lim, dat.ps.lim, text.sum = NULL, 
+    text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, 
+    psdmodel = "AD", omethod = "all", tri.sum.norm = FALSE)}
 \arguments{
   \item{tri.data}{
 }

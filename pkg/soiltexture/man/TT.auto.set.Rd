@@ -2,12 +2,8 @@
 \alias{TT.auto.set}
 \title{Internal. Retrieve and set default values for parameters (par() or not), when NULL.}
 \description{Retrieve and set default values for parameters (par() or not), when NULL.}
-\usage{
-TT.auto.set(fun = sys.function(which = -1),
-assign.op = TRUE,
-p.env = parent.frame(),
-set.par = TRUE)
-}
+\usage{TT.auto.set(fun = sys.function(which = -1), assign.op = TRUE, 
+    p.env = parent.frame(), set.par = TRUE)}
 \arguments{
   \item{fun}{
 }

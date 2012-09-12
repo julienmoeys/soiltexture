@@ -6,10 +6,7 @@ Returns the classes abbreviations, names and the vertices numbers
 that defines each class. Use TT.vertices.tbl() to retrieve the 
 clay silt sand coordinates of the triangle classes vertices. 
 See also TT.vertices.plot().}
-\usage{
-TT.classes.tbl(class.sys = "FAO50.TT",
-collapse = NULL)
-}
+\usage{TT.classes.tbl(class.sys = "FAO50.TT", collapse = NULL)}
 \arguments{
   \item{class.sys}{
 }

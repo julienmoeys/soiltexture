@@ -28,6 +28,7 @@ res <- Sweave.wrapper(
 
 file.remove( list.files( file.path( work.wd, subdir1 ), "\\.tex$", full.names = TRUE ) )
 file.remove( list.files( file.path( work.wd, subdir1 ), "\\.bib.bak$", full.names = TRUE ) )
+file.remove( list.files( file.path( work.wd, subdir1 ), "\\.R$", full.names = TRUE ) )
 
 library("tools")
 res <- compactPDF( paths = file.path( work.wd, subdir1 ), gs_quality = "ebook" ) # paste(sep="",file.name.root,".pdf") 

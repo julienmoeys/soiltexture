@@ -2,11 +2,7 @@
 \alias{TT.ifelse}
 \title{Internal. Flexible version of ifelse. }
 \description{Flexible version of ifelse. }
-\usage{
-TT.ifelse(test,
-yes,
-no)
-}
+\usage{TT.ifelse(test, yes, no)}
 \arguments{
   \item{test}{
 }

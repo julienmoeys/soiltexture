@@ -12,11 +12,7 @@ is below or equal to zero (this happens when using a regular
 grid of texture data, for practical reasons).
 The function has also been modified so it uses column name
 rather than column index.}
-\usage{
-TT.chemometrics.alr(X,
-divisorvar,
-css.names)
-}
+\usage{TT.chemometrics.alr(X, divisorvar, css.names)}
 \arguments{
   \item{X}{
 }

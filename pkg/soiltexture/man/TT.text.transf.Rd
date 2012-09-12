@@ -9,19 +9,9 @@ TT.text.transf.X for transformation involving more than 3
 particle classes. 'tri.data' may contain other variables 
 (not in 'css.names'). They are returned unchanged with the 
 transformed texture data.}
-\usage{
-TT.text.transf(tri.data,
-base.css.ps.lim,
-dat.css.ps.lim,
-css.names = NULL,
-blr.tx = NULL,
-text.sum = NULL,
-text.tol = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-trsf.add.opt1 = NULL,
-trsf.add.opt2 = NULL)
-}
+\usage{TT.text.transf(tri.data, base.css.ps.lim, dat.css.ps.lim, css.names = NULL, 
+    blr.tx = NULL, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, 
+    tri.pos.tst = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL)}
 \arguments{
   \item{tri.data}{
 }

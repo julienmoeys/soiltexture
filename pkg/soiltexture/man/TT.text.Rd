@@ -2,32 +2,12 @@
 \alias{TT.text}
 \title{Plot text labels for each values of a soil texture data table on an existing texture plot. }
 \description{Plot text labels for each values of a soil texture data table on an existing texture plot. }
-\usage{
-TT.text(tri.data,
-geo,
-labels = NULL,
-css.names = NULL,
-base.css.ps.lim = NULL,
-dat.css.ps.lim = NULL,
-css.transf = NULL,
-text.transf.fun = NULL,
-trsf.add.opt1 = NULL,
-trsf.add.opt2 = NULL,
-text.tol = NULL,
-text.sum = NULL,
-blr.clock = NULL,
-fg = NULL,
-col = NULL,
-cex = NULL,
-font = NULL,
-family.op = NULL,
-adj = NULL,
-pos = NULL,
-offset = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-blr.tx = NULL)
-}
+\usage{TT.text(tri.data, geo, labels = NULL, css.names = NULL, base.css.ps.lim = NULL, 
+    dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, 
+    trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, text.tol = NULL, 
+    text.sum = NULL, blr.clock = NULL, fg = NULL, col = NULL, 
+    cex = NULL, font = NULL, family.op = NULL, adj = NULL, pos = NULL, 
+    offset = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, blr.tx = NULL)}
 \arguments{
   \item{tri.data}{
 }

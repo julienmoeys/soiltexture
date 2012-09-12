@@ -8,14 +8,8 @@ all values are >= 0, (5) That the sum of the 3 particle size classes
 is >= 'text.sum'*(1-'text.tol') or <= 'text.sum'*(1+'text.tol'). 
 'tri.data' may contain other variables than the 3 textuer classes 
 (ignored).}
-\usage{
-TT.data.test(tri.data,
-css.names = NULL,
-text.sum = NULL,
-text.tol = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL)
-}
+\usage{TT.data.test(tri.data, css.names = NULL, text.sum = NULL, text.tol = NULL, 
+    tri.sum.tst = NULL, tri.pos.tst = NULL)}
 \arguments{
   \item{tri.data}{
 }
