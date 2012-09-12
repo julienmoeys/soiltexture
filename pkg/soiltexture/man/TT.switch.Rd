@@ -2,16 +2,8 @@
 \alias{TT.switch}
 \title{Internal. Used in the plot axis drawings.}
 \description{Used in the plot axis drawings.}
-\usage{
-TT.switch(blr.clock = TT.get("blr.clock"),
-c1 = NA,
-c2 = NA,
-c3 = NA,
-c4 = NA,
-blr.order = c(1,
-3,
-2))
-}
+\usage{TT.switch(blr.clock = TT.get("blr.clock"), c1 = NA, c2 = NA, 
+    c3 = NA, c4 = NA, blr.order = c(1, 3, 2))}
 \arguments{
   \item{blr.clock}{
 }

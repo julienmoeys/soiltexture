@@ -3,12 +3,8 @@
 \title{Function to add a new default package parameters. }
 \description{Function to add a new default package parameters. Mostly used 
 to add a new texture triangle definition.}
-\usage{
-TT.add(...,
-par.list = "TT.par",
-bkp.par.list = "TT.par.bkp",
-par.env = TT.env)
-}
+\usage{TT.add(..., par.list = "TT.par", bkp.par.list = "TT.par.bkp", 
+    par.env = TT.env)}
 \arguments{
   \item{\dots}{
 }

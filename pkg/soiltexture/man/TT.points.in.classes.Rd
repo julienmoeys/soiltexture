@@ -29,27 +29,12 @@ you can type TT.get("class.sys"). To set a different default
 value for a given argument in R, use TT.set() (see ?TT.set). 
 For instance to change the default value of 'class.sys', type 
 TT.set( "class.sys" = "USDA.TT" ).}
-\usage{
-TT.points.in.classes(tri.data,
-class.sys = NULL,
-PiC.type = NULL,
-css.names = NULL,
-text.sum = NULL,
-base.css.ps.lim = NULL,
-tri.css.ps.lim = NULL,
-dat.css.ps.lim = NULL,
-css.transf = NULL,
-text.transf.fun = NULL,
-trsf.add.opt1 = NULL,
-trsf.add.opt2 = NULL,
-text.tol = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-collapse = NULL,
-texture2xy = FALSE,
-blr.tx = NULL,
-blr.clock = NULL)
-}
+\usage{TT.points.in.classes(tri.data, class.sys = NULL, PiC.type = NULL, 
+    css.names = NULL, text.sum = NULL, base.css.ps.lim = NULL, 
+    tri.css.ps.lim = NULL, dat.css.ps.lim = NULL, css.transf = NULL, 
+    text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, 
+    text.tol = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, 
+    collapse = NULL, texture2xy = FALSE, blr.tx = NULL, blr.clock = NULL)}
 \arguments{
   \item{tri.data}{Data frame. Data frame containing the CLAY, SILT and SAND 
 'coordinates' of the texture data points to be classified The data 

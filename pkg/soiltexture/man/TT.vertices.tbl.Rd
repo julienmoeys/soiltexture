@@ -5,9 +5,7 @@
 Returns the clay silt sand coordinates of each vertices. Use 
 TT.classes.tbl() to know the vertices that bounds each texture 
 class. See also TT.vertices.plot().}
-\usage{
-TT.vertices.tbl(class.sys = "FAO50.TT")
-}
+\usage{TT.vertices.tbl(class.sys = "FAO50.TT")}
 \arguments{
   \item{class.sys}{
 }

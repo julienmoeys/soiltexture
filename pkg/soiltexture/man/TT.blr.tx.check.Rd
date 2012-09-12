@@ -3,10 +3,7 @@
 \title{Internal. Check the consistency between blr.tx and css.names. }
 \description{Check the consistency between blr.tx and css.names. All values 
 in blr.tx should be found in css.names and vice-versa.}
-\usage{
-TT.blr.tx.check(blr.tx,
-css.names)
-}
+\usage{TT.blr.tx.check(blr.tx, css.names)}
 \arguments{
   \item{blr.tx}{
 }

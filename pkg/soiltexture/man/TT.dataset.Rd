@@ -3,12 +3,7 @@
 \title{Genetates a virtual cross correlated clay silt sand + Z dataset. }
 \description{Genetates a virtual cross correlated clay silt sand + Z dataset, 
 where Z is a virtual 4th variable correlated to the texture.}
-\usage{
-TT.dataset(n,
-seed.val = NULL,
-css.names = NULL,
-text.sum = NULL)
-}
+\usage{TT.dataset(n, seed.val = NULL, css.names = NULL, text.sum = NULL)}
 \arguments{
   \item{n}{
 }

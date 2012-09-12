@@ -10,10 +10,7 @@ is NOT closed).
 After "http://local.wasp.uwa.edu.au/~pbourke/geometry/polyarea/ 
 Calculating The Area And Centroid Of A Polygon. Written by 
 Paul Bourke, July 1988".}
-\usage{
-TT.polygon.centroids(pol.x,
-pol.y)
-}
+\usage{TT.polygon.centroids(pol.x, pol.y)}
 \arguments{
   \item{pol.x}{Vector of numericals. X coordinates of each vertices of the 
 polygon.}

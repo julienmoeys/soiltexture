@@ -4,35 +4,14 @@
 \description{Plot the texture classes ploygons in an existing texture 
 triangle plot. Draw the polygons and the labels inside each 
 polygons.}
-\usage{
-TT.classes(geo,
-class.sys,
-tri.css.ps.lim = NULL,
-css.transf = NULL,
-text.transf.fun = NULL,
-trsf.add.opt1 = NULL,
-trsf.add.opt2 = NULL,
-text.tol = NULL,
-text.sum = NULL,
-base.css.ps.lim = NULL,
-blr.tx = NULL,
-blr.clock = NULL,
-tri.sum.tst = NULL,
-tri.pos.tst = NULL,
-bg = NULL,
-class.lab.col = NULL,
-class.p.bg.col = NULL,
-class.p.bg.hue = NULL,
-class.line.col = NULL,
-class.lty = NULL,
-class.lab.show = NULL,
-cex.lab = NULL,
-font.lab = NULL,
-family.op = NULL,
-lwd.axis = NULL,
-col.axis = NULL,
-new.centroid = TRUE)
-}
+\usage{TT.classes(geo, class.sys, tri.css.ps.lim = NULL, css.transf = NULL, 
+    text.transf.fun = NULL, trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, 
+    text.tol = NULL, text.sum = NULL, base.css.ps.lim = NULL, 
+    blr.tx = NULL, blr.clock = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, 
+    bg = NULL, class.lab.col = NULL, class.p.bg.col = NULL, class.p.bg.hue = NULL, 
+    class.line.col = NULL, class.lty = NULL, class.lab.show = NULL, 
+    cex.lab = NULL, font.lab = NULL, family.op = NULL, lwd.axis = NULL, 
+    col.axis = NULL, new.centroid = TRUE)}
 \arguments{
   \item{geo}{
 }
