@@ -3,6 +3,12 @@ To do list. From 2010/08/20. Most recent additions first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
+- Add the reference "Minasny, B., McBratney, A.B., 2001. The 
+  Australian soil texture boomerang: a comparison of the 
+  Australian and USDA/FAO soil particle-size classification 
+  systems. Australian Journal of Soil Research 39(6), 1443-1451" 
+  for the revised Australian texture triangle.
+
 - Convert the vignette into 'pure' Sweave / LaTeX code, and add a 
   \VignetteIndexEntry statement so the vignette is indexed.
   
