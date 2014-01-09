@@ -1,6 +1,7 @@
-c:
-cd \
-cd "C:\_R_PACKAGES\soiltexture\pkg" 
-echo R_QPDF="qpdf -dPDFSETTINGS=/ebook" 
-R CMD build --compact-vignettes="gs"  soiltexture 
+set pkgname=soiltexture
+
+cd /D "%rPackagesDir%\%pkgname%\pkg" 
+
+R CMD build --compact-vignettes="gs" --md5 %pkgname% 
+
 pause
