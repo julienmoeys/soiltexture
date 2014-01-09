@@ -1,0 +1,38 @@
+Create functions
+
+    blrLabels to set the labels
+    
+    ternaryPlot()
+        Add ticks labels
+        DONE: Add arrows
+        fix axis arrows labels pos and srt 
+        
+    ternaryAxis() that bundles ticks, ticks labels, 
+        arrows and arrows label
+        
+        fix axis arrows labels pos and srt 
+    
+    DONE: ternaryPoints() to plot points on ternary plots
+    
+    ternaryLines() to plot lines on ternary plots
+    
+    DONE: ternarySegment() to plot segments on ternary plot
+    
+    DONE: ternaryArrows() to plot arrows on a ternary plot
+    
+    ternaryPolygons() to plot polygons on ternary plots
+    
+    ternaryClass() that plot ternary classes (polygons + labels)
+    
+    ternaryClassify() that classify according to ternary classes
+    
+    
+
+
+### Classes
+
+class texturePlot
+    ternarySystem 
+    silt-sand limit
+
+NB: particle size transformations shall be done *before* plotting.

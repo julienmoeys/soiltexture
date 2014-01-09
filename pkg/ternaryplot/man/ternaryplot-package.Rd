@@ -1,0 +1,21 @@
+\docType{package}
+\name{ternaryplot-package}
+\alias{ternaryplot-package}
+\title{Ternary plots and ternary classifications}
+\description{
+  Ternary plots and ternary classifications.
+}
+\details{
+  Ternary plots and ternary classifications. S4 classes for
+  ternary data, ternary plots and ternary classification.
+}
+\examples{
+# Examples coming later
+}
+\author{
+  Julien Moeys \email{Julien.Moeys@slu.se}
+
+  Maintainer: Julien Moeys \email{Julien.Moeys@slu.se}
+}
+\keyword{package}
+
