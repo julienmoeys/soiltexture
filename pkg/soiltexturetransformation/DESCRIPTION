@@ -1,0 +1,11 @@
+Package: soiltexturetransformation
+Version: 1.0.0
+Date: 2014-01-09
+Title: Functions for soil texture transformation
+Author: Wei Shangguan
+Maintainer: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
+Depends: R (>= 3.0.2), soiltexture, drc
+Suggests: 
+Description: A set of R functions designed to transform soil textures data. 
+License: AGPL (>=3)
+URL: http://soiltexture.r-forge.r-project.org/ 

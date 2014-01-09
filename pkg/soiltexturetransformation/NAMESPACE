@@ -1,0 +1,4 @@
+import(soiltexture, drc)
+
+exportPattern("^[[:alpha:]]+")
+
