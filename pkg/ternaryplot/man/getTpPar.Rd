@@ -1,0 +1,21 @@
+\name{getTpPar}
+\alias{getTpPar}
+\title{Get a single default parameters for the package.}
+\usage{
+  getTpPar(par)
+}
+\arguments{
+  \item{par}{See the \code{par} argument in
+  \code{\link{tpPar}}. Notice that if more than one
+  parameter name is provided, only the first one will be
+  returned.}
+}
+\value{
+  Return the value of the parameter \code{par}, without the
+  list container of \code{\link{tpPar}}.
+}
+\description{
+  Get a single default parameters for the package. Wrapper
+  around \code{\link{tpPar}}.
+}
+

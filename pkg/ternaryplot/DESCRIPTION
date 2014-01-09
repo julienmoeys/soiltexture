@@ -1,0 +1,10 @@
+Package: ternaryplot
+Version: 0.1.1
+Date: 2013-06-27
+Title: Ternary plots and ternary classifications.
+Author: Julien MOEYS <Julien.Moeys@slu.se>
+Maintainer: Julien MOEYS <Julien.Moeys@slu.se>
+Description: Ternary plots and ternary classifications.
+License: AGPL-3
+URL: http://www.slu.se/ckb
+Depends: R (>= 3.0.0), methods
