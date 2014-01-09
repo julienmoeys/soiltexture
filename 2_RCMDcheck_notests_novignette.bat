@@ -1,5 +1,9 @@
-c:
-cd \
-cd "C:\_R_PACKAGES\soiltexture\pkg" 
-R CMD check --no-tests --no-vignettes --as-cran soiltexture 
+set pkgname=soiltexture
+
+cd /D "%rPackagesDir%\%pkgname%\pkg" 
+
+R CMD check --no-tests --no-examples --no-vignettes %pkgname% 
+
+REM --as-cran 
+
 pause
