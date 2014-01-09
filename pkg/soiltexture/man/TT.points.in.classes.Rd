@@ -47,9 +47,9 @@ must be equal to 'text.sum'
   \item{class.sys}{Single text string. Text code of the texture classification 
 system to be used for the classification of 'tri.data'. 
 Possible values are "none" (no classification plotted), "USDA.TT" 
-(USDA texture triangle), "FAO50.TT" (FAO texture triangle with a 50 
-microns silt-sand limit. DEFAULT VALUE), "FR.AISNE.TT" (French 
-texture triangle of the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
+(USDA texture triangle), "HYPRES.TT" (texture triangle of the 
+European Soil Map), "FR.AISNE.TT" (French texture triangle of 
+the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
 texture triangle), "DE.BK94.TT" (German texture triangle), 
 "UK.SSEW.TT" (Soil Survey of England and Wales), "AU.TT" 
 (Australian texture triangle), "BE.TT" (Belgium texture triangle), 
@@ -197,10 +197,10 @@ my.text <- data.frame(
 # Display the table:
 my.text
 
-# Classify according to the FAO classification
+# Classify according to the HYPRES / European Soil Map classification
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT"  
+    class.sys   = "HYPRES.TT"  
 )   #
 
 # Classify according to the USDA classification
@@ -209,26 +209,29 @@ TT.points.in.classes(
     class.sys   = "USDA.TT"  
 )   #
 
-# Classify according to the FAO classification, returns logicals
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns logical values
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "l" 
 )   #
 
-# Classify according to the FAO classification, returns text
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns text
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t" 
 )   #
 
-# Classify according to the FAO classification, returns text, 
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns text, 
 #   custom class separator in case of points belonging to 
 #   several classes.
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t", 
     collapse    = ";"
 )   #}

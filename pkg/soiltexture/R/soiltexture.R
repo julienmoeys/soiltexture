@@ -71,7 +71,7 @@
 # |     -   7 pre-parameterized national Soil Texture Triangles/Classes     |
 # |         systems, including classes polygons, classes and axis names,    |
 # |         and geometric settings of the triangle.                         |
-# |         (FAO, USDA, French-Aisne, French-GEPPA, German, UK and          |
+# |         (EU, USDA, French-Aisne, French-GEPPA, German, UK and          |
 # |         Australian triangles)                                           |
 # |     -   Capable of projecting any Soil Texture Triangles/Classes systems|
 # |         in another family of ternary plot (custom angles and clock),    |
@@ -337,7 +337,7 @@ assign(
         at              = seq(from=.1,to=.9,by=.1), 
         # 
         # CLASSES SYSTEM (polygons / Texture Triangle) used by default:
-        class.sys       = "FAO50.TT", 
+        class.sys       = "HYPRES.TT", 
         class.lab.col   = NULL,             # Color of classes names (abreviation)
         class.p.bg.col  = FALSE,            # Fill classes polygon with color gradient ???
         class.p.bg.hue  = 0.04,             # Hue (unique) of the classes polygon color gradient
@@ -432,14 +432,14 @@ assign(
         trsf.add.opt1       = NA,   # Additionnal option 1 
         trsf.add.opt2       = NA,   # Additionnal option 2 
         #
-        # +---------------------------------+
-        # | HYPRES TEXTURE TRIANGLE         |
-        # +---------------------------------+
+        # +-------------------------------------------------+
+        # | HYPRES TEXTURE TRIANGLE -- ORIGINAL, WRONG NAME |
+        # +-------------------------------------------------+
         #
         FAO50.TT  = list( # FAO TRIANGLE PARAMETERS :
-            #
-            main            = "FAO/HYPRES", 
-            # 
+            
+            main            = "HYPRES (please use 'HYPRES.TT' instead)", 
+            
             #                 The list below specify the CSS coordinates of the different POINTS
             #                   that are used to draw soil texture classes. One points can be 
             #                   used by several classes :
@@ -502,7 +502,82 @@ assign(
             # MEDIUM-COARSE
             #
         ),  #
-        #
+        
+        # +----------------------------------+
+        # | HYPRES TEXTURE TRIANGLE, RENAMED |
+        # +----------------------------------+
+        
+        HYPRES.TT  = list( # EU SOIL MAP TRIANGLE PARAMETERS :
+            
+            main            = "HYPRES / European Soil Map", 
+            
+            #                 The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  =-P01-   P02    P03    P04    P05    P06    P07    P08   -P09-   P10    P11   -P12-    
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 1.000, 0.600, 0.600, 0.350, 0.350, 0.350, 0.180, 0.180, 0.000, 0.000, 0.000, 0.000), 
+                "SILT"      = c( 0.000, 0.000, 0.400, 0.000, 0.500, 0.650, 0.000, 0.170, 0.000, 0.350, 0.850, 1.000), 
+                "SAND"      = c( 0.000, 0.400, 0.000, 0.650, 0.150, 0.000, 0.820, 0.650, 1.000, 0.650, 0.150, 0.000)  
+            ),  #
+            
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "VF"        = list( "name" = "Very fine",       "points" = c(02,01,03)          ), 
+                "F"         = list( "name" = "Fine",            "points" = c(04,02,03,06)       ), 
+                "M"         = list( "name" = "Medium",          "points" = c(07,04,05,11,10,08) ), 
+                "MF"        = list( "name" = "Medium fine",     "points" = c(11,05,06,12)       ), 
+                "C"         = list( "name" = "Coarse",          "points" = c(09,07,08,10)       )  
+            ),  #
+            
+            # Traingle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = rep(T,3), 
+            tlr.an          = c(60,60,60), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,50,2000), 
+            tri.css.ps.lim  = c(0,2,50,2000), 
+            #
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+            #
+            # In fact it is the FAO soil texture classes: Info from SysCan
+            # http://sis.agr.gc.ca/cansis/nsdb/lpdb/faotext.html
+            # FAO Soil Texture
+            # Texture is the relative proportion of sand, silt and clay of the dominant 
+            # soil for each soil map polygon. Texture classes are:
+            #
+            # Coarse texture: sands, loamy sand and sandy loams with less than 18 % clay, 
+            # and more than 65 % sand.
+            #
+            # Medium texture: sandy loams, loams, sandy clay loams, silt loams with less 
+            # than 35 % clay and less than 65 % sand; the sand fractions may be as high as 82 % if a minimum of 18 % clay is present.
+            #
+            # Fine texture: clays, silty clays, sandy clays, clay loams and silty clay loams 
+            # with more than 35 % clay.
+            #
+            # Where two or three texture names appear, this means that all named textures 
+            # are present in the map unit.
+            # 
+            # Texture Codeset
+            # COARSE
+            # FINE
+            # FINE-COARSE
+            # FINE-MED-CRS
+            # FINE-MEDIUM
+            # MEDIUM
+            # MEDIUM-COARSE
+            #
+        ),  #
+        
+        # +-----------------+
+        # | OTHER TRIANGLES |
+        # +-----------------+
+        
         USDA.TT = list(  #  USDA Triangle parameters
             #
             main            = "USDA", 
@@ -2060,7 +2135,11 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
     base.css.ps.lim = NULL   
 ){  #
     if( is.null(class.sys) ){ class.sys <- TT.get("class.sys") } 
-    #
+    
+    if( class.sys == "FAO50.TT" ){ 
+        warning( "class.sys = 'FAO50.TT' must be replaced by class.sys = 'HYPRES.TT'. See the package vignette." )
+    }   
+    
     geo.par         <- c("blr.clock","tlr.an","blr.tx","text.sum","base.css.ps.lim") 
     # 
     p.env           <- environment() 
@@ -2071,11 +2150,11 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
                 is.null( get(x=X,envir=p.env) ) 
             }   #
     )   )   #
-    #
+    
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
     # Attributes either classes-system or default values 
     # to triangle geometry parameters (and others)
-    #
+    
     if( any( null.geo.par ) )
     {   #
         geo.par <- geo.par[ null.geo.par ] 
@@ -4329,7 +4408,7 @@ TT.classes.tbl <- function(# Returns the table of classes of a texture classific
 ### clay silt sand coordinates of the triangle classes vertices. 
 ###  See also TT.vertices.plot().
 
-    class.sys       = "FAO50.TT", 
+    class.sys       = "HYPRES.TT", 
     collapse        = NULL 
 ){  #
     TT.data <- TT.get( class.sys ) 
@@ -4368,7 +4447,7 @@ TT.vertices.tbl <- function(# Returns the table of vertices of a texture classif
 ### TT.classes.tbl() to know the vertices that bounds each texture 
 ### class. See also TT.vertices.plot().
 
-    class.sys       = "FAO50.TT"  
+    class.sys       = "HYPRES.TT"  
 ){  #
     TT.data <- TT.get( class.sys ) 
     #
@@ -4398,7 +4477,7 @@ TT.vertices.plot <- function(# Plot the vertices of a texture classification sys
 ### for a non graphic, tabular equivalent of the plot.
 
     geo, 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     fg          = NULL, 
     col         = NULL, 
     cex         = NULL, 
@@ -5157,9 +5236,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 ### geometry and particle class size system of the plot, unless 
 ### higher level options are chosen (see the function definition). 
 ### Possible values are "none" (no classification plotted), "USDA.TT" 
-### (USDA texture triangle), "FAO50.TT" (FAO texture triangle with a 50 
-### microns silt-sand limit. DEFAULT VALUE), "FR.AISNE.TT" (French 
-### texture triangle 
+### (USDA texture triangle), "HYPRES.TT" (texture triangle of the 
+### European Sil Map), "FR.AISNE.TT" (French texture triangle 
 ### of the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
 ### texture triangle), "DE.BK94.TT" (German texture triangle), 
 ### "UK.SSEW.TT" (Soil Survey of England and Wales), "AU.TT" 
@@ -5700,9 +5778,9 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 ### Single text string. Text code of the texture classification 
 ### system to be used for the classification of 'tri.data'. 
 ### Possible values are "none" (no classification plotted), "USDA.TT" 
-### (USDA texture triangle), "FAO50.TT" (FAO texture triangle with a 50 
-### microns silt-sand limit. DEFAULT VALUE), "FR.AISNE.TT" (French 
-### texture triangle of the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
+### (USDA texture triangle), "HYPRES.TT" (texture triangle of the 
+### European Soil Map), "FR.AISNE.TT" (French texture triangle of 
+### the Aisne region soil survey), "FR.GEPPA.TT" (French GEPPA 
 ### texture triangle), "DE.BK94.TT" (German texture triangle), 
 ### "UK.SSEW.TT" (Soil Survey of England and Wales), "AU.TT" 
 ### (Australian texture triangle), "BE.TT" (Belgium texture triangle), 
@@ -7081,7 +7159,7 @@ TT.contour <- function(# Wrapper for the contour() function adapted to texture t
 #     TT.contour( x = kde.res, geo = geo, add = FALSE, lwd = 2 ) 
 
 #     TT.plot( 
-#         class.sys   = "FAO50.TT",
+#         class.sys   = "HYPRES.TT",
 #         geo         = geo, 
 #         grid.show   = FALSE, 
 #         add         = TRUE  
@@ -7317,7 +7395,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
 #     TT.contour( x = kde.res, geo = geo, add = TRUE, lwd = 2 ) 
 
 #     TT.plot( 
-#         class.sys   = "FAO50.TT",
+#         class.sys   = "HYPRES.TT",
 #         geo         = geo, 
 #         grid.show   = FALSE, 
 #         add         = TRUE  
@@ -7341,7 +7419,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
 #     TT.contour( x = iwd.res, geo = geo, add = TRUE, lwd = 2 ) 
 
 #     TT.plot( 
-#         class.sys   = "FAO50.TT",
+#         class.sys   = "HYPRES.TT",
 #         geo         = geo, 
 #         grid.show   = FALSE, 
 #         add         = TRUE  
