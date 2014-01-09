@@ -11,10 +11,10 @@ my.text <- data.frame(
 # Display the table:
 my.text
 
-# Classify according to the FAO classification
+# Classify according to the HYPRES / European Soil Map classification
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT"  
+    class.sys   = "HYPRES.TT"  
 )   #
 
 # Classify according to the USDA classification
@@ -23,26 +23,29 @@ TT.points.in.classes(
     class.sys   = "USDA.TT"  
 )   #
 
-# Classify according to the FAO classification, returns logicals
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns logical values
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "l" 
 )   #
 
-# Classify according to the FAO classification, returns text
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns text
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t" 
 )   #
 
-# Classify according to the FAO classification, returns text, 
+# Classify according to the HYPRES / European Soil Map classification, 
+#   returns text, 
 #   custom class separator in case of points belonging to 
 #   several classes.
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t", 
     collapse    = ";"
 )   #

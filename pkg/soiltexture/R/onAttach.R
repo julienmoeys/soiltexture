@@ -20,6 +20,9 @@
             package = pkgname ) ) ) 
     }   
     
+    
+    #   Extend language parameter if the polish triangle was loaded
+    #   successfully
     if( !("try-error" %in% class( tryRes )) ){ 
         lang.par <- TT.get( "lang.par" ) 
         
@@ -27,12 +30,23 @@
             lang.par, 
             lang.par2 
         )   
+        
+        TT.set( "lang.par" = lang.par ) 
+    }else{ 
+        packageStartupMessage( "soiltexture: The polish triangle could not be loaded" )
     }   
     
-    TT.set( "lang.par" = lang.par ) 
     
-    packageStartupMessage( 
-        paste("'", pkgname, "' loaded.", sep = "" ) 
-    )   #
-}   #
+    # Welcome message
+    if( interactive() ){ 
+        msg <- sprintf( 
+            "%s %s  For help type: help(pack='%s')", 
+            pkgname, 
+            as.character( packageVersion( pkgname ) ), 
+            pkgname ) 
+        
+        packageStartupMessage( msg ) 
+    }   
+    
+}   
 

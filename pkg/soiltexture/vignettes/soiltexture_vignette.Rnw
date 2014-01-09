@@ -539,21 +539,25 @@ on soil maps\footnote{It is more easy to represent 1 variable,
 soil texture class, than 3 variables: clay silt and sand}, and 
 there use is quite broad (soil description, soil classification, 
 pedogenesis, soil functional properties, pedotransfer functions, 
-etc.). One of these texture classification systems is the FAO 
-system. Here is the representation of the same point as in the 
-graph above, but with the FAO soil classification system on the 
-background.
+etc.). One of these texture classification systems is the one used
+for the European Soil Map (HYPRES). Here is the representation of 
+the same point as in the graph above, but with the 
+European Soil Map (HYPRES) texture classification system on the 
+background (\footnote{I had previously erroneously named that system 
+"The FAO system". I realised (and was told) that this is not the 
+FAO system. The real FAO system is in fact similar (identical?) 
+to the USDA system}).
 
 <<echo=FALSE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     tri.data    = data.frame( 
         "CLAY"  = 45, 
         "SILT"  = 38, 
         "SAND"  = 17 
-    ),  #
+    ),  
     main        = NA  
-)   #
+)   
 @ 
 
 The soil texture class symbols are:
@@ -563,10 +567,10 @@ library( "xtable" )
 @ 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+tex.tbl <- TT.classes.tbl( class.sys = "HYPRES.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
-    caption = "Texture classes of the FAO system / triangle", 
+    caption = "Texture classes of the European system / triangle", 
     label   = NULL  
 )   #
 @ 
@@ -782,10 +786,10 @@ texture classification system used. If set to \texttt{'none'},
 an empty soil texture triangle is plotted.\\
 
 Without further options, the plotted default soil texture 
-triangle has the same geometry as the FAO, USDA or French 'Aisne' 
-soil texture triangles (i.e. all axis are clockwise, all angles 
-are 60 degrees, sand is on the bottom axe, clay on the left and 
-silt on the right).\\
+triangle has the same geometry as the European Soil Map (HYPRES), 
+USDA or French 'Aisne' soil texture triangles (i.e. all axis are 
+clockwise, all angles are 60 degrees, sand is on the bottom axe, 
+clay on the left and silt on the right).\\
 
 The default unit is always percentage (0 to 100\%). It is also 
 equivalent to $g.100g^{-1}$.
@@ -831,39 +835,48 @@ Manual (Soil Survey Staff 1993\cite{USDA1993}).
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{The FAO soil texture classification (also known as 
-    'European Soil map', or 'HYPRES')} 
+\subsection{The European Soil Map (HYPRES) soil texture classification} 
 
-To display a FAO / HYPRES texture triangle, type:
+\textbf{NOTE: I had previously erroneously named that system 
+"The FAO system". I realised (and was told) that this is not the 
+FAO system. The real FAO system is similar (identical?) to 
+the USDA system.} The triangle code has thus been changed from 
+\texttt{FAO50.TT} to \texttt{HYPRES.TT}. Using \texttt{FAO50.TT} 
+still works, but gives a warning.\footnote{De Forges et al. 
+2008\cite{RICHER2008EGS} pointed out the fact that the silt-sand 
+particle size limit that is officially related to the FAO soil 
+texture triangle has changed over time, 50$\mu$m, then 63$\mu$m, 
+and then again 50$\mu$m for some projects.}\\
+
+To display a European Soil Map (HYPRES) texture triangle, type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-TT.plot( class.sys = "FAO50.TT" ) 
+TT.plot( class.sys = "HYPRES.TT" ) 
 @ 
 
 
-De Forges et al. 2008\cite{RICHER2008EGS} pointed out the fact 
-that the silt-sand particle size limit that is officially related 
-to the FAO soil texture triangle has changed over time, 50$\mu$m, 
-then 63$\mu$m, and then again 50$\mu$m for some projects. 
-We here consider that the FAO / EU Soil map / HYPRES soil texture 
-triangle has a silt - sand limit of 
-\Sexpr{TT.get("FAO50.TT")[["base.css.ps.lim"]][3]}$\mu$m. As this 
-choice is somehow arbitrary, we have named the 'FAO' option 
-\texttt{"FAO50.TT"} in order to avoid any confusion. It will be 
-explained later in the document how it is possible to add a custom 
-texture triangle to the existing list, that could for instance be 
-used to configure an FAO texture triangle with another silt - 
-sand limit.\\ 
+
+
+
+% We here consider that the European Soil map (HYPRES) soil texture 
+% triangle has a silt - sand limit of 
+% \Sexpr{TT.get("HYPRES.TT")[["base.css.ps.lim"]][3]}$\mu$m. As this 
+% choice is somehow arbitrary, we have named the 'EU' option 
+% \texttt{"HYPRES.TT"} in order to avoid any confusion. It will be 
+% explained later in the document how it is possible to add a custom 
+% texture triangle to the existing list, that could for instance be 
+% used to configure an EU texture triangle with another silt - 
+% sand limit.\\ 
 
 See the table for soil texture classes symbols.\\
 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+tex.tbl <- TT.classes.tbl( class.sys = "HYPRES.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
-    caption = "Texture classes of the FAO system / triangle", 
+    caption = "Texture classes of the European system / triangle", 
     label   = NULL  
 )   #
 @ 
@@ -1400,7 +1413,13 @@ for non-alluvial soils), type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-TT.plot( class.sys = "PL.TT" ) 
+test <- try( TT.plot( class.sys = "PL.TT" ) ) 
+
+#   In case the posih triangle was not loaded at startup
+if( "try-error" %in% class(test) ){ 
+    plot(1,1,type="n",) 
+    text(1,1,label="Plotting failed. Polish triangle not loaded")
+}   
 @ 
 
 
@@ -1425,7 +1444,8 @@ only latin character are used}.\\
 
 
 <<echo=FALSE,results=hide,quiet=TRUE>>= 
-plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3]
+test <- try( plLim <- TT.get("PL.TT")[["base.css.ps.lim"]][3] ) 
+if( "try-error" %in% class(test) ){ plLim <- NA_real_ }
 @ 
 
 The Polish soil texture classification has been built 
@@ -1460,7 +1480,14 @@ xtable(
 
 
 Many thanks to Wiktor Zelazny for providing the code of the 
-Polish triangle (and the Polish language translation).
+Polish triangle (and the Polish language translation).\\
+
+Note: The polish triangle is loaded during the package start-up, 
+contrary to the other triangles (due to the special characters it 
+contains). So it is not guaranteed that the triangle is available 
+on all platforms. If the triangle is not available (could not 
+be loaded for any reason), a message is issued when the package 
+is loaded (but no error or warning).
 
 \clearpage % otherwise the table may 'eats' next triangle
 
@@ -1474,7 +1501,7 @@ It is possible to have a nice color gradient (single hue,
 gradient of saturation and value) on the background, by setting 
 the option \texttt{class.p.bg.col} (logical) to \texttt{TRUE}.\\
 
-Example with the USDA and FAO soil texture triangles:
+Example with the USDA and European (HYPRES) soil texture triangles:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
@@ -1489,7 +1516,7 @@ TT.plot(
 )   #
 
 TT.plot( 
-    class.sys       = "FAO50.TT", 
+    class.sys       = "HYPRES.TT", 
     class.p.bg.col  = TRUE
 )   #
 
@@ -1604,12 +1631,12 @@ par(old.par)
 \texttt{class.p.bg.col} can also be used to provide custom background 
 colors for each classes of the texture triangle:
 
-Example with the FAO soil texture triangles:
+Example with the European Soil Map (HYPRES) soil texture triangles:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE,height=7>>= 
 TT.plot( 
-    class.sys       = "FAO50.TT", 
+    class.sys       = "HYPRES.TT", 
     class.p.bg.col  = c("red","green","blue","pink","purple") 
 )   #
 @ 
@@ -1720,7 +1747,7 @@ The code to display these soil texture data is:
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     tri.data    = my.text, 
     main        = "Soil texture data" 
 )   #
@@ -2273,13 +2300,13 @@ vertices)' (As in the underying function
 \texttt{point.in.polygon()} from the 'sp' package). 
 In the examples below I will only show the results for the 5 
 first row of the dummy soil texture data created above, with the 
-FAO classification:
+European Soil Map (HYPRES) classification:
 
 
 <<echo=TRUE>>= 
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT"  
+    class.sys   = "HYPRES.TT"  
 )   #
 @ 
 
@@ -2308,7 +2335,7 @@ are marked TRUE.
 <<echo=TRUE>>= 
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "l" 
 )   #
 @ 
@@ -2324,7 +2351,7 @@ classes abbreviation are concatenated (separated by a comma).
 <<echo=TRUE>>= 
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t" 
 )   #
 @ 
@@ -2340,7 +2367,7 @@ in the function \texttt{paste()}, with the option
 <<echo=TRUE>>= 
 TT.points.in.classes( 
     tri.data    = my.text[1:5,], 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     PiC.type    = "t", 
     collapse    = ";"
 )   #
@@ -3100,16 +3127,16 @@ and sand axis labels / titles.
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{Customise axis direction} 
 
-Below is a code example to project the FAO soil texture triangle, 
-with the bottom axis anticlockwise, the left axis clockwise and 
-the right axis 'neutral' (inside).
+Below is a code example to project the triangle of the European 
+Soil Map (HYPRES), with the bottom axis anticlockwise, the left axis 
+clockwise and the right axis 'neutral' (inside).
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     blr.clock   = c(FALSE,TRUE,NA), 
-    main        = "Re-projected FAO triangle (axis directions)"  
+    main        = "Re-projected European triangle (axis directions)"  
 )   # 
 @ 
 
@@ -3126,8 +3153,9 @@ value is used for the neutral case.
     classification in the French Aisne triangle} 
 
 Below is a French GEPPA soil texture triangle plotted as a USDA or 
-FAO or French Aisne soil texture triangle, that is with custom 
-angles, axis directions and clay silt sand positions on the axis:
+European (HYPRES) or French Aisne soil texture triangle, that is 
+with custom angles, axis directions and clay silt sand positions 
+on the axis:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
@@ -3341,7 +3369,7 @@ would NOT always be true (although it is true here).
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
     tri.data    = my.text.fr, 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     css.names   = c("ARGILE","LIMON","SABLE") 
 )   #
 @ 
@@ -3370,7 +3398,7 @@ label on the good axis).
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
     tri.data    = my.text.fr, 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     css.names   = c("ARGILE","LIMON","SABLE"), 
     css.lab     = c("l'argile [%]","Le limon [%]","Le sable [%]"), 
     main        = 
@@ -3386,7 +3414,7 @@ labels, as for any R plot:
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
     tri.data    = my.text.fr, 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     css.names   = c("ARGILE","LIMON","SABLE"), 
     css.lab     = expression( 
         bold(sqrt('Argile'^2)~'[%]'), 
@@ -3450,7 +3478,7 @@ classification / triangle:
 
 <<echo=TRUE>>= 
 # Retrieve and save the table:
-tmp2 <- TT.classes.tbl( class.sys = "FAO50.TT" ) 
+tmp2 <- TT.classes.tbl( class.sys = "HYPRES.TT" ) 
 
 # Display the first part:
 tmp2[,1:2] 
@@ -3472,7 +3500,7 @@ from the triangle definition:
 
 
 <<echo=TRUE>>= 
-TT.vertices.tbl( class.sys = "FAO50.TT" ) 
+TT.vertices.tbl( class.sys = "HYPRES.TT" ) 
 @ 
 
 
@@ -3490,13 +3518,13 @@ one you are actually checking!):
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 geo <- TT.plot( 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     main        = "Vertices numbers. USDA texture triangle"
 )   # 
 
 TT.vertices.plot( 
     geo         = geo, 
-    class.sys   = "FAO50.TT", 
+    class.sys   = "HYPRES.TT", 
     col         = "red", 
     cex         = 2, 
     font        = 2  
@@ -3522,7 +3550,7 @@ implemented in 'The Soil Texture Wizard', the function
 existing list (your home made texture triangles).\\
 
 In the example below, we will (1) extract and save the definition 
-of the FAO50 texture triangle, (2) change the silt sand limit of 
+of the HYPRES texture triangle, (2) change the silt sand limit of 
 the saved triangle definition from 50$\mu$m to 63$\mu$m, and (3) 
 load the 'new' texture triangle into the existing list of 
 triangle. There, it will be saved and usable as any texture 
@@ -3531,18 +3559,18 @@ triangle (at least until R is shut down).
 
 <<echo=TRUE>>= 
 # Step 1 
-FAO63 <- TT.get("FAO50.TT") 
+HYPRES63 <- TT.get("HYPRES.TT") 
 #
 # Visualize the data that will be modified
-FAO63[[ "base.css.ps.lim" ]] 
-FAO63[[ "tri.css.ps.lim" ]] 
+HYPRES63[[ "base.css.ps.lim" ]] 
+HYPRES63[[ "tri.css.ps.lim" ]] 
 #
 # Step 2 
-FAO63[[ "base.css.ps.lim" ]][3] <- 63 
-FAO63[[ "tri.css.ps.lim" ]][3]  <- 63 
+HYPRES63[[ "base.css.ps.lim" ]][3] <- 63 
+HYPRES63[[ "tri.css.ps.lim" ]][3]  <- 63 
 #
 # Step 3: Load the new texture triangle
-TT.add( "FAO63.TT" = FAO63 ) 
+TT.add( "HYPRES63.TT" = HYPRES63 ) 
 @ 
 
 
@@ -3552,8 +3580,8 @@ the initial list:
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 TT.plot( 
-    class.sys   = "FAO63.TT", 
-    main        = "Modified FAO soil texture triangle"
+    class.sys   = "HYPRES63.TT", 
+    main        = "Modified European soil texture triangle"
 )   # 
 @
 
@@ -3566,26 +3594,26 @@ This definition is a list of parameters:
 
 
 <<echo=TRUE>>= 
-# Get the definition of the FAO50 texture triangle
-FAO50 <- TT.get( "FAO50.TT" ) 
+# Get the definition of the HYPRES texture triangle
+HYPRES <- TT.get( "HYPRES.TT" ) 
 #
 # Check its class (list) 
-class( FAO50 ) 
+class( HYPRES ) 
 #
 # Check its parameters names 
-names( FAO50 ) 
+names( HYPRES ) 
 #
 # Check its parameters class 
-for( i in 1:length(FAO50) )
-{   #
+for( i in 1:length(HYPRES) )
+{   
     print( 
         paste( 
-            names( FAO50 )[i], 
-            class( FAO50[[i]] ), 
+            names( HYPRES )[i], 
+            class( HYPRES[[i]] ), 
             sep = ": "
-        )   #
-    )   # 
-}   #
+        )   
+    )    
+}   
 @ 
 
 All elements are (probably) self explicit, or have been presented 
@@ -3617,7 +3645,7 @@ last points).\\
 If you want to have a more precise idea of the code's shape for 
 a new texture triangle, you can have a look inside 'The Soil 
 Texture Wizard' code (FUNCTION\_TEXTURE\_WIZARD.R): search the 
-name of a texture triangle (e.g. "FAO50.TT") in the code and look 
+name of a texture triangle (e.g. "HYPRES.TT") in the code and look 
 the structure of the list corresponding to it.\\
 
 If you implement a texture triangle that you think can be used 

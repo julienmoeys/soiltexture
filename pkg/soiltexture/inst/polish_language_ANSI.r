@@ -5,6 +5,6 @@ lang.par2 <- data.frame(
     "SAND"  = "\"Piasek\"", 
     "TT"    = "\"Trojkat Fereta\"", 
     stringsAsFactors    = FALSE  
-)   #
+)   
 
 

@@ -1,16 +1,31 @@
 The Soil Texture Wizard
 change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
------------------------------------------------------------------------------------------
+-----------------------------------------------------------------
+
+VERSION 1.2.12
+
+    2014/01/09  The triangle named FAO50.TT was in fact erroneously 
+                named, as it is the HYPRES / European Soil Map 
+                texture triangle. The option class.sys = "FAO50.TT" 
+                is now giving a warning, and the new option is 
+                class.sys = "HYPRES.TT". See the vignette for 
+                details.
 
 VERSION 1.2.11
 
     2014/01/08 Compiled under R 3.0.2
                
-               The functions: TT.check.ps.lim.Xm() and TT.text.transf.Xm() 
-               have been moved to the package 
+               The functions: TT.check.ps.lim.Xm() and 
+               TT.text.transf.Xm() have been moved to the package 
                soiltexturetransformation, available on r-forge
                (https://r-forge.r-project.org/R/?group_id=740)
+               
+               The polish triangle is now loaded at startup, but 
+               loading occur within a try() statement, to (try to) 
+               prevent possible encoding problems on some platforms.
+               A message is issued if the triangle was not loaded 
+               properly (but no error or warning).
 
 VERSION 1.2.10
 
