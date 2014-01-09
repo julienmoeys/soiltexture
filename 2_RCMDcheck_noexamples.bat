@@ -2,6 +2,8 @@ set pkgname=soiltexture
 
 cd /D "%rPackagesDir%\%pkgname%\pkg" 
 
-R CMD INSTALL --build --compact-docs --byte-compile %pkgname%
+R CMD check --no-examples %pkgname%
+
+@REM --as-cran _0.2.11.tar.gz
 
 pause

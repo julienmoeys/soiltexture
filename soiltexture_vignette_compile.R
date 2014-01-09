@@ -1,66 +1,42 @@
-# Running the latest part of this script (zipMe) requires to have 
-# 7zip installed and available on Windows path.
+detach( package:soiltexture ) 
 rm(list=ls(all=TRUE)) 
-if( tolower(Sys.info()["sysname"]) == "windows" ){ 
-    work.wd             <- "C:/_R_PACKAGES/soiltexture/pkg/soiltexture/inst"  
-    Sweave.wrapper.fun  <- "C:/_R_PACKAGES/soiltexture/Sweave_wrapper.R" 
-}else{ # Linux 
-    work.wd             <- "/home/jules/Documents/_WORK/R_PACKAGES/soiltexture/pkg/soiltexture/inst"  
-    Sweave.wrapper.fun  <- "/home/jules/Documents/_WORK/R_PACKAGES/soiltexture/Sweave_wrapper.R"        
-}   #
-subdir1             <- "doc"
-file.name.root      <- "soiltexture_vignette" 
-# file.name.root      <- "transformations"  
-sweave.ext          <- ".Rnw"  
-inout.dir           <- ""  
 
 
 
-print("Don't forget to commit the source code to r-forge before compiling the vignette.")
+setwd( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/soiltexture/pkg/soiltexture/vignettes" ) 
 
-# library( "tools" ) 
+Stangle( "soiltexture_vignette.Rnw" ) 
 
-# options(error = recover) 
+Sweave( "soiltexture_vignette.Rnw" ) 
 
-# # buildVignettes(
-# #     package = "soiltexture", 
-# #     dir     = "C:/_R_PACKAGES/soiltexture/pkg/soiltexture", 
-# #     lib.loc = "C:/_R_PACKAGES/soiltexture/pkg/", 
-# #     quiet   = TRUE, 
-# #     clean   = TRUE 
-# # )   #
-
-# res <- checkVignettes(
-#     package = "soiltexture", 
-#     dir     = "C:/_R_PACKAGES/soiltexture/pkg/soiltexture"  
-# )   #
-
-# res 
-
-eval( parse( Sweave.wrapper.fun ) ) 
+for( clean in c(FALSE,FALSE,TRUE) ){ 
+    msg <- tools::texi2dvi( 
+        file        = "soiltexture_vignette.tex", 
+        pdf         = TRUE, 
+        clean       = clean, 
+        texinputs   = getwd() 
+    )   
+    
+    # if( !clean ){ 
+    #     detach( package:soiltexture ) 
+    # }   
+}   
 
 
 
-res <- Sweave.wrapper( 
-    file.name.root  = file.name.root, 
-    work.wd         = file.path( work.wd, subdir1 ), 
-    inout.dir       = inout.dir 
-)   #
+## Copy the vignette's pdf into the 'doc' folder
+file.copy( 
+    from      = "soiltexture_vignette.pdf", 
+    to        = "../inst/doc/soiltexture_vignette.pdf", 
+    overwrite = TRUE )    
 
-file.remove( list.files( file.path( work.wd, subdir1 ), "\\.tex$", full.names = TRUE ) )
-file.remove( list.files( file.path( work.wd, subdir1 ), "\\.bib.bak$", full.names = TRUE ) )
-file.remove( list.files( file.path( work.wd, subdir1 ), "\\.R$", full.names = TRUE ) )
-
-library("tools")
-res <- compactPDF( paths = file.path( work.wd, subdir1 ), gs_quality = "ebook" ) # paste(sep="",file.name.root,".pdf") 
-res 
+# file.remove( "soiltexture_vignette.pdf" ) 
 
 
-### If LaTeX failed because the pdf file was open, run:
-# res <- texi2dvi.wrapper( 
-#     file.name.root  = file.name.root, 
-#     work.wd         = work.wd, 
-#     inout.dir       = inout.dir 
-# )   #
 
+for( ext in c( "\\.tex$", "\\.bib.bak$", "\\.R$", "\\.aux$", 
+    "\\.bbl$", "\\.blg$", "\\.log$", "\\.out$", "\\.toc$", "\\.pdf$" ) ){ 
+    
+    file.remove( list.files( getwd(), ext, full.names = TRUE ) ) 
+}   
 

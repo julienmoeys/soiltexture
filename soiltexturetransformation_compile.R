@@ -1,10 +1,9 @@
 
-
 rm(list=ls(all=TRUE)) 
 
-pkgName     <- "soiltexture"
+pkgName     <- "soiltexturetransformation"
 pkgDir      <- file.path( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages", 
-    pkgName, "pkg" ) 
+    "soiltexture", "pkg" ) 
 
 
 library( "inlinedocs" )
@@ -18,9 +17,9 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.2.11", 
-    pkgDepends  = c("sp","MASS"), 
-    pkgSuggests = "xtable", # c("drc","plotrix"), 
+    pkgVersion  = "1.0.0", 
+    pkgDepends  = c("soiltexture","drc"), # "plotrix",
+    pkgSuggests = NULL,  # "xtable"
     RVersion    = NULL   
 )   
 
@@ -29,13 +28,6 @@ pkgDescription(
 package.skeleton.dx( 
     pkgdir      = file.path( pkgDir, pkgName ), 
     namespace   = TRUE  
-)   #
-
-
-file.copy(
-    from      = file.path( pkgDir, "..", "prepare", "TT.env.Rd" ), 
-    to        = file.path( pkgDir, pkgName, "man", "TT.env.Rd" ), 
-    overwrite = TRUE  
 )   #
 
 
