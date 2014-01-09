@@ -1,11 +1,11 @@
 Package: soiltexture
-Version: 1.2.10
-Date: 2012-09-12
+Version: 1.2.11
+Date: 2014-01-08
 Title: Functions for soil texture plot, classification and transformation
 Author: Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.
 Maintainer: Julien MOEYS <jules_m78-soiltexture@yahoo.fr> 
-Depends: R (>= 2.4.1), sp, MASS
-Suggests: drc, plotrix, xtable
+Depends: R (>= 3.0.2), sp, MASS
+Suggests: xtable
 Description: "The Soil Texture Wizard" is a set of R functions designed to produce 
     texture triangles (also called texture plots, texture diagrams, texture ternary plots), 
     classify and transform soil textures data. These functions virtually allows to plot any 
