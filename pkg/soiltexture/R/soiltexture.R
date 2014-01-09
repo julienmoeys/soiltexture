@@ -4274,11 +4274,11 @@ TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z
     text.sum    = NULL 
 ){  #
     TT.auto.set(set.par=FALSE) 
-    #
-    require( "MASS" ) 
-    #
+    
+    # require( "MASS" ) 
+    
     nm      <- c(css.names,"Z") 
-    #
+    
     CorMat  <- as.matrix(   data.frame( 
             #   #   "1",   "2",   "3",   "Z"
             "1" = c(+1.000,+0.300,-0.600,+0.500), 
@@ -5865,9 +5865,9 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 
 ){  #
     if( is.null( class.sys ) ){ class.sys <- TT.get("class.sys") } 
-    #
-    require( "sp" ) 
-    #
+    
+    # require( "sp" ) 
+    
     TT.data <- TT.get(class.sys) 
     #
     if( is.null(collapse) ){ collapse = ", " } 
@@ -5990,9 +5990,9 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
             "ypos" = tri.data[,css.names[1]]  
         )   #
     }   #
-    #
-    require( "sp" ) 
-    #
+    
+    # require( "sp" ) 
+    
     # Vectorisable and custom wrapper for point.in.polygon():
     points.in.class <- function( 
         X,                  # X = class name
@@ -6580,9 +6580,9 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
         inverted    = FALSE, 
         ...  
     )   #
-    #
-    require( "sp" ) 
-    #
+    
+    # require( "sp" ) 
+    
     PiP <- as.logical(  point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
         point.y = xy.grid[["xypos"]][,"ypos"], 
@@ -6712,9 +6712,9 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
         "x" = dens.xy[["x"]], 
         "y" = dens.xy[["y"]]  
     )   #
-    #
-    require( "sp" ) 
-    #
+    
+    # require( "sp" ) 
+    
     PiP <- as.logical(  point.in.polygon( 
         point.x = ex.dens.xy[,"x"],
         point.y = ex.dens.xy[,"y"], 
@@ -6866,9 +6866,9 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
             },  #
             z.vec   = xy.data[,"z"] 
     )   )   #
-    #
-    require( "sp" ) 
-    #
+    
+    # require( "sp" ) 
+    
     PiP <- as.logical(  point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
         point.y = xy.grid[["xypos"]][,"ypos"], 
@@ -7492,3 +7492,5 @@ TT.normalise.sum.X <- function(# Normalises the sum of the X particle size class
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 # | END OF THE R CODE                   |
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+
+

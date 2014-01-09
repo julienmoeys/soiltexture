@@ -3,31 +3,39 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------------------------------
 
-o version 1.2.10
+VERSION 1.2.11
 
-  20120912 Implemented a new version of the Australian soil texture classification 
-           (AU2.TT)
+    2014/01/08 Compiled under R 3.0.2
+               
+               The functions: TT.check.ps.lim.Xm() and TT.text.transf.Xm() 
+               have been moved to the package 
+               soiltexturetransformation, available on r-forge
+               (https://r-forge.r-project.org/R/?group_id=740)
 
-o version 1.2.9 
+VERSION 1.2.10
+
+    2013/04/29 Compiled under R 3.0.0
+
+VERSION 1.2.9 
 
   20120307 Removed a useless usage of installed.packages() 
   20120308 Compact the vignettes before R CMD build 
 
-o version 1.2.8 
+VERSION 1.2.8 
 
   20120125 New attempt to fix xtable package dependence in the vignette.
 
-o version 1.2.7 
+VERSION 1.2.7 
 
   20120106  no visible change (fixed package dependance in vignette) + corrected TT.plot()
             example for Spanish language.
 
-o version 1.2.6 
+VERSION 1.2.6 
 
   20111112  Added the German (GDR) texture triangle for forest soils: 
             "Standortserkundungsanweisung SEA 1974 (DE)" 
 
-o older versions
+VERSION < 1.2.6
 
   20111109  New attempt to fix problems while loading the Polish texture triangle 
             under Mac/Darwin and freeBSD.
