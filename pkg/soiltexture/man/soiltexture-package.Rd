@@ -1,5 +1,6 @@
 \name{soiltexture-package}
 \alias{soiltexture-package}
+\alias{soiltexture}
 \docType{package}
 \title{Functions for soil texture plot, classification and transformation}
 \description{"The Soil Texture Wizard" is a set of R functions designed to produce
@@ -15,13 +16,13 @@ Survey of England and Wales; Australian triangle; Belgian triangle; Canadian tri
 ISSS triangle; Romanian triangle; Polish triangle.}
 \details{
 \tabular{ll}{Package: \tab soiltexture\cr
-Version: \tab 1.2.10\cr
-Date: \tab 2012-09-12\cr
+Version: \tab 1.2.11\cr
+Date: \tab 2014-01-08\cr
 Title: \tab Functions for soil texture plot, classification and transformation\cr
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
-Depends: \tab R (>= 2.4.1), sp, MASS\cr
-Suggests: \tab drc, plotrix, xtable\cr
+Depends: \tab R (>= 3.0.2), sp, MASS\cr
+Suggests: \tab xtable\cr
 License: \tab AGPL (>=3)\cr
 URL: \tab http://soiltexture.r-forge.r-project.org/\cr}
 }
