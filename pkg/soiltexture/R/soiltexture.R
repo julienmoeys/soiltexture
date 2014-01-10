@@ -1316,20 +1316,20 @@ assign(
                 "lU"  = list( "name" = "lehmiger Schluff",    "points" = c(14, 13, 09, 08, 23, 22, 25 ) ) 
                 #
             ),  #
-            #
+            
             # Triangle specific parameters for triangle geometry / appearance
             #   See general parameters above for detailed description of them
             blr.clock       = c(F,T,NA), 
             tlr.an          = c(45,90,45), 
-            #
+            
             blr.tx      = c("CLAY","SILT","SAND"), 
-            # 
+            
             base.css.ps.lim = c(0,2,63,2000), 
             tri.css.ps.lim  = c(0,2,63,2000), 
-            # 
+            
             unit.ps         = quote(bold(mu) * bold('m')), 
             unit.tx         = quote(bold('%')), 
-            #
+            
             text.sum        = 100 
         ),  #
         #
