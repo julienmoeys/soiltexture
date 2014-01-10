@@ -1289,14 +1289,14 @@ assign(
             #                   triangle, plotted in SEA 1974, conforms to the GDR standard (TGL 24300-05:1985-06), but
             #                   is 1 Percent larger than the actual German texture triangle in DE.BK94.TT :
             #                  P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12    P13    
-            #                  P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24    P25
+            #                  P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24    P25    P26    
             "tt.points"     = data.frame( 
                 "CLAY"  =   c( 1.000, 0.450, 0.450, 0.300, 0.300, 0.300, 0.300, 0.180, 0.180, 0.180, 0.150, 0.120, 0.050, 
-                               0.000, 0.000, 0.000, 0.000, 0.050, 0.100, 0.025, 0.050, 0.080, 0.080, 0.000, 0.000),
+                               0.000, 0.000, 0.000, 0.000, 0.050, 0.100, 0.025, 0.050, 0.080, 0.080, 0.000, 0.000, 0.450 ),
                 "SILT"  =   c( 0.000, 0.550, 0.000, 0.700, 0.550, 0.150, 0.000, 0.820, 0.550, 0.150, 0.000, 0.150, 0.550, 
-                               0.550, 0.200, 0.100, 0.000, 0.000, 0.000, 0.075, 0.150, 0.800, 0.920, 1.000, 0.800),  
+                               0.550, 0.200, 0.100, 0.000, 0.000, 0.000, 0.075, 0.150, 0.800, 0.920, 1.000, 0.800, 0.400 ),  
                 "SAND"  =   c( 0.000, 0.000, 0.550, 0.000, 0.150, 0.550, 0.700, 0.000, 0.270, 0.670, 0.850, 0.730, 0.400, 
-                               0.450, 0.800, 0.900, 1.000, 0.950, 0.900, 0.900, 0.800, 0.120, 0.000, 0.000, 0.200)  
+                               0.450, 0.800, 0.900, 1.000, 0.950, 0.900, 0.900, 0.800, 0.120, 0.000, 0.000, 0.200, 0.150 )  
             ),  #
             # 
             #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
@@ -1308,8 +1308,8 @@ assign(
                 "alS" = list( "name" = "anlehmiger Sand",     "points" = c(18, 19, 21, 15, 16, 20 ) ), 
                 "lS"  = list( "name" = "lehmiger Sand",       "points" = c(19, 11, 12, 13, 14, 15, 21 ) ), 
                 "T"   = list( "name" = "Ton",                 "points" = c(03, 01, 02 ) ), 
-                "uT"  = list( "name" = "schluffiger Ton",     "points" = c(05, 02, 04 ) ), 
-                "lT"  = list( "name" = "lehmiger Ton",        "points" = c(03, 02, 05, 06 ) ), 
+                "uT"  = list( "name" = "schluffiger Ton",     "points" = c(05, 26, 02, 04 ) ), 
+                "lT"  = list( "name" = "lehmiger Ton",        "points" = c(03, 26, 05, 06 ) ), 
                 "sT"  = list( "name" = "sandiger Ton",        "points" = c(07, 03, 06 ) ), 
                 "U"   = list( "name" = "Schluff",             "points" = c(25, 22, 23, 24 ) ), 
                 "UL"  = list( "name" = "Schlufflehm",         "points" = c(09, 05, 04, 08 ) ), 

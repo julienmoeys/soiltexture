@@ -3,6 +3,13 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------
 
+VERSION 1.2.13
+
+    2014/01/10  A mistake has been corrected in the texture triangle 
+                DE.SEA74.TT (Standortserkundungsanweisung SEA 1974 (DE)), 
+                for classes "lehmiger Ton" (lT) and "schluffiger 
+                Ton" (uT), where a missing vertex has been added.
+
 VERSION 1.2.12
 
     2014/01/09  The triangle named FAO50.TT was in fact erroneously 
