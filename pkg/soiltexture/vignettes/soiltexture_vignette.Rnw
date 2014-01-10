@@ -1051,8 +1051,12 @@ xtable(
 
 
 Many thanks to Rainer Petzold (Staatsbetrieb Sachsenforst) for 
-providing the code of this triangle.
+providing the code of this triangle.\\
 
+Note (2013/01/10): Prior to version 1.2.13, the triangle has a 
+missing vertex in classes "lehmiger Ton" (lT) and "schluffiger Ton"
+(uT). This Vertex (no 26 in the triangle definition) has been added 
+from version 1.2.13.\\
 
 The original isosceles version of the triangle can be obtained by typing:
 
