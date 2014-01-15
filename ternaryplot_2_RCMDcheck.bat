@@ -1,6 +1,6 @@
 set pkgname=ternaryplot
 
-cd /D "%rPackagesDir%\%pkgname%\pkg" 
+cd /D "%rPackagesDir%\soiltexture\pkg" 
 
 R CMD check %pkgname%
 

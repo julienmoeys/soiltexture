@@ -7,6 +7,7 @@
 
 # Useful: \code{} \code{\link[]{}} 
 
+# TO DO: ADD A TEXT LABEL in .ternaryTicks()
 
 
 
@@ -343,6 +344,8 @@ setMethod(
 #'
 ternaryWindow <- function( 
     s, 
+    x, 
+    scale = FALSE, 
     ... 
 ){  
     standardGeneric( "ternaryWindow" ) 
@@ -353,7 +356,9 @@ rm("ternaryWindow")
 setGeneric( 
     "ternaryWindow", 
     function( 
-        s,
+        s, 
+        x, 
+        scale = FALSE, 
         ... 
     ){    
         standardGeneric( "ternaryWindow" ) 
@@ -373,6 +378,8 @@ setMethod(
     signature  = "missing", 
     definition = function(
         s, 
+        x, 
+        scale = FALSE, 
         ... 
     ){  
         # Set the ternarySystem
@@ -395,6 +402,8 @@ setMethod(
     signature  = "character", 
     definition = function(
         s, 
+        x, 
+        scale = FALSE, 
         ... 
     ){  
         # Set the ternarySystem
@@ -798,12 +807,18 @@ setMethod(
 #'@param from 
 #'  A \code{\link[base]{data.frame}} or a 
 #'  \code{\link[base]{matrix}} containing the ternary 
-#'  coordinates of points *from* which to draw.
+#'  coordinates of points *from* which to draw the arrows.
+#'  Each row is an arrow, and the columns must correspond 
+#'  to \code{blrNames(s)} (variable names for the bottom, 
+#'  left and right axis).
 #'
 #'@param to
 #'  A \code{\link[base]{data.frame}} or a 
 #'  \code{\link[base]{matrix}} containing the ternary 
-#'  coordinates of points *to* which to draw.
+#'  coordinates of points *to* which to draw the arrows.
+#'  Each row is an arrow, and the columns must correspond 
+#'  to \code{blrNames(s)} (variable names for the bottom, 
+#'  left and right axis).
 #'
 #'@param s  
 #'  A \code{\linkS4class{ternarySystem}} object, or a 
@@ -885,9 +900,9 @@ setMethod(
 
 
 
-#'Internal. Calculates grid segments start and end ternary coordinates 
+#'INTERNAL. Calculates grid segments start and end ternary coordinates 
 #'
-#'Internal. Calculates grid segments start and end ternary coordinates
+#'INTERNAL. Calculates grid segments start and end ternary coordinates
 #'
 #'
 #'@param s 
@@ -908,13 +923,15 @@ setMethod(
 #'
 #'@docType methods
 #'
-.ternaryGridBase <- function( s, ... ){  
+#'@keywords internal
+#'
+.ternaryGridBase <- function( s, ticks = FALSE, ... ){  
     standardGeneric( ".ternaryGridBase" ) 
 }   
 
 rm(".ternaryGridBase") 
 
-setGeneric( ".ternaryGridBase", function( s, ... ){    
+setGeneric( ".ternaryGridBase", function( s, ticks = FALSE, ... ){    
     standardGeneric( ".ternaryGridBase" ) 
 } )    
 
@@ -1181,9 +1198,9 @@ setMethod(
 
 
 
-#'Draw axis' ticks mark on a triangle plot
+#'Draw axis' tick marks on a triangle plot
 #'
-#'Draw axis' ticks mark on a triangle plot
+#'Draw axis' tick marks on a triangle plot
 #'
 #'
 #'@param s 
@@ -1247,7 +1264,9 @@ setMethod(
                     from = gr[[ "from" ]][[ ax ]], 
                     to   = gr[[ "to" ]][[ ax ]], 
                     s    = s ) 
-
+                
+                # TO DO: ADD A TEXT LABEL 
+                
                 # Set test again
                 tpPar( par = oldPar )
             }   
@@ -1428,9 +1447,14 @@ setMethod(
         .ternaryTicks( s = s ) 
         ternaryGrid( s = s ) 
         ternaryBox( s = s ) 
+        try( .ternaryAxisArrows( s = s ) ) 
         
         
-        message( "Method (data.frame,ternarySystem) not implemented yet" ) 
+        if( nrow( x ) >= 1 ){ 
+            message( "Method (data.frame,ternarySystem) not implemented yet" ) 
+        }   
+        
+        return( invisible( s ) ) 
     } 
 )   
 
@@ -1493,9 +1517,9 @@ setMethod(
 )   
 
 
-#'NOT EXPORTED: Find optimal axis limits for a ternary plot.
+#'INTERNAL: Find optimal axis limits for a ternary plot.
 #'
-#'NOT EXPORTED: Find optimal axis limits for a ternary plot.
+#'INTERNAL: Find optimal axis limits for a ternary plot.
 #'
 #'
 #'@usage
@@ -1529,6 +1553,8 @@ setMethod(
 #'@export 
 #'
 #'@docType methods
+#'
+#'@keywords internal
 #'
 ternaryLims <- function( 
     x, 
@@ -1922,7 +1948,7 @@ setMethod(
 #'@rdname blrNames-methods
 #'
 #'@usage
-#'  \S4method{blrNames<-}{ternarySystem}( s, \dots ) <- value
+#'  \S4method{blrNames}{ternarySystem}( s, \dots ) <- value
 #'
 #'@export 
 #'
@@ -2032,7 +2058,7 @@ setMethod(
 #'@rdname blrClock-methods
 #'
 #'@usage
-#'  \S4method{blrClock<-}{ternarySystem}( x, \dots ) <- value
+#'  \S4method{blrClock}{ternarySystem}( x, \dots ) <- value
 #'
 #'@export 
 #'
@@ -2068,6 +2094,56 @@ setMethod(
     }   
 )   
 
+
+
+# ==================== ternaryClockSwitch ==================== 
+
+#'INTERNAL. Fetch a pre-defined ternary classification system
+#'
+#'INTERNAL. Fetch a pre-defined ternary classification system
+#'
+#'
+#'@param s 
+#'  Single character string. Name of the ternary classification to 
+#'  be fetched.
+#'
+#'
+#'@return 
+#'  A \code{\linkS4class{ternarySystem}} object.
+#'
+#'
+#'@export 
+#'
+#'@keywords internal
+#'
+ternaryClockSwitch <- function( 
+ s, 
+ ttt, 
+ txf, 
+ ftx, 
+ fff 
+){  
+    if( is.character( s ) ){ 
+        s <- ternarySystemGet( s )
+    }   
+    
+    vBlrClock <- blrClock( s )
+    
+    if(         all( vBlrClock == c( TRUE,  TRUE,  TRUE ) ) ){ 
+        out <- ttt 
+    }else if(   all( vBlrClock == c( TRUE,  NA,    FALSE ) ) ){ 
+        out <- ttt 
+    }else if(   all( vBlrClock == c( FALSE, TRUE,  NA ) ) ){ 
+        out <- ftx 
+    }else if(   all( vBlrClock == c( FALSE, FALSE, FALSE ) ) ){ 
+        out <- fff 
+    }else{ 
+        stop( "unknown value for blrClock( s ): %s", 
+            paste( vBlrClock, collapse = ", " )  ) 
+    }   
+    
+    return( out ) 
+}   
 
 
 
@@ -2132,7 +2208,7 @@ setMethod(
 #'@rdname fracSum-methods
 #'
 #'@usage
-#'  \S4method{fracSum<-}{ternarySystem}( x, \dots ) <- value
+#'  \S4method{fracSum}{ternarySystem}( x, \dots ) <- value
 #'
 #'@export 
 #'
@@ -2232,7 +2308,7 @@ setMethod(
 #'@rdname tlrAngles-methods
 #'
 #'@usage
-#'  \S4method{tlrAngles<-}{ternarySystem}( x, \dots ) <- value
+#'  \S4method{tlrAngles}{ternarySystem}( x, \dots ) <- value
 #'
 #'@export 
 #'
@@ -2477,7 +2553,7 @@ setGeneric( "ternaryText", function( x, labels, s, ... ){
 setMethod( 
     f          = "ternaryText", 
     signature  = "data.frame", 
-    definition = function( x, s, ... ){ 
+    definition = function( x, labels, s, ... ){ 
         # Set the value for s
         if( missing( s ) ){ 
             s <- ternarySystemSet() 
@@ -2516,9 +2592,11 @@ setMethod(
 
 # ============ .ternaryAxisArrowsBase ============
 
-#'INTERNAL. Calculates arrows segments start and end for ternary axis labels 
+#'INTERNAL. Calculates arrows segments start and end for ternary 
+#'  axis labels 
 #'
-#'INTERNAL. Calculates arrows segments start and end for ternary axis labels 
+#'INTERNAL. Calculates arrows segments start and end for ternary 
+#'  axis labels 
 #'
 #'
 #'@param s 
@@ -2528,11 +2606,13 @@ setMethod(
 #'  Additional parameters passed to specific methods.
 #'
 #' 
-#'@rdname ternaryGridBase-methods
+#'@rdname ternaryAxisArrowsBase-methods
 #'
 #'@export 
 #'
 #'@docType methods
+#'
+#'@keywords internal
 #'
 .ternaryAxisArrowsBase <- function( s, ... ){  
     standardGeneric( ".ternaryAxisArrowsBase" ) 
@@ -2741,10 +2821,10 @@ setMethod(
 
 # ============ .ternaryAxisArrows ============
 
-#' INTERNAL: Draw axis' arrows and arrows' lables mark on a 
+#' INTERNAL: Draw axis' arrows and arrows' label marks on a 
 #'  triangle plot
 #'
-#' INTERNAL: Draw axis' arrows and arrows' lables mark on a 
+#' INTERNAL: Draw axis' arrows and arrows' label marks on a 
 #'  triangle plot
 #'
 #'
@@ -2761,11 +2841,13 @@ setMethod(
 #   for each of the 3 axis.
 #'
 #' 
-#'@rdname ternaryTicks-methods
+#'@rdname ternaryAxisArrows-methods
 #'
 #'@export 
 #'
 #'@docType methods
+#'
+#'@keywords internal
 #'
 .ternaryAxisArrows <- function( s, ... ){  
     standardGeneric( ".ternaryAxisArrows" ) 
@@ -2795,6 +2877,22 @@ setMethod(
         
         tlrAnglez       <- tlrAngles( x = s ) 
         blrLabelAngles  <- c( 0, tlrAnglez[2], tlrAnglez[3] ) 
+        
+        # Change sign for the case when blrClock(s) is not TRUE NA FALSE
+        if( !is.na( blrClock(s)[2] ) ){ 
+            blrLabelAngles[3] <- -blrLabelAngles[3]
+        }   
+        
+        
+        #   Chose the right adjustment
+        adj <- ternaryClockSwitch( 
+            s   = s, 
+            ttt = c( 1, 0, 0 ), 
+            txf = c( 1, 1, 0 ), 
+            ftx = c( 0, 0, 0 ), 
+            fff = c( 0, 1, 1 ) 
+        )   
+        
         
         for( ax in 1:length( gr ) ){ 
             # Draw the tick-marks start and segments
@@ -2829,7 +2927,8 @@ setMethod(
                     x      = gr[[ ax ]][ 4, ], 
                     labels = s@'ternaryVariables'@'blrLabels'[ ax ], 
                     s      = s, 
-                    pos    = 2, 
+                    # pos  = 2, 
+                    adj    = c( adj[ ax ], .5 ), 
                     srt    = blrLabelAngles[ ax ], 
                     ... ) 
                 

@@ -9,11 +9,17 @@
 \arguments{
   \item{from}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing the ternary
-  coordinates of points *from* which to draw.}
+  coordinates of points *from* which to draw the arrows.
+  Each row is an arrow, and the columns must correspond to
+  \code{blrNames(s)} (variable names for the bottom, left
+  and right axis).}
 
   \item{to}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing the ternary
-  coordinates of points *to* which to draw.}
+  coordinates of points *to* which to draw the arrows.
+  Each row is an arrow, and the columns must correspond to
+  \code{blrNames(s)} (variable names for the bottom, left
+  and right axis).}
 
   \item{s}{A \code{\linkS4class{ternarySystem}} object, or
   a character string naming a pre-defined

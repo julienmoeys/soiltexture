@@ -3,7 +3,7 @@
 \title{Get or set default parameters for the package.}
 \usage{
   tpPar(par = NULL, reset = FALSE, testRange, testSum,
-    fracSumTol, ticksAt, ticksShift)
+    fracSumTol, ticksAt, ticksShift, arrowsShift)
 }
 \arguments{
   \item{par}{Three possible cases: \itemize{ \item If
@@ -46,6 +46,10 @@
   \item{ticksShift}{Single numeric. Tick-marks 'size',
   expressed so that \code{ticksShift * fracSum} is the
   length of the tick-marks.}
+
+  \item{arrowsShift}{Vector of tow numeric values. Axis'
+  arrows' shift from their axis, expressed so that
+  \code{arrowsShift * fracSum} is the start and end point.}
 }
 \value{
   Returns a partial or complete list of (actual) parameter

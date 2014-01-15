@@ -1,7 +1,7 @@
 set pkgname=ternaryplot
 
-cd /D "%rPackagesDir%\%pkgname%\pkg" 
+cd /D "%rPackagesDir%\soiltexture\pkg" 
 
-R CMD build --compact-vignettes="gs" %pkgname% 
+R CMD build --compact-vignettes="gs+qpdf" %pkgname% 
 
 pause

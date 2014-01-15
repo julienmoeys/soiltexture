@@ -1,9 +1,10 @@
+
 rm(list=ls(all=TRUE)) 
 pkgName     <- "ternaryplot"
-pkgDir      <- "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/ternaryplot/pkg"
+pkgDir      <- "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/soiltexture/pkg"
 
 
-library( "inlinedocs" )
+library( "roxygen2" )
 
 
 # Source some utility functions
@@ -14,7 +15,7 @@ source( file.path( pkgDir, "..","packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "0.1.1", 
+    pkgVersion  = "0.1.2", 
     pkgDepends  = "methods", 
     pkgSuggests = NULL, 
     RVersion    = NULL   
