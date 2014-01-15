@@ -4,7 +4,7 @@
 \alias{.ternaryGridBase,ternarySystem-method}
 \title{Internal. Calculates grid segments start and end ternary coordinates}
 \usage{
-  .ternaryGridBase(s, ...)
+  .ternaryGridBase(s, ticks = FALSE, ...)
 }
 \arguments{
   \item{s}{A \code{\linkS4class{ternarySystem}} object.}

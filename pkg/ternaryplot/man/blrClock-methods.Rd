@@ -9,7 +9,7 @@
 \usage{
   \S4method{blrClock}{ternarySystem}( x, \dots )
 
-  \S4method{blrClock<-}{ternarySystem}( x, \dots ) <- value
+  \S4method{blrClock}{ternarySystem}( x, \dots ) <- value
 }
 \arguments{
   \item{x}{A \code{\linkS4class{ternarySystem}} object.}

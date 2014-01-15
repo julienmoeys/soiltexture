@@ -110,7 +110,7 @@ setClass(
     
     #contains      = numeric(), 
     
-    validity      = function(object){ 
+    validity = function(object){ 
         msg <- character(0) 
         
         if( length( object@'blrNames' ) != 3 ){ 

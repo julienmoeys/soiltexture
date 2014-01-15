@@ -6,11 +6,11 @@ tv <- new( "ternaryVariables" )
 tv 
 
 ## Custom variables
-tv <- new( 
+tv2 <- new( 
     "ternaryVariables", 
     blrNames  = c( "CLAY", "SILT", "SAND" ), 
     blrLabels = c( "Clay [%]", "SILT [%]", "SAND [%]" ) ) 
-tv 
+tv2 
 
 
 ## Methods defined for ternaryGeometry:

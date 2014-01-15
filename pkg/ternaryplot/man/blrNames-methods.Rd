@@ -9,7 +9,7 @@
 \usage{
   \S4method{blrNames}{ternarySystem}( s, \dots )
 
-  \S4method{blrNames<-}{ternarySystem}( s, \dots ) <- value
+  \S4method{blrNames}{ternarySystem}( s, \dots ) <- value
 }
 \arguments{
   \item{s}{A \code{\linkS4class{ternarySystem}} object.}

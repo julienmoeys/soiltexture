@@ -6,7 +6,7 @@
 \alias{ternaryWindow,ternarySystem-method}
 \title{NOT EXPORTED Draw an invisible base-plot for ternaryPlot}
 \usage{
-  ternaryWindow(s, ...)
+  ternaryWindow(s, x, scale = FALSE, ...)
 }
 \arguments{
   \item{s}{A \code{\linkS4class{ternarySystem}} object, or

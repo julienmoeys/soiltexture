@@ -9,8 +9,7 @@
 \usage{
   \S4method{tlrAngles}{ternarySystem}( x, \dots )
 
-  \S4method{tlrAngles<-}{ternarySystem}( x, \dots ) <-
-    value
+  \S4method{tlrAngles}{ternarySystem}( x, \dots ) <- value
 }
 \arguments{
   \item{x}{A \code{\linkS4class{ternarySystem}} object.}
