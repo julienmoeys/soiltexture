@@ -8,8 +8,8 @@
 
   \method{ternaryGeometry}{ternarySystem} (s, ...)
 
-  \method{ternaryGeometry}{ternarySystem} (s, ..., value)
-    <- value
+  \method{ternaryGeometry}{ternarySystem}( s, ... ) <-
+    value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

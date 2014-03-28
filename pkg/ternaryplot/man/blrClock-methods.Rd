@@ -14,12 +14,11 @@
 
   \method{blrClock}{ternaryGeometry} (s, ...)
 
-  blrClock(s, ..., value) <- value
+  blrClock( s, ... ) <- value
 
-  \method{blrClock}{ternarySystem} (s, ..., value) <- value
+  \method{blrClock}{ternarySystem}(s, ...) <- value
 
-  \method{blrClock}{ternaryGeometry} (s, ..., value) <-
-    value
+  \method{blrClock}{ternaryGeometry}(s, ...) <- value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

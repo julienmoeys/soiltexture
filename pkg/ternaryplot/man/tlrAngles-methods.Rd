@@ -15,15 +15,13 @@
 
   \method{tlrAngles}{ternaryGeometry} (s, ...)
 
-  tlrAngles(s, ..., value) <- value
+  tlrAngles( s, ... ) <- value
 
-  \method{tlrAngles}{ternarySystem} (s, ..., value) <-
-    value
+  \method{tlrAngles}{ternarySystem}(s, ...) <- value
 
-  \method{tlrAngles}{ternaryGeometry} (s, ..., value) <-
-    value
+  \method{tlrAngles}{ternaryGeometry}(s, ...) <- value
 
-  ternaryGeometry(s, ..., value) <- value
+  ternaryGeometry( s, ... ) <- value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

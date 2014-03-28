@@ -1,3 +1,4 @@
+
 library( "ternaryplot" ) 
 
 
@@ -11,8 +12,7 @@ tsy2 <- createTernarySystem(
         "blrNames"  = c( "CLAY", "SILT", "SAND" ), 
         "blrLabels" = c( "Clay [%]", "Silt [%]", "Sand [%]" ) 
     ),  
-    "ternaryGeometry" = createTernaryGeometry( 
-        "ternaryGeometry", 
+    "ternaryGeometry" = createTernaryGeometry( ##
         "fracSum"   = 100, 
         "tlrAngles" = c( 45, 45, 90 ) # top, left, right angles
     ), 

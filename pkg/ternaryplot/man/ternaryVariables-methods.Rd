@@ -9,10 +9,10 @@
 
   \method{ternaryVariables}{ternarySystem} (s, ...)
 
-  ternaryVariables(s, ..., value) <- value
+  ternaryVariables( s, ... ) <- value
 
-  \method{ternaryVariables}{ternarySystem} (s, ..., value)
-    <- value
+  \method{ternaryVariables}{ternarySystem}( s, ... ) <-
+    value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

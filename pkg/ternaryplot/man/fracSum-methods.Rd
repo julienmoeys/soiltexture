@@ -14,12 +14,11 @@
 
   \method{fracSum}{ternaryGeometry} (s, ...)
 
-  fracSum(s, ..., value) <- value
+  fracSum( s, ... ) <- value
 
-  \method{fracSum}{ternarySystem} (s, ..., value) <- value
+  \method{fracSum}{ternarySystem}(s, ...) <- value
 
-  \method{fracSum}{ternaryGeometry} (s, ..., value) <-
-    value
+  \method{fracSum}{ternaryGeometry}(s, ...) <- value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

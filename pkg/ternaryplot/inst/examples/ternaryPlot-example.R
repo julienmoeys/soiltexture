@@ -22,7 +22,7 @@ s <- ternaryPlot()
 # ========================================================
 
 # Set new orientation
-blrClock( s ) <- rep( F, 3 ) 
+blrClock( s ) <- rep( FALSE, 3 ) 
 
 # Plot
 ternaryPlot(s) 
@@ -32,7 +32,7 @@ ternaryPlot(s)
 # ========================================
 
 # Set new orientation and angles
-blrClock( s )  <- c( F, T, NA ) 
+blrClock( s )  <- c( FALSE, TRUE, NA ) 
 tlrAngles( s ) <- c( 45, 90, 45 ) 
 
 # Plot
@@ -42,7 +42,7 @@ ternaryPlot(s)
 # Same, other direction
 # =====================
 
-blrClock( s ) <- c( T, NA, F ) 
+blrClock( s ) <- c( TRUE, NA, FALSE ) 
 tlrAngles( s ) <- c(45,45,90) 
 
 ternaryPlot(s) 

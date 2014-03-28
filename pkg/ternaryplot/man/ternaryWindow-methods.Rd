@@ -9,8 +9,8 @@
   \method{ternaryWindow}{character} (s, x, scale = FALSE,
     ...)
 
-  \method{ternaryWindow}{character} (s, x, scale = FALSE,
-    ...)
+  \method{ternaryWindow}{ternarySystem} (s, x,
+    scale = FALSE, ...)
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

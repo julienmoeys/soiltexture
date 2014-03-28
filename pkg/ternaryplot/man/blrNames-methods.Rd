@@ -14,12 +14,11 @@
 
   \method{blrNames}{ternaryVariables} (s, ...)
 
-  blrNames(s, ..., value) <- value
+  blrNames( s, ... ) <- value
 
-  \method{blrNames}{ternarySystem} (s, ..., value) <- value
+  \method{blrNames}{ternarySystem}(s, ...) <- value
 
-  \method{blrNames}{ternaryVariables} (s, ..., value) <-
-    value
+  \method{blrNames}{ternaryVariables}(s, ...) <- value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with
