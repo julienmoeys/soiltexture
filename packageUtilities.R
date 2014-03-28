@@ -62,9 +62,13 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
 ### Vector of character strings. Names of the packages that needs to be installed
 ### prior to the package installation. NULL if none
 
- pkgSuggests=NULL
+ pkgSuggests=NULL,
 ### Vector of character string. Names of the packages that needs 
 ### to be cited in the "Suggests" field. NULL if none
+
+ pkgImports=NULL
+### Vector of character string. Names of the packages that needs 
+### to be cited in the "Imports" field. NULL if none
 
 ){  
     # Read the file DESCRIPTION 
@@ -148,15 +152,50 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
         sep = "" 
     )   
     
-    if( any( desc.sel2 ) )
-    {   
-        desc[ desc.sel2 ] <- suggests.txt 
+    if( is.null( pkgSuggests ) ){ 
+        desc <- desc[ !desc.sel2 ]
+        
     }else{ 
-        desc <- c(
-            desc, 
-            suggests.txt 
-        )   
+        if( any( desc.sel2 ) ){   
+            desc[ desc.sel2 ] <- suggests.txt 
+        }else{ 
+            desc <- c(
+                desc, 
+                suggests.txt 
+            )   
+        }   
     }   
+    
+    
+    
+    # Find where the "Imports:" line is
+    desc.sel2 <- substr( 
+        x     = desc, 
+        start = 1, 
+        stop  = nchar("Imports:")  
+    ) == "Imports:"
+    
+    imports.txt <- paste( 
+        "Imports: ", 
+        paste( pkgImports, collapse = ", " ), 
+        sep = "" 
+    )   
+    if( is.null( pkgImports ) ){ 
+        desc <- desc[ !desc.sel2 ]
+        
+    }else{ 
+        if( any( desc.sel2 ) )
+        {   
+            desc[ desc.sel2 ] <- imports.txt 
+        }else{ 
+            desc <- c(
+                desc, 
+                imports.txt 
+            )   
+        }   
+    }   
+    
+    
     
     # Write again the description file:
     desc <- writeLines( 
