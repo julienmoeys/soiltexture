@@ -1,27 +1,40 @@
-\docType{methods}
 \name{blrNames}
 \alias{blrNames}
-\alias{blrNames,ternarySystem-method}
+\alias{blrNames.ternarySystem}
+\alias{blrNames.ternaryVariables}
 \alias{blrNames<-}
-\alias{blrNames<-,ternarySystem-method}
+\alias{blrNames<-.ternarySystem}
+\alias{blrNames<-.ternaryVariables}
 \title{Set or get the bottom-left-right axis names of a ternarySystem
  object}
 \usage{
-  \S4method{blrNames}{ternarySystem}( s, \dots )
+  blrNames(s, ...)
 
-  \S4method{blrNames}{ternarySystem}( s, \dots ) <- value
+  \method{blrNames}{ternarySystem} (s, ...)
+
+  \method{blrNames}{ternaryVariables} (s, ...)
+
+  blrNames(s, ..., value) <- value
+
+  \method{blrNames}{ternarySystem} (s, ..., value) <- value
+
+  \method{blrNames}{ternaryVariables} (s, ..., value) <-
+    value
 }
 \arguments{
-  \item{s}{A \code{\linkS4class{ternarySystem}} object.}
+  \item{s}{A \code{ternarySystem} object, as created with
+  \code{\link[ternaryplot]{createTernarySystem}}, or a
+  \code{ternaryVariables} object, as created with
+  \code{\link[ternaryplot]{ternaryVariables}}.}
 
-  \item{\dots}{Additional parameters passed to specific
-  methods.}
+  \item{\dots}{Additional parameters passed to
+  \code{\link[ternaryplot]{ternaryCheck}}.}
 
   \item{value}{A vector of 3 character strings. Names of
   the bottom-left-right axis.}
 }
 \description{
   Set or get the bottom-left-right axis names of a
-  \code{\linkS4class{ternarySystem}} object
+  \code{ternarySystem} object.
 }
 

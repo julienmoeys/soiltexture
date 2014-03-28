@@ -1,3 +1,4 @@
+
 # +-------------------------------------------------------------+
 # | Language: R + roxygen2 inline documentation
 # | Package: ternaryplot 
@@ -5,6 +6,9 @@
 # | License: AGPL3, Affero General Public License version 3 
 # +-------------------------------------------------------------+
 
+
+
+#'@importFrom MASS kde2d
 
 
 

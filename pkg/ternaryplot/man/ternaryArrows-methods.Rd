@@ -1,12 +1,19 @@
-\docType{methods}
 \name{ternaryArrows}
 \alias{ternaryArrows}
-\alias{ternaryArrows,data.frame-method}
-\title{Draw a sequence of ternary arrows on a triangle plot}
+\alias{ternaryArrows.ternarySystem}
+\title{Add Arrows to a ternary plot}
 \usage{
-  ternaryArrows(from, to, s, ...)
+  ternaryArrows(s, from, to, ...)
+
+  \method{ternaryArrows}{ternarySystem} (s, from, to,
+    .plot = TRUE, ...)
 }
 \arguments{
+  \item{s}{A \code{\link[ternaryplot]{ternarySystem}}
+  object, or a character string naming a pre-defined
+  \code{ternarySystem}.  If missing, set to
+  \code{default}.}
+
   \item{from}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing the ternary
   coordinates of points *from* which to draw the arrows.
@@ -21,16 +28,22 @@
   \code{blrNames(s)} (variable names for the bottom, left
   and right axis).}
 
-  \item{s}{A \code{\linkS4class{ternarySystem}} object, or
-  a character string naming a pre-defined
-  \code{ternarySystem}.  If missing, set to
-  \code{default}.}
+  \item{.plot}{Single logical value. Set to \code{FALSE} if
+  you don't want to plot the graphical element and simply
+  returns them as x-y coordinates (or \code{Spatial*}
+  objects if \code{sp} is set to \code{TRUE} in
+  \code{\link{tpPar}}).}
 
   \item{\dots}{Additional parameters passed to
   \code{\link[graphics]{arrows}}.}
 }
+\value{
+  Invisibly returns the graphical element as x-y
+  coordinates or a \code{Spatial*} objects (see
+  \code{.plot}).
+}
 \description{
-  Draw a sequence of ternary arrows on a triangle plot
+  Add Arrows to a ternary plot
 }
 \seealso{
   \code{\link[graphics]{arrows}}.

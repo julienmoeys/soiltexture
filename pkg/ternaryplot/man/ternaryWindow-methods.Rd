@@ -1,16 +1,21 @@
-\docType{methods}
 \name{ternaryWindow}
 \alias{ternaryWindow}
-\alias{ternaryWindow,character-method}
-\alias{ternaryWindow,missing-method}
-\alias{ternaryWindow,ternarySystem-method}
-\title{NOT EXPORTED Draw an invisible base-plot for ternaryPlot}
+\alias{ternaryWindow.character}
+\alias{ternaryWindow.ternarySystem}
+\title{Set up World Coordinates for a ternary plot (invisible base plot)}
 \usage{
-  ternaryWindow(s, x, scale = FALSE, ...)
+  ternaryWindow(s, ...)
+
+  \method{ternaryWindow}{character} (s, x, scale = FALSE,
+    ...)
+
+  \method{ternaryWindow}{character} (s, x, scale = FALSE,
+    ...)
 }
 \arguments{
-  \item{s}{A \code{\linkS4class{ternarySystem}} object, or
-  a single \code{character} string. Can be missing.}
+  \item{s}{A \code{ternarySystem} object, as created with
+  \code{\link[ternaryplot]{ternarySystem}}, or a single
+  \code{character} string. Can be missing.}
 
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing point ternary data
@@ -27,6 +32,7 @@
   methods.}
 }
 \description{
-  NOT EXPORTED Draw an invisible base-plot for ternaryPlot
+  Set up World Coordinates for a ternary plot (invisible
+  base plot)
 }
 

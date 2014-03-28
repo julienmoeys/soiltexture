@@ -17,8 +17,8 @@ s <- ternaryWindow( "default" )
 
 # or
 
-s <- ternarySystemGet() 
-# s@'ternaryGeometry'@'tlrAngles' <- c(45,90,45) 
+s <- getTernarySystem() 
+# tlrAngles(s) <- c(45,90,45) 
 
 s <- ternaryWindow( s = s ) 
 # .ternaryGridBase( s = s )

@@ -1,27 +1,37 @@
-\docType{methods}
 \name{ternaryPoints}
 \alias{ternaryPoints}
-\alias{ternaryPoints,data.frame-method}
-\alias{ternaryPoints,matrix-method}
-\title{Draw a sequence of ternary data-points on a triangle plot}
+\alias{ternaryPoints.ternarySystem}
+\title{Add points to a ternary plot}
 \usage{
-  ternaryPoints(x, s, ...)
+  ternaryPoints(s, ...)
+
+  \method{ternaryPoints}{ternarySystem} (s, x,
+    .plot = TRUE, ...)
 }
 \arguments{
+  \item{s}{A \code{\link[ternaryplot]{ternarySystem}}
+  object.}
+
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing ternary
   data-points.}
 
-  \item{s}{A \code{\linkS4class{ternarySystem}} object, or
-  a character string naming a pre-defined
-  \code{ternarySystem}.  If missing, set to
-  \code{default}.}
+  \item{.plot}{Single logical value. Set to \code{FALSE} if
+  you don't want to plot the graphical element and simply
+  returns them as x-y coordinates (or \code{Spatial*}
+  objects if \code{sp} is set to \code{TRUE} in
+  \code{\link{tpPar}}).}
 
-  \item{\dots}{Additional parameters passed to specific
-  methods.}
+  \item{\dots}{Additional parameters passed to
+  \code{\link[graphics]{points}}.}
+}
+\value{
+  Invisibly returns the graphical element as x-y
+  coordinates or a \code{Spatial*} objects (see
+  \code{.plot}).
 }
 \description{
-  Draw a sequence of ternary data-points on a triangle plot
+  Add points to a ternary plot
 }
 \seealso{
   \code{\link[graphics]{points}}.

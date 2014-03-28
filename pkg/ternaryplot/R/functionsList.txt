@@ -1,0 +1,146 @@
+
+aa01-ternaryplot-options.R
+    
+    tpPar
+    getTpPar
+    
+    .tpParList          (environment)
+    tpParList           (environment)
+    
+aa02-ternaryplot-classes.R
+    
+    ternaryCheck        ternaryGeometry ternaryVariables ternarySystem
+    createTernaryGeometry
+    createTernaryVariables
+    createTernarySystem
+
+aa03-ternaryplot-classes-utility.R
+
+    blrNames            ternaryVariables ternarySystem
+    blrNames<-          ternaryVariables ternarySystem
+    blrLabels           ternaryVariables ternarySystem
+    blrLabels<-         ternaryVariables ternarySystem
+    blrClock            ternaryGeometry ternarySystem
+    blrClock<-          ternaryGeometry ternarySystem
+    fracSum             ternaryGeometry ternarySystem
+    fracSum<-           ternaryGeometry ternarySystem
+    tlrAngles           ternaryGeometry ternarySystem
+    tlrAngles<-         ternaryGeometry ternarySystem
+    ternaryGeometry     ternarySystem
+    ternaryGeometry<-   ternarySystem
+    ternaryVariables    ternarySystem
+    ternaryVariables<-  ternarySystem
+
+aa04-ternarySystems.R
+
+    ternarySystemEnv    (environment)
+    getTernarySystem
+    listTernarySystem
+    
+onAttach.R
+    
+    .onAttach
+
+ternaryplot.R
+    
+    ternaryData         ternarySystem character missing     (includes tests)
+    
+    .setTernarySystem
+    ternaryWindow       ternarySystem character missing
+    ternaryBox          ternarySystem
+    ternaryPoints       data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternarySegments     data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryArrows       data.frame          >> make function of "ternarySystem character" (+ internal 'data' handling)
+    .ternaryGridBase    ternarySystem
+    .ternaryTicks       ternarySystem
+    ternaryGrid         ternarySystem
+    
+    ternaryPlot         data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+        TO DO: type = "p" points, "l" lines, "b" both, "c" counts, 
+               "de" density, "di" distance (contour chosen via "...")
+        TO DO: facet = {category}, fCol, fPch, zCol, zCex
+        TO DO: make axes ticks depend on axTicks()
+        TO DO: make arrows and arrows labels distance from the plot a function of margin size using par("plt") 
+               and *backward* calculating the label position
+               
+               (1) regression between plt and usr (plt -> usr) for plotting points into margin, in X-axis margin (Y coordinates!)
+               (2) convert between axis margin line par( "mgp" )[2] to relative 0-1 coordinates of the margin, using par( "mar" )
+                   (= number of lines in the margin). Summary mgp -> 0-1 coords -> plt -> XY (usr)
+                   transfMgpTo0_1() transf0_1ToPlt() transfPltToXY() 
+               (3) converting from X-Y to ternary coordinates with ternary2xy() 
+                   that gives the Y-distance between the triangle frame and the axis labels
+               (4) Using that distance to position the other two axis arrows and labels
+    
+    ternaryLims         data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
+    deg2rad             
+    ternary2xy              data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryClockSwitch  data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryText         data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
+    .ternaryAxisArrowsBase ternarySystem
+    .ternaryAxisArrows  ternarySystem
+    
+    TO DO: ternaryLines ternarySystem 
+    
+    TO DO: ternaryPolygon ternarySystem 
+    TO DO: ternaryClasses ternarySystem         >> draw ternary classification systems
+    TO DO: ternaryClassify ternarySystem        >> Same as ternaryOver
+    
+    TO DO: ternaryDensity ternarySystem 
+    TO DO: ternaryBin ternarySystem 
+    TO DO: ternaryDistance mahalanobis
+    TO DO: ternaryContour ternaryDensity ternaryBin 
+    
+    TO DO: ternaryNormalise ternarySystem 
+    
+    TO DO: as.data.frame ternarySystem          >> what = "vertices" or "classes"
+    
+    TO DO: ternaryTheme( "default" )    Switch between themes
+    TO DO: more graphical parameters from par() can be overwritten with tpPar()
+    
+    TO DO: ternary2SpatialPointsDataFrame ternarySystem+data.frame or ternaryData or ternarySystem (includes extra columns)
+    TO DO: ternary2SpatialPolygonsDataFrame ternarySystem or ternaryPolygons (classes)
+    
+    TO DO: ternaryOver      >> ternary version of sp::over
+    TO DO: ternaryAggregate >> ternary version of sp::aggregate
+    
+    TO DO: use ternaryGrid (ternaryPolygons) + ternaryAggregate to calculate summary statistics
+    
+    
+Examples:
+    
+    Ternary Diagrams of Shepard and Pejrup:
+    http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=rysgran/man/rysgran.ternary.Rd&d=R_CC
+    http://www.mgs.md.gov/coastal_geology/shepards.html
+    
+    QAPF diagram:
+    http://en.wikipedia.org/wiki/QAPF_diagram
+    
+    http://en.wikipedia.org/wiki/De_Finetti_diagram
+
+Graphical parameters:
+    
+    See plotParameters.xls
+    
+    Notes:
+    Number segments in arrows   yes tpPar("arrow.seg")
+    Margins                     no  tpPar("mar")
+    
+    type = 
+        "n"     nothing
+        "p"     points (ternaryPoints) or text if !is.null(labels) (ternaryText)
+        "l"     lines (ternaryLines) 
+        "b"     both points and lines
+        "d"     density (ternaryGrid + ternaryDensity)
+        "c"     counts (ternaryGrid + ternaryCounts)
+    
+    facet      Factor variable for plot facets (sub-plots) 
+    
+    extra      A list of parameters passed to ternaryPoints or ternaryLines
+        fPch        Factor variable for point symbols 
+        fCol        Factor variable for point or line colors
+        fLty        Factor variable for line type
+        cCol        Continuous variable for point or line colors    use cut( x, breaks = 5 )
+        cCex        Continuous variable for point expansion         use cut( x, breaks = 5 )
+        position    Legend position(s) (if several)
+    
+    

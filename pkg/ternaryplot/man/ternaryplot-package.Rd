@@ -3,11 +3,7 @@
 \alias{ternaryplot-package}
 \title{Ternary plots and ternary classifications}
 \description{
-  Ternary plots and ternary classifications.
-}
-\details{
-  Ternary plots and ternary classifications. S4 classes for
-  ternary data, ternary plots and ternary classification.
+  Ternary plots and ternary classifications
 }
 \examples{
 # Examples coming later
