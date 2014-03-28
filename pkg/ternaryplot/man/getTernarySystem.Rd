@@ -9,7 +9,7 @@
   classification to be fetched.}
 }
 \value{
-  A \code{\link[ternaryplot]{ternarySystem}} object.
+  A \code{ternarySystem} object.
 }
 \description{
   Fetch a pre-defined ternary classification system

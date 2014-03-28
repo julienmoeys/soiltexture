@@ -21,7 +21,7 @@
 #'  A \code{ternarySystem} object, as created with 
 #'  \code{\link[ternaryplot]{createTernarySystem}}, or a 
 #'  \code{ternaryVariables} object, as created with 
-#'  \code{\link[ternaryplot]{ternaryVariables}}.
+#'  \code{\link[ternaryplot]{createTernaryVariables}}.
 #'
 #'@param \dots
 #'  Additional parameters passed to \code{\link[ternaryplot]{ternaryCheck}}.
@@ -136,7 +136,7 @@ blrNames.ternaryVariables <- function( s, ... ){
 #'  A \code{ternarySystem} object, as created with 
 #'  \code{\link[ternaryplot]{createTernarySystem}}, or a 
 #'  \code{ternaryVariables} object, as created with 
-#'  \code{\link[ternaryplot]{ternaryVariables}}.
+#'  \code{\link[ternaryplot]{createTernaryVariables}}.
 #'
 #'@param \dots
 #'  Additional parameters passed to \code{\link[ternaryplot]{ternaryCheck}}.

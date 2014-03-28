@@ -373,9 +373,10 @@ ternaryCheck.ternarySystem <- function(
 #'@example inst/examples/createTernaryGeometry-example.R
 #'
 #'
-#'@name createTernaryGeometry
+#'@rdname createTernaryGeometry
+#'@aliases ternaryGeometry
 #'
-#'@export createTernaryGeometry
+#'@export
 #'
 createTernaryGeometry <- function(
  tlrAngles  = c( 60, 60, 60 ), 
@@ -433,9 +434,10 @@ createTernaryGeometry <- function(
 #'@example inst/examples/createTernaryVariables-example.R
 #'
 #'
-#'@name createTernaryVariables
+#'@rdname createTernaryVariables
+#'@aliases ternaryVariables
 #'
-#'@export createTernaryVariables
+#'@export 
 #'
 createTernaryVariables <- function(
  blrNames   = paste0( "F", 1:3 ), 
@@ -518,9 +520,9 @@ createTernaryVariables <- function(
 #'@example inst/examples/createTernarySystem-example.R
 #'
 #'
-#'@name ternarySystem-class
-#'
-#'@exportClass ternarySystem
+#'@rdname createTernarySystem
+#'@aliases ternarySystem
+#'@export
 #'
 createTernarySystem <- function(
  ternaryGeometry = NULL, 

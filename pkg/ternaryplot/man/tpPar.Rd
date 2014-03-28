@@ -37,9 +37,9 @@
   \item{fracSumTol}{Single numeric. Tolerance on the sum of
   the 3 ternary fractions. Overall tolerance is
   \code{fracSum * fracSumTol}, where \code{fracSum} is the
-  expected sum of the 3 ternary fractions, as given by a
-  \code{\link[ternaryplot]{ternaryGeometry}} or a
-  \code{\link[ternaryplot]{ternarySystem}}.}
+  expected sum of the 3 ternary fractions. See
+  \code{\link[ternaryplot]{createTernaryGeometry}} or
+  \code{\link[ternaryplot]{createTernarySystem}}.}
 
   \item{ticksAt}{Vector of numeric. Pre-defined position of
   the tick-marks for the 3 axis.  Between 0 and 'fracSum'

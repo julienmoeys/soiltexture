@@ -14,8 +14,8 @@
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with
-  \code{\link[ternaryplot]{ternarySystem}}, or a single
-  \code{character} string. Can be missing.}
+  \code{\link[ternaryplot]{createTernarySystem}}, or a
+  single \code{character} string. Can be missing.}
 
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing point ternary data
