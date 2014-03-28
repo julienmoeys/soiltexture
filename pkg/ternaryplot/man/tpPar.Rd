@@ -3,7 +3,9 @@
 \title{Get or set default parameters for the package.}
 \usage{
   tpPar(par = NULL, reset = FALSE, testRange, testSum,
-    fracSumTol, ticksAt, ticksShift, arrowsShift)
+    fracSumTol, vertices, classes, scale, okClock, sp,
+    ticksAt, ticksShift, arrowsShift, arrowsCoords,
+    arrowsBreak, grid.line.col, axis.line.lwd, plot.bg)
 }
 \arguments{
   \item{par}{Three possible cases: \itemize{ \item If
@@ -36,8 +38,8 @@
   the 3 ternary fractions. Overall tolerance is
   \code{fracSum * fracSumTol}, where \code{fracSum} is the
   expected sum of the 3 ternary fractions, as given by a
-  \code{\linkS4class{ternaryGeometry}} or a
-  \code{\linkS4class{ternarySystem}}.}
+  \code{\link[ternaryplot]{ternaryGeometry}} or a
+  \code{\link[ternaryplot]{ternarySystem}}.}
 
   \item{ticksAt}{Vector of numeric. Pre-defined position of
   the tick-marks for the 3 axis.  Between 0 and 'fracSum'
@@ -50,6 +52,61 @@
   \item{arrowsShift}{Vector of tow numeric values. Axis'
   arrows' shift from their axis, expressed so that
   \code{arrowsShift * fracSum} is the start and end point.}
+
+  \item{vertices}{Vertices of a ternary classification
+  (default): a \code{\link[base]{data.frame}} with 4
+  columns \code{id}, \code{bo}, \code{le} and \code{ri}, as
+  the identifier and the the 3 fractions (bottom, left,
+  right) of the vertices.  Each row is a vertex.}
+
+  \item{classes}{Polygons (classes outline) of a ternary
+  classification (default): a
+  \code{\link[base]{data.frame}} with 3 columns
+  \code{abbrev}, \code{name} and \code{verticesId}, as the
+  abbreviation, name and identifier of the vertices of each
+  class. Notice that \code{verticesId} must be a
+  \code{\link[base]{list}} of vectors, each containing the
+  vertices that define the polygon.  You can use
+  \code{\link[base]{list}}\code{()} to preserve the list
+  format when defining the \code{\link[base]{data.frame}}.
+  For example \code{ data.frame( "abbrev" = "A", "name" =
+  "Aa", "verticesId" = I( list( 1:3 ) ) ) }}
+
+  \item{scale}{Scale-extent of a ternary classification
+  (default): a \code{\link[base]{data.frame}} with 3
+  columns \code{bo}, \code{le} and \code{ri}, and 2 rows
+  (\code{min} and \code{max}), as the min and max of the 3
+  fractions to be displayed (bottom, left, right).}
+
+  \item{okClock}{A list of vectors of 3 logical values,
+  with the valid \code{blrClock} geometries.}
+
+  \item{sp}{Single logical value. If \code{TRUE}, the
+  low-level graphic functions output a \code{Spatial*}
+  object of the graphical element that can be reused in
+  later calculations with \code{\link[sp]{sp}}. If
+  \code{FALSE}, simply returns a
+  \code{\link[base]{data.frame}} with the x-y coordinates
+  of the graphical element.}
+
+  \item{grid.line.col}{Single character value representing
+  a color. Color of the grid-lines added to a ternary
+  plot.}
+
+  \item{arrowsCoords}{Parameters used internally to define
+  axis-arrows location}
+
+  \item{arrowsBreak}{Single logical value. If \code{TRUE},
+  axis-arrows are 'browken' (i.e. with the arrow starting
+  parallel to the axis and finishing toward the axis).}
+
+  \item{axis.line.lwd}{Single numerical value. Line
+  thickness for the axis-lines (including ticks and
+  arrows)}
+
+  \item{plot.bg}{Single character value representing a
+  color. Fill-color of the plot region (frame). Set to
+  \code{NA} or \code{"transparemt"} to suppress color.}
 }
 \value{
   Returns a partial or complete list of (actual) parameter

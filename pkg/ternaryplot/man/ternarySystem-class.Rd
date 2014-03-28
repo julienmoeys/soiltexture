@@ -1,55 +1,86 @@
 \name{ternarySystem-class}
 \alias{ternarySystem-class}
-\title{Class for defining a ternary classification}
-\description{
-  Class for defining a ternary classification. ternary
-  classification are polygons drawn on top of ternary
-  plots, that define different zones in the fractions
+\title{Creates a ternarySystem object: ternary plot system definition.}
+\usage{
+  createTernarySystem(ternaryGeometry = NULL,
+    ternaryVariables = NULL, main = character(0),
+    vertices = NULL, classes = NULL, scale = NULL, ...)
 }
-\section{Slots}{
-  \describe{ \item{\code{ternaryGeometry}:}{ An object of
-  class \code{ternaryGeometry}. See
-  \code{\link{ternaryGeometry-class}}; }
-  \item{\code{ternaryVariables}:}{ An object of class
-  \code{ternaryVariables}. See
-  \code{\link{ternaryVariables-class}}; }
-  \item{\code{main}:}{ Single character string, or single
-  \code{\link[base]{expression}}. Title of the ternary
-  plot; } }
+\arguments{
+  \item{ternaryGeometry}{A ternary geometry (as defined by
+  \code{\link[ternaryplot]{createTernaryGeometry}}). If
+  \code{NULL}, use the default output of
+  \code{\link[ternaryplot]{createTernaryGeometry}}.}
+
+  \item{ternaryVariables}{A set of ternary variables (as
+  defined by
+  \code{\link[ternaryplot]{createTernaryVariables}}. If
+  \code{NULL}, use the default output of
+  \code{\link[ternaryplot]{createTernaryVariables}}.}
+
+  \item{main}{Single character string. Title of the
+  triangle plot.}
+
+  \item{vertices}{See \code{\link[ternaryplot]{tpPar}}. If
+  non-null, \code{\link[base]{data.frame}} with 4 columns:
+  \code{id}, and 3 other columns corresponding to
+  \code{blrNames} in \code{ternaryVariables}. If
+  \code{NULL}, default values will be used
+  \code{getTpPar("vertices")}, and the columns names
+  changed to those of \code{ternaryVariables}.}
+
+  \item{classes}{See \code{\link[ternaryplot]{tpPar}}.}
+
+  \item{scale}{See \code{\link[ternaryplot]{tpPar}}. If
+  non-null, \code{\link[base]{data.frame}} with 3 columns,
+  corresponding to \code{blrNames} in
+  \code{ternaryVariables}. If \code{NULL}, default values
+  will be used \code{getTpPar("scale")}, and the columns
+  names changed to those of \code{ternaryVariables}.  NOT
+  USED YET.}
+
+  \item{\dots}{Additional parameters passed to
+  \code{\link[ternaryplot]{ternaryCheck}}}
+}
+\description{
+  Creates a ternarySystem object: ternary plot system
+  definition.
+}
+\details{
+  Ternary systems are a combination of (a) a ternary
+  geometry (as defined by
+  \code{\link[ternaryplot]{createTernaryGeometry}}), (b) a
+  set of ternary variables (as defined by
+  \code{\link[ternaryplot]{createTernaryVariables}} and an
+  optional classification system, that is polygons drawn on
+  top of ternary plots, that define different zones in the
+  fractions.
+
+  The classification is defined by a collection of polygons
+  (in \code{classes}) with different \code{vertices}.
 }
 \examples{
 library( "ternaryplot" ) 
 
 
 ## Default variables
-tsy <- new( "ternarySystem" ) 
+tsy <- createTernarySystem() 
 tsy 
 
 ## Custom variables
-tsy2 <- new( 
-    "ternarySystem", 
-    "ternaryVariables" = new( 
-        "ternaryVariables", 
-        # "blrNames"  = c( "CLAY", "SILT", "SAND" ), # won't work
+tsy2 <- createTernarySystem( 
+    "ternaryVariables" = createTernaryVariables( 
+        "blrNames"  = c( "CLAY", "SILT", "SAND" ), 
         "blrLabels" = c( "Clay [\%]", "Silt [\%]", "Sand [\%]" ) 
     ),  
-    "ternaryGeometry" = new( 
+    "ternaryGeometry" = createTernaryGeometry( 
         "ternaryGeometry", 
         "fracSum"   = 100, 
         "tlrAngles" = c( 45, 45, 90 ) # top, left, right angles
     ), 
     "main" = "My ternary plot" ) 
 
-
-
-# Changing variable names must be done 'afterwards', because 
-#   it also requires other internal changes in the ternarySystem
-#   (like the definition of class vertices)
-blrNames( tsy2 ) <- c( "CLAY", "SILT", "SAND" ) 
 tsy2
 
-
-## Methods defined for ternaryGeometry:
-showMethods( class = "ternarySystem" ) 
 }
 

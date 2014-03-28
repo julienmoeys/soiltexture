@@ -1,27 +1,40 @@
-\docType{methods}
 \name{blrClock}
 \alias{blrClock}
-\alias{blrClock,ternarySystem-method}
+\alias{blrClock.ternaryGeometry}
+\alias{blrClock.ternarySystem}
 \alias{blrClock<-}
-\alias{blrClock<-,ternarySystem-method}
+\alias{blrClock<-.ternaryGeometry}
+\alias{blrClock<-.ternarySystem}
 \title{Set or get the bottom-left-right orientation of a ternarySystem
  object}
 \usage{
-  \S4method{blrClock}{ternarySystem}( x, \dots )
+  blrClock(s, ...)
 
-  \S4method{blrClock}{ternarySystem}( x, \dots ) <- value
+  \method{blrClock}{ternarySystem} (s, ...)
+
+  \method{blrClock}{ternaryGeometry} (s, ...)
+
+  blrClock(s, ..., value) <- value
+
+  \method{blrClock}{ternarySystem} (s, ..., value) <- value
+
+  \method{blrClock}{ternaryGeometry} (s, ..., value) <-
+    value
 }
 \arguments{
-  \item{x}{A \code{\linkS4class{ternarySystem}} object.}
+  \item{s}{A \code{ternarySystem} object, as created with
+  \code{\link[ternaryplot]{createTernarySystem}}, or a
+  \code{ternaryGeometry} object, as created with
+  \code{\link[ternaryplot]{createTernaryGeometry}}.}
 
-  \item{\dots}{Additional parameters passed to specific
-  methods.}
+  \item{\dots}{Additional parameters passed to
+  \code{\link[ternaryplot]{ternaryCheck}}.}
 
   \item{value}{A vector of 3 logical values.
   Bottom-left-right orientation of a ternarySystem object.}
 }
 \description{
   Set or get the bottom-left-right orientation of a
-  \code{\linkS4class{ternarySystem}} object
+  \code{ternarySystem} object.
 }
 

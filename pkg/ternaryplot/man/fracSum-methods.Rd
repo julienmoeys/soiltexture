@@ -1,18 +1,31 @@
-\docType{methods}
 \name{fracSum}
 \alias{fracSum}
-\alias{fracSum,ternarySystem-method}
+\alias{fracSum.ternaryGeometry}
+\alias{fracSum.ternarySystem}
 \alias{fracSum<-}
-\alias{fracSum<-,ternarySystem-method}
+\alias{fracSum<-.ternaryGeometry}
+\alias{fracSum<-.ternarySystem}
 \title{Set or get the sum of the three fractions of a ternarySystem
  object}
 \usage{
-  \S4method{fracSum}{ternarySystem}( x, \dots )
+  fracSum(s, ...)
 
-  \S4method{fracSum}{ternarySystem}( x, \dots ) <- value
+  \method{fracSum}{ternarySystem} (s, ...)
+
+  \method{fracSum}{ternaryGeometry} (s, ...)
+
+  fracSum(s, ..., value) <- value
+
+  \method{fracSum}{ternarySystem} (s, ..., value) <- value
+
+  \method{fracSum}{ternaryGeometry} (s, ..., value) <-
+    value
 }
 \arguments{
-  \item{x}{A \code{\linkS4class{ternarySystem}} object.}
+  \item{s}{A \code{ternarySystem} object, as created with
+  \code{\link[ternaryplot]{createTernarySystem}}, or a
+  \code{ternaryGeometry} object, as created with
+  \code{\link[ternaryplot]{createTernaryGeometry}}.}
 
   \item{\dots}{Additional parameters passed to specific
   methods.}
@@ -22,6 +35,6 @@
 }
 \description{
   Set or get the sum of the three fractions of a
-  \code{\linkS4class{ternarySystem}} object
+  \code{ternarySystem} object.
 }
 

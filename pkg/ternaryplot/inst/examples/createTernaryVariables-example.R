@@ -1,17 +1,14 @@
+
 library( "ternaryplot" ) 
 
 
 ## Default variables
-tv <- new( "ternaryVariables" ) 
+tv <- createTernaryVariables() 
 tv 
 
 ## Custom variables
-tv2 <- new( 
-    "ternaryVariables", 
+tv2 <- createTernaryVariables( 
     blrNames  = c( "CLAY", "SILT", "SAND" ), 
     blrLabels = c( "Clay [%]", "SILT [%]", "SAND [%]" ) ) 
 tv2 
 
-
-## Methods defined for ternaryGeometry:
-showMethods( class = "ternaryVariables" ) 

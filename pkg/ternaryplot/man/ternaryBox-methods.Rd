@@ -1,19 +1,37 @@
-\docType{methods}
 \name{ternaryBox}
 \alias{ternaryBox}
-\alias{ternaryBox,ternarySystem-method}
-\title{Draw a frame (bounding-box) around an existing ternaryPlot}
+\alias{ternaryBox.ternarySystem}
+\title{Draw a Box around a ternary plot}
 \usage{
   ternaryBox(s, ...)
+
+  \method{ternaryBox}{ternarySystem} (s, .plot = TRUE, ...)
 }
 \arguments{
-  \item{s}{A \code{\linkS4class{ternarySystem}} object.}
+  \item{s}{A \code{\link[ternaryplot]{ternarySystem}}
+  object.}
 
-  \item{\dots}{Additional parameters passed to specific
-  methods.}
+  \item{.plot}{Single logical value. Set to \code{FALSE} if
+  you don't want to plot the graphical element and simply
+  returns them as x-y coordinates (or \code{Spatial*}
+  objects if \code{sp} is set to \code{TRUE} in
+  \code{\link{tpPar}}).}
+
+  \item{\dots}{Additional parameters passed to
+  \code{\link[graphics]{polygon}}.  You can for instance
+  set \code{border} for the color of the box outline,
+  \code{col}, for the fill-color of the box, \code{lwd}
+  (outline thickness) or \code{lty} (line-type).}
+}
+\value{
+  Invisibly returns the graphical element as x-y
+  coordinates or a \code{Spatial*} objects (see
+  \code{.plot}).
 }
 \description{
-  Draw a frame (bounding-box) around an existing
-  ternaryPlot
+  Draw a Box around a ternary plot
+}
+\seealso{
+  \code{\link[graphics]{box}}.
 }
 

@@ -1,18 +1,35 @@
-\docType{methods}
 \name{tlrAngles}
+\alias{ternaryGeometry<-}
 \alias{tlrAngles}
-\alias{tlrAngles,ternarySystem-method}
+\alias{tlrAngles.ternaryGeometry}
+\alias{tlrAngles.ternarySystem}
 \alias{tlrAngles<-}
-\alias{tlrAngles<-,ternarySystem-method}
+\alias{tlrAngles<-.ternaryGeometry}
+\alias{tlrAngles<-.ternarySystem}
 \title{Set or get the top, left and right angles of a ternary system
  object}
 \usage{
-  \S4method{tlrAngles}{ternarySystem}( x, \dots )
+  tlrAngles(s, ...)
 
-  \S4method{tlrAngles}{ternarySystem}( x, \dots ) <- value
+  \method{tlrAngles}{ternarySystem} (s, ...)
+
+  \method{tlrAngles}{ternaryGeometry} (s, ...)
+
+  tlrAngles(s, ..., value) <- value
+
+  \method{tlrAngles}{ternarySystem} (s, ..., value) <-
+    value
+
+  \method{tlrAngles}{ternaryGeometry} (s, ..., value) <-
+    value
+
+  ternaryGeometry(s, ..., value) <- value
 }
 \arguments{
-  \item{x}{A \code{\linkS4class{ternarySystem}} object.}
+  \item{s}{A \code{ternarySystem} object, as created with
+  \code{\link[ternaryplot]{createTernarySystem}}, or a
+  \code{ternaryGeometry} object, as created with
+  \code{\link[ternaryplot]{createTernaryGeometry}}.}
 
   \item{\dots}{Additional parameters passed to specific
   methods.}
@@ -23,6 +40,6 @@
 }
 \description{
   Set or get the top, left and right angles of a
-  \code{\linkS4class{ternarySystem}} object
+  \code{ternarySystem} object.
 }
 

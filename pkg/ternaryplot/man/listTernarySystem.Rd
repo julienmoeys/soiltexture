@@ -1,8 +1,8 @@
-\name{ternarySystemList}
-\alias{ternarySystemList}
+\name{listTernarySystem}
+\alias{listTernarySystem}
 \title{List all pre-defined ternary classification systems}
 \usage{
-  ternarySystemList()
+  listTernarySystem()
 }
 \value{
   A vector of character strings, names of the pre-defined

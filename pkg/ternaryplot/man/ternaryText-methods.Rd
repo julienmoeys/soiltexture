@@ -1,32 +1,44 @@
-\docType{methods}
 \name{ternaryText}
 \alias{ternaryText}
-\alias{ternaryText,data.frame-method}
-\alias{ternaryText,matrix-method}
-\title{Draw text strings (labels) on a triangle plot}
+\alias{ternaryText.ternarySystem}
+\title{Add Text to a ternary plot}
 \usage{
-  ternaryText(x, labels, s, ...)
+  ternaryText(s, ...)
+
+  \method{ternaryText}{ternarySystem} (s, x, labels,
+    .plot = TRUE, ...)
 }
 \arguments{
+  \item{s}{A \code{\link[ternaryplot]{ternarySystem}}
+  object, or a character string naming a pre-defined
+  \code{ternarySystem}.  If missing, set to
+  \code{default}.}
+
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing ternary
   data-points, coordinates of the text strings to be added
   on the plot.}
 
-  \item{s}{A \code{\linkS4class{ternarySystem}} object, or
-  a character string naming a pre-defined
-  \code{ternarySystem}.  If missing, set to
-  \code{default}.}
-
   \item{labels}{A vector of character strings, or
   expressions to be added on the triangle plot. See
   \code{\link[graphics]{text}}.}
 
+  \item{.plot}{Single logical value. Set to \code{FALSE} if
+  you don't want to plot the graphical element and simply
+  returns them as x-y coordinates (or \code{Spatial*}
+  objects if \code{sp} is set to \code{TRUE} in
+  \code{\link{tpPar}}).}
+
   \item{\dots}{Additional parameters passed to
   \code{\link[graphics]{text}}.}
 }
+\value{
+  Invisibly returns the graphical element as x-y
+  coordinates or a \code{Spatial*} objects (see
+  \code{.plot}).
+}
 \description{
-  Draw text strings (labels) on a triangle plot
+  Add Text to a ternary plot
 }
 \seealso{
   \code{\link[graphics]{points}}.

@@ -1,0 +1,27 @@
+\name{.ternaryClockSwitch}
+\alias{.ternaryClockSwitch}
+\title{INTERNAL. Fetch a pre-defined ternary classification system}
+\usage{
+  .ternaryClockSwitch(s, ttt, txf, ftx, fff)
+}
+\arguments{
+  \item{s}{Single character string. Name of the ternary
+  classification to be fetched.}
+
+  \item{ttt}{Value returned if s clock is TTT}
+
+  \item{txf}{Value returned if s clock is TXF}
+
+  \item{ftx}{Value returned if s clock is FTX}
+
+  \item{fff}{Value returned if s clock is FFF}
+}
+\value{
+  A \code{\link[ternaryplot]{ternarySystem}} object.
+}
+\description{
+  INTERNAL. Fetch a pre-defined ternary classification
+  system
+}
+\keyword{internal}
+

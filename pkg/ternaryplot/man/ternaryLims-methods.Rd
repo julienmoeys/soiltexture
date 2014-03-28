@@ -1,24 +1,24 @@
-\docType{methods}
-\name{ternaryLims}
-\alias{ternaryLims}
-\alias{ternaryLims,data.frame-method}
-\alias{ternaryLims,matrix-method}
-\title{NOT EXPORTED: Find optimal axis limits for a ternary plot.}
+\name{.ternaryLims}
+\alias{.ternaryLims}
+\alias{.ternaryLims.character}
+\alias{.ternaryLims.ternarySystem}
+\title{INTERNAL: Find optimal axis limits for a ternary plot.}
 \usage{
-  \S4method{ternaryLims}{data.frame}( x, s = "default",
-    \dots )
+  .ternaryLims(s, ...)
 
-  \S4method{ternaryLims}{matrix}( x, s = "default", \dots )
+  \method{.ternaryLims}{character} (s, ...)
+
+  \method{.ternaryLims}{ternarySystem} (s, x, ...)
 }
 \arguments{
+  \item{s}{Either a character string naming the ternary
+  classification system to be used (if pre-defined) or a
+  \code{\link[ternaryplot]{ternarySystem}} x.}
+
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing point ternary data
   (x-y-x) to be ploted on the graph.  It should contain the
   3 columns names given in \code{s};}
-
-  \item{s}{Either a character string naming the ternary
-  classification system to be used (if pre-defined) or a
-  \code{\linkS4class{ternarySystem}} x.}
 
   \item{\dots}{Additional parameters passed to specific
   methods.}
@@ -29,7 +29,7 @@
   minimun value and the maximum value of each variable.
 }
 \description{
-  NOT EXPORTED: Find optimal axis limits for a ternary
-  plot.
+  INTERNAL: Find optimal axis limits for a ternary plot.
 }
+\keyword{internal}
 

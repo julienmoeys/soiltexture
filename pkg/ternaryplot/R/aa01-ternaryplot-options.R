@@ -1,16 +1,15 @@
-# +-------------------------------------------------------------+
-# | Language: R + roxygen2 inline documentation
-# | Package: ternaryplot 
-# | Author(s): Julien Moeys <Julien.Moeys@@slu.se> 
-# | License: AGPL3, Affero General Public License version 3 
-# +-------------------------------------------------------------+
-
-
-
 
 # +-------------------------------------------------------------+
-# Create two environment that will contain the package's
-# parameters.
+# | Package:    ternaryplot                                   |
+# | Language:   R + roxygen2 inline documentation               |
+# | Author(s):  Julien Moeys <Julien.Moeys@@slu.se>             |
+# | License:    AGPL3, Affero General Public License version 3  |
+# +-------------------------------------------------------------+
+
+
+
+# ===============================================================
+# Create two environment that will contain the package parameters
 
 # - Backup / reference 
 .tpParList <- new.env() 
@@ -22,25 +21,85 @@ tpParList  <- new.env()
 
 # Set some default parameters: 
 
-#.tpParList[[ "dummy" ]]      <- NULL 
-.tpParList[[ "testSum" ]]     <- TRUE 
-.tpParList[[ "testRange" ]]   <- TRUE 
-.tpParList[[ "fracSumTol" ]]  <- 1/1000 
-.tpParList[[ "ticksAt" ]]     <- seq( from = 0, to = 1, by = .1 ) 
-.tpParList[[ "ticksShift" ]]  <- 0.025 
-.tpParList[[ "arrowsShift" ]] <- c( 0.05, 0.10 ) 
+# NON-GRAPHICAL PARAMETERS
+# ========================
+
+.tpParList[[ "testSum" ]]       <- TRUE 
+
+.tpParList[[ "testRange" ]]     <- TRUE 
+
+.tpParList[[ "fracSumTol" ]]    <- 1/1000 
+
+.tpParList[[ "vertices" ]]      <- data.frame( 
+    "id"    = integer(0), 
+    "bo"    = numeric(0), 
+    "le"    = numeric(0), 
+    "ri"    = numeric(0)  
+)   
+
+.tpParList[[ "classes" ]]       <- data.frame( 
+    "abbrev"     = character(0), 
+    "name"       = character(0),  
+    "verticesId" = I( vector( length = 0, mode = "list" ) ),
+    stringsAsFactors = FALSE 
+)   
+
+.tpParList[[ "scale" ]]         <- data.frame( 
+    "bo" = c( 000, 100 ),  
+    "le" = c( 000, 100 ),  
+    "ri" = c( 000, 100 ), 
+    row.names = c( "min", "max" ) 
+)   
+
+.tpParList[[ "okClock" ]]       <- list( 
+    #       #    Bottom Left    Right  
+    "TTT"   = c( TRUE,  TRUE,   TRUE    ), 
+    "FFF"   = c( FALSE, FALSE,  FALSE   ), 
+    "TXF"   = c( TRUE,  NA,     FALSE   ), 
+    "FTX"   = c( FALSE, TRUE,   NA      )  
+   #"XFT"   = c( NA,    FALSE,  TRUE    )  # Un-tested
+)   
+
+.tpParList[[ "sp" ]]            <- TRUE 
+
+# GRAPHICAL PARAMETERS
+# ====================
+
+# Plot region (frame)
+# -------------------
+
+.tpParList[[ "plot.bg" ]]       <- NA 
+
+# Axis
+# ----
+
+.tpParList[[ "ticksAt" ]]       <- seq( from = 0, to = 1, by = .1 ) 
+
+.tpParList[[ "ticksShift" ]]    <- 0.025 
+
+.tpParList[[ "arrowsShift" ]]   <- c( 0.075, 0.125 ) 
+
+.tpParList[[ "arrowsCoords" ]]  <- c( .15, .45, .45, .55 ) 
+
+.tpParList[[ "arrowsBreak" ]]   <- TRUE 
+
+.tpParList[[ "axis.line.lwd" ]] <- NULL 
+
+# Grid
+# ----
+
+.tpParList[[ "grid.line.col" ]] <- "lightgray" 
 
 
 
 
-# +-------------------------------------------------------------+
-# Define the function that handles the package default parameters: 
+# tpPar =========================================================
 
 #'Get or set default parameters for the package.
 #'
-#'Get or set default parameters for the package. Notice changes done to the
-#'parameter values are reset everytime the R session is closed and the package
-#'is reloaded.
+#'Get or set default parameters for the package. Notice changes 
+#'  done to the parameter values are reset everytime the R session 
+#'  is closed and the package is reloaded.
 #'
 #'
 #'@details 
@@ -90,7 +149,7 @@ tpParList  <- new.env()
 #'  Single numeric. Tolerance on the sum of the 3 ternary fractions. Overall 
 #'  tolerance is \code{fracSum * fracSumTol}, where \code{fracSum} is the 
 #'  expected sum of the 3 ternary fractions, as given by a 
-#'  \code{\linkS4class{ternaryGeometry}} or a \code{\linkS4class{ternarySystem}}.
+#'  \code{\link[ternaryplot]{ternaryGeometry}} or a \code{\link[ternaryplot]{ternarySystem}}.
 #'
 #'@param ticksAt 
 #'  Vector of numeric. Pre-defined position of the tick-marks for the 3 axis.
@@ -104,6 +163,66 @@ tpParList  <- new.env()
 #'  Vector of tow numeric values. Axis' arrows' shift from their 
 #'  axis, expressed so that \code{arrowsShift * fracSum} is the 
 #'  start and end point.
+#'
+#'@param vertices
+#'  Vertices of a ternary classification (default): a 
+#'  \code{\link[base]{data.frame}} with 4 columns \code{id}, 
+#'  \code{bo}, \code{le} and \code{ri}, as the identifier and 
+#'  the the 3 fractions (bottom, left, right) of the vertices. 
+#'  Each row is a vertex.
+#'
+#'@param classes
+#'  Polygons (classes outline) of a ternary classification (default): 
+#'  a \code{\link[base]{data.frame}} with 3 columns \code{abbrev}, 
+#'  \code{name} and \code{verticesId}, as the abbreviation, 
+#'  name and identifier of the vertices of each class. Notice 
+#'  that \code{verticesId} must be a \code{\link[base]{list}} of 
+#'  vectors, each containing the vertices that define the polygon. 
+#'  You can use \code{\link[base]{list}}\code{()} to preserve 
+#'  the list format when defining the \code{\link[base]{data.frame}}.
+#'  For example 
+#'  \code{ data.frame( "abbrev" = "A", "name" = "Aa", "verticesId" = I( list( 1:3 ) ) ) }
+#'
+#'@param scale
+#'  Scale-extent of a ternary classification (default): a 
+#'  \code{\link[base]{data.frame}} with 3 columns \code{bo}, 
+#'  \code{le} and \code{ri}, and 2 rows (\code{min} and \code{max}), 
+#'  as the min and max of the 3 fractions to be displayed (bottom, 
+#'  left, right).
+#'
+#'@param okClock
+#'  A list of vectors of 3 logical values, with the valid 
+#'  \code{blrClock} geometries.
+#'
+#'@param sp 
+#'  Single logical value. If \code{TRUE}, the low-level graphic 
+#'  functions output a \code{Spatial*} object of the graphical 
+#'  element that can be reused in later calculations with 
+#'  \code{\link[sp]{sp}}. If \code{FALSE}, simply returns a 
+#'  \code{\link[base]{data.frame}} with the x-y coordinates of the 
+#'  graphical element.
+#'
+#'@param grid.line.col
+#'  Single character value representing a color. Color of the 
+#'  grid-lines added to a ternary plot.
+#'
+#'@param arrowsCoords 
+#'  Parameters used internally to define axis-arrows location
+#'
+#'@param arrowsBreak
+#'  Single logical value. If \code{TRUE}, axis-arrows are 'browken' 
+#'  (i.e. with the arrow starting parallel to the axis and finishing 
+#'  toward the axis). 
+#'
+#'@param axis.line.lwd
+#'  Single numerical value. Line thickness for the axis-lines 
+#'  (including ticks and arrows)
+#'
+#'@param plot.bg
+#'  Single character value representing a color. Fill-color of the 
+#'  plot region (frame). Set to \code{NA} or \code{"transparemt"} 
+#'  to suppress color.
+#'
 #'
 #'@return 
 #'  Returns a partial or complete list of (actual) parameter values, as a
@@ -119,9 +238,21 @@ tpPar <- function(
     testRange, 
     testSum, 
     fracSumTol, 
+    vertices, 
+    classes, 
+    scale, 
+    okClock, 
+    sp, 
+    
     ticksAt, 
     ticksShift, 
-    arrowsShift 
+    arrowsShift, 
+    arrowsCoords, 
+    arrowsBreak, 
+    grid.line.col, 
+    axis.line.lwd, 
+    plot.bg 
+    
 ){  
     parList <- names( formals(tpPar) ) 
     parList <- parList[ !(parList %in% c( "par", "reset" )) ] 
@@ -223,7 +354,7 @@ tpPar <- function(
 
 
 
-
+# getTpPar ======================================================
 
 #'Get a single default parameters for the package.
 #'
@@ -251,8 +382,7 @@ getTpPar <- function(
 
 
 
-
-# +-------------------------------------------------------------+
+# ===============================================================
 # Test that all parameters in '.tpParList' have been included in 
 # the function rspParameters() 
 
