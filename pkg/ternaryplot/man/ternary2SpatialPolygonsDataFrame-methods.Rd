@@ -5,11 +5,11 @@
 \usage{
   ternary2SpatialPolygonsDataFrame(x, ...)
 
-  \method{ternary2SpatialPolygonsDataFrame}{ternaryPolygons}
-    (x, ...)
+  \method{ternary2SpatialPolygonsDataFrame}{ternaryPolygons}(
+    x, ... )
 }
 \arguments{
-  \item{s}{A ternary*-class object.}
+  \item{x}{A ternary*-class object.}
 
   \item{\dots}{Additional parameters passed to specific
   methods.}

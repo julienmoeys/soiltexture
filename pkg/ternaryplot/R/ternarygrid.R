@@ -19,6 +19,9 @@
 #'  Either a single character string, or a \code{ternarySystem} 
 #'  object, as obtained from \code{\link[ternaryplot]{getTernarySystem}}
 #'
+#'@param n
+#'  Single integer value. Number of intervals
+#'
 #'@param \dots 
 #'  Additional parameters passed to specific methods.
 #'
@@ -140,12 +143,14 @@ createTernaryGrid.ternarySystem <- function(
 
 
 
+# ternary2SpatialPolygonsDataFrame ==============================
+
 #'Converts ternary*-class objects to SpatialPolygonsDataFrame
 #'
 #'Converts ternary*-class objects to \code{\link[sp]{SpatialPolygonsDataFrame}}
 #'
 #'
-#'@param s 
+#'@param x 
 #'  A ternary*-class object.
 #'
 #'@param \dots 
@@ -173,6 +178,9 @@ ternary2SpatialPolygonsDataFrame <- function(
 #'
 #'@method ternary2SpatialPolygonsDataFrame ternaryPolygons
 #'@S3method ternary2SpatialPolygonsDataFrame ternaryPolygons
+#'
+#'@usage \method{ternary2SpatialPolygonsDataFrame}{ternaryPolygons}( x, ... ) 
+#'
 ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
  x, 
  ... 

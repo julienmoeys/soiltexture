@@ -42,11 +42,10 @@
 #'  containing point ternary data (x-y-x) to be tested.
 #'
 #'@param .blrNames 
-#'  Vector of 3 character strings. Column names of the variables 
-#'  in \code{x} that corresponds to the bottom, left and right 
-#'  variables in \code{s} (\code{blrNames(s)}). If \code{NULL}, 
-#'  Columns and variable names in \code{x} and \code{s} should 
-#'  match.
+#'  See \code{\link[ternaryplot]{blrNames}}
+#'
+#'@param .fracSum 
+#'  See \code{\link[ternaryplot]{fracSum}}
 #'
 #'@param testRange 
 #'  Single logical. Test if the range of fraction is between 0 and 

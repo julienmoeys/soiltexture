@@ -65,6 +65,8 @@ blrNames.ternaryVariables <- function( s, ... ){
 
 #'@rdname blrNames-methods
 #'
+#'@usage blrNames( s, ... ) <- value
+#'
 #'@export
 #'
 `blrNames<-` <- function( 
@@ -81,6 +83,9 @@ blrNames.ternaryVariables <- function( s, ... ){
 #'
 #'@method blrNames<- ternarySystem
 #'@S3method blrNames<- ternarySystem
+#'
+#'@usage \method{blrNames}{ternarySystem}(s, ...) <- value
+#'
 `blrNames<-.ternarySystem` <- function( 
  s, 
  ..., 
@@ -109,6 +114,9 @@ blrNames.ternaryVariables <- function( s, ... ){
 #'
 #'@method blrNames<- ternaryVariables
 #'@S3method blrNames<- ternaryVariables
+#'
+#'@usage \method{blrNames}{ternaryVariables}(s, ...) <- value
+#'
 `blrNames<-.ternaryVariables` <- function( 
  s, 
  ..., 
@@ -180,6 +188,8 @@ blrLabels.ternaryVariables <- function( s, ... ){
 
 #'@rdname blrLabels-methods
 #'
+#'@usage blrLabels( s, ... ) <- value
+#'
 #'@export
 #'
 `blrLabels<-` <- function( 
@@ -196,6 +206,9 @@ blrLabels.ternaryVariables <- function( s, ... ){
 #'
 #'@method blrLabels<- ternarySystem
 #'@S3method blrLabels<- ternarySystem
+#'
+#'@usage \method{blrLabels}{ternarySystem}(s, ...) <- value
+#'
 `blrLabels<-.ternarySystem` <- function( 
  s, 
  ..., 
@@ -214,6 +227,9 @@ blrLabels.ternaryVariables <- function( s, ... ){
 #'
 #'@method blrLabels<- ternaryVariables
 #'@S3method blrLabels<- ternaryVariables
+#'
+#'@usage \method{blrLabels}{ternaryVariables}(s, ...) <- value
+#'
 `blrLabels<-.ternaryVariables` <- function( 
  s, 
  ..., 
@@ -294,11 +310,13 @@ blrClock.ternaryGeometry <- function(
 
 #'@rdname blrClock-methods
 #'
+#'@usage blrClock( s, ... ) <- value
+#'
 #'@export
 #'
 `blrClock<-` <- function( 
  s, 
- ..., 
+ ...,
  value 
 ){  
     UseMethod( "blrClock<-" ) 
@@ -310,9 +328,12 @@ blrClock.ternaryGeometry <- function(
 #'
 #'@method blrClock<- ternarySystem
 #'@S3method blrClock<- ternarySystem
+#'
+#'@usage \method{blrClock}{ternarySystem}(s, ...) <- value
+#'
 `blrClock<-.ternarySystem` <- function( 
  s, 
- ..., 
+ ...,
  value 
 ){  
     s[[ 'ternaryGeometry' ]][[ 'blrClock' ]] <- value 
@@ -328,9 +349,12 @@ blrClock.ternaryGeometry <- function(
 #'
 #'@method blrClock<- ternaryGeometry
 #'@S3method blrClock<- ternaryGeometry
+#'
+#'@usage \method{blrClock}{ternaryGeometry}(s, ...) <- value
+#'
 `blrClock<-.ternaryGeometry` <- function( 
  s, 
- ..., 
+ ...,
  value 
 ){  
     s[[ 'blrClock' ]] <- value 
@@ -408,6 +432,8 @@ fracSum.ternaryGeometry <- function(
 
 #'@rdname fracSum-methods
 #'
+#'@usage fracSum( s, ... ) <- value
+#'
 #'@export
 #'
 `fracSum<-` <- function( 
@@ -424,6 +450,9 @@ fracSum.ternaryGeometry <- function(
 #'
 #'@method fracSum<- ternarySystem
 #'@S3method fracSum<- ternarySystem
+#'
+#'@usage \method{fracSum}{ternarySystem}(s, ...) <- value
+#'
 `fracSum<-.ternarySystem` <- function( 
  s, 
  ..., 
@@ -442,6 +471,9 @@ fracSum.ternaryGeometry <- function(
 #'
 #'@method fracSum<- ternaryGeometry
 #'@S3method fracSum<- ternaryGeometry
+#'
+#'@usage \method{fracSum}{ternaryGeometry}(s, ...) <- value
+#'
 `fracSum<-.ternaryGeometry` <- function( 
  s, 
  ..., 
@@ -522,6 +554,8 @@ tlrAngles.ternaryGeometry <- function(
 
 #'@rdname tlrAngles-methods
 #'
+#'@usage tlrAngles( s, ... ) <- value 
+#'
 #'@export
 #'
 `tlrAngles<-` <- function( 
@@ -538,6 +572,9 @@ tlrAngles.ternaryGeometry <- function(
 #'
 #'@method tlrAngles<- ternarySystem
 #'@S3method tlrAngles<- ternarySystem
+#'
+#'@usage \method{tlrAngles}{ternarySystem}(s, ...) <- value
+#'
 `tlrAngles<-.ternarySystem` <- function( 
  s, 
  ..., 
@@ -556,6 +593,9 @@ tlrAngles.ternaryGeometry <- function(
 #'
 #'@method tlrAngles<- ternaryGeometry
 #'@S3method tlrAngles<- ternaryGeometry
+#'
+#'@usage \method{tlrAngles}{ternaryGeometry}(s, ...) <- value
+#'
 `tlrAngles<-.ternaryGeometry` <- function( 
  s, 
  ..., 
@@ -619,6 +659,8 @@ ternaryGeometry.ternarySystem <- function(
 
 #'@rdname tlrAngles-methods
 #'
+#'@usage ternaryGeometry( s, ... ) <- value
+#'
 #'@export
 #'
 `ternaryGeometry<-` <- function( 
@@ -635,6 +677,9 @@ ternaryGeometry.ternarySystem <- function(
 #'
 #'@method ternaryGeometry<- ternarySystem
 #'@S3method ternaryGeometry<- ternarySystem
+#'
+#'@usage \method{ternaryGeometry}{ternarySystem}( s, ... ) <- value
+#'
 `ternaryGeometry<-.ternarySystem` <- function( 
  s, 
  ..., 
@@ -698,6 +743,8 @@ ternaryVariables.ternarySystem <- function(
 
 #'@rdname ternaryVariables-methods
 #'
+#'@usage ternaryVariables( s, ... ) <- value 
+#'
 #'@export
 #'
 `ternaryVariables<-` <- function( 
@@ -714,6 +761,9 @@ ternaryVariables.ternarySystem <- function(
 #'
 #'@method ternaryVariables<- ternarySystem
 #'@S3method ternaryVariables<- ternarySystem
+#'
+#'@usage \method{ternaryVariables}{ternarySystem}( s, ... ) <- value
+#'
 `ternaryVariables<-.ternarySystem` <- function( 
  s, 
  ..., 

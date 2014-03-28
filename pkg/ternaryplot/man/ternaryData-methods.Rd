@@ -21,11 +21,9 @@
   \code{\link[base]{matrix}} containing point ternary data
   (x-y-x) to be tested.}
 
-  \item{.blrNames}{Vector of 3 character strings. Column
-  names of the variables in \code{x} that corresponds to
-  the bottom, left and right variables in \code{s}
-  (\code{blrNames(s)}). If \code{NULL}, Columns and
-  variable names in \code{x} and \code{s} should match.}
+  \item{.blrNames}{See \code{\link[ternaryplot]{blrNames}}}
+
+  \item{.fracSum}{See \code{\link[ternaryplot]{fracSum}}}
 
   \item{testRange}{Single logical. Test if the range of
   fraction is between 0 and the expected sum of fractions

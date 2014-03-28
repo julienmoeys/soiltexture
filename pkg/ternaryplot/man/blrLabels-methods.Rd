@@ -14,13 +14,11 @@
 
   \method{blrLabels}{ternaryVariables} (s, ...)
 
-  blrLabels(s, ..., value) <- value
+  blrLabels( s, ... ) <- value
 
-  \method{blrLabels}{ternarySystem} (s, ..., value) <-
-    value
+  \method{blrLabels}{ternarySystem}(s, ...) <- value
 
-  \method{blrLabels}{ternaryVariables} (s, ..., value) <-
-    value
+  \method{blrLabels}{ternaryVariables}(s, ...) <- value
 }
 \arguments{
   \item{s}{A \code{ternarySystem} object, as created with

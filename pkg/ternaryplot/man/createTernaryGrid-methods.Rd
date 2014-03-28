@@ -16,6 +16,8 @@
   \code{ternarySystem} object, as obtained from
   \code{\link[ternaryplot]{getTernarySystem}}}
 
+  \item{n}{Single integer value. Number of intervals}
+
   \item{\dots}{Additional parameters passed to specific
   methods.}
 }

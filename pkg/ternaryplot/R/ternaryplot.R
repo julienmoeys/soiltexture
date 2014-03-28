@@ -79,8 +79,8 @@ ternaryWindow.character <- function(
 
 #'@rdname ternaryWindow-methods
 #'
-#'@method ternaryWindow character
-#'@S3method ternaryWindow character
+#'@method ternaryWindow ternarySystem
+#'@S3method ternaryWindow ternarySystem
 ternaryWindow.ternarySystem <- function(
  s, 
  x, 
