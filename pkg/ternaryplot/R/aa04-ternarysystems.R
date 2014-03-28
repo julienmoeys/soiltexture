@@ -145,7 +145,7 @@ ternarySystemEnv[[ "hypres" ]] <- createTernarySystem(
 #'
 #'
 #'@return 
-#'  A \code{\link[ternaryplot]{ternarySystem}} object.
+#'  A \code{ternarySystem} object.
 #'
 #'
 #'@export 

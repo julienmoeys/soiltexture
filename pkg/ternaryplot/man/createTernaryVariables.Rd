@@ -1,5 +1,6 @@
 \name{createTernaryVariables}
 \alias{createTernaryVariables}
+\alias{ternaryVariables}
 \title{Creates a ternaryVariables object: ternary plot variables definitions.}
 \usage{
   createTernaryVariables(blrNames = paste0("F", 1:3),

@@ -34,7 +34,7 @@
 #'
 #'@param s 
 #'  A \code{ternarySystem} object, as created with 
-#'  \code{\link[ternaryplot]{ternarySystem}}, or a single 
+#'  \code{\link[ternaryplot]{createTernarySystem}}, or a single 
 #'  \code{character} string. Can be missing.
 #'
 #'@param x 

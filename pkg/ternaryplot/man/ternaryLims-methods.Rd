@@ -13,7 +13,8 @@
 \arguments{
   \item{s}{Either a character string naming the ternary
   classification system to be used (if pre-defined) or a
-  \code{\link[ternaryplot]{ternarySystem}} x.}
+  \code{\link[ternaryplot]{ternarySystem}}, instead of
+  \code{x}.}
 
   \item{x}{A \code{\link[base]{data.frame}} or a
   \code{\link[base]{matrix}} containing point ternary data

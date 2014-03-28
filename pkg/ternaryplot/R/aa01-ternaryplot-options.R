@@ -148,8 +148,9 @@ tpParList  <- new.env()
 #'@param fracSumTol 
 #'  Single numeric. Tolerance on the sum of the 3 ternary fractions. Overall 
 #'  tolerance is \code{fracSum * fracSumTol}, where \code{fracSum} is the 
-#'  expected sum of the 3 ternary fractions, as given by a 
-#'  \code{\link[ternaryplot]{ternaryGeometry}} or a \code{\link[ternaryplot]{ternarySystem}}.
+#'  expected sum of the 3 ternary fractions. See 
+#'  \code{\link[ternaryplot]{createTernaryGeometry}} or 
+#'  \code{\link[ternaryplot]{createTernarySystem}}.
 #'
 #'@param ticksAt 
 #'  Vector of numeric. Pre-defined position of the tick-marks for the 3 axis.
@@ -230,7 +231,7 @@ tpParList  <- new.env()
 #'
 #'@seealso \code{\link{getTpPar}}.
 #'
-#'@export tpPar
+#'@export 
 #'
 tpPar <- function( 
     par    = NULL, 
@@ -372,7 +373,7 @@ tpPar <- function(
 #'  Return the value of the parameter \code{par}, without the list
 #'  container of \code{\link{tpPar}}.
 #'
-#'@export getTpPar
+#'@export 
 #'
 getTpPar <- function(
     par 

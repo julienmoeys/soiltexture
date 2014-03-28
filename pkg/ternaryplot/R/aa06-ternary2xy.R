@@ -30,7 +30,7 @@ deg2rad <- function(
 #'
 #'Converts ternary point-data (bottom, left, right axis) into 
 #'  x-y coordinates, according to the specification of a 
-#'  \code{\link[ternaryplot]{ternarySystem}}
+#'  \code{ternarySystem}
 #'
 #'
 #'@param s

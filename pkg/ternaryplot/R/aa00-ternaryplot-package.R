@@ -8,10 +8,6 @@
 
 
 
-#'@importFrom MASS kde2d
-
-
-
 #' Ternary plots and ternary classifications.
 #'
 #' Ternary plots and ternary classifications. S4 classes for ternary 

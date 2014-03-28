@@ -21,7 +21,7 @@
 #'
 #'@param s 
 #'  A \code{ternarySystem} object, as created with 
-#'  \code{\link[ternaryplot]{ternarySystem}}, or a single 
+#'  \code{\link[ternaryplot]{createTernarySystem}}, or a single 
 #'  \code{character} string. Can be missing.
 #'
 #'@param x 
@@ -1424,7 +1424,7 @@ ternaryPlot.ternarySystem <- function(
 #'@param s 
 #'  Either a character string naming the ternary classification 
 #'  system to be used (if pre-defined) or a  
-#'  \code{\link[ternaryplot]{ternarySystem}} x.
+#'  \code{\link[ternaryplot]{ternarySystem}}, instead of \code{x}.
 #'
 #'@param x 
 #'  A \code{\link[base]{data.frame}} or a \code{\link[base]{matrix}} 
