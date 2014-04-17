@@ -56,10 +56,14 @@ ternaryplot.R
     ternaryGrid         ternarySystem
     
     ternaryPlot         data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+        
         TO DO: type = "p" points, "l" lines, "b" both, "c" counts, 
                "de" density, "di" distance (contour chosen via "...")
+        
         TO DO: facet = {category}, fCol, fPch, zCol, zCex
+        
         TO DO: make axes ticks depend on axTicks()
+        
         TO DO: make arrows and arrows labels distance from the plot a function of margin size using par("plt") 
                and *backward* calculating the label position
                
@@ -71,11 +75,11 @@ ternaryplot.R
                    that gives the Y-distance between the triangle frame and the axis labels
                (4) Using that distance to position the other two axis arrows and labels
     
-    ternaryLims         data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryLims         data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
     deg2rad             
-    ternary2xy              data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
-    ternaryClockSwitch  data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
-    ternaryText         data.frame matrix       >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternary2xy          data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryClockSwitch  data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
+    ternaryText         data.frame matrix   >> make function of "ternarySystem character" (+ internal 'data' handling)
     .ternaryAxisArrowsBase ternarySystem
     .ternaryAxisArrows  ternarySystem
     
