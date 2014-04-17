@@ -185,7 +185,7 @@ ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
  x, 
  ... 
 ){  
-    s  <- x[["ternarySystem"]] 
+    s  <- x[[ "ternarySystem" ]] 
     x  <- x[[ "grid" ]] 
     x  <- x[ order( x[, "id"] ), ] 
     id <- x[, "id" ] 
@@ -193,6 +193,7 @@ ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
     
     .blrNames <- blrNames( s ) 
     
+    #   Transform from Top-Left-Right to X-Y
     xy <- ternary2xy( s = s, x = x[, .blrNames ] ) 
     
     xy  <- split( x = xy, f = as.factor( id ) ) 
