@@ -835,6 +835,46 @@ Manual (Soil Survey Staff 1993\cite{USDA1993}).
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Whitney 1911 USDA soil texture classification} 
+
+To display a Whitney (1911) version of the USDA texture triangle, 
+type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "USDA1911" ) 
+@ 
+
+
+The Whitney USDA 1911 soil texture triangle has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("USDA1911")[["base.css.ps.lim"]][3]}$\mu$meters, 
+and a \textbf{clay - silt limit of 
+\Sexpr{TT.get("USDA1911")[["base.css.ps.lim"]][2]}$\mu$meters 
+(Notice the difference with the actual USDA triangle)}\\ 
+
+See the table for soil texture classes symbols.\\
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "USDA1911" ) 
+xtable( 
+    x       = tex.tbl[, -3 ],  #
+    caption = "Texture classes of the Whitney 1911 system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+This triangle has been kindly digitised and provided by Nic 
+Jelinski (University of Minnesota, USA). The original reference 
+used to digitise this triangle is the Whitney 1911\cite{WHITNEY1911}.
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{The European Soil Map (HYPRES) soil texture classification} 
 
 \textbf{NOTE: I had previously erroneously named that system 

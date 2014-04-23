@@ -1386,12 +1386,79 @@ assign(
             unit.tx         = quote(bold('%')), 
             #
             text.sum        = 100 
-        )   #
-        #
+        ),  
+        
+        "USDA1911" = list(
+            # USDA 1911 (M. Whitney, 1911)
+            # Courtesy of Nic Jelinski University of Minnesota, USA
+            # 2014-04-23
+            
+            "main"  = "USDA 1911 (M. Whitney, 1911) - Ternary Plot", 
+            
+            "tt.points" = read.table( sep = "", header = TRUE, 
+                text = "CLAY SILT SAND
+                        0.0  0.0  1.0       # 1
+                        0.2  0.0  0.8       # 2
+                        0.0  0.2  0.8       # 3
+                        0.5  0.0  0.5       # 4
+                        0.3  0.2  0.5       # 5
+                        0.2  0.3  0.5       # 6
+                        0.0  0.5  0.5       # 7
+                        0.2  0.5  0.3       # 8
+                        0.3  0.5  0.2       # 9
+                        0.3  0.7  0.0       # 10
+                        0.2  0.8  0.0       # 11
+                        0.0  1.0  0.0       # 12
+                        1.0  0.0  0.0" ),   # 13
+            
+            "tt.polygons"   = list( 
+                "C" = list( 
+                    "name"      = "Clay", 
+                    "points"    = c( 4, 13, 10,  5 ) 
+                ),  
+                "SaC" = list(   # INSTEAD OF SC (can be mistaken for Silty Clay)
+                    "name"      = "Sandy Clay", 
+                    "points"    = c( 2, 4, 5 ) 
+                ),  
+                "CL" = list( 
+                    "name"      = "Clay Loam", 
+                    "points"    = c( 5, 9, 8, 6 ) 
+                ),  
+                "SaCL" = list(  # INSTEAD OF SiCL
+                    "name"      = "Sandy Clay Loam", 
+                    "points"    = c( 8, 9, 10, 11 ) 
+                ),  
+                "L" = list( 
+                    "name"      = "Loam", 
+                    "points"    = c( 7, 6, 8 ) 
+                ),  
+                "SiL" = list( 
+                    "name"      = "Silt Loam", 
+                    "points"    = c( 7, 8, 11, 12 ) 
+                ),  
+                "SaL" = list(   # INSTEAD OF SL (can be mistaken for Silty Loam)
+                    "name"      = "Sandy Loam", 
+                    "points"    = c( 3, 2, 5, 7 ) 
+                ),  
+                "Sa" = list(    # INSTEAD OF S (Can be mistaken for Silt)
+                    "name"      = "Sand", 
+                    "points"    = c( 1, 2, 3 ) 
+                )   
+            ),  
+            "blr.clock"         = c( FALSE, TRUE, NA ), 
+            "tlr.an"            = c( 45, 90, 45 ), 
+            "blr.tx"            = c( "SILT", "CLAY", "SAND" ), 
+            "base.css.ps.lim"   = c( 0, 5, 50, 2000 ), 
+            "tri.css.ps.lim"    = c( 0, 5, 50, 2000 ), 
+            "unit.ps"           = quote( bold( mu ) * bold( "m" ) ), 
+            "unit.tx"           = quote( bold( "%" ) ), 
+            "text.sum"          = 100
+        )   
+        
         # +-------------------------------------------------------------------------+
         # | END(SCRIPT PARAMETERS SPECIFICATION)                                    |
         # +-------------------------------------------------------------------------+
-        #
+        
     )   #
 )   #
 

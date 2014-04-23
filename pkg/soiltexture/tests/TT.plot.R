@@ -70,6 +70,7 @@ TT.plot( class.sys = "ROM.TT" )         # Romanian
 try( TT.plot( class.sys = "PL.TT" ) )   # Polish 
 TT.plot( class.sys = "DE.SEA74.TT" )    # German SEA 1974 
 TT.plot( class.sys = "DE.TGL85.TT" )    # German TGL 1985 
+TT.plot( class.sys = "USDA1911" )       # USDA 1911 (M. Whitney, 1911)
 
 
 # ::: Test all the languages:

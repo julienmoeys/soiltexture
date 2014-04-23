@@ -3,6 +3,12 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------
 
+VERSION 1.2.14
+
+    2014/04/23  Added texture triangle from Whitney 1911 (USDA)
+                (courtesy of Nic Jelinski, University of Minnesota, 
+                USA)
+
 VERSION 1.2.13
 
     2014/01/10  A mistake has been corrected in the texture triangle 
