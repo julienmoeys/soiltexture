@@ -1,5 +1,5 @@
 TT.add( 
-    "PL.TT" = list(  #  Polish Triangle parameters according to Systematyka
+    "PL2.TT" = list(  #  Polish Triangle parameters according to Systematyka
                      #    gleb Polski (1989) for non-alluvial soils
         #
         main    = "PL", 

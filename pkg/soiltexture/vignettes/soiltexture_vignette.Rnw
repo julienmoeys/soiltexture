@@ -1538,6 +1538,44 @@ is loaded (but no error or warning).
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Brazilian soil texture classification} 
+
+To display a Brazilian texture triangle (Lemos & Santos 
+1996)\cite{LEMOS1996}, type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "BRASIL.TT" ) 
+@ 
+
+
+
+The Brazilian soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("BRASIL.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "BRASIL.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Brazilian system / triangle", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Rodolfo Marcondes Silva Souza, UFPE, Brasil, for 
+providing information and references on the Brasilian triangle.\\
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{Soil texture triangle with a texture classes color 
     gradient} 
 
@@ -3367,7 +3405,10 @@ par(old.par)
 
 
 The polish language can be obtained by typing \texttt{lang = "pl"} 
-on all platforms by Mac.\\
+on all platforms but Mac.\\
+
+
+The Portuguese language can be obtained by typing \texttt{lang = "pt"}.
 
 
 And finally in English, the default language (\texttt{lang = "en"}):
