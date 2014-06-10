@@ -3,6 +3,23 @@ change log. From 2009/10/09. Most recent changes first / on top.
 Julien MOEYS
 -----------------------------------------------------------------
 
+VERSION 1.2.16
+    
+    2014/06/10  New attempt to fix special characters in languages
+                and triangles
+
+VERSION 1.2.15
+
+    2014/06/09  Added texture triangle from Lemos & Santos (1996) 
+                (Brasilian triangle). Courtesy of Rodolfo Marcondes 
+                Silva Souza, UFPE, Brasil. Code BRASIL.TT
+                
+                Now support Portuguese language (lang = "pt")
+                
+                Modified the way to handle languages and triangles 
+                with special characters, but it seems R still 
+                remove some of the characters
+                
 VERSION 1.2.14
 
     2014/04/23  Added texture triangle from Whitney 1911 (USDA)

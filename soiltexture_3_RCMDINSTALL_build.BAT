@@ -1,7 +1,8 @@
 set pkgname=soiltexture
+set version=1.2.16
 
 cd /D "%rPackagesDir%\%pkgname%\pkg" 
 
-R CMD INSTALL --build --compile-both --compact-docs --byte-compile %pkgname%_1.2.14.tar.gz
+R CMD INSTALL --build --compile-both --compact-docs --byte-compile %pkgname%_%version%.tar.gz
 
 pause

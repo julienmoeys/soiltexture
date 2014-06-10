@@ -18,7 +18,7 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.2.14", 
+    pkgVersion  = "1.2.16", 
     pkgDepends  = c( "sp","MASS" ), 
     pkgSuggests = "xtable", # c("drc","plotrix"), 
     RVersion    = NULL   

@@ -1,8 +1,9 @@
 set pkgname=soiltexture
+set version=1.2.16
 
 cd /D "%rPackagesDir%\%pkgname%\pkg" 
 
-R CMD check --no-examples --as-cran %pkgname%_1.2.14.tar.gz
+R CMD check --no-examples --as-cran %pkgname%_%version%.tar.gz
 
 @REM --as-cran 
 
