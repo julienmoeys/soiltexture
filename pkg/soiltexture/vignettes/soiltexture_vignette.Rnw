@@ -1241,7 +1241,7 @@ value'), due to technical difficulties for reproducing precisely
 this triangle (reproduced after both Minasny and McBratney 
 2001\cite{MINASNY2001AJSR}, and Holbeche 2008\cite{HOLBECHE2008} 
 (brochure 'Soil Texture-Laboratory Method' from soilquality.org.au 
-\footnote{texttt{http://soilquality.org.au}}).\\
+\footnote{\texttt{http://soilquality.org.au}}).\\
 
 \clearpage % otherwise the table may 'eats' next triangle
 
