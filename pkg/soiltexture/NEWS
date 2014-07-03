@@ -1,107 +1,115 @@
-The Soil Texture Wizard
-change log. From 2009/10/09. Most recent changes first / on top.
-Julien MOEYS
------------------------------------------------------------------
 
-VERSION 1.2.16
+    package: 'soiltexture'
+
+CHANGES IN VERSION 1.2.18
+    
+    2014/07/03  Added SVN_VERSION file and show SVN version when 
+        the package is attached.
+
+CHANGES IN VERSION 1.2.17
+    
+    2014/07/02  Fixed small bug in the vignette (prevented package
+        compilation)
+
+CHANGES IN VERSION 1.2.16
     
     2014/06/10  New attempt to fix special characters in languages
-                and triangles
+        and triangles
 
-VERSION 1.2.15
+CHANGES IN VERSION 1.2.15
 
     2014/06/09  Added texture triangle from Lemos & Santos (1996) 
-                (Brasilian triangle). Courtesy of Rodolfo Marcondes 
-                Silva Souza, UFPE, Brasil. Code BRASIL.TT
+        (Brasilian triangle). Courtesy of Rodolfo Marcondes 
+        Silva Souza, UFPE, Brasil. Code BRASIL.TT
                 
-                Now support Portuguese language (lang = "pt")
+        Now support Portuguese language (lang = "pt")
                 
-                Modified the way to handle languages and triangles 
-                with special characters, but it seems R still 
-                remove some of the characters
+        Modified the way to handle languages and triangles 
+        with special characters, but it seems R still 
+        remove some of the characters
                 
-VERSION 1.2.14
+CHANGES IN VERSION 1.2.14
 
     2014/04/23  Added texture triangle from Whitney 1911 (USDA)
-                (courtesy of Nic Jelinski, University of Minnesota, 
-                USA)
+        (courtesy of Nic Jelinski, University of Minnesota, 
+        USA)
 
-VERSION 1.2.13
+CHANGES IN VERSION 1.2.13
 
     2014/01/10  A mistake has been corrected in the texture triangle 
-                DE.SEA74.TT (Standortserkundungsanweisung SEA 1974 (DE)), 
-                for classes "lehmiger Ton" (lT) and "schluffiger 
-                Ton" (uT), where a missing vertex has been added.
+        DE.SEA74.TT (Standortserkundungsanweisung SEA 1974 (DE)), 
+        for classes "lehmiger Ton" (lT) and "schluffiger 
+        Ton" (uT), where a missing vertex has been added.
 
-VERSION 1.2.12
+CHANGES IN VERSION 1.2.12
 
     2014/01/09  The triangle named FAO50.TT was in fact erroneously 
-                named, as it is the HYPRES / European Soil Map 
-                texture triangle. The option class.sys = "FAO50.TT" 
-                is now giving a warning, and the new option is 
-                class.sys = "HYPRES.TT". See the vignette for 
-                details.
+        named, as it is the HYPRES / European Soil Map 
+        texture triangle. The option class.sys = "FAO50.TT" 
+        is now giving a warning, and the new option is 
+        class.sys = "HYPRES.TT". See the vignette for 
+        details.
 
-VERSION 1.2.11
+CHANGES IN VERSION 1.2.11
 
     2014/01/08 Compiled under R 3.0.2
                
-               The functions: TT.check.ps.lim.Xm() and 
-               TT.text.transf.Xm() have been moved to the package 
-               soiltexturetransformation, available on r-forge
-               (https://r-forge.r-project.org/R/?group_id=740)
-               
-               The polish triangle is now loaded at startup, but 
-               loading occur within a try() statement, to (try to) 
-               prevent possible encoding problems on some platforms.
-               A message is issued if the triangle was not loaded 
-               properly (but no error or warning).
+        The functions: TT.check.ps.lim.Xm() and 
+        TT.text.transf.Xm() have been moved to the package 
+        soiltexturetransformation, available on r-forge
+        (https://r-forge.r-project.org/R/?group_id=740)
 
-VERSION 1.2.10
+        The polish triangle is now loaded at startup, but 
+        loading occur within a try() statement, to (try to) 
+        prevent possible encoding problems on some platforms.
+        A message is issued if the triangle was not loaded 
+        properly (but no error or warning).
+
+CHANGES IN VERSION 1.2.10
 
     2013/04/29 Compiled under R 3.0.0
 
-VERSION 1.2.9 
+CHANGES IN VERSION 1.2.9 
 
-  20120307 Removed a useless usage of installed.packages() 
-  20120308 Compact the vignettes before R CMD build 
+    20120307 Removed a useless usage of installed.packages() 
+    20120308 Compact the vignettes before R CMD build 
 
-VERSION 1.2.8 
+CHANGES IN VERSION 1.2.8 
 
-  20120125 New attempt to fix xtable package dependence in the vignette.
+    20120125 New attempt to fix xtable package dependence in the vignette.
 
-VERSION 1.2.7 
+CHANGES IN VERSION 1.2.7 
 
-  20120106  no visible change (fixed package dependance in vignette) + corrected TT.plot()
-            example for Spanish language.
+    20120106  no visible change (fixed package dependance in vignette) + corrected TT.plot()
+        example for Spanish language.
 
-VERSION 1.2.6 
+CHANGES IN VERSION 1.2.6 
 
-  20111112  Added the German (GDR) texture triangle for forest soils: 
-            "Standortserkundungsanweisung SEA 1974 (DE)" 
+    20111112  Added the German (GDR) texture triangle for forest soils: 
+        "Standortserkundungsanweisung SEA 1974 (DE)" 
 
-VERSION < 1.2.6
+CHANGES IN VERSION < 1.2.6
 
-  20111109  New attempt to fix problems while loading the Polish texture triangle 
-            under Mac/Darwin and freeBSD.
+    20111109  New attempt to fix problems while loading the Polish texture triangle 
+        under Mac/Darwin and freeBSD.
 
-  20111101  Fixed a potential infinite loop problem in the texture transformation 
-            functions based on "drc"
+    20111101  Fixed a potential infinite loop problem in the texture transformation 
+        functions based on "drc"
 
-  20111101  Improved handling / loading of the Polish triangle (is not working under 
-            Mac). Added the polih triangle to the vignette.
+    20111101  Improved handling / loading of the Polish triangle (is not working under 
+        Mac). Added the polih triangle to the vignette.
 
-  20100610  New function TT.polygon.centroids() used for a smater calculation 
+    20100610  New function TT.polygon.centroids() used for a smater calculation 
             of the texture class centroid for better placement of the texture 
             classes labels (used by TT.classes(), itself used by TT.plot()).
 
-  20100607  Added the Romanian texture triangle to the list of pre-defined  texture 
+    20100607  Added the Romanian texture triangle to the list of pre-defined  texture 
             triangles, and the Romanian language to the list of possible languages 
             for the texture triangle title and axis labels. many thanks to 
             Rosca Bogdan (Romanian Academy, Iasi Branch, Geography team) for providing 
             the code and translation.
 
-  20100513  Accuracy problems detected in TT.points.in.classes() for texture data 
+    20100513  Accuracy problems detected in TT.points.in.classes() for texture data 
             located right on the boundary of the triangle (or some texture classes), 
             with some digits after the decimal: due to non-exact trigonometric 
             calculations (around 1E-15), these points may not be classified 
@@ -115,104 +123,104 @@ VERSION < 1.2.6
             No fix are planned in the close future to fix this error.
             Thanks to Wei Shangguan (see below) for pointing this 'bug'.
 
-  20100513  Added the ISSS (not to be confused with the 'Australian ISSS') 
+    20100513  Added the ISSS (not to be confused with the 'Australian ISSS') 
             texture triangle to the 
             list of pre-defined texture triangles. Many thanks to Wei Shangguan, 
             PhD from the School of geography of Beijing normal university 
             for providing the code of the triangle.
 
-  20100416  Added the Canadian texture triangle to the list of pre-defined 
+    20100416  Added the Canadian texture triangle to the list of pre-defined 
             texture triangles.
 
-  20100409  Created an r-forge page for the package and uploaded it to SCM 
+    20100409  Created an r-forge page for the package and uploaded it to SCM 
             http://r-forge.r-project.org/scm/?group_id=740 
 
-  20100409  Finished documenting the function TT.plot with inlinedocs. Package 
+    20100409  Finished documenting the function TT.plot with inlinedocs. Package 
             successfully compiled.
 
-  20091221  The parameter 'fg' is now defunct, and replaced by 'col' that accepts 
+    20091221  The parameter 'fg' is now defunct, and replaced by 'col' that accepts 
             several values (while fg only accepts one). 'fg' still exists as an 
             option, but shouldn't produce any effect.
 
-  20091119  Simplified some redundant code in TT.css2xy(), the function that 
+    20091119  Simplified some redundant code in TT.css2xy(), the function that 
             transforms clay silt sand data into x-y coordinates.
 
-  20091118  Corrected a bug in the function TT.normalise.sum() (that couldn't 
+    20091118  Corrected a bug in the function TT.normalise.sum() (that couldn't 
             handle data.frames)
 
-  20091014  Added the Belgian soil texture triangle to the list of pre-defined
+    20091014  Added the Belgian soil texture triangle to the list of pre-defined
             texture triangles (now 8).
 
-  20091013  The TT.mahalanobis() function can now compute a grid of the Mahalanobis 
+    20091013  The TT.mahalanobis() function can now compute a grid of the Mahalanobis 
             distance on log-ratio trasnformation of soil texture data. New option 
             alr, default = FALSE, can be set to TRUE for alr transformation.
 
-  20091013  Added TT.chemometrics.alr(), for additive log-ratio trasnformation of 
+    20091013  Added TT.chemometrics.alr(), for additive log-ratio trasnformation of 
             soil texture data. This is a copy of the alr() function in the chemometrics 
             package, with minor modifications for soil texture data. Used internally 
             in TT.mahalanobis().
 
-  20091011  Added TT.normalise.sum(), that normalise the sum of the 3 texture classes
+    20091011  Added TT.normalise.sum(), that normalise the sum of the 3 texture classes
             to text.sum (100%).
 
-  20091011  The options 'pow' and 'q.max.dist' are now set to 0.5 and 50 respectively.
+    20091011  The options 'pow' and 'q.max.dist' are now set to 0.5 and 50 respectively.
             This is a stronger smoothing than the previous values.
 
-  20091011  TT.iwd() has now a 'q.max.dist' option user to determin 'max.dist' if this 
+    20091011  TT.iwd() has now a 'q.max.dist' option user to determin 'max.dist' if this 
             last is set to NULL. max.dist is the maximum euclidian distance, between 
             a grid point and a data point. If the distance between the grid point and 
             the data point is higher than max.dist, this point is not used to calculate 
             the iwd value. max.dist default value is 
             quantile( x = euclidian.distances, probs = q.max.dist ) 
         
-  20091011  The option value 'z.type = "map"' is now deprecated in TT.plot(). Replaced
+    20091011  The option value 'z.type = "map"' is now deprecated in TT.plot(). Replaced
             by TT.iwd() and TT.image(), called outside TT.plot().
 
-  20091011  TT.as.image() internal function deprecated. now inside TT.iwd()
+    20091011  TT.as.image() internal function deprecated. now inside TT.iwd()
 
-  20091011  TT.image.shade() internal function deprecated. now inside TT.iwd() 
+    20091011  TT.image.shade() internal function deprecated. now inside TT.iwd() 
 
-  20091011  TT.iwd.image() renamed to TT.iwd(). The function now output a list with 
+    20091011  TT.iwd.image() renamed to TT.iwd(). The function now output a list with 
             a x y grid and z value matrix, ready to be plotted by TT.image(). The 
             function is not plotting the image any more.
 
-  20091011  TT.iwd() internal function is deprecated. The name will be attributed to 
+    20091011  TT.iwd() internal function is deprecated. The name will be attributed to 
             TT.iwd.image() 
 
-  20091010  TT.baseplot() now has a geo option.	
+    20091010  TT.baseplot() now has a geo option.	
 
-  20091010  TT.kde2d() function created. Wrapper for MASS function kde2d(), but 
+    20091010  TT.kde2d() function created. Wrapper for MASS function kde2d(), but 
             customized for texture triangles. Results can be displayed by 
             TT.contour(), TT.image(), contour() or image().
 
-  20091010  TT.image() function created. Wrapped for image(), but customized 
+    20091010  TT.image() function created. Wrapped for image(), but customized 
             for texture triangles. Used to display x-y-z list data in the same 
             format as 'x' in contour() or image().
 
-  20091010  TT.contour() function created. Wrapped for contour(), but customized 
+    20091010  TT.contour() function created. Wrapped for contour(), but customized 
             for texture triangles. Used to display x-y-z list data in the same 
             format as 'x' in contour() or image().
 
-  20091010  TT.mahalanobis() function created. Wrapper for the function mahalanobis(), 
+    20091010  TT.mahalanobis() function created. Wrapper for the function mahalanobis(), 
             but customized for texture triangles. Results can be displayed by 
             TT.contour(), TT.image() [see above], contour() or image(). Calculates the 
             Mahalanobis distance for 2 of the 3 texture classes, on a regular x-y grid, 
             backtransformed into clay silt sand, used to calculate the Mahalanobis 
             distance.
 
-  20091010  Added TT.xy.grid() that generates a regular grid on the 
+    20091010  Added TT.xy.grid() that generates a regular grid on the 
             x-y axis. Made after part of kde2d
 
-  20091009  Modified TT.plot() function so it accepts an optionnal 'geo' option and an 
+    20091009  Modified TT.plot() function so it accepts an optionnal 'geo' option and an 
             'add' option that behaves like plot(add=TRUE) when non-null. This is intended 
             to allow overplotting a soil texture triangle over a background plotted by 
             another function (i.e. heat map, contour map etc.)
 
-  20091009  Added TT.locator(). This function is equivalent to the locator() function, 
+    20091009  Added TT.locator(). This function is equivalent to the locator() function, 
             except that it returns clay silt sand coordinates instead.
 
-  20091009  Added TT.xy2css() a function to convert x-y coordinates into clay silt sand.
+    20091009  Added TT.xy2css() a function to convert x-y coordinates into clay silt sand.
 
-  20091009  renamed TT.arrows() to TT.axis.arrows().
+    20091009  renamed TT.arrows() to TT.axis.arrows().
 
-
+    20091009  CHANGE LOG STARTED
