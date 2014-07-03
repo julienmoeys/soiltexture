@@ -3,32 +3,12 @@
  libname, 
  pkgname  
 ){  
-    #cat( "'", pkgname, "' loaded.\n" ) 
-    
-    # Setup the polish triangle and language setting
-    ## if( !(tolower(Sys.info()["sysname"]) %in% c("mac","darwin")) ) 
-    
-    
     #   Try to load triangles and languages with special characters
     tryRes <- try( lang.par2 <- readRDS( file = system.file( 
         "languages.rds", package = pkgname ) ) ) 
 
     tryRes2 <- try( triPar2 <- readRDS( file = system.file( 
         "triangles.rds", package = pkgname ) ) )
-    
-    
-    # if( tolower(Sys.info()["sysname"]) %in% c("windows") ){ # "linux",
-        # try( source( system.file( "polish_triangle.r", 
-            # package = pkgname ), encoding = "UTF-8" ) )
-        # tryRes <- try( source( system.file( "polish_language.r", 
-            # package = pkgname ), encoding = "UTF-8" ) ) 
-        
-    # }else{ 
-        # try( source( system.file( "polish_triangle_ANSI.r", 
-            # package = pkgname ) ) )
-        # tryRes <- try( source( system.file( "polish_language_ANSI.r", 
-            # package = pkgname ) ) ) 
-    # }   
     
     
     #   Extend language parameter if the polish triangle was loaded
@@ -57,14 +37,23 @@
     
     # Welcome message
     if( interactive() ){ 
+        svnVersion <- system.file( "SVN_VERSION", package = pkgname ) 
+        
+        if( svnVersion != "" ){ 
+            svnVersion <- readLines( con = svnVersion )[ 1L ] 
+            svnVersion <- sprintf( "(svn revision: %s)", svnVersion ) 
+        }else{ 
+            svnVersion <- "(svn revision: ?)" 
+        }   
+        
         msg <- sprintf( 
-            "%s %s. For help type: help(pack='%s')", 
+            "%s %s %s. For help type: help(pack='%s')", 
             pkgname, 
             as.character( packageVersion( pkgname ) ), 
+            svnVersion, 
             pkgname ) 
         
         packageStartupMessage( msg ) 
     }   
-    
 }   
 

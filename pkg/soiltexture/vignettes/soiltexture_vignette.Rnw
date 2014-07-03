@@ -1540,7 +1540,7 @@ is loaded (but no error or warning).
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 \subsection{The Brazilian soil texture classification} 
 
-To display a Brazilian texture triangle (Lemos & Santos 
+To display a Brazilian texture triangle (Lemos \& Santos 
 1996)\cite{LEMOS1996}, type:
 
 
