@@ -1,7 +1,6 @@
+
 detach( package:soiltexture ) 
 rm(list=ls(all=TRUE)) 
-
-
 
 setwd( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/soiltexture/pkg/soiltexture/vignettes" ) 
 
