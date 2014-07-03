@@ -22,7 +22,7 @@ Title: \tab Functions for soil texture plot, classification and transformation\c
 Author: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.\cr
 Maintainer: \tab Julien MOEYS <jules_m78-soiltexture@yahoo.fr>\cr
 Depends: \tab R (>= 3.0.2), sp, MASS\cr
-Suggests: \tab xtable\cr
+Suggests: \tab xtable, tools\cr
 License: \tab AGPL (>=3)\cr
 URL: \tab http://soiltexture.r-forge.r-project.org/\cr}
 }
