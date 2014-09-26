@@ -218,3 +218,5 @@ soiltextureInfo <- function(# Display and / or export system and package version
 
 #   soiltextureInfo( file = "soiltextureInfo.txt", depends = TRUE ) 
 #   soiltextureInfo( packages = "macrolegions" ) 
+
+

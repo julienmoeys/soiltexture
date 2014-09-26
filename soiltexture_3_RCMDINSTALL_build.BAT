@@ -1,5 +1,5 @@
 set pkgname=soiltexture
-set version=1.2.18
+set version=1.2.19
 
 cd /D "%rPackagesDir%\%pkgname%\pkg" 
 
