@@ -19,7 +19,7 @@ pkgDescription(
     pkgDir      = pkgDir, 
     pkgVersion  = "1.2.19", 
     pkgDepends  = c( "sp","MASS" ), 
-    pkgSuggests = c( "xtable", "tools" ), # c("drc","plotrix"), 
+    pkgSuggests = c( "xtable", "tools", "utils" ), # c("drc","plotrix"), 
     RVersion    = NULL   
 )   
 

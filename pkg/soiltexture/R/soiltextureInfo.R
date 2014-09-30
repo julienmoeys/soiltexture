@@ -91,7 +91,9 @@ soiltextureInfo <- function(# Display and / or export system and package version
     cat2( "Loaded packages:\n" ) 
     
     loadedPackages    <- .packages() 
-    installedPackages <- installed.packages() 
+    
+    require( "utils" ) 
+    installedPackages <- utils::installed.packages() 
     
     loadedPackages    <- installedPackages[ sort( loadedPackages ), 
         "Version" ] 
@@ -131,7 +133,7 @@ soiltextureInfo <- function(# Display and / or export system and package version
         dep <- unlist( lapply( 
             X   = packages, 
             FUN = function(X){ 
-                out <- package_dependencies( 
+                out <- tools::package_dependencies( 
                     packages  = packages, 
                     db        = installedPackages, 
                     recursive = TRUE ) 
