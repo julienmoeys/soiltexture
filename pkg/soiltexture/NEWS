@@ -5,6 +5,8 @@ CHANGES IN VERSION 1.2.19
 
     2014/09/25  Compiled for R 3.1.1
     
+        Attempt to fix imports from tools::package_dependencies
+    
 CHANGES IN VERSION 1.2.18
     
     2014/07/03  Added SVN_VERSION file and show SVN version when 
