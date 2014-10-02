@@ -119,7 +119,7 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
     
     
     # Write the Imports field:
-    if( !is.null( pkgSuggests ) ){ 
+    if( !is.null( pkgImports ) ){ 
         desc[[ "Imports" ]] <- paste( 
             pkgImports, 
             collapse = ", " 

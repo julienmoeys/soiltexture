@@ -3,9 +3,7 @@ Version: 1.2.20
 Date: 2014-10-02
 Title: Functions for soil texture plot, classification and transformation
 Author: Julien Moeys [aut, cre], Wei Shangguan [ctb]
-Authors@R: c( 
-    person( "Julien", "Moeys", role = c("aut", "cre"), email = "jules_m78-soiltexture@yahoo.fr" ),
-    person( "Wei",    "Shangguan", role = "ctb" ) )
+Authors@R: c( person( "Julien", "Moeys", role = c("aut", "cre"), email = "jules_m78-soiltexture@yahoo.fr" ), person( "Wei",    "Shangguan", role = "ctb" ) ) 
 Maintainer: Julien Moeys <jules_m78-soiltexture@yahoo.fr>
 Depends: R (>= 3.1.1)
 Suggests: xtable, tools, utils
