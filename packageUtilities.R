@@ -62,57 +62,30 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
 ### Vector of character strings. Names of the packages that needs to be installed
 ### prior to the package installation. NULL if none
 
- pkgSuggests=NULL,
-### Vector of character string. Names of the packages that needs 
-### to be cited in the "Suggests" field. NULL if none
-
- pkgImports=NULL
+ pkgImports=NULL, 
 ### Vector of character string. Names of the packages that needs 
 ### to be cited in the "Imports" field. NULL if none
 
+ pkgSuggests=NULL
+### Vector of character string. Names of the packages that needs 
+### to be cited in the "Suggests" field. NULL if none
+
 ){  
     # Read the file DESCRIPTION 
-    desc <- readLines( 
-        con = file.path( 
-            pkgDir, 
-            pkgName, 
-            "DESCRIPTION" 
-        )   #
-    )   #
+    desc <- packageDescription(
+        pkg     = pkgName, 
+        lib.loc = pkgDir )  
     
-    # Find where the "Date:" line is
-    desc.sel <- substr( 
-        x     = desc, 
-        start = 1, 
-        stop  = nchar("Date:")  
-    ) == "Date:"
     
     # Modify the date
-    desc[ desc.sel ] <- paste( 
-        "Date:", 
-        Sys.Date()  
-    )   #
+    desc[[ "Date" ]] <- Sys.Date() 
     
-    # Find where the "Version:" line is
-    desc.sel <- substr( 
-        x     = desc, 
-        start = 1, 
-        stop  = nchar("Version:")  
-    ) == "Version:"
     
-    # Modify the version
-    desc[ desc.sel ] <- paste( 
-        "Version:", 
-        pkgVersion  
-    )   #
+    # Modify the version 
+    desc[[ "Version" ]] <- pkgVersion 
     
-    # Find where the "Depends:" line is
-    desc.sel <- substr( 
-        x     = desc, 
-        start = 1, 
-        stop  = nchar("Depends:")  
-    ) == "Depends:"
     
+    # Modify the dependencies
     if( is.null( RVersion ) )
     {   
         # Get R version:
@@ -128,74 +101,45 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
         )   
     }   
     
-    # Modify the dependancies
-    desc[ desc.sel ] <- paste( 
-        "Depends: ", 
-        RVersion, 
-        ifelse(is.null(pkgDepends),"",", "), 
-        paste( pkgDepends, collapse = ", " ), 
-        sep = "" 
+    desc[[ "Depends" ]] <- paste( 
+        c( RVersion, pkgDepends ), 
+        collapse = ", " 
     )   
     
     
-    
-    # Find where the "Suggests:" line is
-    desc.sel2 <- substr( 
-        x     = desc, 
-        start = 1, 
-        stop  = nchar("Suggests:")  
-    ) == "Suggests:"
-    
-    suggests.txt <- paste( 
-        "Suggests: ", 
-        paste( pkgSuggests, collapse = ", " ), 
-        sep = "" 
-    )   
-    
-    if( is.null( pkgSuggests ) ){ 
-        desc <- desc[ !desc.sel2 ]
-        
+    # Write the Suggests field:
+    if( !is.null( pkgSuggests ) ){ 
+        desc[[ "Suggests" ]] <- paste( 
+            pkgSuggests, 
+            collapse = ", " 
+        )   
     }else{ 
-        if( any( desc.sel2 ) ){   
-            desc[ desc.sel2 ] <- suggests.txt 
-        }else{ 
-            desc <- c(
-                desc, 
-                suggests.txt 
-            )   
-        }   
+        desc <- desc[ names(desc) != "Suggests" ] 
     }   
     
     
-    
-    # Find where the "Imports:" line is
-    desc.sel2 <- substr( 
-        x     = desc, 
-        start = 1, 
-        stop  = nchar("Imports:")  
-    ) == "Imports:"
-    
-    imports.txt <- paste( 
-        "Imports: ", 
-        paste( pkgImports, collapse = ", " ), 
-        sep = "" 
-    )   
-    if( is.null( pkgImports ) ){ 
-        desc <- desc[ !desc.sel2 ]
-        
+    # Write the Imports field:
+    if( !is.null( pkgSuggests ) ){ 
+        desc[[ "Imports" ]] <- paste( 
+            pkgImports, 
+            collapse = ", " 
+        )   
     }else{ 
-        if( any( desc.sel2 ) )
-        {   
-            desc[ desc.sel2 ] <- imports.txt 
-        }else{ 
-            desc <- c(
-                desc, 
-                imports.txt 
-            )   
-        }   
+        desc <- desc[ names(desc) != "Imports" ] 
     }   
     
     
+    # Final output formatting:
+    nm <- names( desc ) 
+    
+    desc <- unlist( lapply(
+        X   = 1:length(desc), 
+        FUN = function( X, desc, nm ){ 
+            paste0( nm[X], ": ", desc[[ X ]] )  
+        },  
+        desc = desc, 
+        nm   = nm 
+    ) ) 
     
     # Write again the description file:
     desc <- writeLines( 
