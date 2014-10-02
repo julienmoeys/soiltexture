@@ -1,4 +1,5 @@
-import(sp, MASS)
 
 exportPattern("^[[:alpha:]]+")
-
+importFrom(sp,point.in.polygon)
+importFrom(MASS,kde2d)
+importFrom(MASS,mvrnorm)

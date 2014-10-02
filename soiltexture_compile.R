@@ -17,9 +17,10 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.2.19", 
-    pkgDepends  = c( "sp","MASS" ), 
+    pkgVersion  = "1.2.20", 
+    pkgDepends  = NULL, 
     pkgSuggests = c( "xtable", "tools", "utils" ), # c("drc","plotrix"), 
+    pkgImports  = c( "sp","MASS" ), 
     RVersion    = NULL   
 )   
 
@@ -27,8 +28,8 @@ pkgDescription(
 
 package.skeleton.dx( 
     pkgdir      = file.path( pkgDir, pkgName ), 
-    namespace   = TRUE  
-)   #
+    namespace   = FALSE # Must be edited manually!  
+)   
 
 
 file.copy(

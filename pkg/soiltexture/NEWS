@@ -1,6 +1,11 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.2.20
+
+    2014/10/02  Packages Dependecies moved from "Depends" to "Imports"
+        in package DESCRIPTION and NAMESPACE
+    
 CHANGES IN VERSION 1.2.19
 
     2014/09/25  Compiled for R 3.1.1
