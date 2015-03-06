@@ -1,9 +1,22 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.2.21
+
+    2014/03/06  Added a new Brazilian texture triangle:
+        from Humberto Gonçalves dos Santos [et al.], 2013. 
+        Sistema Brasileiro de Classificação de Solos, 3 ed. rev. 
+        ampl. Brasília, DF: Embrapa, 2013.
+        Triangle digitization is a courtesy of José Lucas Safanelli 
+        and Alexandre ten Caten (UFSC Curitibanos, Brasil)
+        
+        Added a long list of contributors to the package DESCRIPTION, 
+        that now includes all the people who have helped including 
+        and digitizing new texture triangles.
+        
 CHANGES IN VERSION 1.2.20
 
-    2014/10/02  Packages Dependecies moved from "Depends" to "Imports"
+    2014/10/02  Packages dependencies moved from "Depends" to "Imports"
         in package DESCRIPTION and NAMESPACE
     
 CHANGES IN VERSION 1.2.19

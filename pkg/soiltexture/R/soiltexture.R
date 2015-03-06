@@ -954,7 +954,7 @@ assign(
             main            = "Autralia (AU)", 
             #
             # The coordinates of this triangle were kindly provided by Budiman Minasni
-            #    as a replacememnt for the original implementation of the Australian 
+            #    as a replacement for the original implementation of the Australian 
             #    texture triangle.
             #
             #                 The list below specify the CSS coordinates of the different POINTS
@@ -1520,7 +1520,66 @@ assign(
             unit.tx         = quote(bold('%')), 
             #
             text.sum        = 100 
-        )   #
+        ),  #
+        
+        "SiBCS13.TT" = list(  
+            # Subagrupamento Textural SiBCS 2013 parameters (Embrapa 2013)
+            #   Embrapa. Sistema Brasileiro de Classificação de Solos /
+            #   Humberto Golçalves dos Santos ... [et al.]. 3a ed. rev. ampl.
+            #   Brasília, DF: Embrapa, 2013.
+            
+            # Information is a courtesy of José Lucas Safanelli and
+            # Alexandre ten Caten, UFSC Curitibanos, Brasil.
+            
+            # main            = "Subagrupamento textural SiBCS 2013 - Embrapa 2013", 
+            main            = "SiBCS 2013 (Embrapa)", # Shoter title and more international?
+            # 
+            #                The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            #                  = P13    P14    P15    P16    P17    P18    (submits)
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 1.000, 0.600, 0.600, 0.350, 0.350, 0.350, 0.350, 0.200, 0.200, 0.250, 0.150, 0.100,  
+                                 0.000, 0.000, 0.000, 0.000, 0.000, 0.000 ),
+                            #
+                "SILT"      = c( 0.000, 0.000, 0.400, 0.000, 0.175, 0.500, 0.650, 0.000, 0.250, 0.275, 0.000, 0.000,  
+                                 0.000, 0.150, 0.300, 0.475, 0.850, 1.000 ),
+                            #
+                "SAND"      = c( 0.000, 0.400, 0.000, 0.650, 0.475, 0.150, 0.000, 0.800, 0.550, 0.475, 0.850, 0.900,  
+                                 1.000, 0.850, 0.700, 0.525, 0.150, 0.000 )
+            ),  #
+            
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"  = list( 
+                "MA"       = list( "name" = "muito argilosa", "points" = c(01,02,03)          ), 
+                "A"        = list( "name" = "argilosa",       "points" = c(02,03,07,06,05,04) ), 
+                "S"        = list( "name" = "siltosa",        "points" = c(06,07,18,17)       ), 
+                "MeS"      = list( "name" = "media siltosa",  "points" = c(05,06,17,16,09,10) ), 
+                "MeA"      = list( "name" = "media argilosa", "points" = c(04,05,10,09,08)    ), 
+                "MeAr"     = list( "name" = "media arenosa",  "points" = c(08,09,16,15,11)    ), 
+                "ArMe"     = list( "name" = "arenosa media",  "points" = c(11,15,14,12)       ), 
+                "MAr"      = list( "name" = "muito arenosa",  "points" = c(12,14,13)          )   
+            ),  
+            
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = rep(T,3), 
+            tlr.an          = c(60,60,60), 
+            
+            blr.tx          = c("SAND","CLAY","SILT"), 
+             
+            base.css.ps.lim = c(0,2,50,2000), 
+            tri.css.ps.lim  = c(0,2,50,2000), 
+            
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            
+            text.sum        = 100, 
+            
+            #   New parameter
+            class.lab.cex   = 2/3
+        )   
         
         # +-------------------------------------------------------------------------+
         # | END(SCRIPT PARAMETERS SPECIFICATION)                                    |
@@ -4981,6 +5040,12 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
                 class.lab.col <- class.line.col 
             }   #
             #
+            if( "class.lab.cex" %in% names(TT.data) ){ # New 2015-03-06
+                class.lab.cex <- TT.data[[ "class.lab.cex" ]]
+            }else{ 
+                class.lab.cex <- 1
+            }   
+            #
             text( 
                 x       = cent.xy["x",pol], 
                 y       = cent.xy["y",pol], 
@@ -4988,7 +5053,7 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
                 adj     = c(0.5,0.5), 
                 offset  = 0, 
                 col     = class.lab.col, 
-                cex     = cex.lab, 
+                cex     = cex.lab * class.lab.cex, 
                 font    = font.lab, 
                 family  = family.op  
             )   #

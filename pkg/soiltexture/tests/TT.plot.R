@@ -59,6 +59,8 @@ TT.plot( class.sys = "USDA.TT" )        # USDA
 TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
 TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
 TT.plot( class.sys = "DE.BK94.TT" )     # Germany 
+TT.plot( class.sys = "DE.SEA74.TT" )    # German SEA 1974 
+TT.plot( class.sys = "DE.TGL85.TT" )    # German TGL 1985 
 TT.plot( class.sys = "UK.SSEW.TT" )     # UK 
 TT.plot( class.sys = "BE.TT" )          # Belgium 
 TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
@@ -66,10 +68,9 @@ TT.plot( class.sys = "CA.EN.TT" )       # Canada (en)
 TT.plot( class.sys = "AU2.TT" )         # Australian 
 TT.plot( class.sys = "ISSS.TT" )        # ISSS 
 TT.plot( class.sys = "ROM.TT" )         # Romanian 
-TT.plot( class.sys = "DE.SEA74.TT" )    # German SEA 1974 
-TT.plot( class.sys = "DE.TGL85.TT" )    # German TGL 1985 
 TT.plot( class.sys = "USDA1911" )       # USDA 1911 (M. Whitney, 1911)
 TT.plot( class.sys = "BRASIL.TT" )      # Brasil (Lemos & Santos 1996)
+TT.plot( class.sys = "SiBCS13.TT" )     # Brasil (Lemos & Santos 1996)
 
 #   Triangles with special characters
 #   (may not work on all platforms + some accents can be missing)

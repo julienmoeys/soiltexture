@@ -70,7 +70,7 @@ TT.kde2d() [to be written], before or after plot.}
 
 
 
-\author{Julien MOEYS <jules_m78-soiltexture@yahoo.fr>, contributions from Wei Shangguan.}
+\author{Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor Zelazny [ctb],  Rodolfo Marcondes Silva Souza [ctb],  Jose Lucas Safanelli [ctb], Alexandre ten Caten [ctb]}
 
 
 

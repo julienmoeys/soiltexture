@@ -142,21 +142,21 @@ old.wd  <- getwd()
 
 # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
-if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
-{   #
-    suppressMessages( 
-        install.packages( 
-            pkgs  = "soiltexture"  
-            # repos = "http://R-Forge.R-project.org" 
-        )   #
-    )   #
-}   #
+# if( !("soiltexture" %in%  as.character( installed.packages()[,1] )) ) 
+# {   #
+#     suppressMessages( 
+#         install.packages( 
+#             pkgs  = "soiltexture"  
+#             # repos = "http://R-Forge.R-project.org" 
+#         )   #
+#     )   #
+# }   #
 
 require( 
     package        = "soiltexture", 
     character.only = TRUE, 
     quietly        = TRUE 
-)   #
+)   
 
 # setwd(old.wd) 
 @ 
@@ -1214,19 +1214,19 @@ To display an Autralian texture triangle, type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-TT.plot( class.sys = "AU.TT" ) 
+TT.plot( class.sys = "AU2.TT" ) 
 @ 
 
 
 The Australian soil texture classification has been built 
 considering a silt - sand limit of 
-\Sexpr{TT.get("AU.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
+\Sexpr{TT.get("AU2.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\ 
 
 See the table for soil texture classes symbols.
 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "AU.TT" ) 
+tex.tbl <- TT.classes.tbl( class.sys = "AU2.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
     caption = "Texture classes of the Australian system / triangle", 
@@ -1538,7 +1538,7 @@ is loaded (but no error or warning).
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{The Brazilian soil texture classification} 
+\subsection{The Brazilian 1996 soil texture classification} 
 
 To display a Brazilian texture triangle (Lemos \& Santos 
 1996)\cite{LEMOS1996}, type:
@@ -1562,7 +1562,7 @@ See the table for soil texture classes symbols:
 tex.tbl <- TT.classes.tbl( class.sys = "BRASIL.TT" ) 
 xtable( 
     x       = tex.tbl[,-3],  #
-    caption = "Texture classes of the Brazilian system / triangle", 
+    caption = "Texture classes of the Brazilian system (1996)", 
     label   = NULL  
 )   #
 @ 
@@ -1570,6 +1570,45 @@ xtable(
 
 Many thanks to Rodolfo Marcondes Silva Souza, UFPE, Brasil, for 
 providing information and references on the Brasilian triangle.\\
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{The Brazilian 2013 soil texture classification} 
+
+To display a Brazilian texture triangle (Santos et al., 2013 - 
+Embrapa)\cite{SANTOS2013}, type:
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "SiBCS13.TT" ) 
+@ 
+
+
+
+The Brazilian soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{TT.get("SiBCS13.TT")[["base.css.ps.lim"]][3]}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "SiBCS13.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Texture classes of the Brazilian system (2013)", 
+    label   = NULL  
+)   #
+@ 
+
+
+Many thanks to Jos\'{e} Lucas Safanelli and Alexandre ten Caten (UFSC 
+Curitibanos, Brasil), for providing digitizing this texture 
+triangle.\\
 
 \clearpage % otherwise the table may 'eats' next triangle
 
@@ -1667,7 +1706,7 @@ par("mfcol" = c(1,2),"mfrow"=c(1,2))
 
 # Plot the triangles
 TT.plot( 
-    class.sys       = "AU.TT", 
+    class.sys       = "AU2.TT", 
     class.p.bg.col  = TRUE
 )   #
 
