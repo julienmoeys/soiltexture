@@ -17,10 +17,10 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.2.21", 
+    pkgVersion  = "1.2.22", 
     pkgDepends  = NULL, 
-    pkgSuggests = c( "xtable", "tools", "utils" ), # c("drc","plotrix"), 
-    pkgImports  = c( "sp","MASS" ), 
+    pkgSuggests = c( "xtable" ), # c("drc","plotrix"), 
+    pkgImports  = c( "sp", "MASS", "tools", "utils" ), 
     RVersion    = NULL   
 )   
 

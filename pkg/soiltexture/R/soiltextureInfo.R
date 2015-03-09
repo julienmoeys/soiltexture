@@ -92,7 +92,7 @@ soiltextureInfo <- function(# Display and / or export system and package version
     
     loadedPackages    <- .packages() 
     
-    require( "utils" ) 
+    # require( "utils" ) 
     installedPackages <- utils::installed.packages() 
     
     loadedPackages    <- installedPackages[ sort( loadedPackages ), 
@@ -128,7 +128,7 @@ soiltextureInfo <- function(# Display and / or export system and package version
     
     if( depends ){ 
         #   Find dependencies
-        require( "tools" ) 
+        # require( "tools" ) 
         
         dep <- unlist( lapply( 
             X   = packages, 

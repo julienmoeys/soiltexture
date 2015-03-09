@@ -1,6 +1,10 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.2.22
+
+    2014/03/09  Fix package imports from tools and utils.
+    
 CHANGES IN VERSION 1.2.21
 
     2014/03/06  Added a new Brazilian texture triangle:
