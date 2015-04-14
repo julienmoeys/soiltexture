@@ -4,12 +4,14 @@ soiltexture: The Soil Texture Wizard
 ![USDA Soil Texture Triangle](USDA_texture_triangle.png)
 
 Page content: 
-[In short](#inshort) &middot; 
-[Introduction](#intro) (_this section_) &middot; 
-[Installation](#installation) &middot; 
-[Text based graphical user interface](#text_gui) &middot; 
-[Other works and software on soil textures (triangles)](#other_works) &middot; 
-[Articles related to soil texture triangles or systems](#articles) &middot; 
+[In short](#inshort) | 
+[Introduction](#intro) | 
+[Installation](#installation) | 
+[Text based graphical user interface](#text_gui) | 
+[List of classification systems implemented](#classif_systems) | 
+[Acknowledgements (contributors)](#acknowledgements) | 
+[Other works and software on soil textures (triangles)](#other_works) | 
+[Articles related to soil texture triangles or systems](#articles) | 
 [See also (other R projects)](#seealso) 
 
 Last update: 2015/04/11
@@ -42,11 +44,11 @@ Soil texture data and soil [texture classifications systems][texture_classif]
 are traditionally visualised (plotted) on [ternary diagrams][ternary_plot]  
 (called texture plots, texture diagrams or texture triangles).
 
-`soiltexture` currently implements 17 soil texture classification 
-systems from all around the world. See [here][triangle_gallery] 
-for a gallery of available texture triangles, and see also 
-the package vignette (_after [installing](#installation)_ 
-_the package_):
+`soiltexture` currently implements **17** soil texture 
+classification systems from all around the world. See 
+[here][triangle_gallery] for a gallery of available texture 
+triangles, and see also the package vignette (_after 
+[installing](#installation) the package_):
 
     vignette( "soiltexture_vignette" )
 
@@ -139,6 +141,55 @@ Note: An alternative way to call `soiltexture_gui` is to type:
 
     library( "soiltexture" ) 
     soiltexture_gui()
+
+
+
+List of classification systems implemented    <a id="classif_systems"></a>
+==========================================
+
+Below is a list of texture triangles implemented in the 
+package, together with their 'code' in the package.
+
+*   HYPRES (European Soil Map): `HYPRES.TT`.
+*   USDA (US): `USDA.TT`,
+*   Aisne (France): `FR.AISNE.TT`.
+*   GEPPA (France): `FR.GEPPA.TT`.
+*   BK94 (Germany), Bodenkundliche Kartieranleitung 1994: `DE.BK94.TT`.
+*   SEA74 (Germany), Standortserkundungsanweisung 1974: `DE.SEA74.TT`. 
+*   TGL85 (Germany), 24300-05 landwirtschaftliche Boeden: `DE.TGL85.TT`. 
+*   SSEW (UK),  Soil Survey of England and Wales: `UK.SSEW.TT`.
+*   Australia: `AU2.TT`.
+*   Belgium: `BE.TT`.
+*   Canadian: `CA.FR.TT` (in French) or `CA.EN.TT` (in English). 
+*   ISSS: `ISSS.TT`.
+*   Romania, SRTS 2003: `ROM.TT`. 
+*   Poland: `PL.TT`.
+*   Brasil (1996), Brasil - Lemos & Santos: `BRASIL.TT`.
+*   Brasil (2013), antos et al., 2013 - Embrapa: `SiBCS13.TT`. 
+*   USDA 1911 (US), M. Whitney: `USDA1911`.
+
+
+
+Acknowledgements (contributors)    <a id="acknowledgements"></a>
+===============================
+
+Many of the texture classification systems listed above wouldn't 
+have been implemented without the contribution of the following 
+people (contributors of the package):
+
+*   Wei Shangguan.
+*   Rainer Petzold.
+*   Budiman Minasny.
+*   Bogdan Rosca.
+*   Nic Jelinski.
+*   Wiktor Zelazny.
+*   Rodolfo Marcondes Silva Souza.
+*   Jose Lucas Safanelli.
+*   Alexandre ten Caten.
+
+They contributed to make `soiltexture` a useful tool for many 
+soil scientists, and to make the specifications of these texture 
+triangles available in an open-source format.
 
 
 
