@@ -467,7 +467,7 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
             "Romania"           = "ROM.TT", 
             "Poland"            = "PL.TT", 
             "Brasil (1996)"     = "BRASIL.TT",
-            "Brasil (2012)"     = "SiBCS13.TT", 
+            "Brasil (2013)"     = "SiBCS13.TT", 
             "USDA 1911 (US)"    = "USDA1911" 
         )   
         
