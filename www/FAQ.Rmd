@@ -1,0 +1,12 @@
+soiltexture: FAQ
+================
+
+_This page is under construction. Please come back later_
+
+Test
+----
+
+```{r test, echo=TRUE}
+library( "soiltexture" ) 
+TT.plot()
+```

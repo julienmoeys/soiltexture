@@ -172,15 +172,20 @@ hr {
 <a href="#intro">Introduction</a> (<em>this section</em>) &middot; 
 <a href="#installation">Installation</a> &middot; 
 <a href="#text_gui">Text based graphical user interface</a> &middot; 
-<a href="#usage">Usage</a> &middot; </p>
+<a href="#other_works">Other works and software on soil textures (triangles)</a> &middot; 
+<a href="#articles">Articles related to soil texture triangles or systems</a> &middot; 
+<a href="#seealso">See also (other R projects)</a> </p>
+
+<p>Last update: 2015/04/11</p>
 
 <h2>In short    <a id="inshort"></a></h2>
 
 <ul>
-<li>  Author: <strong>Julien MOEYS</strong> (<a href="http://www.slu.se/en/" title="Swedish University of Agricultural Sciences">SLU</a>/<a href="http://www.slu.se/en/collaborative-centres-and-projects/centre-for-chemical-pesticides-ckb1/" title="The Centre for Chemical Pesticides (CKB)">CKB</a>).</li>
+<li>  Author: <strong><a href="http://julienmoeys.info/" title="Julien Moeys homepage">Julien Moeys</a></strong> (<a href="http://www.slu.se/en/" title="Swedish University of Agricultural Sciences">SLU</a>/<a href="http://www.slu.se/en/collaborative-centres-and-projects/centre-for-chemical-pesticides-ckb1/" title="The Centre for Chemical Pesticides (CKB)">CKB</a>).</li>
 <li>  Package on CRAN: <a href="http://cran.r-project.org/web/packages/soiltexture/index.html">http://cran.r-project.org/web/packages/soiltexture/index.html</a> </li>
 <li>  Project page on R-forge: <a href="http://r-forge.r-project.org/projects/soiltexture/">http://r-forge.r-project.org/projects/soiltexture/</a> </li>
 <li>  Code Repository (R-forge): <a href="http://r-forge.r-project.org/scm/?group_id=740">http://r-forge.r-project.org/scm/?group_id=740</a> </li>
+<li>  Comprehensive tutorial (<em>package vignette</em>): <a href="http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf">http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf</a> </li>
 </ul>
 
 <h2>Introduction    <a id="intro"></a></h2>
@@ -205,6 +210,9 @@ the package vignette (<em>after <a href="#installation">installing</a></em>
 
 <pre><code>vignette( &quot;soiltexture_vignette&quot; )
 </code></pre>
+
+<p>See <a href="#inshort">above</a> for an on-line version of this vignette 
+/ tutorial.</p>
 
 <h1>Installation    <a id="installation"></a></h1>
 
@@ -286,9 +294,124 @@ can be found on the function help page. In R, type:</p>
 soiltexture_gui()
 </code></pre>
 
-<h1>Usage    <a id="usage"></a></h1>
+<h1>Other works and software on soil textures (triangles)    <a id="other_works"></a></h1>
+
+<p>Numerous other works and software exist that deal with soil 
+textures and soil textures triangles. Nevertheless, to my 
+knowledge, The Soil Texture Wizard is the only tool that offers 
+an integrated set of functionalities for soil textures (smart 
+graphs + classification + multi-triangle + multi-geometry).</p>
+
+<h2>Ternary graphs (without soil textures classes)</h2>
+
+<p><code>triangle.plot</code> and <code>triangle.biplot</code> functions, from the R 
+package <a href="http://cran.univ-lyon1.fr/web/packages/ade4/index.html" title="ade4 R package">ADE4</a>, by Daniel Chessel, Anne-Beatrice Dufour and 
+Stephane Dray. These functions are not specialised in soil 
+textures plots (and can not plot soil texture classes), but 
+offer of nice &ldquo;zoom&rdquo; feature that don&#39;t exist in The Soil 
+Texture Wizard, nor in the <code>PLOTRIX</code> package (see below). For 
+illustrations, see the web-page on <a href="http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=ade4/man/triangle.plot.Rd&amp;d=R_CC" title="triangle.plot examples (R Graphical Manual)">triangle.plot</a> 
+on &ldquo;R Graphical Manual&rdquo; (by <em>Osamu Ogasawara</em>).</p>
+
+<p><code>ternaryplot</code> function in the R package <a href="http://cran.r-project.org/web/packages/vcd/index.html" title="VCD R package">VCD</a> by David Meyer, 
+Achim Zeileis and Kurt Hornik. For illustrations, see the 
+web-page on <a href="http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=VCD/man/ternaryplot.Rd&amp;d=R_CC" title="ternaryplot examples (R Graphical Manual)">ternaryplot</a> on &ldquo;R Graphical Manual&rdquo;.</p>
+
+<h2>Ternary graphs (with soil textures classes)</h2>
+
+<p>The functions <code>soil.texture</code> and <code>soil.texture.uk</code> from the 
+R package <a href="http://cran.r-project.org/web/packages/plotrix/index.html" title="plotrix R package">plotrix</a>, by Jim Lemon <em>et al.</em>. It allows to 
+create graphs, with or without soil textures data, following 
+the USDA or the UK soil texture triangles. There is also an 
+underlying ternary plot function that can be used without soil 
+texture classes. It is nevertheless not possible to project the 
+triangles into another geometry, nor to transform or classify 
+soil textures data. The R functions presented here 
+(<code>soiltexture</code>) are originally derived from some functions of 
+the <a href="http://cran.r-project.org/web/packages/plotrix/index.html" title="plotrix R package">plotrix</a> package. For illustrations of <a href="http://cran.r-project.org/web/packages/plotrix/index.html" title="plotrix R package">plotrix</a>, see 
+the web-page on <a href="http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=plotrix/man/soil.texture.Rd&amp;d=R_CC" title="soi.texture examples (R Graphical Manual)">soil.texture</a> and <a href="http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=plotrix/man/soil.texture.uk.Rd&amp;d=R_CC" title="soi.texture.uk examples (R Graphical Manual)">soil.texture.uk</a> on 
+&ldquo;R Graphical Manual&rdquo;.</p>
+
+<p>If you are fond of the package <a href="http://ggplot2.org/" title="ggplot2 R package">ggplot2</a>, you may like 
+the package <a href="http://www.ggtern.com/" title="ggtern R package">ggtern</a> that implements elegant ternary 
+diagrams and texture triangle (USDA) in a <a href="http://ggplot2.org/" title="ggplot2 R package">ggplot2</a> fashion. 
+Note: <em>The package seems to have been archived from CRAN and 
+is thus not available</em> (2015/04/14).</p>
+
+<h2>Automatic classification</h2>
+
+<p><a href="http://www.christopherteh.com/tal/index.html" title="Texture AutoLookup (TAL)">Texture Autolookup</a>, by <a href="http://www.christopherteh.com/" title="Christopher Teh Boon Sung">Christopher Teh Boon Sung</a> 
+is a standalone program, with a graphical user interface, that 
+can classify soil textures following the USDA, UK, Canadian, 
+FAO texture triangles, or 7 other systems. The work has been 
+published in two articles of &ldquo;Communications in Soil and Plant 
+Analysis&rdquo;, in 1996 and 2003. The software also allows to plot 
+soil texture data in 2 different triangle geometries. </p>
+
+<p><a href="http://nowlin.css.msu.edu/software/triangle_form.html" title="A Program For Soil Textural Classification">TRIANGLE</a>, &ldquo;A Program For Soil Textural Classification&rdquo;, 
+by Aris Gerakis and Brian Baer allows to classify soil textures 
+data after the USDA soil texture triangle (published in the 
+Soil Science Society of America Journal in 1999. <a href="http://doi.org/10.2136/sssaj1999.634807x" title="A Computer Program for Soil Textural Classification">The article 
+is available here</a>).</p>
+
+<p><a href="http://grasswiki.osgeo.org/wiki/GRASS_AddOns#r.soils.texture" title="r.soils.texture - GRASS GIS Add On">r.soils.texture</a> is a <a href="http://grass.osgeo.org/" title="Grass-GIS">Grass-GIS</a> add-on for classifying 
+raster files of soil textures with 3 classification systems 
+(USDA, FAO, ISSS). Note that this is not R code.</p>
+
+<h1>Articles related to soil texture triangles or systems    <a id="articles"></a></h1>
+
+<p>Richer de Forges A., Feller C., Jamagne M. &amp; Arrouays D., 2008. 
+<a href="http://www.afes.fr/afes/egs/EGS_15_2_richerdeforges.pdf" title="Perdus dans le triangle des textures">Perdus dans le triangle des textures</a>, <em>Études 
+et Gestion des Sols</em>, 15:2, pp. 97-111. En: &ldquo;Lost in the 
+textures triangle&rdquo;. <em>The authors are presenting a gallery of 
+29 soil textures triangles, either still in use nowadays or 
+that were used in the past, from France and other countries, 
+and comparing the location of soil texture triangles limits 
+between several triangles. The article also presents a table 
+comparing the particle size limits (for clay, silt and sand 
+fractions) between numerous countries</em>.</p>
+
+<p>B. Minasny and A.B. McBratney. <a href="http://doi.org/10.1071/SR00065" title="The australian soil texture boomerang">The australian soil texture 
+boomerang: a comparison of the australian and usda/fao soil 
+particle-size classication systems</a>. <em>Australian 
+Journal of Soil Research</em>, 39:1443-1451, 2001.</p>
+
+<p>A. Nemes, J.H.M. Wösten, A. Lilly, and J.H. Oude Voshaar. 
+<a href="http://dx.doi.org/10.1016/S0016-7061(99)00014-2" title="Evaluation of different procedures to interpolate particle-size distributions ...">Evaluation of different procedures to interpolate particle-size 
+distributions to achieve compatibility within soil databases</a>. 
+<em>Geoderma</em>, 90:187-202, 1999.</p>
+
+<h1>See also (other R projects)    <a id="seealso"></a></h1>
+
+<p>Other projects exists that provides useful soil-related R 
+functions (toolboxes for the pedometrician):</p>
+
+<ul>
+<li><p><a href="http://aqp.r-forge.r-project.org/" title="&#39;aqp&#39; R package">aqp</a>. &#39;Algorithms for Quantitative Pedology&#39;.</p></li>
+<li><p><a href="http://soilwater.r-forge.r-project.org/" title="soilwater R pacakges">soilwater</a>. Provides soil water retention functions 
+and soil hydraulic conductivity functions and pedotransfer 
+functions to estimate their parameter from easily available 
+soil properties.</p></li>
+</ul>
+
+<p>Other packages that may interest soil scientists are:</p>
+
+<ul>
+<li><p><a href="http://cran.r-project.org/web/packages/soil.spec/index.html" title="soil.spec R package">soil.spec</a>. Soil spectral data exploration and regression 
+functions.</p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/HydroMe/" title="HydroMe R package">HydroMe</a>. Estimation of Soil Hydraulic Parameters from 
+Experimental Data.</p></li>
+<li><p><a href="http://cran.r-project.org/web/packages/SoPhy/index.html" title="SoPhy R package">SoPhy</a>. A <em>defunct</em> package that implemented a 2D water 
+infiltration model into R.</p></li>
+</ul>
 
 <!-- List if links  -->
+
+<!-- Wikipedia      -->
+
+<!-- R packages     -->
+
+<!-- Other R links  -->
 
 </body>
 
