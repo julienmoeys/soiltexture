@@ -1,6 +1,6 @@
 \name{TT.DJ.col}
 \alias{TT.DJ.col}
-\title{A function to obtaine a weight average 'mix' of different colors!}
+\title{Internal. A function to obtaine a weight average 'mix' of different colors!}
 \description{A function to obtaine a weight average 'mix' of different colors!}
 \usage{TT.DJ.col(cl, w, gray.l = FALSE)}
 \arguments{

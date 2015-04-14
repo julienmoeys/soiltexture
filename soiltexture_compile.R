@@ -17,10 +17,10 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.2.22", 
-    pkgDepends  = NULL, 
+    pkgVersion  = "1.3.0", 
+    pkgDepends  = NULL, # "utils" In Depends because can not importFrom Windows only functions 
     pkgSuggests = c( "xtable" ), # c("drc","plotrix"), 
-    pkgImports  = c( "sp", "MASS", "tools", "utils" ), 
+    pkgImports  = c( "sp", "MASS", "tools", "utils", "tcltk" ), 
     RVersion    = NULL   
 )   
 

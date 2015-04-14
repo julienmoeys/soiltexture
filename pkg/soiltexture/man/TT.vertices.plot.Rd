@@ -1,6 +1,6 @@
 \name{TT.vertices.plot}
 \alias{TT.vertices.plot}
-\title{Plot the vertices of a texture classification system. }
+\title{Internal. Plot the vertices of a texture classification system. }
 \description{Plot the vertices of a texture classification system, on top 
 of an already drawn texture triangle plot. Also plot the 
 vertices numbers. See TT.vertices.tbl() and TT.classes.tbl() 
