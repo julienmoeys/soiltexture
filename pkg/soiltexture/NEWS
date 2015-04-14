@@ -1,13 +1,25 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.3.0
+    
+    2015/04/11  Implements a new text-based graphical user 
+        interface: soiltexture_gui(). The user is guided 
+        through a series of simple question to import, 
+        plot and classify soil texture data.
+    
+    2015/04/12  Many functions have now been classified 
+        as "internal" (keywords = internal) in order 
+        to simplify the long list of functions in the 
+        package help pages
+    
 CHANGES IN VERSION 1.2.22
-
-    2014/03/09  Fix package imports from tools and utils.
+    
+    2015/03/09  Fix package imports from tools and utils.
     
 CHANGES IN VERSION 1.2.21
 
-    2014/03/06  Added a new Brazilian texture triangle:
+    2015/03/06  Added a new Brazilian texture triangle:
         from Humberto Gonçalves dos Santos [et al.], 2013. 
         Sistema Brasileiro de Classificação de Solos, 3 ed. rev. 
         ampl. Brasília, DF: Embrapa, 2013.

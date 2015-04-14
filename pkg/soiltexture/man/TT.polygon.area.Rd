@@ -1,6 +1,6 @@
 \name{TT.polygon.area}
 \alias{TT.polygon.area}
-\title{Determines the area of 1 polygon (in x-y coordinates). }
+\title{Internal. Determines the area of 1 polygon (in x-y coordinates). }
 \description{Determines the area of 1 non-intersecting polygon (in x-y 
 coordinates). Used by TT.polygon.centroids(). pol.x[1]:pol.y[1] 
 is supposed different from pol.x[n]:pol.y[n] (i.e. the polygon 

@@ -1,6 +1,6 @@
 \name{TT.polygon.centroids}
 \alias{TT.polygon.centroids}
-\title{Determines the centroid of 1 polygon (in x-y coordinates). }
+\title{Internal. Determines the centroid of 1 polygon (in x-y coordinates). }
 \description{Determines the centroid of 1 non-intersecting polygon (in x-y 
 coordinates). Used to determine the centroid of each texture 
 class in the texture triangle onces its clay silt sand 

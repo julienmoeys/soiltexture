@@ -1,6 +1,6 @@
 \name{TT.deg2rad}
 \alias{TT.deg2rad}
-\title{Function to convert angle in degree to angle in radian.}
+\title{Internal. Function to convert angle in degree to angle in radian.}
 \description{Function to convert angle in degree to angle in radian.}
 \usage{TT.deg2rad(A)}
 \arguments{
