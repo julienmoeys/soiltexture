@@ -12,11 +12,11 @@ Title: \tab Functions for soil texture plot, classification and transformation\c
 Author: \tab Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor Zelazny [ctb],  Rodolfo Marcondes Silva Souza [ctb],  Jose Lucas Safanelli [ctb], Alexandre ten Caten [ctb]\cr
 Authors@R: \tab c( person( "Julien", "Moeys", role = c("aut", "cre"), email = "jules_m78-soiltexture@yahoo.fr" ), person( "Wei", "Shangguan", role = "ctb" ), person( "Rainer", "Petzold", role = "ctb" ), person( "Budiman", "Minasny", role = "ctb" ), person( "Bogdan", "Rosca", role = "ctb" ), person( "Nic", "Jelinski", role = "ctb" ), person( "Wiktor", "Zelazny", role = "ctb" ), person( "Rodolfo", "Marcondes Silva Souza", role = "ctb" ), person( "Jose Lucas", "Safanelli", role = "ctb" ), person( "Alexandre", "ten Caten", role = "ctb" ) )\cr
 Maintainer: \tab Julien Moeys <jules_m78-soiltexture@yahoo.fr>\cr
-Depends: \tab R (>= 3.1.1)\cr
+Depends: \tab R (>= 3.1.1), utils\cr
 Suggests: \tab xtable\cr
 License: \tab AGPL (>=3)\cr
 URL: \tab http://soiltexture.r-forge.r-project.org/\cr
-Imports: \tab sp, MASS, tools, utils, tcltk\cr}
+Imports: \tab sp, MASS, tools, tcltk\cr}
 }
 \author{Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor Zelazny [ctb],  Rodolfo Marcondes Silva Souza [ctb],  Jose Lucas Safanelli [ctb], Alexandre ten Caten [ctb]}
 

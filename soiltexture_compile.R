@@ -18,9 +18,9 @@ pkgDescription(
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
     pkgVersion  = "1.3.0", 
-    pkgDepends  = NULL, # "utils" In Depends because can not importFrom Windows only functions 
+    pkgDepends  = "utils", #  In Depends because can not importFrom Windows only functions 
     pkgSuggests = c( "xtable" ), # c("drc","plotrix"), 
-    pkgImports  = c( "sp", "MASS", "tools", "utils", "tcltk" ), 
+    pkgImports  = c( "sp", "MASS", "tools", "tcltk" ), # "utils", 
     RVersion    = NULL   
 )   
 
