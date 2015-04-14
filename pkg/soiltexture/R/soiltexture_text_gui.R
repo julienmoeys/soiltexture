@@ -300,14 +300,16 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
 ### 
 ### Finally, if you have chosen a texture classification system, 
 ### \code{soiltexture_gui} can classify each record according 
-### to this classification system and \bold{return you the 
-### texture class of each record}, as a CSV text file.
+### to this classification system and 
+### \bold{return you the texture class of each record}, 
+### as a CSV text file.
 ###
 ### The texture triangle is show to you with R default 
 ### graphical device, and you can choose to export a 
 ### PNG figure of the resulting texture triangle (between 
 ### 512 and 2048 pixel width/height, depending on what you 
 ### chose).
+### 
 
     main = NULL, 
 ###  Single character string. Main title of the texture 
