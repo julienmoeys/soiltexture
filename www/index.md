@@ -22,6 +22,8 @@ In short    <a id="inshort"></a>
 *   Project page on R-forge: http://r-forge.r-project.org/projects/soiltexture/ 
 *   Code Repository (R-forge): http://r-forge.r-project.org/scm/?group_id=740 
 *   Comprehensive tutorial (_package vignette_): http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf 
+*   Frequently Asked Questions: [FAQ](FAQ.html) (_under construction_)
+*   On-line documentation: http://docs.julienmoeys.info/soiltexture/ 
 
 
 
