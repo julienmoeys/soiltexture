@@ -14,19 +14,19 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 
 
 # Change the description file:
-pkgDescription( 
+pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.3.0", 
-    pkgDepends  = "utils", #  In Depends because can not importFrom Windows only functions 
-    pkgSuggests = c( "xtable" ), # c("drc","plotrix"), 
-    pkgImports  = c( "sp", "MASS", "tools", "tcltk" ), # "utils", 
+    pkgVersion  = "1.3.1", 
+    pkgDepends  = "utils",       #  In Depends because can not importFrom Windows only functions 
+    pkgSuggests = c( "xtable" ), #  
+    pkgImports  = c( "sp", "MASS", "tools", "tcltk" ), 
     RVersion    = NULL   
 )   
 
 
 
-package.skeleton.dx( 
+package.skeleton.dx( # Done under R 3.1.1, with inlinedocs 2013.9.3 # Errors appear with R 3.2.0 RC
     pkgdir      = file.path( pkgDir, pkgName ), 
     namespace   = FALSE # Must be edited manually!  
 )   
