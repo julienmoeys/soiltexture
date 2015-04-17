@@ -1,7 +1,9 @@
-soiltexture: The Soil Texture Wizard
-====================================
+soiltexture: Functions for Soil Texture Plot, Classification and Transformation
+===============================================================================
 
 ![USDA Soil Texture Triangle](USDA_texture_triangle.png)
+
+_The Soil Texture Wizard_
 
 Page content: 
 [In short](#inshort) | 
@@ -14,7 +16,7 @@ Page content:
 [Articles related to soil texture triangles or systems](#articles) | 
 [See also (other R projects)](#seealso) 
 
-Last update: 2015/04/11
+Last update: 2015/04/17
 
 In short    <a id="inshort"></a>
 --------
@@ -207,91 +209,94 @@ graphs + classification + multi-triangle + multi-geometry).
 Ternary graphs (without soil textures classes)
 ----------------------------------------------
 
-`triangle.plot` and `triangle.biplot` functions, from the R 
-package [ADE4][], by Daniel Chessel, Anne-Beatrice Dufour and 
-Stephane Dray. These functions are not specialised in soil 
-textures plots (and can not plot soil texture classes), but 
-offer of nice "zoom" feature that don't exist in The Soil 
-Texture Wizard, nor in the `PLOTRIX` package (see below). For 
-illustrations, see the web-page on [triangle.plot][triangle.plot] 
-on "R Graphical Manual" (by _Osamu Ogasawara_).
+*   `triangle.plot` and `triangle.biplot` functions, from the 
+    R package [ADE4][], by Daniel Chessel, Anne-Beatrice Dufour 
+    and Stephane Dray. These functions are not specialised in 
+    soil textures plots (and can not plot soil texture classes), 
+    but offer of nice "zoom" feature that don't exist in The 
+    Soil Texture Wizard, nor in the `PLOTRIX` package (see 
+    below). For illustrations, see the web-page on 
+    [triangle.plot][triangle.plot] on "R Graphical Manual" 
+    (by _Osamu Ogasawara_).
 
-`ternaryplot` function in the R package [VCD][] by David Meyer, 
-Achim Zeileis and Kurt Hornik. For illustrations, see the 
-web-page on [ternaryplot][] on "R Graphical Manual".
+*   `ternaryplot` function in the R package [VCD][] by David 
+    Meyer, Achim Zeileis and Kurt Hornik. For illustrations, 
+    see the web-page on [ternaryplot][] on "R Graphical Manual".
 
 
 
 Ternary graphs (with soil textures classes)
 -------------------------------------------
 
-The functions `soil.texture` and `soil.texture.uk` from the 
-R package [plotrix][], by Jim Lemon _et al._. It allows to 
-create graphs, with or without soil textures data, following 
-the USDA or the UK soil texture triangles. There is also an 
-underlying ternary plot function that can be used without soil 
-texture classes. It is nevertheless not possible to project the 
-triangles into another geometry, nor to transform or classify 
-soil textures data. The R functions presented here 
-(`soiltexture`) are originally derived from some functions of 
-the [plotrix][] package. For illustrations of [plotrix][], see 
-the web-page on [soil.texture][] and [soil.texture.uk][] on 
-"R Graphical Manual".
+*   The functions `soil.texture` and `soil.texture.uk` from 
+    the R package [plotrix][], by Jim Lemon _et al._. It allows 
+    to create graphs, with or without soil textures data, 
+    following the USDA or the UK soil texture triangles. There 
+    is also an underlying ternary plot function that can be 
+    used without soil texture classes. It is nevertheless not 
+    possible to project the triangles into another geometry, 
+    nor to transform or classify soil textures data. The R 
+    functions presented here (`soiltexture`) are originally 
+    derived from some functions of the [plotrix][] package. 
+    For illustrations of [plotrix][], see the web-page on 
+    [soil.texture][] and [soil.texture.uk][] on "R Graphical 
+    Manual".
 
-If you are fond of the package [ggplot2][], you may like 
-the package [ggtern][] that implements elegant ternary 
-diagrams and texture triangle (USDA) in a [ggplot2][] fashion. 
-Note: _The package seems to have been archived from CRAN and 
-is thus not available_ (2015/04/14).
+*   If you are fond of the package [ggplot2][], you may like 
+    the package [ggtern][] that implements elegant ternary 
+    diagrams and texture triangle (USDA) in a [ggplot2][] 
+    fashion. Note: _The package seems to have been archived 
+    from CRAN and is thus not available_ (2015/04/14).
 
 
 
 Automatic classification
 ------------------------
 
-[Texture Autolookup][TAL], by [Christopher Teh Boon Sung][ChristopherTBS] 
-is a standalone program, with a graphical user interface, that 
-can classify soil textures following the USDA, UK, Canadian, 
-FAO texture triangles, or 7 other systems. The work has been 
-published in two articles of "Communications in Soil and Plant 
-Analysis", in 1996 and 2003. The software also allows to plot 
-soil texture data in 2 different triangle geometries. 
+*   [Texture Autolookup][TAL], by [Christopher Teh Boon Sung][ChristopherTBS] 
+    is a standalone program, with a graphical user interface, 
+    that can classify soil textures following the USDA, UK, 
+    Canadian, FAO texture triangles, or 7 other systems. The 
+    work has been published in two articles of "Communications 
+    in Soil and Plant Analysis", in 1996 and 2003. The software 
+    also allows to plot soil texture data in 2 different 
+    triangle geometries. 
 
-[TRIANGLE][Triangle], "A Program For Soil Textural Classification", 
-by Aris Gerakis and Brian Baer allows to classify soil textures 
-data after the USDA soil texture triangle (published in the 
-Soil Science Society of America Journal in 1999. [The article 
-is available here][Gerakis1999]).
+*   [TRIANGLE][Triangle], "A Program For Soil Textural 
+    Classification", by Aris Gerakis and Brian Baer allows to 
+    classify soil textures data after the USDA soil texture 
+    triangle (published in the _Soil Science Society of America 
+    Journal_ in 1999. [The article is available here][Gerakis1999]).
 
-[r.soils.texture][] is a [Grass-GIS][] add-on for classifying 
-raster files of soil textures with 3 classification systems 
-(USDA, FAO, ISSS). Note that this is not R code.
+*   [r.soils.texture][] is a [Grass-GIS][] add-on for classifying 
+    raster files of soil textures with 3 classification systems 
+    (USDA, FAO, ISSS). Note that this is not R code.
 
 
 
 Articles related to soil texture triangles or systems    <a id="articles"></a>
 =====================================================
 
-Richer de Forges A., Feller C., Jamagne M. & Arrouays D., 2008. 
-[Perdus dans le triangle des textures][deForges2008], _Études 
-et Gestion des Sols_, 15:2, pp. 97-111. En: "Lost in the 
-textures triangle". _The authors are presenting a gallery of 
-29 soil textures triangles, either still in use nowadays or 
-that were used in the past, from France and other countries, 
-and comparing the location of soil texture triangles limits 
-between several triangles. The article also presents a table 
-comparing the particle size limits (for clay, silt and sand 
-fractions) between numerous countries_.
+*   Richer de Forges A., Feller C., Jamagne M. & Arrouays D., 2008. 
+    [Perdus dans le triangle des textures][deForges2008], _Études 
+    et Gestion des Sols_, 15:2, pp. 97-111. En: "Lost in the 
+    textures triangle". _The authors are presenting a gallery of 
+    29 soil textures triangles, either still in use nowadays or 
+    that were used in the past, from France and other countries, 
+    and comparing the location of soil texture triangles limits 
+    between several triangles. The article also presents a table 
+    comparing the particle size limits (for clay, silt and sand 
+    fractions) between numerous countries_.
 
-B. Minasny and A.B. McBratney. [The australian soil texture 
-boomerang: a comparison of the australian and usda/fao soil 
-particle-size classication systems][Minasny2001]. _Australian 
-Journal of Soil Research_, 39:1443-1451, 2001.
+*   Minasny B. and McBratney. A.B., 2001. [The australian soil 
+    texture boomerang: a comparison of the australian and 
+    usda/fao soil particle-size classication systems][Minasny2001]. 
+    _Australian Journal of Soil Research_, 39:1443-1451.
 
-A. Nemes, J.H.M. Wösten, A. Lilly, and J.H. Oude Voshaar. 
-[Evaluation of different procedures to interpolate particle-size 
-distributions to achieve compatibility within soil databases][Nemes1999]. 
-_Geoderma_, 90:187-202, 1999.
+*   Nemes A., Wösten J.H.M., Lilly A., and Oude Voshaar J.H., 
+    1999. [Evaluation of different procedures to interpolate 
+    particle-size distributions to achieve compatibility within 
+    soil databases][Nemes1999]. _Geoderma_, 90:187-202, 1999.
 
 
 
