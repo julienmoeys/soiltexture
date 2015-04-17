@@ -1370,15 +1370,15 @@ assign(
         
         "SiBCS13.TT" = list(  
             # Subagrupamento Textural SiBCS 2013 parameters (Embrapa 2013)
-            #   Embrapa. Sistema Brasileiro de Classificação de Solos /
-            #   Humberto Golçalves dos Santos ... [et al.]. 3a ed. rev. ampl.
-            #   Brasília, DF: Embrapa, 2013.
+            #   Embrapa. Sistema Brasileiro de Classificacao de Solos /
+            #   Humberto Golcalves dos Santos ... [et al.]. 3a ed. rev. ampl.
+            #   Brasilia, DF: Embrapa, 2013.
             
-            # Information is a courtesy of José Lucas Safanelli and
+            # Information is a courtesy of Jose Lucas Safanelli and
             # Alexandre ten Caten, UFSC Curitibanos, Brasil.
             
             # main            = "Subagrupamento textural SiBCS 2013 - Embrapa 2013", 
-            main            = "SiBCS 2013 (Embrapa)", # Shoter title and more international?
+            main            = "SiBCS 2013 (Embrapa)", # Shorter title and more international?
             # 
             #                The list below specify the CSS coordinates of the different POINTS
             #                   that are used to draw soil texture classes. One points can be 
@@ -2942,7 +2942,7 @@ TT.css2xy <- function(# Internal. Converts texture data (3 classes) into x-y coo
         )   )  
     }   #
     #
-    # Check for tlr.an: angle sum must be 180Â°
+    # Check for tlr.an: angle sum must be 180 degrees
     if( sum(tlr.an) != 180 ) 
     {   #
         stop( paste( 
@@ -5729,7 +5729,7 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
             a.h.s           = TT.get("arrows.head.shift"), 
             a.t.s           = TT.get("arrows.text.shift"), 
             a.b.s           = TT.get("arrows.base.shift"), 
-            text.tol        = text.tol,     # useless¨
+            text.tol        = text.tol,     # useless
             base.css.ps.lim = base.css.ps.lim, 
             tlr.an          = tlr.an, 
             lwd.lab         = lwd.lab, 
@@ -6299,7 +6299,7 @@ TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y c
         )   )  
     }   #
     #
-    # Check for tlr.an: angle sum must be 180Â°
+    # Check for tlr.an: angle sum must be 180 degrees
     if( sum(tlr.an) != 180 ) 
     {   #
         stop( paste( 
