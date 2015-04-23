@@ -28,6 +28,9 @@ In short    <a id="inshort"></a>
 *   Comprehensive tutorial (_package vignette_): http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf 
 *   Frequently Asked Questions: [FAQ](FAQ.html) (_under construction_)
 *   On-line documentation: http://docs.julienmoeys.info/soiltexture/ 
+*   Github mirror of the code repository: https://github.com/rforge/soiltexture 
+    Notice that I am not the maintainer of this (r-forge) 
+    mirror.
 
 
 
@@ -95,19 +98,61 @@ Open R, and type the command:
 
 
 
-Install soiltexture (development version)
------------------------------------------
+Install soiltexture (development version, from r-forge)
+-------------------------------------------------------
 
 Note: This will only work with the latest (stable) version 
-of R. You should also check on the package R-forge page 
-(here: http://r-forge.r-project.org/R/?group_id=740) that 
-the "Build status" of `soiltexture` is "Current" (and not 
+of R. You should also check on the [package R-forge page][soiltexture_rf] 
+that the "Build status" of `soiltexture` is "Current" (and not 
 "Failed to build").
 
 Open R, and type the command:
 
      install.packages("soiltexture", repos="http://R-Forge.R-project.org") 
 
+Note: It can take some days before `r-forge` updates its 
+system to the latest R stable version (after a new stable 
+release). You can check what version of R is used by clicking 
+on "Show/Hide extra info" on the [package R-forge page][soiltexture_rf], 
+and then checking "Windows binary" or "Source package". The 
+R version currently used on `r-forge` should appear there.
+
+
+
+Install soiltexture (development version, from GitHub)
+------------------------------------------------------
+
+The [GitHub mirror of soiltexture][soiltexture_gh] (_Notice 
+that I am not the maintainer of this page_) makes it possible 
+to use `devtools` package installation method to install the 
+development version of the package `soiltexture`. It can be 
+an interesting solution when using a version of R that is 
+different from the one installed on `r-forge` (newer or older).
+
+
+
+### Install devtools (and maybe RTools)
+
+Follow the instructions given on [devtools GitHub page][devtools_gh]. 
+See in particular "Updating to the latest version of devtools".
+
+
+
+### Install soiltexture using devtools
+
+Open R and type:
+
+    devtools::install_github("rforge/soiltexture/pkg/soiltexture")
+
+Notice that you can install in the same way the package 
+`soiltexturetransformation` by Wei Shangguan:
+
+    devtools::install_github("rforge/soiltexture/pkg/soiltexturetransformation")
+
+For technical reason this package does not compile on `r-forge` 
+(because of a dependency on `drc` that used to be on `r-forge` 
+but is now developed outside of `r-forge`).
+    
 
 
 Text based graphical user interface    <a id="text_gui"></a>
@@ -359,6 +404,8 @@ Other packages that may interest soil scientists are:
 [plotrix]:          http://cran.r-project.org/web/packages/plotrix/index.html "plotrix R package" 
 [ggplot2]:          http://ggplot2.org/ "ggplot2 R package" 
 [ggtern]:           http://www.ggtern.com/ "ggtern R package"
+[devtools_gh]:      https://github.com/hadley/devtools "devtools R package on GitHub"
+[soiltexture_rf]:   http://r-forge.r-project.org/R/?group_id=740 "soiltexture on r-forge (installation page)"
 
 <!-- Other R links  -->
 [R]:                http://www.r-project.org/ "R software homepage" 
@@ -368,5 +415,5 @@ Other packages that may interest soil scientists are:
 [ternaryplot]:      http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=VCD/man/ternaryplot.Rd&d=R_CC "ternaryplot examples (R Graphical Manual)" 
 [soil.texture]:     http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=plotrix/man/soil.texture.Rd&d=R_CC "soi.texture examples (R Graphical Manual)" 
 [soil.texture.uk]:  http://rgm3.lab.nig.ac.jp/RGM/R_rdfile?f=plotrix/man/soil.texture.uk.Rd&d=R_CC "soi.texture.uk examples (R Graphical Manual)" 
-
+[soiltexture_gh]:   https://github.com/rforge/soiltexture "GitHub mirror of 'soiltexture' from r-forge SVN"
 
