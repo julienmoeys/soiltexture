@@ -192,6 +192,9 @@ hr {
 <li>  Comprehensive tutorial (<em>package vignette</em>): <a href="http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf">http://cran.r-project.org/web/packages/soiltexture/vignettes/soiltexture_vignette.pdf</a> </li>
 <li>  Frequently Asked Questions: <a href="FAQ.html">FAQ</a> (<em>under construction</em>)</li>
 <li>  On-line documentation: <a href="http://docs.julienmoeys.info/soiltexture/">http://docs.julienmoeys.info/soiltexture/</a> </li>
+<li>  Github mirror of the code repository: <a href="https://github.com/rforge/soiltexture">https://github.com/rforge/soiltexture</a> 
+Notice that I am not the maintainer of this (r-forge) 
+mirror.</li>
 </ul>
 
 <h2>Introduction    <a id="intro"></a></h2>
@@ -250,18 +253,55 @@ or some of the latest features might be missing).</p>
 <pre><code>install.packages( &quot;soiltexture&quot; ) 
 </code></pre>
 
-<h2>Install soiltexture (development version)</h2>
+<h2>Install soiltexture (development version, from r-forge)</h2>
 
 <p>Note: This will only work with the latest (stable) version 
-of R. You should also check on the package R-forge page 
-(here: <a href="http://r-forge.r-project.org/R/?group_id=740">http://r-forge.r-project.org/R/?group_id=740</a>) that 
-the &ldquo;Build status&rdquo; of <code>soiltexture</code> is &ldquo;Current&rdquo; (and not 
+of R. You should also check on the <a href="http://r-forge.r-project.org/R/?group_id=740" title="soiltexture on r-forge (installation page)">package R-forge page</a> 
+that the &ldquo;Build status&rdquo; of <code>soiltexture</code> is &ldquo;Current&rdquo; (and not 
 &ldquo;Failed to build&rdquo;).</p>
 
 <p>Open R, and type the command:</p>
 
 <pre><code> install.packages(&quot;soiltexture&quot;, repos=&quot;http://R-Forge.R-project.org&quot;) 
 </code></pre>
+
+<p>Note: It can take some days before <code>r-forge</code> updates its 
+system to the latest R stable version (after a new stable 
+release). You can check what version of R is used by clicking 
+on &ldquo;Show/Hide extra info&rdquo; on the <a href="http://r-forge.r-project.org/R/?group_id=740" title="soiltexture on r-forge (installation page)">package R-forge page</a>, 
+and then checking &ldquo;Windows binary&rdquo; or &ldquo;Source package&rdquo;. The 
+R version currently used on <code>r-forge</code> should appear there.</p>
+
+<h2>Install soiltexture (development version, from GitHub)</h2>
+
+<p>The <a href="https://github.com/rforge/soiltexture" title="GitHub mirror of &#39;soiltexture&#39; from r-forge SVN">GitHub mirror of soiltexture</a> (<em>Notice 
+that I am not the maintainer of this page</em>) makes it possible 
+to use <code>devtools</code> package installation method to install the 
+development version of the package <code>soiltexture</code>. It can be 
+an interesting solution when using a version of R that is 
+different from the one installed on <code>r-forge</code> (newer or older).</p>
+
+<h3>Install devtools (and maybe RTools)</h3>
+
+<p>Follow the instructions given on <a href="https://github.com/hadley/devtools" title="devtools R package on GitHub">devtools GitHub page</a>. 
+See in particular &ldquo;Updating to the latest version of devtools&rdquo;.</p>
+
+<h3>Install soiltexture using devtools</h3>
+
+<p>Open R and type:</p>
+
+<pre><code>devtools::install_github(&quot;rforge/soiltexture/pkg/soiltexture&quot;)
+</code></pre>
+
+<p>Notice that you can install in the same way the package 
+<code>soiltexturetransformation</code> by Wei Shangguan:</p>
+
+<pre><code>devtools::install_github(&quot;rforge/soiltexture/pkg/soiltexturetransformation&quot;)
+</code></pre>
+
+<p>For technical reason this package does not compile on <code>r-forge</code> 
+(because of a dependency on <code>drc</code> that used to be on <code>r-forge</code> 
+but is now developed outside of <code>r-forge</code>).</p>
 
 <h1>Text based graphical user interface    <a id="text_gui"></a></h1>
 
