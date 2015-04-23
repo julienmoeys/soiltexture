@@ -675,7 +675,8 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
         
         
         if( exportFigure | classifData ){
-            shell.exec( tempdir() ) 
+            # shell.exec( tempdir() ) 
+            browseURL( url = tempdir() ) 
         }   
     }else{ # Not interactive
         dat <- NULL 
