@@ -17,7 +17,7 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.3.2", 
+    pkgVersion  = "1.3.3", 
     pkgDepends  = "utils",       #  In Depends because can not importFrom Windows only functions 
     pkgSuggests = c( "xtable" ), #  
     pkgImports  = c( "sp", "MASS", "tools", "tcltk" ), 

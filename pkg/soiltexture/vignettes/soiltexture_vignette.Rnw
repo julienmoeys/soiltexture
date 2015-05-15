@@ -108,17 +108,7 @@ options(
 # setwd("C:/_RTOOLS/SWEAVE_WORK/SOIL_TEXTURES/rforge/pkg/soiltexture/inst/doc/INOUT") 
 
 # And load the xtable package:
-if( !"xtable" %in% .packages(all.available = TRUE) )
-{   #
-    message( paste( sep = "", 
-        "The xtable package is not present in your R install:\n", 
-        "R will now try to connect to one package server\n", 
-        "and propose you a list of package to download\n", 
-        "and install: Choose 'xtable' from the list"
-    )   )   #
-    utils:::menuInstallPkgs() 
-}   #
-require( "xtable" ) 
+library( "xtable" )
 @ 
 
 % \SweaveOpts{width=14,height=14,keep.source=TRUE}
@@ -152,11 +142,13 @@ old.wd  <- getwd()
 #     )   #
 # }   #
 
-require( 
-    package        = "soiltexture", 
-    character.only = TRUE, 
-    quietly        = TRUE 
-)   
+suppressPackageStartupMessages( library( "soiltexture" ) )
+
+# library( 
+#     package        = "soiltexture", 
+#     character.only = TRUE, 
+#     quietly        = TRUE 
+# )   
 
 # setwd(old.wd) 
 @ 
@@ -659,7 +651,7 @@ the following commands:
 install.packages( 
     pkgs  = "soiltexture", 
     repos = "http://R-Forge.R-project.org" 
-)   #
+)   
 @ 
 
 
@@ -667,7 +659,7 @@ It can then be loaded with the following command:
 
 
 <<echo=TRUE>>= 
-require( soiltexture ) 
+library( soiltexture ) 
 @ 
 
 
@@ -676,7 +668,7 @@ it with the following commands:
 
 
 <<echo=TRUE,eval=FALSE>>= 
-detach( package:soiltexture ) 
+detach( "package:soiltexture" ) 
 remove.packages( "soiltexture" ) 
 @ 
 
