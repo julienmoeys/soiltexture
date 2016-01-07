@@ -44,7 +44,9 @@ blrNames <- function( s, ... ){
 #'@rdname blrNames-methods
 #'
 #'@method blrNames ternarySystem
-#'@S3method blrNames ternarySystem
+#'
+#'@export
+#'
 blrNames.ternarySystem <- function( s, ... ){  
     return( s[[ 'ternaryVariables']][[ 'blrNames' ]] ) 
 }   
@@ -54,7 +56,9 @@ blrNames.ternarySystem <- function( s, ... ){
 #'@rdname blrNames-methods
 #'
 #'@method blrNames ternaryVariables
-#'@S3method blrNames ternaryVariables
+#'
+#'@export
+#'
 blrNames.ternaryVariables <- function( s, ... ){  
     return( s[[ 'blrNames' ]] ) 
 }   
@@ -82,7 +86,8 @@ blrNames.ternaryVariables <- function( s, ... ){
 #'@rdname blrNames-methods
 #'
 #'@method blrNames<- ternarySystem
-#'@S3method blrNames<- ternarySystem
+#'
+#'@export
 #'
 #'@usage \method{blrNames}{ternarySystem}(s, ...) <- value
 #'
@@ -113,7 +118,9 @@ blrNames.ternaryVariables <- function( s, ... ){
 #'@rdname blrNames-methods
 #'
 #'@method blrNames<- ternaryVariables
-#'@S3method blrNames<- ternaryVariables
+#'
+#'@export
+#'
 #'
 #'@usage \method{blrNames}{ternaryVariables}(s, ...) <- value
 #'
@@ -167,7 +174,9 @@ blrLabels <- function( s, ... ){
 #'@rdname blrLabels-methods
 #'
 #'@method blrLabels ternarySystem
-#'@S3method blrLabels ternarySystem
+#'
+#'@export
+#'
 blrLabels.ternarySystem <- function( s, ... ){  
     return( s[[ 'ternaryVariables']][[ 'blrLabels' ]] ) 
 }   
@@ -177,7 +186,9 @@ blrLabels.ternarySystem <- function( s, ... ){
 #'@rdname blrLabels-methods
 #'
 #'@method blrLabels ternaryVariables
-#'@S3method blrLabels ternaryVariables
+#'
+#'@export
+#'
 blrLabels.ternaryVariables <- function( s, ... ){  
     return( s[[ 'blrLabels' ]] ) 
 }   
@@ -205,7 +216,9 @@ blrLabels.ternaryVariables <- function( s, ... ){
 #'@rdname blrLabels-methods
 #'
 #'@method blrLabels<- ternarySystem
-#'@S3method blrLabels<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{blrLabels}{ternarySystem}(s, ...) <- value
 #'
@@ -226,7 +239,9 @@ blrLabels.ternaryVariables <- function( s, ... ){
 #'@rdname blrLabels-methods
 #'
 #'@method blrLabels<- ternaryVariables
-#'@S3method blrLabels<- ternaryVariables
+#'
+#'@export
+#'
 #'
 #'@usage \method{blrLabels}{ternaryVariables}(s, ...) <- value
 #'
@@ -283,7 +298,9 @@ blrClock <- function(
 #'@rdname blrClock-methods
 #'
 #'@method blrClock ternarySystem
-#'@S3method blrClock ternarySystem
+#'
+#'@export
+#'
 blrClock.ternarySystem <- function( 
  s, 
  ... 
@@ -296,7 +313,9 @@ blrClock.ternarySystem <- function(
 #'@rdname blrClock-methods
 #'
 #'@method blrClock ternaryGeometry
-#'@S3method blrClock ternaryGeometry
+#'
+#'@export
+#'
 blrClock.ternaryGeometry <- function( 
  s, 
  ... 
@@ -327,7 +346,9 @@ blrClock.ternaryGeometry <- function(
 #'@rdname blrClock-methods
 #'
 #'@method blrClock<- ternarySystem
-#'@S3method blrClock<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{blrClock}{ternarySystem}(s, ...) <- value
 #'
@@ -338,7 +359,15 @@ blrClock.ternaryGeometry <- function(
 ){  
     s[[ 'ternaryGeometry' ]][[ 'blrClock' ]] <- value 
     
+    
+    #   Set the class (in case it has changed)
+    class( s[[ 'ternaryGeometry' ]] ) <- .generateTernaryGeometryClass( 
+        blrClock = s[[ "blrClock" ]] ) 
+    
+    
+    #   Check the validity
     ternaryCheck( s[[ 'ternaryGeometry' ]], ... ) 
+
     
     return( s ) 
 }   
@@ -348,7 +377,9 @@ blrClock.ternaryGeometry <- function(
 #'@rdname blrClock-methods
 #'
 #'@method blrClock<- ternaryGeometry
-#'@S3method blrClock<- ternaryGeometry
+#'
+#'@export
+#'
 #'
 #'@usage \method{blrClock}{ternaryGeometry}(s, ...) <- value
 #'
@@ -358,6 +389,12 @@ blrClock.ternaryGeometry <- function(
  value 
 ){  
     s[[ 'blrClock' ]] <- value 
+    
+    
+    #   Set the class (in case it has changed)
+    class( s ) <- .generateTernaryGeometryClass( 
+        blrClock = s[[ "blrClock" ]] ) 
+    
     
     ternaryCheck( s, ... ) 
     
@@ -399,13 +436,15 @@ fracSum <- function(
 ){  
     UseMethod( "fracSum" ) 
 }   
- 
+
 
 
 #'@rdname fracSum-methods
 #'
 #'@method fracSum ternarySystem
-#'@S3method fracSum ternarySystem
+#'
+#'@export
+#'
 fracSum.ternarySystem <- function( 
  s, 
  ... 
@@ -418,7 +457,9 @@ fracSum.ternarySystem <- function(
 #'@rdname fracSum-methods
 #'
 #'@method fracSum ternaryGeometry
-#'@S3method fracSum ternaryGeometry
+#'
+#'@export
+#'
 fracSum.ternaryGeometry <- function( 
  s, 
  ... 
@@ -449,7 +490,9 @@ fracSum.ternaryGeometry <- function(
 #'@rdname fracSum-methods
 #'
 #'@method fracSum<- ternarySystem
-#'@S3method fracSum<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{fracSum}{ternarySystem}(s, ...) <- value
 #'
@@ -470,7 +513,9 @@ fracSum.ternaryGeometry <- function(
 #'@rdname fracSum-methods
 #'
 #'@method fracSum<- ternaryGeometry
-#'@S3method fracSum<- ternaryGeometry
+#'
+#'@export
+#'
 #'
 #'@usage \method{fracSum}{ternaryGeometry}(s, ...) <- value
 #'
@@ -527,7 +572,9 @@ tlrAngles <- function(
 #'@rdname tlrAngles-methods
 #'
 #'@method tlrAngles ternarySystem
-#'@S3method tlrAngles ternarySystem
+#'
+#'@export
+#'
 tlrAngles.ternarySystem <- function( 
  s, 
  ... 
@@ -540,7 +587,9 @@ tlrAngles.ternarySystem <- function(
 #'@rdname tlrAngles-methods
 #'
 #'@method tlrAngles ternaryGeometry
-#'@S3method tlrAngles ternaryGeometry
+#'
+#'@export
+#'
 tlrAngles.ternaryGeometry <- function( 
  s, 
  ... 
@@ -571,7 +620,9 @@ tlrAngles.ternaryGeometry <- function(
 #'@rdname tlrAngles-methods
 #'
 #'@method tlrAngles<- ternarySystem
-#'@S3method tlrAngles<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{tlrAngles}{ternarySystem}(s, ...) <- value
 #'
@@ -592,7 +643,9 @@ tlrAngles.ternaryGeometry <- function(
 #'@rdname tlrAngles-methods
 #'
 #'@method tlrAngles<- ternaryGeometry
-#'@S3method tlrAngles<- ternaryGeometry
+#'
+#'@export
+#'
 #'
 #'@usage \method{tlrAngles}{ternaryGeometry}(s, ...) <- value
 #'
@@ -645,7 +698,9 @@ ternaryGeometry <- function(
 #'@rdname ternaryGeometry-methods
 #'
 #'@method ternaryGeometry ternarySystem
-#'@S3method ternaryGeometry ternarySystem
+#'
+#'@export
+#'
 ternaryGeometry.ternarySystem <- function( 
  s, 
  ... 
@@ -676,7 +731,9 @@ ternaryGeometry.ternarySystem <- function(
 #'@rdname ternaryGeometry-methods
 #'
 #'@method ternaryGeometry<- ternarySystem
-#'@S3method ternaryGeometry<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{ternaryGeometry}{ternarySystem}( s, ... ) <- value
 #'
@@ -690,6 +747,82 @@ ternaryGeometry.ternarySystem <- function(
     ternaryCheck( s[[ 'ternaryGeometry' ]], ... )     
     
     return( s ) 
+}   
+
+
+
+# print.ternaryGeometry ========================================= 
+
+#'Print the content of a ternaryGeometry object in a human readable format.
+#'
+#'Print the content of a \code{ternaryGeometry} object 
+#'  (S3-class) in a human readable format.
+#'
+#'
+#'@param x 
+#'  A \code{ternaryGeometry} object, as created with 
+#'  \code{\link[ternaryplot]{createTernaryGeometry}}.
+#'
+#'@param prefix 
+#'  Single character string. Prefix used before the different 
+#'  items in \code{x} (intended for internal use, for example 
+#'  \code{prefix = "$ternaryGeometry"}).
+#'
+#'@param collapse 
+#'  Single character string. Passed to 
+#'  \code{\link{paste}( ..., collapse )} when displaying the 
+#'  items' values.
+#'
+#'@param \dots
+#'  Additional parameters passed to specific methods (not 
+#'  used). 
+#'
+#'
+#'@method print ternaryGeometry
+#'
+#'@export
+#'
+print.ternaryGeometry <- function( 
+ x, 
+ prefix = "", 
+ collapse = "; ", 
+ ... 
+){  
+    cat( "A ternaryGeometry (S3-class) object:\n\n" )
+    
+    cat( sprintf( 
+        "%s$tlrAngles: %s\n", 
+        prefix, 
+        paste( as.character( x[[ "tlrAngles" ]] ), collapse = collapse ) 
+    ) ) 
+    
+    cat( "  Angles of the top, left and right vertices [degrees]\n" )
+    cat( "  Get or set with tlrAngles() or tlrAngles() <- value\n\n" )
+    
+    clock <- as.character( x[[ "blrClock" ]] )
+    clock[ is.na( clock ) ] <- "NA" 
+    
+    cat( sprintf( 
+        "%s$blrClock: %s\n", 
+        prefix, 
+        paste( clock, collapse = collapse ) 
+    ) ) 
+    
+    cat( "  Directions of the bottom, left and right axis (edges)\n" )
+    cat( "  TRUE is clockwise (CW), FALSE is counter-CW and NA is centripetal\n" )
+    cat( "  Get or set with blrClock() or blrClock() <- value\n\n" )
+    
+    cat( sprintf( 
+        "%s$fracSum: %s\n", 
+        prefix, 
+        x[[ "fracSum" ]] 
+    ) ) 
+    
+    cat( "  Sum of the 3 variables in the diagram\n" )
+    cat( "  1 for fractions, 100 for percentages\n" )
+    cat( "  Get or set with fracSum() or fracSum() <- value\n\n" )
+    
+    return( invisible( x ) ) 
 }   
 
 
@@ -729,7 +862,9 @@ ternaryVariables <- function(
 #'@rdname ternaryVariables-methods
 #'
 #'@method ternaryVariables ternarySystem
-#'@S3method ternaryVariables ternarySystem
+#'
+#'@export
+#'
 ternaryVariables.ternarySystem <- function( 
  s, 
  ... 
@@ -760,7 +895,9 @@ ternaryVariables.ternarySystem <- function(
 #'@rdname ternaryVariables-methods
 #'
 #'@method ternaryVariables<- ternarySystem
-#'@S3method ternaryVariables<- ternarySystem
+#'
+#'@export
+#'
 #'
 #'@usage \method{ternaryVariables}{ternarySystem}( s, ... ) <- value
 #'
@@ -775,4 +912,151 @@ ternaryVariables.ternarySystem <- function(
     
     return( s ) 
 }   
+
+
+
+# print.ternaryVariables ========================================= 
+
+#'Print the content of a ternaryVariables object in a human readable format.
+#'
+#'Print the content of a \code{ternaryVariables} object 
+#'  (S3-class) in a human readable format.
+#'
+#'
+#'@param x 
+#'  A \code{ternaryVariables} object, as created with 
+#'  \code{\link[ternaryplot]{createTernaryVariables}}.
+#'
+#'@param prefix 
+#'  Single character string. Prefix used before the different 
+#'  items in \code{x} (intended for internal use, for example 
+#'  \code{prefix = "$ternaryGeometry"}).
+#'
+#'@param collapse 
+#'  Single character string. Passed to 
+#'  \code{\link{paste}( ..., collapse )} when displaying the 
+#'  items' values.
+#'
+#'@param \dots
+#'  Additional parameters passed to specific methods (not 
+#'  used).
+#'
+#'@export 
+#'
+#'@method print ternaryVariables
+#' 
+print.ternaryVariables <- function( 
+ x, 
+ prefix = "", 
+ collapse = "; ", 
+ ... 
+){  
+    cat( "A ternaryVariables (S3-class) object:\n\n" )
+    
+    cat( sprintf( 
+        "%s$blrNames: %s\n", 
+        prefix, 
+        paste( x[[ "blrNames" ]], collapse = collapse ) 
+    ) ) 
+    
+    cat( "  Names of the bottom, left and right variables\n" ) 
+    cat( "  Get or set with blrNames() and blrNames() <- value\n\n" ) 
+    
+    cat( sprintf( 
+        "%s$blrLabels: %s\n", 
+        prefix, 
+        paste( x[[ "blrLabels" ]], collapse = collapse ) 
+    ) ) 
+    
+    cat( "  Labels of the bottom, left and right axis\n" ) 
+    cat( "  Get or set with blrLabels() and blrLabels() <- value\n\n" ) 
+    
+    return( invisible( x ) ) 
+}   
+
+
+
+# print.ternarySystem ====================================== 
+
+#'Print the content of a ternarySystem object in a human readable format.
+#'
+#'Print the content of a \code{ternarySystem} object 
+#'  (S3-class) in a human readable format.
+#'
+#'
+#'@param x 
+#'  A \code{ternarySystem} object, as created with 
+#'  \code{\link[ternaryplot]{createTernarySystem}}.
+#'
+#'@param prefix 
+#'  Single character string. Prefix used before the different 
+#'  items in \code{x} (intended for internal use, for example 
+#'  \code{prefix = "$ternaryGeometry"}).
+#'
+#'@param collapse 
+#'  Single character string. Passed to 
+#'  \code{\link{paste}( ..., collapse )} when displaying the 
+#'  items' values.
+#'
+#'@param \dots
+#'  Additional parameters passed to specific methods (not 
+#'  used).
+#'
+#'@export 
+#'
+#'@method print ternarySystem
+#' 
+print.ternarySystem <- function( 
+ x, 
+ prefix = "", 
+ collapse = "; ", 
+ ... 
+){  
+    cat( "A ternarySystem (S3-class) object:\n\n" )
+    
+    cat( "$ternaryVariables\n" ) 
+    
+    print( 
+        x        = x[[ "ternaryVariables" ]], 
+        prefix   = paste0( prefix, "$ternaryVariables" ), 
+        collapse = collapse, 
+        ... 
+    )   
+    
+    cat( "$ternaryGeometry\n" ) 
+    
+    print( 
+        x        = x[[ "ternaryGeometry" ]], 
+        prefix   = paste0( prefix, "$ternaryGeometry" ), 
+        collapse = collapse, 
+        ... 
+    )   
+    
+    cat( sprintf( "%s$main: %s\n", prefix, x[[ "main" ]] ) ) 
+    cat( "  Default title of the ternary diagram\n\n" ) 
+    
+    cat( sprintf( "%s$vertices:\n", prefix ) ) 
+    print( x[[ "vertices" ]] ) 
+    cat( "  A data.frame containing the vertices identifiers and positions\n" ) 
+    cat( "  Empty for a ternary-system with no classes\n" ) 
+    cat( "  Can not be altered independently from $classes\n" ) 
+    cat( "  Use createTernarySystem() to modify them\n\n" ) 
+    
+    cat( sprintf( "%s$classes:\n", prefix ) ) 
+    print( x[[ "classes" ]] ) 
+    cat( "  A data.frame containing the classes' abbreviations,\n" ) 
+    cat( "  names and lists of vertices\n" )
+    cat( "  Empty for a ternary-system with no classes\n" ) 
+    cat( "  Can not be altered independently from $vertices\n" ) 
+    cat( "  Use createTernarySystem() to modify them\n\n" ) 
+    
+    cat( sprintf( "%s$scale:\n", prefix ) ) 
+    print( x[[ "scale" ]] ) 
+    cat( "  A data.frame containing the min and max limits (rows)\n" ) 
+    cat( "  of each axis (columns)\n" ) 
+    cat( "  Currently not used (zoom feature not implemented)\n\n" ) 
+    
+    return( invisible( x ) ) 
+}   
+
 

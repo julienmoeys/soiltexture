@@ -8,8 +8,6 @@
 
 # Useful: \code{} \code{\link[]{}} 
 
-# TO DO: ADD A TEXT LABEL in .ternaryTicks()
-
 
 
 # ternaryWindow =================================================
@@ -59,7 +57,9 @@ ternaryWindow <- function(
 #'@rdname ternaryWindow-methods
 #'
 #'@method ternaryWindow character
-#'@S3method ternaryWindow character
+#'
+#'@export
+#'
 ternaryWindow.character <- function(
  s, 
  x, 
@@ -80,7 +80,9 @@ ternaryWindow.character <- function(
 #'@rdname ternaryWindow-methods
 #'
 #'@method ternaryWindow ternarySystem
-#'@S3method ternaryWindow ternarySystem
+#'
+#'@export
+#'
 ternaryWindow.ternarySystem <- function(
  s, 
  x, 
@@ -230,14 +232,17 @@ ternaryBox <- function( s, ... ){
 # INTERNAL. Converts x-y points to SpatialPolygons.
 #   The polygon is closed internally (first value added as last 
 #   value)
+#'@importFrom sp Polygon
+#'@importFrom sp Polygons
+#'@importFrom sp SpatialPolygons
 .xy2SpatialPolygons <- function( xy ){ 
     if( !identical( xy[1], xy[ nrow( xy ), ] ) ){ 
         xy <- rbind( xy, xy[1,] ) 
     }   
     
-    p <- Polygon( coords = xy )
-    p <- Polygons( srl = list( p ), ID = 1L )
-    p <- SpatialPolygons( Srl = list( p ), pO = 1L ) 
+    p <- sp::Polygon( coords = xy )
+    p <- sp::Polygons( srl = list( p ), ID = 1L )
+    p <- sp::SpatialPolygons( Srl = list( p ), pO = 1L ) 
     
     return( p ) 
 }   
@@ -247,7 +252,9 @@ ternaryBox <- function( s, ... ){
 #'@rdname ternaryBox-methods
 #'
 #'@method ternaryBox ternarySystem
-#'@S3method ternaryBox ternarySystem
+#'
+#'@export
+#' 
 ternaryBox.ternarySystem <- function( 
  s, 
  .plot = TRUE, 
@@ -335,25 +342,13 @@ ternaryPoints <- function(
 
 
 
-# # INTERNAL. Converts x-y points to SpatialPolygons.
-# #   The polygon is closed internally (first value added as last 
-# #   value)
-# .xy2SpatialPolygons( xy ){ 
-    # xy <- data.frame( 
-        # "x" = c( x, x[1] ), 
-        # "y" = c( y, y[1] ) ) 
-    
-    # SpatialPoints(coords, proj4string=CRS(as.character(NA)), bbox = NULL)
-    
-    # return( p ) 
-# }   
-
-
-
 #'@rdname ternaryPoints-methods
 #'
 #'@method ternaryPoints ternarySystem
-#'@S3method ternaryPoints ternarySystem
+#'
+#'@export
+#'
+#'@importFrom sp SpatialPoints
 ternaryPoints.ternarySystem <- function( 
  s, 
  x, 
@@ -367,7 +362,7 @@ ternaryPoints.ternarySystem <- function(
     }   
     
     out <- xy[, c( "x", "y" ) ]
-    if( getTpPar( "sp" ) ){ out <- SpatialPoints( coords = out ) }
+    if( getTpPar( "sp" ) ){ out <- sp::SpatialPoints( coords = out ) }
     
     return( invisible( out ) ) 
 }   
@@ -431,7 +426,9 @@ ternaryText <- function( s, ... ){
 #'@rdname ternaryText-methods
 #'
 #'@method ternaryText ternarySystem
-#'@S3method ternaryText ternarySystem
+#'
+#'@export
+#'
 ternaryText.ternarySystem <- function( 
  s, 
  x, 
@@ -517,18 +514,21 @@ ternarySegments <- function(
 
 
 # Converts x-y segments to sp::SpatialLines
+#'@importFrom sp SpatialLines
+#'@importFrom sp Lines
+#'@importFrom sp Line
 .xySegments2SpatialLines <- function( fromXY, toXY ){ 
     coords <- data.frame( 
         "x" = rep( NA_real_, 2 ), 
         "y" = rep( NA_real_, 2 ) ) 
     
-    out <- SpatialLines( lapply( 
+    out <- sp::SpatialLines( lapply( 
         X   = 1:nrow(fromXY), 
         FUN = function(i){ 
             coords[, "x" ] <- c( fromXY[ i, "x" ], toXY[ i, "x" ] ) 
             coords[, "y" ] <- c( fromXY[ i, "y" ], toXY[ i, "y" ] ) 
             
-            return( Lines( list( Line( coords = coords ) ), ID = i ) )
+            return( sp::Lines( list( sp::Line( coords = coords ) ), ID = i ) )
         }   
     ) ) 
     
@@ -540,7 +540,9 @@ ternarySegments <- function(
 #'@rdname ternarySegments-methods
 #'
 #'@method ternarySegments ternarySystem
-#'@S3method ternarySegments ternarySystem
+#'
+#'@export
+#'
 ternarySegments.ternarySystem <- function( 
  s, 
  from, 
@@ -661,7 +663,9 @@ ternaryArrows <- function(
 #'@rdname ternaryArrows-methods
 #'
 #'@method ternaryArrows ternarySystem
-#'@S3method ternaryArrows ternarySystem
+#'
+#'@export
+#'
 ternaryArrows.ternarySystem <- function( 
  s, 
  from, 
@@ -715,18 +719,19 @@ ternaryArrows.ternarySystem <- function(
 
 # .ternaryGridBase ==============================================
 
-#'INTERNAL. Calculates start- and end-points of grid segments in ternary coordinates
+#'INTERNAL. Calculates start- and end-points of grid segments (tick-marks, ...) in ternary coordinates
 #'
-#'INTERNAL. Calculates start- and end-points of grid segments in ternary coordinates
+#'INTERNAL. Calculates start- and end-points of grid segments (tick-marks, ...) in ternary coordinates
 #'
 #'
 #'@param s 
 #'  A \code{\link[ternaryplot]{ternarySystem}} object.
 #'
-#'@param ticks
-#'  Single logical. If \code{TRUE}, return values for 
-#'  axis' tick-marks. If \code{FALSE}, return values for 
-#'  a grid.
+#'@param type
+#'  Single character string. If \code{"grid"}, return values 
+#'  the grid in a ternary plot, if \code{"ticks"} return values 
+#'  for axis' tick-marks and if \code{"tickLabels"} returns 
+#'  values for axis' tick-marks' labels.
 #'
 #'@param \dots
 #'  Additional parameters passed to specific methods.
@@ -740,7 +745,7 @@ ternaryArrows.ternarySystem <- function(
 #'
 .ternaryGridBase <- function( 
  s, 
- ticks = FALSE, 
+ type = "grid", 
  ... 
 ){  
     if( missing( s ) ){ 
@@ -755,17 +760,39 @@ ternaryArrows.ternarySystem <- function(
 #'@rdname ternaryGridBase-methods
 #'
 #'@method .ternaryGridBase ternarySystem
-#'@S3method .ternaryGridBase ternarySystem
+#'
+#'@export
+#'
 .ternaryGridBase.ternarySystem <- function( 
  s, 
- ticks = FALSE, 
+ type = "grid", 
  ... 
 ){  
     .blrNames    <- blrNames( s = s )  
     .blrClock    <- blrClock( s )  
     tScale       <- s[[ 'scale' ]] 
     .fracSum     <- fracSum( s = s ) 
-    ticksShift   <- getTpPar( "ticksShift" )
+    marginSize   <- .nbMargin2diffXY()
+    
+    if( type == "ticks" ){ 
+        ticksShiftTo <- getTpPar( "ticksShift" ) 
+        
+        if( is.na( ticksShiftTo ) ){
+            ticksShiftFrom <- (marginSize / .fracSum) * par( "mgp" )[ 3L ] 
+            ticksShiftTo   <- 
+                ticksShiftFrom + (marginSize / .fracSum) * (-1 * par( "tcl" )) 
+        }   
+    }else if( type == "tickLabels" ){
+        ticksShiftTo <- getTpPar( "ticksShift" ) 
+        
+        if( is.na( ticksShiftTo ) ){
+            ticksShiftFrom <- (marginSize / .fracSum) * par( "mgp" )[ 3L ] 
+            ticksShiftTo   <- (marginSize / .fracSum) * par( "mgp" )[ 2L ] 
+        }   
+    }else{
+        ticksShiftFrom <- NA_real_
+        ticksShiftTo   <- NA_real_
+    }   
     
     # Note: Axis order / index is Bottom -> Left -> Right
     #       This order is cyclic: after Right comes left
@@ -800,7 +827,7 @@ ternaryArrows.ternarySystem <- function(
         rTicks > tScale[ "min", 3 ] & 
         rTicks < tScale[ "max", 3 ]   
     ]   
-
+    
     
     
     # pre-format the grid-lines of each axis
@@ -867,16 +894,16 @@ ternaryArrows.ternarySystem <- function(
                 
                 # Next axis is not clockwise or is NA
                 if( !nextClock ){ 
-                    # Start coordinates on previous axis is 0 or min
-                    gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
-                    
-                    # Start coordinates on next axis
-                    gridFrom[[ ax ]][, axNext ] <- 
-                        .fracSum - 
-                        gridFrom[[ ax ]][, ax ] - 
-                        gridFrom[[ ax ]][, axPrev ]
-                    
-                    if( !ticks ){ 
+                    if( type == "grid" ){ # !ticks 
+                        # Start coordinates on previous axis is 0 or min
+                        gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
+                        
+                        # Start coordinates on next axis
+                        gridFrom[[ ax ]][, axNext ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axPrev ]
+                        
                         # End coordinates on next axis
                         gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
                     
@@ -886,27 +913,37 @@ ternaryArrows.ternarySystem <- function(
                             gridTo[[ ax ]][, ax ] - 
                             gridTo[[ ax ]][, axNext ] 
                     }else{ 
-                        gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShift * .fracSum 
+                        # Start coordinates on previous axis is 0 or min
+                        gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShiftFrom * .fracSum 
+                        
+                        # Start coordinates on next axis
+                        gridFrom[[ ax ]][, axNext ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axPrev ]
                         
                         # End coordinate on previous axis
-                            gridTo[[ ax ]][, axNext ] <- 
-                                .fracSum - 
-                                gridTo[[ ax ]][, ax ] - 
-                                gridTo[[ ax ]][, axPrev ] 
+                        gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShiftTo * .fracSum 
+                        
+                        # End coordinate on next axis
+                        gridTo[[ ax ]][, axNext ] <- 
+                            .fracSum - 
+                            gridTo[[ ax ]][, ax ] - 
+                            gridTo[[ ax ]][, axPrev ] 
                     }   
                 
                 # Next axis is clockwise too
                 }else{ 
-                    # Start coordinates on next axis is 0 or min
-                    gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
-                    
-                    # Start coordinates on previous axis
-                    gridFrom[[ ax ]][, axPrev ] <- 
-                        .fracSum - 
-                        gridFrom[[ ax ]][, ax ] - 
-                        gridFrom[[ ax ]][, axNext ]
-                    
-                    if( !ticks ){ 
+                    if( type == "grid" ){ # !ticks
+                        # Start coordinates on next axis is 0 or min
+                        gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
+                        
+                        # Start coordinates on previous axis
+                        gridFrom[[ ax ]][, axPrev ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axNext ]
+                        
                         # End coordinates on previous axis
                         gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
                     
@@ -916,8 +953,17 @@ ternaryArrows.ternarySystem <- function(
                             gridTo[[ ax ]][, ax ] - 
                             gridTo[[ ax ]][, axPrev ]
                     }else{ 
+                        # Start coordinates on next axis is 0 or min
+                        gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShiftFrom * .fracSum  
+                        
+                        # Start coordinates on previous axis
+                        gridFrom[[ ax ]][, axPrev ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axNext ]
+                        
                         # End coordinates on previous axis
-                        gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShift * .fracSum  
+                        gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShiftTo * .fracSum  
                     
                         # End coordinate on next axis
                         gridTo[[ ax ]][, axPrev ] <- 
@@ -943,16 +989,16 @@ ternaryArrows.ternarySystem <- function(
                 
                 # Next axis is clockwise
                 if( nextClock ){ 
-                    # Start coordinates on next axis is 0 or min
-                    gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
-                    
-                    # Start coordinates on previous axis
-                    gridFrom[[ ax ]][, axPrev ] <- 
-                        .fracSum - 
-                        gridFrom[[ ax ]][, ax ] - 
-                        gridFrom[[ ax ]][, axNext ]
-                    
-                    if( !ticks ){ 
+                    if( type == "grid" ){ # !ticks
+                        # Start coordinates on next axis is 0 or min
+                        gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
+                        
+                        # Start coordinates on previous axis
+                        gridFrom[[ ax ]][, axPrev ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axNext ]
+                        
                         # End coordinates on previous axis
                         gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
                         
@@ -962,8 +1008,17 @@ ternaryArrows.ternarySystem <- function(
                             gridTo[[ ax ]][, ax ] - 
                             gridTo[[ ax ]][, axPrev ]
                     }else{ 
+                        # Start coordinates on next axis is 0 or min
+                        gridFrom[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShiftFrom * .fracSum  
+                        
+                        # Start coordinates on previous axis
+                        gridFrom[[ ax ]][, axPrev ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axNext ]
+                        
                         # End coordinates on previous axis
-                        gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShift * .fracSum  
+                        gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] - ticksShiftTo * .fracSum  
                         
                         # End coordinate on next axis
                         gridTo[[ ax ]][, axPrev ] <- 
@@ -974,16 +1029,16 @@ ternaryArrows.ternarySystem <- function(
                 
                 # Next axis is counter-clockwise too (or NA?)
                 }else{ 
-                    # Start coordinates on previous axis is 0 or min
-                    gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
-                    
-                    # Start coordinates on next axis
-                    gridFrom[[ ax ]][, axNext ] <- 
-                        .fracSum - 
-                        gridFrom[[ ax ]][, ax ] - 
-                        gridFrom[[ ax ]][, axPrev ]
-                    
-                    if( !ticks ){ 
+                    if( type == "grid" ){ # !ticks
+                        # Start coordinates on previous axis is 0 or min
+                        gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] 
+                        
+                        # Start coordinates on next axis
+                        gridFrom[[ ax ]][, axNext ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axPrev ]
+                        
                         # End coordinates on next axis
                         gridTo[[ ax ]][, axNext ] <- tScale[ "min", axNext ] 
                         
@@ -993,8 +1048,17 @@ ternaryArrows.ternarySystem <- function(
                             gridTo[[ ax ]][, ax ] - 
                             gridTo[[ ax ]][, axNext ]
                     }else{ 
+                        # Start coordinates on previous axis is 0 or min
+                        gridFrom[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShiftFrom * .fracSum 
+                        
+                        # Start coordinates on next axis
+                        gridFrom[[ ax ]][, axNext ] <- 
+                            .fracSum - 
+                            gridFrom[[ ax ]][, ax ] - 
+                            gridFrom[[ ax ]][, axPrev ]
+                        
                         # End coordinates on next axis
-                        gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShift * .fracSum 
+                        gridTo[[ ax ]][, axPrev ] <- tScale[ "min", axPrev ] - ticksShiftTo * .fracSum 
                         
                         # End coordinate on previous axis
                         gridTo[[ ax ]][, axNext ] <- 
@@ -1006,7 +1070,7 @@ ternaryArrows.ternarySystem <- function(
             }  
         
         }else{  ## axis orientation is NA
-            if( !ticks ){ 
+            if( type == "grid" ){ # !ticks
                 gridFrom[[ ax ]] <- .ternaryClockSwitch( 
                     s   = s, #B     L     R
                     ttt = list( "B" = NA,                       "L" = NA,                                   "R" = NA ), 
@@ -1060,6 +1124,12 @@ ternaryArrows.ternarySystem <- function(
 #'@param s 
 #'  A \code{\link[ternaryplot]{ternarySystem}} object.
 #'
+#'@param side
+#'  A vector of integer specifying which side of the plot the axis is to
+#'  be drawn on.  The axis is placed as follows: 1=below, 2=left, 3=right (note 
+#'  that this differ from \code{\link[graphics]{axis}} where 3=above and 
+#'  4=right). Default is to draw axis on the 3 sides.
+#'
 #'@param .plot 
 #'  Single logical value. Set to \code{FALSE} if you don't want 
 #'  to plot the graphical element and simply returns them as 
@@ -1100,20 +1170,37 @@ ternaryArrows.ternarySystem <- function(
 #'@rdname ternaryTicks-methods
 #'
 #'@method .ternaryTicks ternarySystem
-#'@S3method .ternaryTicks ternarySystem
+#'
+#'@export
+#'
+#'@importFrom sp rbind.SpatialLines
 .ternaryTicks.ternarySystem <- function( 
  s, 
+ side = 1:3, 
  .plot = TRUE, 
  ... 
 ){  
-    # Calculates the tick-marks and grid-segments position
-    gr <- .ternaryGridBase( s = s, ticks = TRUE ) 
+    # Calculates the tick-marks position
+    grTm <- .ternaryGridBase( s = s, type = "ticks" ) 
     
-    n <- length( gr[[ "from" ]] )
+    # Calculates the tick-marks' labels position
+    grTl <- .ternaryGridBase( s = s, type = "tickLabels" ) 
     
+    n <- length( grTm[[ "from" ]] )
+    
+    if( !all(side %in% 1:3) ){
+        stop( sprintf( 
+            "'side' must be a vector of 3 integers (1, 2 or/and 3). Now %s", 
+            paste( side, collapse = ", " ) 
+        ) ) 
+    }   
+    
+    if( !(n %in% side) ){
+        stop( "Internal error in .ternaryTicks.ternarySystem. n and side are inconsistent" )
+    }   
     
     #   Prepare output
-    out <- vector( length = n, mode = "list" ) 
+    out <- outLine <- vector( length = n, mode = "list" ) 
     names( out ) <- c( "B", "L", "R" ) 
     
     
@@ -1156,11 +1243,11 @@ ternaryArrows.ternarySystem <- function(
     # )   #
     
     
-    for( ax in 1:n ){ 
+    for( ax in side ){ # 
         # Draw the tick-marks start and segments
-        if( nrow( gr[[ "from" ]][[ ax ]] ) != 0 ){ 
+        if( nrow( grTm[[ "from" ]][[ ax ]] ) != 0 ){ 
             # ternaryPoints( 
-                # x   = gr[[ "from" ]][[ ax ]], 
+                # x   = grTm[[ "from" ]][[ ax ]], 
                 # s   = s )  
             
             # Prevent tests
@@ -1168,10 +1255,20 @@ ternaryArrows.ternarySystem <- function(
                 oldPar <- tpPar( par = "testRange" )        
                 tpPar  <- tpPar( testRange = FALSE ) 
                 
-                # Draw the grid segments
+                # Draw the ticks segments
                 out[[ ax ]] <- ternarySegments( 
-                    from  = gr[[ "from" ]][[ ax ]], 
-                    to    = gr[[ "to" ]][[ ax ]], 
+                    from  = grTm[[ "from" ]][[ ax ]], 
+                    to    = grTm[[ "to" ]][[ ax ]], 
+                    s     = s, 
+                    col   = fg, 
+                    lwd   = axis.line.lwd, 
+                    .plot = .plot, 
+                    ... )  
+                
+                # Draw the axis line
+                outLine[[ ax ]] <- ternarySegments( 
+                    from  = grTm[[ "from" ]][[ ax ]][ 1L, , drop = FALSE ], 
+                    to    = grTm[[ "from" ]][[ ax ]][ nrow( grTm[[ "from" ]][[ ax ]] ), , drop = FALSE ], 
                     s     = s, 
                     col   = fg, 
                     lwd   = axis.line.lwd, 
@@ -1179,8 +1276,8 @@ ternaryArrows.ternarySystem <- function(
                     ... )  
                 
                 ternaryText( 
-                    x      = gr[[ "to" ]][[ ax ]], 
-                    labels = as.character( gr[[ "to" ]][[ ax ]][, ax ] ), 
+                    x      = grTl[[ "to" ]][[ ax ]], 
+                    labels = as.character( grTl[[ "to" ]][[ ax ]][, ax ] ), 
                     s      = s, 
                     # pos  = 2, 
                     adj    = c( adj1[ ax ], adj2[ ax ] ), 
@@ -1201,8 +1298,15 @@ ternaryArrows.ternarySystem <- function(
     if( getTpPar( "sp" ) ){ 
         isNull <- unlist( lapply( X = out, FUN = is.null ) )
         
-        out <- do.call( what = "rbind", 
+        out <- do.call( what = "rbind.SpatialLines", 
             args = c( out[ !isNull ], list( "makeUniqueIDs" = TRUE ) ) ) 
+        
+        isNull <- unlist( lapply( X = outLine, FUN = is.null ) )
+        
+        outLine <- do.call( what = "rbind.SpatialLines", 
+            args = c( outLine[ !isNull ], list( "makeUniqueIDs" = TRUE ) ) ) 
+        
+        out <- sp::rbind.SpatialLines( out, outLine, makeUniqueIDs = TRUE )
         
         # spChFIDs( out ) <- c( "B", "L", "R" )[ !isNull ]
     }   
@@ -1226,6 +1330,12 @@ ternaryArrows.ternarySystem <- function(
 #'
 #'@param s 
 #'  A \code{\link[ternaryplot]{ternarySystem}} object.
+#'
+#'@param side
+#'  A vector of integer specifying which side of the plot the axis is to
+#'  be drawn on.  The axis is placed as follows: 1=below, 2=left, 3=right (note 
+#'  that this differ from \code{\link[graphics]{axis}} where 3=above and 
+#'  4=right). Default is to draw axis on the 3 sides.
 #'
 #'@param .plot 
 #'  Single logical value. Set to \code{FALSE} if you don't want 
@@ -1262,18 +1372,33 @@ ternaryGrid <- function( s, ... ){
 #'@rdname ternaryGrid-methods
 #'
 #'@method ternaryGrid ternarySystem
-#'@S3method ternaryGrid ternarySystem
+#'
+#'@export
+#'
+#'@importFrom sp rbind.SpatialLines
 ternaryGrid.ternarySystem <- function( 
  s, 
+ side = 1:3, 
  .plot = TRUE, 
  ... 
-){   
+){  
     # Calculates the tick-marks and grid-segments position
-    gr <- .ternaryGridBase( s = s ) 
+    gr <- .ternaryGridBase( s = s, type = "grid" ) 
     
     grid.line.col <- getTpPar( "grid.line.col" )
     
     n <- length( gr[[ "from" ]] ) 
+    
+    if( !all(side %in% 1:3) ){
+        stop( sprintf( 
+            "'side' must be a vector of 3 integers (1, 2 or/and 3). Now %s", 
+            paste( side, collapse = ", " ) 
+        ) ) 
+    }   
+    
+    if( !(n %in% side) ){
+        stop( "Internal error in ternaryGrid.ternarySystem. n and side are inconsistent" )
+    }   
     
     
     #   Prepare output
@@ -1281,7 +1406,7 @@ ternaryGrid.ternarySystem <- function(
     names( out ) <- c( "B", "L", "R" ) 
     
     
-    for( ax in 1:n ){ 
+    for( ax in side ){ # 1:n
         if( nrow( gr[[ "from" ]][[ ax ]] ) != 0 ){ 
             # Draw the grid segments
             
@@ -1301,7 +1426,7 @@ ternaryGrid.ternarySystem <- function(
     if( getTpPar( "sp" ) ){ 
         isNull <- unlist( lapply( X = out, FUN = is.null ) )
         
-        out <- do.call( what = "rbind", 
+        out <- do.call( what = "rbind.SpatialLines", 
             args = c( out[ !isNull ], list( "makeUniqueIDs" = TRUE ) ) ) 
         
         # spChFIDs( out ) <- c( "B", "L", "R" )[ !isNull ]
@@ -1364,7 +1489,9 @@ ternaryPlot <- function(
 #'@rdname ternaryPlot-methods
 #'
 #'@method ternaryPlot character
-#'@S3method ternaryPlot character
+#' 
+#'@export
+#'
 ternaryPlot.character <- function(
  s, 
  ... 
@@ -1383,7 +1510,9 @@ ternaryPlot.character <- function(
 #'@rdname ternaryPlot-methods
 #'
 #'@method ternaryPlot ternarySystem
-#'@S3method ternaryPlot ternarySystem
+#'
+#'@export
+#'
 ternaryPlot.ternarySystem <- function( 
  s, 
  x = NULL, 
@@ -1397,10 +1526,11 @@ ternaryPlot.ternarySystem <- function(
     # Plot something:
     ternaryWindow( s = s ) 
     ternaryBox( s = s, col = getTpPar( "plot.bg" ) ) 
-    .ternaryTicks( s = s ) 
+    ternaryAxis( s = s ) 
+    # .ternaryTicks( s = s ) 
     ternaryGrid( s = s ) 
     ternaryBox( s = s ) 
-    .ternaryAxisArrows( s = s ) 
+    # .ternaryAxisArrows( s = s ) 
     
     
     if( is.null( x ) ){ x <- data.frame() } 
@@ -1463,7 +1593,9 @@ ternaryPlot.ternarySystem <- function(
 #'@rdname ternaryLims-methods
 #'
 #'@method .ternaryLims character
-#'@S3method .ternaryLims character
+#'
+#'@export
+#'
 .ternaryLims.character <- function(
  s, 
  ... 
@@ -1482,7 +1614,9 @@ ternaryPlot.ternarySystem <- function(
 #'@rdname ternaryLims-methods
 #'
 #'@method .ternaryLims ternarySystem
-#'@S3method .ternaryLims ternarySystem
+#'
+#'@export
+#'
 .ternaryLims.ternarySystem <- function( 
  s, 
  x, 
@@ -1624,7 +1758,9 @@ ternaryPlot.ternarySystem <- function(
 #'@rdname ternaryAxisArrowsBase-methods
 #'
 #'@method .ternaryAxisArrowsBase ternarySystem
-#'@S3method .ternaryAxisArrowsBase ternarySystem
+#'
+#'@export
+#'
 .ternaryAxisArrowsBase.ternarySystem <- function( 
  s, 
  ... 
@@ -1634,7 +1770,17 @@ ternaryPlot.ternarySystem <- function(
     tScale        <- s[[ 'scale' ]] 
     .fracSum      <- fracSum( s = s ) 
     arrowsShift   <- getTpPar( "arrowsShift" ) 
-    arrowsCoords <- getTpPar( "arrowsCoords" ) 
+    arrowsCoords  <- getTpPar( "arrowsCoords" ) 
+    
+    if( any( is.na( arrowsShift ) ) ){
+        #   Note: also set in .ternaryAxisArrows
+        arrowsHeight <- getTpPar( "arrowsHeight" ) 
+        mgp          <- par( "mgp" )
+        
+        arrowsShift <- (.nbMargin2diffXY() / .fracSum) * 
+            c( mgp[ 1L ] - arrowsHeight, mgp[ 1L ] ) 
+        
+    }   
     
     
     #   Note: Axis order / index is Bottom -> Left -> Right
@@ -1799,7 +1945,6 @@ ternaryPlot.ternarySystem <- function(
             }   
             
         }else{  ## axis orientation is NA
-            .arrowsShift <- arrowsShift * .fracSum
             
             # arroQuad[[ ax ]] <- data.frame() 
             arroQuad[[ ax ]] <- .ternaryClockSwitch( 
@@ -1809,13 +1954,13 @@ ternaryPlot.ternarySystem <- function(
                     "L" = rep( NA, 4 ),
                     "R" = rep( NA, 4 ) ), 
                 txf = list( 
-                    "B" = c( NA, .fracSum/2 + .arrowsShift[ 2 ]/2, .fracSum/2 + .arrowsShift[ 1 ]/2, .fracSum/2 + .arrowsShift[ 2 ]/2 ), 
-                    "L" = c( NA, -.arrowsShift[ 2 ],               -.arrowsShift[ 1 ],               -.arrowsShift[ 2 ] ), 
-                    "R" = c( NA, .fracSum/2 + .arrowsShift[ 2 ]/2, .fracSum/2 + .arrowsShift[ 1 ]/2, .fracSum/2 + .arrowsShift[ 2 ]/2 ) ), 
+                    "B" = c( NA, .fracSum/2 + arrowsShift[ 2 ]/2, .fracSum/2 + arrowsShift[ 1 ]/2, .fracSum/2 + arrowsShift[ 2 ]/2 ), 
+                    "L" = c( NA, -arrowsShift[ 2 ],               -arrowsShift[ 1 ],               -arrowsShift[ 2 ] ), 
+                    "R" = c( NA, .fracSum/2 + arrowsShift[ 2 ]/2, .fracSum/2 + arrowsShift[ 1 ]/2, .fracSum/2 + arrowsShift[ 2 ]/2 ) ), 
                 ftx = list( 
-                    "B" = c( NA, .fracSum/2 + .arrowsShift[ 2 ]/2, .fracSum/2 + .arrowsShift[ 1 ]/2, .fracSum/2 + .arrowsShift[ 2 ]/2 ), 
-                    "L" = c( NA, .fracSum/2 + .arrowsShift[ 2 ]/2, .fracSum/2 + .arrowsShift[ 1 ]/2, .fracSum/2 + .arrowsShift[ 2 ]/2 ), 
-                    "R" = c( NA, -.arrowsShift[ 2 ],               -.arrowsShift[ 1 ],               -.arrowsShift[ 2 ] ) ), 
+                    "B" = c( NA, .fracSum/2 + arrowsShift[ 2 ]/2, .fracSum/2 + arrowsShift[ 1 ]/2, .fracSum/2 + arrowsShift[ 2 ]/2 ), 
+                    "L" = c( NA, .fracSum/2 + arrowsShift[ 2 ]/2, .fracSum/2 + arrowsShift[ 1 ]/2, .fracSum/2 + arrowsShift[ 2 ]/2 ), 
+                    "R" = c( NA, -arrowsShift[ 2 ],               -arrowsShift[ 1 ],               -arrowsShift[ 2 ] ) ), 
                 fff = list( 
                     "B" = rep( NA, 4 ), 
                     "L" = rep( NA, 4 ),
@@ -1876,7 +2021,9 @@ ternaryPlot.ternarySystem <- function(
 #'@rdname ternaryAxisArrows-methods
 #'
 #'@method .ternaryAxisArrows ternarySystem
-#'@S3method .ternaryAxisArrows ternarySystem
+#'
+#'@export
+#'
 .ternaryAxisArrows.ternarySystem <- function( 
  s, 
  ... 
@@ -1894,13 +2041,27 @@ ternaryPlot.ternarySystem <- function(
     }   
     
     
-    pr <- tpPar( par = c( "arrowsBreak", "arrowsShift", "axis.line.lwd" ) ) 
+    pr <- tpPar( par = c( "arrowsBreak", "arrowsShift", "axis.line.lwd", "arrowsHeight" ) ) 
+    .par <- par()
     
     arrowsBreak   <- pr$"arrowsBreak" 
     arrowsShift   <- pr$"arrowsShift" 
-    fg            <- par( "fg" )
+    fg            <- .par[[ "fg" ]] # par( "fg" )
     axis.line.lwd <- pr$"axis.line.lwd"
-    col.lab       <- par( "col.lab" )
+    col.lab       <- .par[[ "col.lab" ]] # par( "col.lab" )
+    .fracSum      <- fracSum( s = s )
+    
+    if( any( is.na( arrowsShift ) ) ){
+        #   Note: also set in .ternaryAxisArrowsBase
+        arrowsHeight <- pr$"arrowsHeight"
+        mgp          <- .par[[ "mgp" ]]
+        
+        arrowsShift <- (.nbMargin2diffXY() / .fracSum) * 
+            c( mgp[ 1L ] - arrowsHeight, mgp[ 1L ] ) 
+        
+        # print( arrowsShift ) 
+    }   
+    
     
     
     #   Chose the right adjustment
@@ -1940,7 +2101,7 @@ ternaryPlot.ternarySystem <- function(
                         s      = s, 
                         col    = fg, 
                         lwd    = axis.line.lwd, 
-                        length = diff( arrowsShift ) * 2, 
+                        length = diff( arrowsShift ), 
                         ... ) 
                 }   
             }   
@@ -1953,7 +2114,7 @@ ternaryPlot.ternarySystem <- function(
                     s      = s, 
                     col    = fg, 
                     lwd    = axis.line.lwd, 
-                    length = diff( arrowsShift ) * 2, 
+                    length = diff( arrowsShift ), 
                     ... ) 
             }   
             
@@ -1983,4 +2144,96 @@ ternaryPlot.ternarySystem <- function(
     
     return( invisible( gr ) ) 
 }   
+
+
+
+# ternaryAxis ==================================================
+
+#'Add axis to a ternary plot (axis lines, ticks, labels, titles and arrows)
+#'
+#'Add axis to a ternary plot (axis lines, ticks, labels, titles and arrows)
+#'
+#'
+#'@param s 
+#'  A \code{ternarySystem} object, as created with 
+#'  \code{\link[ternaryplot]{createTernarySystem}}, or a single 
+#'  \code{character} string. Can be missing.
+#'
+#'@param side
+#'  A vector of integer specifying which side of the plot the axis is to
+#'  be drawn on.  The axis is placed as follows: 1=below, 2=left, 3=right (note 
+#'  that this differ from \code{\link[graphics]{axis}} where 3=above and 
+#'  4=right). Default is to draw axis on the 3 sides.
+#'
+#'@param tick
+#'  A logical value specifying whether tickmarks and an axis line
+#'  should be drawn.
+#'
+#'@param arrow
+#'  A logical value specifying whether axis' arrows should be drawn.
+#'
+#'@param \dots
+#'  Additional parameters passed to specific methods.
+#'
+#' 
+#'@rdname ternaryAxis-methods
+#'
+#'@export 
+#'
+ternaryAxis <- function( 
+ s, 
+ ... 
+){  
+    if( missing(s) ){ 
+        UseMethod( "ternaryAxis", object = character(0) ) 
+    }else{ 
+        UseMethod( "ternaryAxis" ) 
+    }   
+}   
+
+
+
+#'@rdname ternaryAxis-methods
+#'
+#'@method ternaryAxis character
+#'
+#'@export
+#'
+ternaryAxis.character <- function(
+ s, 
+ ... 
+){  
+    if( missing(s) ){ 
+        s <- getTernarySystem() 
+    }else{ 
+        s <- getTernarySystem( s = s )  
+    }   
+    
+    ternaryAxis( s = s, ... ) 
+}   
+
+
+
+#'@rdname ternaryAxis-methods
+#'
+#'@method ternaryAxis ternarySystem
+#'
+#'@export
+#'
+ternaryAxis.ternarySystem <- function(
+ s, 
+ side = 1:3,
+ tick = TRUE,
+ arrow = TRUE,
+ # tickLabel = TRUE, 
+ # axisTitle = TRUE, 
+ ... 
+){  
+    .ternaryTicks( s = s ) 
+    # ternaryGrid( s = s ) 
+    # ternaryBox( s = s ) 
+    .ternaryAxisArrows( s = s ) 
+}   
+
+
 

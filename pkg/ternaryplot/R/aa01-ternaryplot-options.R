@@ -62,6 +62,8 @@ tpParList  <- new.env()
 
 .tpParList[[ "sp" ]]            <- TRUE 
 
+.tpParList[[ "onFailure" ]]     <- stop 
+
 # GRAPHICAL PARAMETERS
 # ====================
 
@@ -75,9 +77,10 @@ tpParList  <- new.env()
 
 .tpParList[[ "ticksAt" ]]       <- seq( from = 0, to = 1, by = .1 ) 
 
-.tpParList[[ "ticksShift" ]]    <- 0.025 
+.tpParList[[ "ticksShift" ]]    <- NA_real_ # 0.040 
 
-.tpParList[[ "arrowsShift" ]]   <- c( 0.075, 0.125 ) 
+.tpParList[[ "arrowsShift" ]]   <- rep( NA_real_, 2 ) # c( 0.075, 0.125 )
+.tpParList[[ "arrowsHeight" ]]  <- 0.75
 
 .tpParList[[ "arrowsCoords" ]]  <- c( .15, .45, .45, .55 ) 
 
@@ -159,11 +162,24 @@ tpParList  <- new.env()
 #'@param ticksShift
 #'  Single numeric. Tick-marks 'size', expressed so that 
 #'  \code{ticksShift * fracSum} is the length of the tick-marks.
+#'  If \code{NA}, it is calculated internally from 
+#'  \code{par("tcl")} and the height in of a margin line 
+#'  in inches, estimated using the internal function 
+#'  \code{.nbMargin2diffXY()}.
 #'
 #'@param arrowsShift
-#'  Vector of tow numeric values. Axis' arrows' shift from their 
+#'  Vector of two numeric values. Axis' arrows' shift from their 
 #'  axis, expressed so that \code{arrowsShift * fracSum} is the 
-#'  start and end point.
+#'  start and end point. If \code{NA}, the arrow shift from 
+#'  their axis will be calculated from \code{par("mgp")[ 1L ]} 
+#'  and \code{arrowsHeight} (below).
+#'
+#'@param arrowsHeight
+#'  Single numeric values. Axis' arrows' height (distance 
+#'  between the 1st part of the arrow and the 2nd part of the 
+#'  arrow), expressed in fraction of margin-lines-height 
+#'  (same as \code{par("mgp")}). Only used when \code{arrowsShift} 
+#'  (above) is \code{NA}.
 #'
 #'@param vertices
 #'  Vertices of a ternary classification (default): a 
@@ -202,6 +218,13 @@ tpParList  <- new.env()
 #'  \code{\link[sp]{sp}}. If \code{FALSE}, simply returns a 
 #'  \code{\link[base]{data.frame}} with the x-y coordinates of the 
 #'  graphical element.
+#'
+#'@param onFailure
+#'  R \code{\link{function}}. Function that should be used by 
+#'  \code{\link[ternaryplot]{ternaryCheck}} (and related methods)
+#   when a non-conformity is found. Default value is \code{\link{stop}}, 
+#   but can be changed to \code{\link{warning}} or even 
+#   \code{\link{message}} (at the user's own risk).
 #'
 #'@param grid.line.col
 #'  Single character value representing a color. Color of the 
@@ -244,16 +267,17 @@ tpPar <- function(
     scale, 
     okClock, 
     sp, 
+    onFailure, 
     
     ticksAt, 
     ticksShift, 
     arrowsShift, 
+    arrowsHeight, 
     arrowsCoords, 
     arrowsBreak, 
     grid.line.col, 
     axis.line.lwd, 
-    plot.bg 
-    
+    plot.bg
 ){  
     parList <- names( formals(tpPar) ) 
     parList <- parList[ !(parList %in% c( "par", "reset" )) ] 

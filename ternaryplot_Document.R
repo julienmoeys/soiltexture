@@ -15,10 +15,10 @@ source( file.path( pkgDir, "..","packageUtilities.R" ) )
 pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "0.3.0", 
-    pkgDepends  = c( "sp", "MASS" ), 
+    pkgVersion  = "0.3.1", 
+    pkgDepends  = NULL, # "MASS"
     pkgSuggests = NULL, 
-    pkgImports  = NULL, 
+    pkgImports  = "sp", 
     RVersion    = NULL   
 )   
 
@@ -26,7 +26,7 @@ pkgDescription(
 
 roxygenize( 
     package.dir   = file.path( pkgDir, pkgName ), 
-    unlink.target = TRUE, 
+    # unlink.target = TRUE, 
     roclets       = c( "namespace", "rd" ) # "collate" 
 )   
 

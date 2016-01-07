@@ -79,7 +79,9 @@ ternaryData <- function(
 #'@rdname ternaryData-methods
 #'
 #'@method ternaryData character
-#'@S3method ternaryData character
+#'
+#'@export
+#'
 ternaryData.character <- function( 
  s, 
  ...
@@ -94,7 +96,9 @@ ternaryData.character <- function(
 #'@rdname ternaryData-methods
 #'
 #'@method ternaryData ternarySystem
-#'@S3method ternaryData ternarySystem
+#'
+#'@export
+#'
 ternaryData.ternarySystem <- function( 
  s, 
  x, 

@@ -52,8 +52,8 @@ ternaryPlot(s)
 par( op )
 
 
-# Custom colors
-# =============
+# Custom colors, margins and arrow breaks
+# =======================================
 
 #   Set general graphical parameters (enlarged plot)
 par( fg = "darkred", col.lab = "darkblue", mar = c(3,2,0,2)+.1 ) 

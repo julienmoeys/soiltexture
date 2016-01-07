@@ -75,7 +75,9 @@ ternary2xy <- function(
 #'@rdname ternary2xy-methods
 #'
 #'@method ternary2xy character
-#'@S3method ternary2xy character
+#'
+#'@export
+#'
 ternary2xy.character <- function(
  s, 
  ... 
@@ -94,7 +96,9 @@ ternary2xy.character <- function(
 #'@rdname ternary2xy-methods
 #'
 #'@method ternary2xy ternaryData
-#'@S3method ternary2xy ternaryData
+#'
+#'@export
+#'
 ternary2xy.ternaryData <- function(
  s, 
  ... 
@@ -112,7 +116,9 @@ ternary2xy.ternaryData <- function(
 #'@rdname ternary2xy-methods
 #'
 #'@method ternary2xy ternarySystem
-#'@S3method ternary2xy ternarySystem
+#'
+#'@export
+#'
 ternary2xy.ternarySystem <- function( 
  s, 
  x, 

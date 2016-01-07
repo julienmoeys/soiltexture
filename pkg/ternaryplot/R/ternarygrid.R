@@ -50,7 +50,9 @@ createTernaryGrid <- function(
 #'@rdname createTernaryGrid-methods
 #'
 #'@method createTernaryGrid character
-#'@S3method createTernaryGrid character
+#'
+#'@export
+#'
 createTernaryGrid.character <- function(
  s, # A ternarySystem
  ... 
@@ -69,7 +71,9 @@ createTernaryGrid.character <- function(
 #'@rdname createTernaryGrid-methods
 #'
 #'@method createTernaryGrid ternarySystem
-#'@S3method createTernaryGrid ternarySystem
+#'
+#'@export
+#'
 createTernaryGrid.ternarySystem <- function(
  s,         # A ternarySystem
  n = 10,    # number of intervals
@@ -177,10 +181,16 @@ ternary2SpatialPolygonsDataFrame <- function(
 #'@rdname ternary2SpatialPolygonsDataFrame-methods
 #'
 #'@method ternary2SpatialPolygonsDataFrame ternaryPolygons
-#'@S3method ternary2SpatialPolygonsDataFrame ternaryPolygons
+#'
+#'@export
+#'
 #'
 #'@usage \method{ternary2SpatialPolygonsDataFrame}{ternaryPolygons}( x, ... ) 
 #'
+#'@importFrom sp Polygons 
+#'@importFrom sp Polygon 
+#'@importFrom sp SpatialPolygons 
+#'@importFrom sp SpatialPolygonsDataFrame 
 ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
  x, 
  ... 
@@ -204,7 +214,7 @@ ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
     pxy <- lapply( 
         X   = 1:length( xy ), 
         FUN = function(X){ 
-            Polygons( srl = list( Polygon( coords = xy[[ X ]] ) ), 
+            sp::Polygons( srl = list( sp::Polygon( coords = xy[[ X ]] ) ), 
                 ID = nxy[ X ] )
         }   
     )   
@@ -219,8 +229,8 @@ ternary2SpatialPolygonsDataFrame.ternaryPolygons <- function(
     x <- subset( x, select = eval( quote( -ID ) ) )
     
     # pxy <- Polygons( srl = pxy, ID = nxy ) 
-    pxy <- SpatialPolygons( Srl = pxy )
-    pxy <- SpatialPolygonsDataFrame( Sr = pxy, data = x, match.ID = FALSE )
+    pxy <- sp::SpatialPolygons( Srl = pxy )
+    pxy <- sp::SpatialPolygonsDataFrame( Sr = pxy, data = x, match.ID = FALSE )
     
     return( pxy ) 
 }   
