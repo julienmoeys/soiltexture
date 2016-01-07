@@ -15,13 +15,12 @@
 #'Check the validity of ternary*-class objects
 #'
 #'
+#'@seealso Arguments \code{onFailure} and \code{okClock} in 
+#'  \code{\link[ternaryplot]{getTpPar}} (package options).
+#'
+#'
 #'@param x 
 #'  A ternary*-class object.
-#'
-#'@param onFailure 
-#'  A function like \code{\link[base]{stop}} or 
-#'  \code{\link[base]{warning}} or \code{\link[base]{message}} to 
-#'  be called if a non-conformity is found. 
 #'
 #'@param \dots
 #'  Additional parameters passed to specific methods.
@@ -43,13 +42,17 @@ ternaryCheck <- function(
 #'@rdname ternaryCheck-methods
 #'
 #'@method ternaryCheck ternaryGeometry
-#'@S3method ternaryCheck ternaryGeometry
+#'
+#'@export
+#'
 ternaryCheck.ternaryGeometry <- function(
  x, 
- onFailure=stop, 
+ # onFailure=stop, 
  ... 
 ){  
     valid <- TRUE 
+    
+    onFailure <- getTpPar( "onFailure" ) 
     
     #   Check names:
     nm <- c( "tlrAngles", "blrClock", "fracSum" )
@@ -138,13 +141,17 @@ ternaryCheck.ternaryGeometry <- function(
 #'@rdname ternaryCheck-methods
 #'
 #'@method ternaryCheck ternaryVariables
-#'@S3method ternaryCheck ternaryVariables
+#'
+#'@export
+#'
 ternaryCheck.ternaryVariables <- function(
  x, 
- onFailure=stop, 
+ # onFailure=stop, 
  ... 
 ){  
     valid <- TRUE 
+    
+    onFailure <- getTpPar( "onFailure" ) 
     
     #   Check names:
     nm <- c( "blrNames", "blrLabels" )
@@ -200,13 +207,17 @@ ternaryCheck.ternaryVariables <- function(
 #'@rdname ternaryCheck-methods
 #'
 #'@method ternaryCheck ternarySystem
-#'@S3method ternaryCheck ternarySystem
+#'
+#'@export
+#'
 ternaryCheck.ternarySystem <- function(
  x, 
- onFailure=stop, 
+ # onFailure=stop, 
  ... 
 ){  
     valid <- TRUE 
+    
+    onFailure <- getTpPar( "onFailure" ) 
     
     #   Check names:
     nm <- c( "ternaryGeometry", "ternaryVariables", "main", 
@@ -343,6 +354,38 @@ ternaryCheck.ternarySystem <- function(
 
 # createTernaryGeometry ============================================
 
+## # Function that generates the class of ternaryGeometry object 
+## # (mostly the 2nd class) after the blrClock-argument.
+.generateTernaryGeometryClass <- function( 
+ blrClock 
+){  
+    if( !"logical" %in% ( blrClock ) ){
+        sprintf(
+            "'blrClock' is not a logical (but: %s).", 
+            paste( class( blrClock ), collapse = "; " )
+        )   
+    }      
+    
+    if( all( blrClock ) ){
+        class2 <- "geo_TTT"
+        
+    }else if( all( !blrClock ) ){
+        class2 <- "geo_FFF"
+        
+    }else if( all( blrClock == c( FALSE, TRUE, NA ) ) ){
+        class2 <- "geo_FTX"
+        
+    }else if( all( blrClock == c( TRUE, NA, FALSE ) ) ){
+        class2 <- "geo_TXF"
+        
+    }else{
+        class2 <- character(0)
+        
+    }   
+    
+    return( c( "ternaryGeometry", class2 ) )
+}   
+
 #'Creates a ternaryGeometry object: ternary plot geometry definition.
 #'
 #'Creates a ternaryGeometry object: ternary plot geometry definition.
@@ -358,16 +401,23 @@ ternaryCheck.ternarySystem <- function(
 #'  of the ternary diagram. Must sum to 180 degrees.
 #'
 #'@param blrClock
-#'  Vector of logical. Bottom, left and right axis directions. 
+#'  Vector of logical value. Bottom, left and right axis directions. 
 #'  Set to \code{TRUE} if the axis is clockwise, and to 
 #'  \code{FALSE} if the axis is counter-clockwise.
 #'
 #'@param fracSum
-#'  Single numeric. Sum of the three fractions. Must be 1 (if 
+#'  Single numeric value. Sum of the three fractions. Must be 1 (if 
 #'  a fraction) or 100 (if a percentage).
 #'
 #'@param \dots
 #'  Additional parameters passed to \code{\link[ternaryplot]{ternaryCheck}}
+#'
+#'
+#'@return
+#'  Return a list of \code{ternaryGeometry}-class (S3). A 2nd class is added 
+#'  that depends on \code{blrClock}, and is formed after the pattern 
+#'  \code{"geo_[blrClockCode]"}, where \code{[blrClockCode]} can be 
+#'  \code{"TTT"}, \code{"FFF"}, \code{"FTX"} or \code{"TXF"}.
 #'
 #'
 #'@example inst/examples/createTernaryGeometry-example.R
@@ -380,7 +430,7 @@ ternaryCheck.ternarySystem <- function(
 createTernaryGeometry <- function(
  tlrAngles  = c( 60, 60, 60 ), 
  blrClock   = rep( TRUE, 3 ), 
- fracSum    = 100, 
+ fracSum    = 100,  
  ...
 ){  
     #   Create a ternary geometry object:
@@ -390,12 +440,15 @@ createTernaryGeometry <- function(
         "fracSum"   = fracSum 
     )   
     
+    
     #   Set the class
-    class( tg ) <- "ternaryGeometry"
+    class( tg ) <- .generateTernaryGeometryClass( 
+        blrClock = tg[[ "blrClock" ]] ) 
     
     
     #   Check:
     ternaryCheck( tg, ... )
+
     
     
     return( tg ) 

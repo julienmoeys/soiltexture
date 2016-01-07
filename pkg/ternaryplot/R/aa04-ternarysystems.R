@@ -22,19 +22,15 @@ ternarySystemEnv[[ "default" ]] <- createTernarySystem()
 
 # Dummy ternary classification:
 ternarySystemEnv[[ "dummy" ]] <- createTernarySystem( 
-    
-    "ternaryGeometry" = createTernaryGeometry(),  
-    
-    "main" = "Ternary plot (dummy)", 
-    
-    "vertices" = data.frame( 
+    "ternaryGeometry"   = createTernaryGeometry(),  
+    "main"              = "Ternary plot (dummy)", 
+    "vertices"          = data.frame( 
         "id"    = c(  1,   2,   3,   4), 
         "F1"    = c(000, 000, 050, 100), 
         "F2"    = c(100, 000, 000, 000), 
         "F3"    = c(000, 100, 050, 000)  
     ),  
-    
-    "classes" = data.frame( 
+    "classes"           = data.frame( 
         "abbrev" = c( 
             "C1", 
             "C2" ), 
@@ -47,8 +43,7 @@ ternarySystemEnv[[ "dummy" ]] <- createTernarySystem(
         ) ),
         stringsAsFactors = FALSE 
     ),  
-    
-    "scale" = NULL
+    "scale"             = NULL
 )     
 
 
