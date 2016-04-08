@@ -3,9 +3,10 @@
 \title{Plot a grid at regular texture intervals inside an existing soil texture triangle. }
 \description{Plot a grid at regular texture intervals inside an existing soil texture triangle.}
 \usage{TT.grid(geo = geo, at = NULL, text.tol = NULL, text.sum = NULL, 
-    blr.clock = NULL, grid.col = NULL, grid.lty = NULL, lwd.axis = NULL, 
-    tri.sum.tst = NULL, tri.pos.tst = NULL, class.p.bg.col = NULL, 
-    class.p.bg.hue = NULL, frame.bg.col = NULL, bg = NULL, col.axis = NULL)}
+    blr.clock = NULL, grid.col = NULL, grid.lty = NULL, 
+    lwd.axis = NULL, tri.sum.tst = NULL, tri.pos.tst = NULL, 
+    class.p.bg.col = NULL, class.p.bg.hue = NULL, frame.bg.col = NULL, 
+    bg = NULL, col.axis = NULL)}
 \arguments{
   \item{geo}{
 }

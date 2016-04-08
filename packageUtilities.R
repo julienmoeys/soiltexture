@@ -72,7 +72,7 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
 
 ){  
     # Read the file DESCRIPTION 
-    desc <- packageDescription(
+    desc <- utils::packageDescription(
         pkg     = pkgName, 
         lib.loc = pkgDir )  
     
@@ -103,16 +103,19 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
     
     desc[[ "Depends" ]] <- paste( 
         c( RVersion, pkgDepends ), 
-        collapse = ", " 
+        collapse = ",\n" 
     )   
+    desc[[ "Depends" ]] <- paste( "\n", desc[[ "Depends" ]], sep = "" )
     
     
     # Write the Suggests field:
     if( !is.null( pkgSuggests ) ){ 
         desc[[ "Suggests" ]] <- paste( 
             pkgSuggests, 
-            collapse = ", " 
+            collapse = ",\n" 
         )   
+        
+        desc[[ "Suggests" ]] <- paste( "\n", desc[[ "Suggests" ]], sep = "" )
     }else{ 
         desc <- desc[ names(desc) != "Suggests" ] 
     }   
@@ -122,8 +125,10 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
     if( !is.null( pkgImports ) ){ 
         desc[[ "Imports" ]] <- paste( 
             pkgImports, 
-            collapse = ", " 
+            collapse = ",\n" 
         )   
+        
+        desc[[ "Imports" ]] <- paste( "\n", desc[[ "Imports" ]], sep = "" )
     }else{ 
         desc <- desc[ names(desc) != "Imports" ] 
     }   
@@ -135,11 +140,19 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
     desc <- unlist( lapply(
         X   = 1:length(desc), 
         FUN = function( X, desc, nm ){ 
+            desc[[ X ]] <- gsub( 
+                x           = desc[[ X ]], 
+                pattern     = "\n", 
+                replacement = "\n    ", 
+                fixed       = TRUE 
+            )   
+            
             paste0( nm[X], ": ", desc[[ X ]] )  
         },  
         desc = desc, 
         nm   = nm 
     ) ) 
+    
     
     # Write again the description file:
     desc <- writeLines( 

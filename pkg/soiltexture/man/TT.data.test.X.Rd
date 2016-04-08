@@ -8,8 +8,8 @@ X particle size class is >= 'text.sum'*(1-'text.tol') or <=
 'text.sum'*(1+'text.tol'). Contrary to TT.data.test() no test 
 are performed for the particle size classes and columns names, so 
 'tri.data' should only contains texture data, and nothing else.}
-\usage{TT.data.test.X(tri.data, text.sum = NULL, text.tol = NULL, tri.sum.tst = NULL, 
-    tri.pos.tst = NULL)}
+\usage{TT.data.test.X(tri.data, text.sum = NULL, text.tol = NULL, 
+    tri.sum.tst = NULL, tri.pos.tst = NULL)}
 \arguments{
   \item{tri.data}{
 }

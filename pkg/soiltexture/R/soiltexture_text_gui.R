@@ -38,7 +38,7 @@
     
     # library( "utils" )
     
-    mRes <- select.list( 
+    mRes <- utils::select.list( 
         title       = title,
         choices     = choices, 
         preselect   = preselect, 
@@ -228,7 +228,7 @@
     
     message( sprintf( "* File: %s", f ) ) 
     
-    dat <- read.table( file = f, sep = sep, dec = dec, 
+    dat <- utils::read.table( file = f, sep = sep, dec = dec, 
         stringsAsFactors = stringsAsFactors, 
         fileEncoding = fileEncoding, header = TRUE )
     

@@ -46,19 +46,21 @@ TT.set( "class.sys" = "USDA.TT" ).}
     text.sum = NULL, base.css.ps.lim = NULL, tri.css.ps.lim = NULL, 
     dat.css.ps.lim = NULL, css.transf = NULL, text.transf.fun = NULL, 
     trsf.add.opt1 = NULL, trsf.add.opt2 = NULL, unit.ps = NULL, 
-    unit.tx = NULL, blr.clock = NULL, tlr.an = NULL, font = NULL, 
-    font.axis = NULL, font.lab = NULL, font.main = NULL, bg = NULL, 
-    fg = NULL, col = NULL, col.axis = NULL, col.lab = NULL, col.main = NULL, 
+    unit.tx = NULL, blr.clock = NULL, tlr.an = NULL, 
+    font = NULL, font.axis = NULL, font.lab = NULL, 
+    font.main = NULL, bg = NULL, fg = NULL, col = NULL, 
+    col.axis = NULL, col.lab = NULL, col.main = NULL, 
     cex = NULL, cex.axis = NULL, cex.lab = NULL, cex.main = NULL, 
     lwd = NULL, lwd.axis = NULL, lwd.lab = NULL, family.op = NULL, 
-    frame.bg.col = NULL, at = NULL, grid.show = NULL, grid.col = NULL, 
-    grid.lty = NULL, class.sys = NULL, class.lab.show = NULL, 
-    class.lab.col = NULL, class.line.col = NULL, class.p.bg.col = NULL, 
-    class.p.bg.hue = NULL, arrows.show = NULL, arrows.lty = NULL, 
-    points.type = NULL, pch = NULL, z.type = NULL, z.col.hue = NULL, 
-    z.cex.range = NULL, z.pch = NULL, text.tol = NULL, tri.sum.tst = NULL, 
-    tri.pos.tst = NULL, b.lim = NULL, l.lim = NULL, lang = NULL, 
-    new.mar = NULL, new.centroid = TRUE)}
+    frame.bg.col = NULL, at = NULL, grid.show = NULL, 
+    grid.col = NULL, grid.lty = NULL, class.sys = NULL, 
+    class.lab.show = NULL, class.lab.col = NULL, class.line.col = NULL, 
+    class.p.bg.col = NULL, class.p.bg.hue = NULL, arrows.show = NULL, 
+    arrows.lty = NULL, points.type = NULL, pch = NULL, 
+    z.type = NULL, z.col.hue = NULL, z.cex.range = NULL, 
+    z.pch = NULL, text.tol = NULL, tri.sum.tst = NULL, 
+    tri.pos.tst = NULL, b.lim = NULL, l.lim = NULL, 
+    lang = NULL, new.mar = NULL, new.centroid = TRUE)}
 \arguments{
   \item{geo}{List. 'geo' is one of the 3 way to set the texture triangle 
 geometry. See there description and hierarchy in the function 

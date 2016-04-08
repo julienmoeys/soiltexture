@@ -6,11 +6,12 @@ adapted to texture triangles (plot preparation).
 designed to plot the results of TT.mahalanobis() or 
 TT.kde2d() [to be written], before or after plot.}
 \usage{TT.image(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, 
-    text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, 
-    l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, 
-    cex.main = NULL, lang = NULL, xlim = NA, ylim = NA, zlim = NA, 
-    col = rev(heat.colors(12)), oldstyle = FALSE, blr.clock = NULL, 
-    tlr.an = NULL, blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL, 
+    text.tol = NULL, unit.ps = NULL, unit.tx = NULL, 
+    b.lim = NULL, l.lim = NULL, main = NULL, new.mar = NULL, 
+    bg = NULL, fg = NULL, cex.main = NULL, lang = NULL, 
+    xlim = NA, ylim = NA, zlim = NA, col = rev(heat.colors(12)), 
+    oldstyle = FALSE, blr.clock = NULL, tlr.an = NULL, 
+    blr.tx = NULL, text.sum = NULL, base.css.ps.lim = NULL, 
     ...)}
 \arguments{
   \item{geo}{

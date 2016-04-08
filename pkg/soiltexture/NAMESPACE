@@ -1,10 +1,30 @@
 
 exportPattern("^[[:alpha:]]+")
-importFrom(sp,point.in.polygon)
-importFrom(MASS,kde2d)
-importFrom(MASS,mvrnorm)
-#importFrom(utils,installed.packages)
-#importFrom(utils,select.list)
-#importFrom(utils,choose.files)
-importFrom(tcltk,tk_choose.files)
-importFrom(tools,package_dependencies)
+
+importFrom( "sp", "point.in.polygon" ) 
+
+importFrom( "MASS", "kde2d" ) 
+
+importFrom( "MASS", "mvrnorm" ) 
+
+#   Imports from package utils
+if(.Platform$OS.type != "windows") {
+    importFrom( "utils", "select.list" )
+}   
+
+importFrom( "utils", "installed.packages", 
+    "packageDescription", "read.table", 
+    "capture.output", "write.table", "browseURL" ) 
+
+importFrom( "tcltk", "tk_choose.files" )
+
+importFrom( "tools", "package_dependencies" )
+
+importFrom( "grDevices" , "col2rgb", "rgb2hsv", "rgb", "hsv", 
+    "heat.colors", "dev.cur", "png", "dev.off" ) 
+
+importFrom( "graphics", "par", "plot", "segments", "points", 
+    "arrows", "text", "polygon", "contour", "image", "locator" ) 
+
+importFrom( "stats", "weighted.mean", "dist", "quantile", 
+    "cov", "mahalanobis", "approx" )
