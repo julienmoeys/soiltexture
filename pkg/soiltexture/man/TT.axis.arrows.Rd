@@ -5,10 +5,11 @@
 \usage{TT.axis.arrows(geo, css.lab = NULL, a.l = TT.get("arrows.lims"), 
     a.h.s = TT.get("arrows.head.shift"), a.t.s = TT.get("arrows.text.shift"), 
     a.t.s2 = TT.get("arrows.text.shift2"), a.b.s = TT.get("arrows.base.shift"), 
-    text.tol = NULL, text.sum = NULL, blr.clock = NULL, tlr.an = NULL, 
-    base.css.ps.lim = NULL, tri.sum.tst = FALSE, tri.pos.tst = FALSE, 
-    lwd.lab = NULL, arrows.lty = NULL, col.lab = NULL, font.lab = NULL, 
-    cex.lab = NULL, family.op = NULL, unit.ps = NULL, unit.tx = NULL, 
+    text.tol = NULL, text.sum = NULL, blr.clock = NULL, 
+    tlr.an = NULL, base.css.ps.lim = NULL, tri.sum.tst = FALSE, 
+    tri.pos.tst = FALSE, lwd.lab = NULL, arrows.lty = NULL, 
+    col.lab = NULL, font.lab = NULL, cex.lab = NULL, 
+    family.op = NULL, unit.ps = NULL, unit.tx = NULL, 
     lang = NULL)}
 \arguments{
   \item{geo}{

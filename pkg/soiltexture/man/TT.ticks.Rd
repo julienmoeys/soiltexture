@@ -2,9 +2,9 @@
 \alias{TT.ticks}
 \title{Internal. Plot the axis' ticks of a texture triangle plot. }
 \description{Plot the axis' ticks of a texture triangle plot. }
-\usage{TT.ticks(geo, at = NULL, text.tol = NULL, text.sum = NULL, blr.clock = NULL, 
-    tk.s = NULL, tri.sum.tst = NULL, tri.pos.tst = FALSE, lwd.axis = NULL, 
-    col.axis = NULL)}
+\usage{TT.ticks(geo, at = NULL, text.tol = NULL, text.sum = NULL, 
+    blr.clock = NULL, tk.s = NULL, tri.sum.tst = NULL, 
+    tri.pos.tst = FALSE, lwd.axis = NULL, col.axis = NULL)}
 \arguments{
   \item{geo}{
 }

@@ -17,16 +17,16 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.3.3", 
-    pkgDepends  = "utils",       #  In Depends because can not importFrom Windows only functions 
-    pkgSuggests = c( "xtable" ), #  
-    pkgImports  = c( "sp", "MASS", "tools", "tcltk" ), 
+    pkgVersion  = "1.4.0", 
+    pkgDepends  = NULL,  
+    pkgSuggests = c( "xtable" ), 
+    pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
     RVersion    = NULL   
 )   
 
 
 
-package.skeleton.dx( # Done under R 3.1.1, with inlinedocs 2013.9.3 # Errors appear with R 3.2.0 RC
+package.skeleton.dx( # R version 3.2.0 (2015-04-16), with inlinedocs 2015.06.19 (installed from GitHub)
     pkgdir      = file.path( pkgDir, pkgName ), 
     namespace   = FALSE # Must be edited manually!  
 )   

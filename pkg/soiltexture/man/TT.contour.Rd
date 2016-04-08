@@ -5,13 +5,15 @@
 adapted to texture triangles (plot preparation).
 designed to plot the results of TT.mahalanobis() or 
 TT.kde2d(), before or after plot.}
-\usage{TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, tri.pos.tst = NULL, 
-    text.tol = NULL, unit.ps = NULL, unit.tx = NULL, b.lim = NULL, 
-    l.lim = NULL, main = NULL, new.mar = NULL, bg = NULL, fg = NULL, 
-    col = NULL, cex.main = NULL, lang = NULL, nlevels = 10, levels = NA, 
-    labels = NULL, xlim = NA, ylim = NA, zlim = NA, labcex = 1, 
-    drawlabels = TRUE, method = "flattest", axes = TRUE, frame.plot = NA, 
-    lty = NA, lwd = NA, blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, 
+\usage{TT.contour(geo, x, add = FALSE, tri.sum.tst = NULL, 
+    tri.pos.tst = NULL, text.tol = NULL, unit.ps = NULL, 
+    unit.tx = NULL, b.lim = NULL, l.lim = NULL, main = NULL, 
+    new.mar = NULL, bg = NULL, fg = NULL, col = NULL, 
+    cex.main = NULL, lang = NULL, nlevels = 10, levels = NA, 
+    labels = NULL, xlim = NA, ylim = NA, zlim = NA, 
+    labcex = 1, drawlabels = TRUE, method = "flattest", 
+    axes = TRUE, frame.plot = NA, lty = NA, lwd = NA, 
+    blr.clock = NULL, tlr.an = NULL, blr.tx = NULL, 
     text.sum = NULL, base.css.ps.lim = NULL, ...)}
 \arguments{
   \item{geo}{
