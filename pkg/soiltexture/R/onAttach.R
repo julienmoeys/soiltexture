@@ -49,7 +49,7 @@
         msg <- sprintf( 
             "%s %s %s. For help type: help(pack='%s')", 
             pkgname, 
-            as.character( utils::packageDescription( pkgname ) ), 
+            as.character( utils::packageVersion( pkgname ) ), 
             svnVersion, 
             pkgname ) 
         
