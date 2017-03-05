@@ -2,7 +2,7 @@
 rm(list=ls(all=TRUE)) 
 
 pkgName     <- "soiltexture"
-pkgDir      <- file.path( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages", 
+pkgDir      <- file.path( Sys.getenv(x = "rPackagesDir" ), 
     pkgName, "pkg" ) 
 
 
@@ -17,7 +17,7 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.4.1", 
+    pkgVersion  = "1.4.2", 
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
