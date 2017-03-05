@@ -71,6 +71,7 @@ TT.plot( class.sys = "ROM.TT" )         # Romanian
 TT.plot( class.sys = "USDA1911" )       # USDA 1911 (M. Whitney, 1911)
 TT.plot( class.sys = "BRASIL.TT" )      # Brasil (Lemos & Santos 1996)
 TT.plot( class.sys = "SiBCS13.TT" )     # Brasil (Lemos & Santos 1996)
+TT.plot( class.sys = "Polish_BN_1978.TT" )  # Poland (BN 1978)
 
 #   Triangles with special characters
 #   (may not work on all platforms + some accents can be missing)
