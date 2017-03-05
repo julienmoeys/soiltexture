@@ -30,4 +30,5 @@
 /pkg/binaryArchive/*.gz
 /pkg/binaryArchive/*.pdf
 /pkg/soiltexture/inst/doc/*.html
+/pkg/soiltexture/inst/doc/*.pdf
 /pkg/binaryArchive
