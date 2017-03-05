@@ -1,6 +1,19 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.4.2
+
+    2017/03/05  Add a new polish texture triangle 
+        (Polish_BN_1978.TT).
+        
+        Move the repository from rforge to GitHub.
+        Change version control system from subversion to git.
+    
+CHANGES IN VERSION 1.4.1
+
+    2016/06/07  In NAMESPACE / importFrom, use packageVersion instead of 
+        packageDescription. Fix .onAttach
+
 CHANGES IN VERSION 1.4.0 
     
     2016/04/08  Add many importFrom in the NAMESPACE.
