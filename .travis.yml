@@ -1,0 +1,26 @@
+# Sample .travis.yml for R projects.
+#
+# See README.md for instructions, or for more configuration options,
+# see the wiki:
+#   https://github.com/craigcitro/r-travis/wiki
+
+language: R
+
+cache:
+  packages: yes
+
+#   Subdirectories containing R packages to be compiled
+env:
+  - PACK_DIR=soiltexture
+
+before_install:
+  - cd pkg/$PACK_DIR
+
+after_failure:
+  - ./travis-tool.sh dump_logs
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+ 
