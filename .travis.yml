@@ -13,8 +13,16 @@ cache:
 env:
   - PACK_DIR=soiltexture
 
+addons:
+  apt:
+    packages:
+      - tcl8.5-dev
+      - tk8.5-dev
+
 before_install:
   - cd pkg/$PACK_DIR
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb star
 
 after_failure:
   - ./travis-tool.sh dump_logs
