@@ -1,10 +1,19 @@
 set pkgname=soiltexture
-set version=1.4.1
 
 cd /D "%rPackagesDir%\%pkgname%\pkg" 
 
-R CMD check --no-examples --as-cran %pkgname%_%version%.tar.gz
+prompt $g
 
-@REM --as-cran 
+@echo :::: Finding latest version of package source ::::
+
+dir %pkgname%_*tar.gz /b /o:-n > tmp.txt
+set /p targzfile=<tmp.txt 
+del tmp.txt
+
+@echo :::: Processing %targzfile% ::::
+
+R CMD check --no-examples --as-cran %targzfile%
+
+@REM --no-tests 
 
 pause
