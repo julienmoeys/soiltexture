@@ -2,11 +2,13 @@
 detach( package:soiltexture ) 
 rm(list=ls(all=TRUE)) 
 
-setwd( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/soiltexture/pkg/soiltexture/vignettes" ) 
+setwd( "C:/Users/julien/Documents/_r-packages/soiltexture/pkg/soiltexture/vignettes" ) 
 
-Stangle( "soiltexture_vignette.Rnw" ) 
+tools::showNonASCIIfile(file="soiltexture_vignette.Rnw")
 
-Sweave( "soiltexture_vignette.Rnw" ) 
+Stangle( "soiltexture_vignette.Rnw", encoding = "UTF-8" ) 
+
+Sweave( "soiltexture_vignette.Rnw", encoding = "UTF-8" ) 
 
 for( clean in c(FALSE,FALSE,TRUE) ){ 
     msg <- tools::texi2dvi( 
