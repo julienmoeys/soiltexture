@@ -1435,10 +1435,10 @@ TT.plot(
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{The Polish soil texture classification} 
+\subsection{Polish soil texture classification (PTG 1956-1959?)} 
 
-To display a Polish texture triangle (Systematyka gleb Polski, 1989, 
-for non-alluvial soils), type:
+To display a Polish texture triangle (Systematyka gleb Polski, 
+1989, for non-alluvial soils), type:
 
 
 % <<echo=TRUE,fig=TRUE,include=TRUE>>= 
@@ -1451,7 +1451,7 @@ for non-alluvial soils), type:
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
 test <- try( TT.plot( class.sys = "PL.TT" ) ) 
 
-#   In case the posih triangle was not loaded at startup
+#   In case the polish triangle was not loaded at startup
 if( "try-error" %in% class(test) ){ 
     plot(1,1,type="n",) 
     text(1,1,label="Plotting failed. Polish triangle not loaded")
@@ -1525,7 +1525,78 @@ on all platforms. If the triangle is not available (could not
 be loaded for any reason), a message is issued when the package 
 is loaded (but no error or warning).
 
+Note: Michal Stepien, Warsaw University of Life Sciences, 
+indicated me that there are in fact many different variants 
+of polish texture triangles, sometimes with different limits 
+for the particle size. Michal indicates that the triangle 
+above, here be refered to as "Polish PTG 1956-1959", has for 
+original references "Przyrodniczo-genetyczna klasyfikacja gleb 
+Polski, 1956. Roczniki Nauk Rolniczych, 74, seria D: 1-96" and 
+"Genetyczna klasyfikacja gleb Polski, 1959. Roczniki 
+Gleboznawcze – Soil Science Annual, 7(2): 1-103". This triangle 
+has more classes than another similar triangle (not presented 
+here), here refered to as "PTG 1956 Musierowicz", and whose 
+references are "Musierowicz A. 1956. Gleboznawstwo ogolne. 
+Systematyka Gleb Polski, 1989. Roczniki Gleboznawcze – 
+Soil Science Annual, 40(3/4): 1-150". These indications 
+may be subject to update or clarification.
+
+
+
 \clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Polish soil texture classification (BN-78/9180-11)} 
+
+To display this Polish texture triangle, type:
+
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+TT.plot( class.sys = "Polish_BN_1978.TT" ) 
+@ 
+
+
+
+Formal denomination/citation: BN-78/9180-11. Gleby i utwory 
+mineralne. Podzial na frakcje i grupy granulometryczne. 
+Norma branzowa.
+
+NB: \textit{As for now, this Polish triangle has been 
+implemented without original polish character.  
+only latin character are used}.\\
+
+
+
+<<echo=FALSE,results=hide,quiet=TRUE>>= 
+plLim <- TT.get("Polish_BN_1978.TT")[["base.css.ps.lim"]][3]
+@ 
+
+The Polish soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{plLim}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+tex.tbl <- TT.classes.tbl( class.sys = "Polish_BN_1978.TT" ) 
+xtable( 
+    x       = tex.tbl[,-3],  #
+    caption = "Polish texture triangle (BN-78/9180-11)", 
+    label   = NULL  
+)   #
+@ 
+
+
+
+Many thanks to Michal Stepien and Darek Gozdowski, Warsaw 
+University of Life Sciences, for providing the code of this 
+Polish triangle, as well as explanations on the differences 
+between the polish triangles presented here..\\
 
 
 
