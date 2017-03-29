@@ -2,7 +2,7 @@
 detach( package:soiltexture ) 
 rm(list=ls(all=TRUE)) 
 
-setwd( "C:/Users/julien/Documents/_r-packages/soiltexture/pkg/soiltexture/vignettes" ) 
+setwd( file.path( Sys.getenv(x = "rPackagesDir" ), "soiltexture/pkg/soiltexture/vignettes" ) )
 
 tools::showNonASCIIfile(file="soiltexture_vignette.Rnw")
 
