@@ -438,10 +438,18 @@ TT.plot( class.sys = "USDA1911" )       # USDA 1911 (M. Whitney, 1911)
 TT.plot( class.sys = "BRASIL.TT" )      # Brasil (Lemos & Santos 1996)
 TT.plot( class.sys = "SiBCS13.TT" )     # Brasil (Lemos & Santos 1996)
 
-#   Triangles with special characters
-#   (may not work on all platforms + some accents can be missing)
-try( TT.plot( class.sys = "PL.TT" ) )   # Polish 
+##  Polish triangles:
 
+#   BN 1978
+TT.plot( class.sys = "Polish_BN_1978.TT" ) 
+#   PTG 1956 Musierowicz
+TT.plot( class.sys = "Polish_PTG_1956_Musierowicz.TT" ) 
+#   PTG 1956-1959
+try( TT.plot( class.sys = "PL.TT" ) ) 
+
+#   The latter includes special characters
+#   and may not work on all platforms (or some accents may 
+#   be missing)
 
 # ::: Test all the languages:
 TT.plot( class.sys = "USDA.TT", lang = "en" )  # English, default 
