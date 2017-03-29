@@ -1425,76 +1425,141 @@ assign(
             
             #   New parameter
             class.lab.cex   = 2/3
-        ),  
+        )   
         
-        "Polish_BN_1978.TT" = list(  #  Polish_BN_1978 Triangle parameters
-            #
-            #   Courtsesy of Michal Stepien, Warsaw University of Life Sciences
-            #
-            main            = "Polish_BN_1978", 
-            # 
-            #                The list below specify the CSS coordinates of the different POINTS
-            #                   that are used to draw soil texture classes. One points can be 
-            #                   used by several classes :
-            #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
-            #                  = P13    P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24  
-            #                  = P25    P26    P27    P28    P29    P30    P31    P32    P33    P34    P35    P36(submits)
-            "tt.points"     = data.frame( 
-                "CLAY"      = c( 1.000, 0.900, 0.750, 0.750, 0.750, 0.650, 0.500, 0.500, 0.500, 0.500, 0.350, 0.350,  
-                                 0.350, 0.350, 0.250, 0.250, 0.250, 0.200, 0.200, 0.200, 0.200, 0.200, 0.150, 0.150,        
-                                 0.150, 0.100, 0.100, 0.100, 0.050, 0.050, 0.050, 0.000, 0.000, 0.000, 0.000, 0.000  ),  
-                            #
-                "SILT"      = c( 0.000, 0.000, 0.000, 0.150, 0.250, 0.250, 0.000, 0.250, 0.400, 0.500, 0.000, 0.250,  
-                                 0.400, 0.650, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.550, 0.800, 0.000, 0.250,         
-                                 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.750, 1.000  ),  
-                            #
-                "SAND"      = c( 0.000, 0.100, 0.250, 0.100, 0.000, 0.100, 0.500, 0.250, 0.100, 0.000, 0.650, 0.400,  
-                                 0.250, 0.000, 0.750, 0.500, 0.350, 0.800, 0.550, 0.400, 0.250, 0.000, 0.850, 0.600,         
-                                 0.450, 0.900, 0.650, 0.500, 0.950, 0.700, 0.550, 1.000, 0.750, 0.600, 0.250, 0.000  )  
-            ),  #
-            #
-            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
-            "tt.polygons"   = list( 
-                "pl"        = list( "name" = "piasek luzny",                    "points" = c(29,30,33,32)     ), 
-                "plp"       = list( "name" = "piasek luzny pylasty",            "points" = c(30,31,34,33)     ), 
-                "ps"        = list( "name" = "piasek slabogliniasty",           "points" = c(26,27,30,29)     ), 
-                "psp"       = list( "name" = "piasek slabogliniasty pylasty",   "points" = c(27,28,31,30)     ), 
-                "pgl"       = list( "name" = "piasek gliniasty lekki",          "points" = c(23,24,27,26)     ), 
-                "pglp"      = list( "name" = "piasek gliniasty lekki pylasty",  "points" = c(24,25,28,27)     ), 
-                "pgm"       = list( "name" = "piasek gliniasty mocny",          "points" = c(18,19,24,23)     ), 
-                "pgmp"      = list( "name" = "piasek gliniasty mocny pylasty",  "points" = c(19,20,25,24)     ), 
-                "gp"        = list( "name" = "glina piaszczysta",               "points" = c(15,16,19,18)     ), 
-                "gpp"       = list( "name" = "glina piaszczysta pylasta",       "points" = c(16,17,20,19)     ), 
-                "gl"        = list( "name" = "glina lekka",                     "points" = c(11,12,16,15)     ), 
-                "glp"       = list( "name" = "glina lekka pylasta",             "points" = c(12,13,17,16)     ),      
-                "gs"        = list( "name" = "glina srednia",                   "points" = c(07,08,12,11)     ),
-                "gsp"       = list( "name" = "glina srednia pylasta",           "points" =c(08,09,13,12)      ),
-                "gc"        = list( "name" = "glina ciezka",                    "points" = c(03,04,06,08,07)  ),
-                "gcp"       = list( "name" = "glina ciezka pylasta",            "points" =c(06,09,08)         ),
-                "gbc"       = list( "name" = "glina bardzo ciezka",             "points" =c(02,04,03)         ),
-                "i"         = list( "name" = "il",                              "points" = c(01,05,06,04,02)  ),
-                "ip"        = list( "name" = "il pylasty",                      "points" = c(05,10,09,06)     ),
-                "pyi"       = list( "name" = "pyl ilasty",                      "points" = c(09,10,14,13)     ),
-                "pyg"       = list( "name" = "pyl gliniasty",                   "points" = c(13,14,22,21,20)  ),
-                "pyp"       = list( "name" = "pyl piaszczysty",                 "points" = c(20,21,35,34)     ),
-                "pyz"       = list( "name" = "pyl zwykly",                      "points" = c(21,22,36,35)     )
-            ),  #
-            #
-            # Triangle specific parameters for triangle geometry / appearance
-            #   See general parameters above for detailed description of them
-            blr.clock       = rep(F,3), 
-            tlr.an          = c(60,60,60), 
-            #
-            blr.tx      = c("SILT","SAND","CLAY"), 
-            # 
-            base.css.ps.lim = c(0,20,100,1000), 
-            tri.css.ps.lim  = c(0,20,100,1000), 
-            #
-            unit.ps         = quote(bold(mu) * bold('m')), 
-            unit.tx         = quote(bold('%')), 
-            #
-            text.sum        = 100 
-        )   #
+        # "Polish_BN_1978.TT" = list(  #  Polish_BN_1978 Triangle parameters
+            # #
+            # #   Courtsesy of Michal Stepien, Warsaw University of Life Sciences
+            # #
+            # main            = "Polish_BN_1978", 
+            # # 
+            # #                The list below specify the CSS coordinates of the different POINTS
+            # #                   that are used to draw soil texture classes. One points can be 
+            # #                   used by several classes :
+            # #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            # #                  = P13    P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24  
+            # #                  = P25    P26    P27    P28    P29    P30    P31    P32    P33    P34    P35    P36(submits)
+            # "tt.points"     = data.frame( 
+                # "CLAY"      = c( 1.000, 0.900, 0.750, 0.750, 0.750, 0.650, 0.500, 0.500, 0.500, 0.500, 0.350, 0.350,  
+                                 # 0.350, 0.350, 0.250, 0.250, 0.250, 0.200, 0.200, 0.200, 0.200, 0.200, 0.150, 0.150,        
+                                 # 0.150, 0.100, 0.100, 0.100, 0.050, 0.050, 0.050, 0.000, 0.000, 0.000, 0.000, 0.000  ),  
+                            # #
+                # "SILT"      = c( 0.000, 0.000, 0.000, 0.150, 0.250, 0.250, 0.000, 0.250, 0.400, 0.500, 0.000, 0.250,  
+                                 # 0.400, 0.650, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.550, 0.800, 0.000, 0.250,         
+                                 # 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.750, 1.000  ),  
+                            # #
+                # "SAND"      = c( 0.000, 0.100, 0.250, 0.100, 0.000, 0.100, 0.500, 0.250, 0.100, 0.000, 0.650, 0.400,  
+                                 # 0.250, 0.000, 0.750, 0.500, 0.350, 0.800, 0.550, 0.400, 0.250, 0.000, 0.850, 0.600,         
+                                 # 0.450, 0.900, 0.650, 0.500, 0.950, 0.700, 0.550, 1.000, 0.750, 0.600, 0.250, 0.000  )  
+            # ),  #
+            # #
+            # #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            # "tt.polygons"   = list( 
+                # "pl"        = list( "name" = "piasek luzny",                    "points" = c(29,30,33,32)     ), 
+                # "plp"       = list( "name" = "piasek luzny pylasty",            "points" = c(30,31,34,33)     ), 
+                # "ps"        = list( "name" = "piasek slabogliniasty",           "points" = c(26,27,30,29)     ), 
+                # "psp"       = list( "name" = "piasek slabogliniasty pylasty",   "points" = c(27,28,31,30)     ), 
+                # "pgl"       = list( "name" = "piasek gliniasty lekki",          "points" = c(23,24,27,26)     ), 
+                # "pglp"      = list( "name" = "piasek gliniasty lekki pylasty",  "points" = c(24,25,28,27)     ), 
+                # "pgm"       = list( "name" = "piasek gliniasty mocny",          "points" = c(18,19,24,23)     ), 
+                # "pgmp"      = list( "name" = "piasek gliniasty mocny pylasty",  "points" = c(19,20,25,24)     ), 
+                # "gp"        = list( "name" = "glina piaszczysta",               "points" = c(15,16,19,18)     ), 
+                # "gpp"       = list( "name" = "glina piaszczysta pylasta",       "points" = c(16,17,20,19)     ), 
+                # "gl"        = list( "name" = "glina lekka",                     "points" = c(11,12,16,15)     ), 
+                # "glp"       = list( "name" = "glina lekka pylasta",             "points" = c(12,13,17,16)     ),      
+                # "gs"        = list( "name" = "glina srednia",                   "points" = c(07,08,12,11)     ),
+                # "gsp"       = list( "name" = "glina srednia pylasta",           "points" =c(08,09,13,12)      ),
+                # "gc"        = list( "name" = "glina ciezka",                    "points" = c(03,04,06,08,07)  ),
+                # "gcp"       = list( "name" = "glina ciezka pylasta",            "points" =c(06,09,08)         ),
+                # "gbc"       = list( "name" = "glina bardzo ciezka",             "points" =c(02,04,03)         ),
+                # "i"         = list( "name" = "il",                              "points" = c(01,05,06,04,02)  ),
+                # "ip"        = list( "name" = "il pylasty",                      "points" = c(05,10,09,06)     ),
+                # "pyi"       = list( "name" = "pyl ilasty",                      "points" = c(09,10,14,13)     ),
+                # "pyg"       = list( "name" = "pyl gliniasty",                   "points" = c(13,14,22,21,20)  ),
+                # "pyp"       = list( "name" = "pyl piaszczysty",                 "points" = c(20,21,35,34)     ),
+                # "pyz"       = list( "name" = "pyl zwykly",                      "points" = c(21,22,36,35)     )
+            # ),  #
+            # #
+            # # Triangle specific parameters for triangle geometry / appearance
+            # #   See general parameters above for detailed description of them
+            # blr.clock       = rep(F,3), 
+            # tlr.an          = c(60,60,60), 
+            # #
+            # blr.tx      = c("SILT","SAND","CLAY"), 
+            # # 
+            # base.css.ps.lim = c(0,20,100,1000), 
+            # tri.css.ps.lim  = c(0,20,100,1000), 
+            # #
+            # unit.ps         = quote(bold(mu) * bold('m')), 
+            # unit.tx         = quote(bold('%')), 
+            # #
+            # text.sum        = 100 
+        # ),  #
+        
+        # Polish_PTG_1956_Musierowicz.TT = list(  #  Polish_PTG_1956_Musierowicz Triangle parameters
+            # #
+            # main            = "Polish_PTG_1956_Musierowicz", 
+            # # 
+            # #                The list below specify the CSS coordinates of the different POINTS
+            # #                   that are used to draw soil texture classes. One points can be 
+            # #                   used by several classes :
+            # #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            # #                  = P13    P14    P15    P16    P17    P18    P19    P20    P21    P22    P23    P24  
+            # #                  = P25    P26    P27    P28    (submits)
+            # "tt.points"     = data.frame( 
+                # "CLAY"      = c( 1.000, 0.900, 0.750, 0.650, 0.500, 0.500, 0.500, 0.500, 0.350, 0.350, 0.350, 0.350,  
+                                 # 0.200, 0.200, 0.200, 0.150, 0.150, 0.150, 0.100, 0.100, 0.100, 0.050, 0.050, 0.050,        
+                                 # 0.000, 0.000, 0.000, 0.000  ),  
+                            # #
+                # "SILT"      = c( 0.000, 0.000, 0.250, 0.250, 0.000, 0.250, 0.400, 0.500, 0.000, 0.250, 0.400, 0.650,  
+                                 # 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400, 0.000, 0.250, 0.400,         
+                                 # 0.000, 0.250, 0.400, 1.000  ),  
+                            # #
+                # "SAND"      = c( 0.000, 0.100, 0.000, 0.100, 0.500, 0.250, 0.100, 0.000, 0.650, 0.400, 0.250, 0.000,  
+                                 # 0.800, 0.550, 0.400, 0.850, 0.600, 0.450, 0.900, 0.650, 0.500, 0.950, 0.700, 0.550,         
+                                 # 1.000, 0.750, 0.600, 0.000 )  
+            # ),  #
+            # #
+            # #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            # "tt.polygons"   = list( 
+                # "pl"        = list( "name" = "piasek luzny",                   "points" = c(22,23,26,25)             ), 
+                # "plp"       = list( "name" = "piasek luzny pylasty",           "points" = c(23,24,27,26)             ), 
+                # "ps"        = list( "name" = "piasek slabogliniasty",          "points" = c(19,20,23,22)             ), 
+                # "psp"       = list( "name" = "piasek slabogliniasty pylasty",  "points" = c(20,21,24,23)             ), 
+                # "pgl"       = list( "name" = "piasek gliniasty lekki",         "points" = c(16,17,20,19)             ), 
+                # "pglp"      = list( "name" = "piasek gliniasty lekki pylasty", "points" = c(17,18,21,20)             ), 
+                # "pgm"       = list( "name" = "piasek gliniasty mocny",         "points" = c(13,14,17,16)             ), 
+                # "pgmp"      = list( "name" = "piasek gliniasty mocny pylasty", "points" = c(14,15,18,17)             ), 
+                # "gl"        = list( "name" = "glina lekka",                    "points" = c(09,10,14,13)             ), 
+                # "glp"       = list( "name" = "glina lekka pylasta",            "points" = c(10,11,15,14)             ),      
+                # "gs"        = list( "name" = "glina srednia",                  "points" = c(05,06,10,09)             ),
+                # "gsp"       = list( "name" = "glina srednia pylasta",          "points" = c(06,07,11,10)             ),
+                # "gc"        = list( "name" = "glina ciezka",                   "points" = c(02,04,06,05)             ),
+                # "gcp"       = list( "name" = "glina ciezka pylasta",           "points" = c(04,07,06)                ),
+                # "i"         = list( "name" = "il",                             "points" = c(01,03,04,02)             ),
+                # "ip"        = list( "name" = "il pylasty",                     "points" = c(03,08,07,04)             ),
+                # "pyz"       = list( "name" = "pyl zwykly",                     "points" = c(11,12,28,27,24,21,18,15) ),
+                # "pyi"       = list( "name" = "pyl ilasty",                     "points" = c(07,08,12,11)             )
+            # ),  #
+            # #
+            # # Triangle specific parameters for triangle geometry / appearance
+            # #   See general parameters above for detailed description of them
+            # blr.clock       = rep(F,3), 
+            # tlr.an          = c(60,60,60), 
+            # #
+            # blr.tx      = c("SILT","SAND","CLAY"), 
+            # # 
+            # base.css.ps.lim = c(0,20,100,1000), 
+            # tri.css.ps.lim  = c(0,20,100,1000), 
+            # #
+            # unit.ps         = quote(bold(mu) * bold('m')), 
+            # unit.tx         = quote(bold('%')), 
+            # #
+            # text.sum        = 100 
+        # )   #
+        
+        # Code for polish triangles can be found in 
+        # \prepare\specialCharacters\triangles.R
         
         # +-------------------------------------------------------------------------+
         # | END(SCRIPT PARAMETERS SPECIFICATION)                                    |
