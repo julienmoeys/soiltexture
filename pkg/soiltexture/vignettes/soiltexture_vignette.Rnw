@@ -1435,9 +1435,16 @@ TT.plot(
 
 
 % +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
-\subsection{Polish soil texture classification (PTG 1956-1959?)} 
+\subsection{Polish soil texture classification (PTG 1956-1959)} 
 
-To display a Polish texture triangle (Systematyka gleb Polski, 
+Note: several versions or variants of polish soil texture 
+triangles have been used and are used nowadays, which may 
+cause some confusion.
+The triangle presented in this section is refered to here 
+as PTG 1956-1959, but the name may not be an official 
+denomination.
+
+To display this texture triangle (Systematyka gleb Polski, 
 1989, for non-alluvial soils), type:
 
 
@@ -1505,12 +1512,14 @@ See the table for soil texture classes symbols:
 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) 
-xtable( 
-    x       = tex.tbl[,-3],  #
-    caption = "Texture classes of the Polish system / triangle", 
-    label   = NULL  
-)   #
+test <- try( tex.tbl <- TT.classes.tbl( class.sys = "PL.TT" ) )
+if( !"try-error" %in% class(test) ){
+    xtable( 
+        x       = tex.tbl[,-3],  #
+        caption = "Texture classes of the Polish system / triangle", 
+        label   = NULL  
+    )   #
+}   
 @ 
 
 
@@ -1525,21 +1534,93 @@ on all platforms. If the triangle is not available (could not
 be loaded for any reason), a message is issued when the package 
 is loaded (but no error or warning).
 
-Note: Michal Stepien, Warsaw University of Life Sciences, 
+Note: Michal Stepien, 
+Warsaw University of Life Sciences, 
 indicated me that there are in fact many different variants 
 of polish texture triangles, sometimes with different limits 
 for the particle size. Michal indicates that the triangle 
-above, here be refered to as "Polish PTG 1956-1959", has for 
-original references "Przyrodniczo-genetyczna klasyfikacja gleb 
-Polski, 1956. Roczniki Nauk Rolniczych, 74, seria D: 1-96" and 
-"Genetyczna klasyfikacja gleb Polski, 1959. Roczniki 
-Gleboznawcze - Soil Science Annual, 7(2): 1-103". This triangle 
-has more classes than another similar triangle (not presented 
-here), here refered to as "PTG 1956 Musierowicz", and whose 
-references are "Musierowicz A. 1956. Gleboznawstwo ogolne. 
-Systematyka Gleb Polski, 1989. Roczniki Gleboznawcze - 
-Soil Science Annual, 40(3/4): 1-150". These indications 
-may be subject to update or clarification.
+above ("PTG 1956-1959"), probably 
+has for original references "Przyrodniczo-genetyczna klasyfikacja 
+gleb Polski, 1956. Roczniki Nauk Rolniczych, 74, seria D: 1-96" 
+and  "Genetyczna klasyfikacja gleb Polski, 1959.
+Roczniki Gleboznawcze --- Soil Science Annual, 7(2): 1-103".
+
+See below for another variant of the texture triangle.
+
+
+
+\clearpage % otherwise the table may 'eats' next triangle
+
+
+
+% +~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
+\subsection{Polish soil texture classification (PTG 1956 Musierowicz)} 
+
+Note: several versions or variants of polish soil texture 
+triangles have been used and are used nowadays, which may 
+cause some confusion.
+The triangle presented in this section is refered to here 
+as PTG 1956 Musierowicz, but the name may not be an official 
+denomination.\\
+
+This triangle is used in Polish agricultural soil maps. 
+Its references are:  
+"Musierowicz A. 1956. Gleboznawstwo ogolne" and  
+"Systematyka Gleb Polski, 1989. Roczniki Gleboznawcze
+--- Soil Science Annual, 40(3/4): 1-150".\\
+
+To display this texture triangle, type:
+
+
+
+<<echo=TRUE,fig=TRUE,include=TRUE>>= 
+test <- try( TT.plot( class.sys = "Polish_PTG_1956_Musierowicz.TT" ) ) 
+
+#   In case the polish triangle was not loaded at startup
+if( "try-error" %in% class(test) ){ 
+    plot(1,1,type="n",) 
+    text(1,1,label="Plotting failed. Polish triangle not loaded")
+}   
+@ 
+
+
+
+NB: \textit{Due to encoding issues, the Polish triangle 
+with be displayed with original polish character under Windows 
+and Linux systems only. For other platforms (Mac, freeBSD) 
+only latin character are used}.\\
+
+
+
+<<echo=FALSE,results=hide,quiet=TRUE>>= 
+test <- try( plLim <- TT.get("Polish_PTG_1956_Musierowicz.TT")[["base.css.ps.lim"]][3] ) 
+if( "try-error" %in% class(test) ){ plLim <- NA_real_ }
+@ 
+
+The Polish soil texture classification has been built 
+considering a silt - sand limit of 
+\Sexpr{plLim}$\mu$meters.\\
+
+
+See the table for soil texture classes symbols:
+
+
+<<echo=FALSE,results=tex>>= 
+test <- try( tex.tbl <- TT.classes.tbl( class.sys = 
+    "Polish_PTG_1956_Musierowicz.TT" ) )
+if( !"try-error" %in% class(test) ){
+    xtable( 
+        x       = tex.tbl[,-3],  #
+        caption = "Polish texture triangle (PTG 1956 Musierowicz)", 
+        label   = NULL  
+    )   #
+}   
+@ 
+
+Many thanks to Michal Stepien and Darek Gozdowski, Warsaw 
+University of Life Sciences, for providing the code of this 
+Polish triangle, as well as explanations on the differences 
+between the polish triangles presented here.\\
 
 
 
@@ -1555,10 +1636,21 @@ To display this Polish texture triangle, type:
 
 
 <<echo=TRUE,fig=TRUE,include=TRUE>>= 
-TT.plot( class.sys = "Polish_BN_1978.TT" ) 
+test <- try( TT.plot( class.sys = "Polish_BN_1978.TT"  ) ) 
+
+#   In case the polish triangle was not loaded at startup
+if( "try-error" %in% class(test) ){ 
+    plot(1,1,type="n",) 
+    text(1,1,label="Plotting failed. Polish triangle not loaded")
+}   
 @ 
 
 
+
+NB: \textit{Due to encoding issues, the Polish triangle 
+with be displayed with original polish character under Windows 
+and Linux systems only. For other platforms (Mac, freeBSD) 
+only latin character are used}.\\
 
 Formal denomination/citation: BN-78/9180-11. Gleby i utwory 
 mineralne. Podzial na frakcje i grupy granulometryczne. 
@@ -1571,7 +1663,8 @@ only latin character are used}.\\
 
 
 <<echo=FALSE,results=hide,quiet=TRUE>>= 
-plLim <- TT.get("Polish_BN_1978.TT")[["base.css.ps.lim"]][3]
+test <- try( plLim <- TT.get("Polish_BN_1978.TT")[["base.css.ps.lim"]][3] ) 
+if( "try-error" %in% class(test) ){ plLim <- NA_real_ }
 @ 
 
 The Polish soil texture classification has been built 
@@ -1583,12 +1676,14 @@ See the table for soil texture classes symbols:
 
 
 <<echo=FALSE,results=tex>>= 
-tex.tbl <- TT.classes.tbl( class.sys = "Polish_BN_1978.TT" ) 
-xtable( 
-    x       = tex.tbl[,-3],  #
-    caption = "Polish texture triangle (BN-78/9180-11)", 
-    label   = NULL  
-)   #
+test <- try( tex.tbl <- TT.classes.tbl( class.sys = "Polish_BN_1978.TT" ) )
+if( !"try-error" %in% class(test) ){
+    xtable( 
+        x       = tex.tbl[,-3],  #
+        caption = "Texture classes of the Polish system / triangle", 
+        label   = NULL  
+    )   #
+}   
 @ 
 
 
@@ -1596,7 +1691,7 @@ xtable(
 Many thanks to Michal Stepien and Darek Gozdowski, Warsaw 
 University of Life Sciences, for providing the code of this 
 Polish triangle, as well as explanations on the differences 
-between the polish triangles presented here..\\
+between the polish triangles presented here.\\
 
 
 
