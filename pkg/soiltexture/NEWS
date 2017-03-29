@@ -1,10 +1,31 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.4.3
+
+    2017/03/05 to 2017/03/29
+        Added yet several polish texture triangles:
+        *   Polish_PTG_1956_Musierowicz.TT
+        *   Polish_kategorie_agronomiczne_1990.TT
+        *   PTG_2008.TT
+        
+        All are courtesy of Michal Stepien and Darek Gozdowski.
+        
+        The following triangles
+        *   Polish_PTG_1956_Musierowicz.TT
+        *   Polish_BN_1978.TT
+        *   Polish_kategorie_agronomiczne_1990.TT
+        *   (PTG_2008.TT)?
+        
+        Now include polish characters (thanks to Michal Stepien). 
+        These characters may only be displayed correctly on 
+        some platforms.
+        
 CHANGES IN VERSION 1.4.2
 
     2017/03/05  Add a new polish texture triangle 
-        (Polish_BN_1978.TT).
+        (Polish_BN_1978.TT). Courtesy of 
+        Michal Stepien and Darek Gozdowski.
         
         Move the repository from rforge to GitHub.
         Change version control system from subversion to git.
