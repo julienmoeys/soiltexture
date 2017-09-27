@@ -1,6 +1,12 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.4.5
+    
+    2017/09/27  Added a field "BugReports" to the package 
+        DESCRIPTION, with a link to the package 
+        GitHub issue tracing system.
+    
 CHANGES IN VERSION 1.4.4
     
     2017/09/27  Added a new "duplicate" of the USDA 
