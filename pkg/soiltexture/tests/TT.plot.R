@@ -56,6 +56,7 @@ TT.plot(
 TT.plot( class.sys = "none" )           # no classification 
 TT.plot( class.sys = "HYPRES.TT" )      # HYPRES / European Soil Map 
 TT.plot( class.sys = "USDA.TT" )        # USDA 
+TT.plot( class.sys = "USDA-NCSS.TT" )   # USDA with NCSS labels
 TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
 TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
 TT.plot( class.sys = "DE.BK94.TT" )     # Germany 

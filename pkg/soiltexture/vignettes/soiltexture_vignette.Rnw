@@ -159,7 +159,7 @@ suppressPackageStartupMessages( library( "soiltexture" ) )
 % | Front page image:
 
 <<COVERFIG,include=false,echo=FALSE,fig=TRUE>>= 
-TT.plot(class.p.bg.col=T,class.sys="USDA.TT",main=NA)
+TT.plot(class.p.bg.col=T,class.sys="USDA-NCSS.TT",main=NA)
 @ 
 
 \begin{figure}[b]
@@ -820,7 +820,22 @@ xtable(
 
 
 The reference used to digitize this triangle is the Soil Survey 
-Manual (Soil Survey Staff 1993\cite{USDA1993}).
+Manual (Soil Survey Staff 1993\cite{USDA1993}).\\
+
+[2017-09-27] The triangle above uses classes-labels that are not 
+the one commonly used by US authorities (such as NCSS), 
+so a 'duplicate' of the same triangle has been added, but this 
+time with classes-labels better reflecting current practices 
+by practiioners. The triangle has otherwise exactly the same 
+definition as \texttt{"USDA.TT"}. It is named 
+\texttt{"USDA-NCSS.TT"} (class labels suggested by Dylan 
+Beaudette, NCSS). To use it, type:
+
+<<echo=TRUE,eval=FALSE>>= 
+TT.plot( class.sys = "USDA-NCSS.TT" ) 
+@ 
+
+(See the cover-page of this document for an example)
 
 \clearpage % otherwise the table may 'eats' next triangle
 

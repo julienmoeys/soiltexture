@@ -1,6 +1,15 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.4.4
+    
+    2017/09/27  Added a new "duplicate" of the USDA 
+        soil texture triangle, identical to USDA.TT, 
+        except that the labels have been changed to 
+        match better class-abbreviations currently used 
+        at USDA-NCSS (after a suggestion from Dylan Beaudette, 
+        NCSS).
+    
 CHANGES IN VERSION 1.4.3
 
     2017/03/05 to 2017/03/29

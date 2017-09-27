@@ -32,3 +32,12 @@
 /pkg/soiltexture/inst/doc/*.html
 /pkg/soiltexture/inst/doc/*.pdf
 /pkg/binaryArchive
+
+*.pdf
+*.aux
+*.bbl
+*.log
+*.blg
+*.R
+*.tex
+*.toc

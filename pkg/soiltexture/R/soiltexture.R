@@ -482,7 +482,64 @@ assign(
             #
             text.sum        = 100 
         ),  #
+        
+        "USDA-NCSS.TT" = list(  #  USDA Triangle parameters with NCSS class-labels
+            
+            main            = "USDA (NCSS)", 
+            # 
+            #                The list below specify the CSS coordinates of the different POINTS
+            #                   that are used to draw soil texture classes. One points can be 
+            #                   used by several classes :
+            #                  = P01    P02    P03    P04    P05    P06    P07    P08    P09    P10    P11    P12
+            #                  = P13    P14    P15    P16    P17    P18    P19    P20    P21    P22    P23   
+            #                  = P24    P25    P26 (submits)
+            "tt.points"     = data.frame( 
+                "CLAY"      = c( 0.550, 0.600, 0.350, 0.350, 0.400, 0.400, 0.400, 0.200, 0.200, 0.275, 0.275, 0.275,  
+                                 0.275, 0.150, 0.100, 0.075, 0.075, 0.125, 0.125, 0.000, 0.000, 0.000, 0.000,         
+                                 1.000, 0.000, 0.000  ),  
+                            #
+                "SILT"      = c( 0.000, 0.400, 0.000, 0.200, 0.150, 0.400, 0.600, 0.000, 0.275, 0.275, 0.500, 0.525,  
+                                 0.725, 0.000, 0.000, 0.400, 0.500, 0.800, 0.875, 0.150, 0.300, 0.500, 0.800,         
+                                 0.000, 0.000, 1.000  ),  
+                            #
+                "SAND"      = c( 0.450, 0.000, 0.650, 0.450, 0.450, 0.200, 0.000, 0.800, 0.525, 0.450, 0.225, 0.200,  
+                                 0.000, 0.850, 0.900, 0.525, 0.425, 0.075, 0.000, 0.850, 0.700, 0.500, 0.200,         
+                                 0.000, 1.000, 0.000  )  
+            ),  #
+            #
+            #   Abreviations;       Names of the texture cl;    Points marking the class limits (points specified above)
+            "tt.polygons"   = list( 
+                "C"     = list( "name" = "clay",            "points" = c(24,01,05,06,02)            ), # "Cl"
+                "SIC"   = list( "name" = "silty clay",      "points" = c(02,06,07)                  ), # "SiCl"
+                "SC"    = list( "name" = "sandy clay",      "points" = c(01,03,04,05)               ), # "SaCl"
+                "CL"    = list( "name" = "clay loam",       "points" = c(05,04,10,11,12,06)         ), # "ClLo"
+                "SICL"  = list( "name" = "silty clay loam", "points" = c(06,12,13,07)               ), # "SiClLo"
+                "SCL"   = list( "name" = "sandy clay loam", "points" = c(03,08,09,10,04)            ), # "SaClLo"
+                "L"     = list( "name" = "loam",            "points" = c(10,09,16,17,11)            ), # "Lo"
+                "SIL"   = list( "name" = "silty loam",      "points" = c(11,17,22,23,18,19,13,12)   ), # "SiLo"
+                "SL"    = list( "name" = "sandy loam",      "points" = c(08,14,21,22,17,16,09)      ), # "SaLo"
+                "SI"    = list( "name" = "silt",            "points" = c(18,23,26,19)               ), # "Si"
+                "LS"    = list( "name" = "loamy sand",      "points" = c(14,15,20,21)               ), # "LoSa"
+                "S"     = list( "name" = "sand",            "points" = c(15,25,20)                  )  # "Sa"
+            ),  #
+            #
+            # Triangle specific parameters for triangle geometry / appearance
+            #   See general parameters above for detailed description of them
+            blr.clock       = rep(T,3), 
+            tlr.an          = c(60,60,60), 
+            #
+            blr.tx      = c("SAND","CLAY","SILT"), 
+            # 
+            base.css.ps.lim = c(0,2,50,2000), 
+            tri.css.ps.lim  = c(0,2,50,2000), 
+            #
+            unit.ps         = quote(bold(mu) * bold('m')), 
+            unit.tx         = quote(bold('%')), 
+            #
+            text.sum        = 100 
+        ),  #
         # 
+        
         FR.AISNE.TT = list( # AISNE/FRENCH TRIANGLE PARAMETERS :
             #
             main            = "Aisne (FR)", 

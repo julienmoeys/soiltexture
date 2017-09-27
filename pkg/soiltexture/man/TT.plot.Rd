@@ -422,6 +422,7 @@ TT.plot(
 TT.plot( class.sys = "none" )           # no classification 
 TT.plot( class.sys = "HYPRES.TT" )      # HYPRES / European Soil Map 
 TT.plot( class.sys = "USDA.TT" )        # USDA 
+TT.plot( class.sys = "USDA-NCSS.TT" )   # USDA with NCSS labels
 TT.plot( class.sys = "FR.AISNE.TT" )    # French Aisne 
 TT.plot( class.sys = "FR.GEPPA.TT" )    # French GEPPA 
 TT.plot( class.sys = "DE.BK94.TT" )     # Germany 
@@ -440,16 +441,21 @@ TT.plot( class.sys = "SiBCS13.TT" )     # Brasil (Lemos & Santos 1996)
 
 ##  Polish triangles:
 
-#   BN 1978
-TT.plot( class.sys = "Polish_BN_1978.TT" ) 
-#   PTG 1956 Musierowicz
-TT.plot( class.sys = "Polish_PTG_1956_Musierowicz.TT" ) 
 #   PTG 1956-1959
 try( TT.plot( class.sys = "PL.TT" ) ) 
+#   PTG 1956 Musierowicz
+try( TT.plot( class.sys = "Polish_PTG_1956_Musierowicz.TT" ) )
+#   BN 1978
+try( TT.plot( class.sys = "Polish_BN_1978.TT" ) ) 
+#   PTG 2008
+#   Polish kategorie agronomiczne 1990
+try( TT.plot( class.sys = 
+    "Polish_kategorie_agronomiczne_1990.TT" ) ) 
+try( TT.plot( class.sys = "PTG_2008.TT" ) ) 
 
-#   The latter includes special characters
+#   All/most polish triangles includes special characters
 #   and may not work on all platforms (or some accents may 
-#   be missing)
+#   be missing). Remove the try() around the code.
 
 # ::: Test all the languages:
 TT.plot( class.sys = "USDA.TT", lang = "en" )  # English, default 
