@@ -91,12 +91,18 @@ pkgDescription <- function(# Modify a package's DESCRIPTION file
         # Get R version:
         RVersion <- R.Version() 
         
+        vMinor <- RVersion[["minor"]]
+        vMinor <- strsplit( x = vMinor, split = ".", 
+            fixed = TRUE )[[ 1L ]][ 1L ] 
+            #   Take the "y" from the "y.z" part of the 
+            #   minor part of the version number
+        
         RVersion <- paste( 
             sep = "", 
             "R (>= ", 
             RVersion[["major"]], 
             ".", 
-            RVersion[["minor"]], 
+            sprintf( "%s.0", vMinor ), # RVersion[["minor"]], 
             ")" 
         )   
     }   
