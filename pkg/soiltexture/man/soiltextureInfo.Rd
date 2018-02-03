@@ -31,7 +31,7 @@ strings}
 \seealso{The base functions that were used internally to compile 
 the information: \code{\link[base]{Sys.time}}, 
 \code{\link[base]{Sys.info}}, \code{\link[base]{version}}, 
-\code{\link[base]{.packages}}, 
+\code{\link[base]{zpackages}}, 
 \code{\link[utils]{installed.packages}}, 
 \code{\link[tools]{package_dependencies}}. See also the 
 \code{MD5} file in each package directory (and 
