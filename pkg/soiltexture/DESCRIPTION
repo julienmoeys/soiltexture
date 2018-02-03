@@ -6,7 +6,7 @@ Author: Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budi
 Authors@R: c( person( "Julien", "Moeys", role = c("aut", "cre"), email = "jules_m78-soiltexture@yahoo.fr" ), person( "Wei", "Shangguan", role = "ctb" ), person( "Rainer", "Petzold", role = "ctb" ), person( "Budiman", "Minasny", role = "ctb" ), person( "Bogdan", "Rosca", role = "ctb" ), person( "Nic", "Jelinski", role = "ctb" ), person( "Wiktor", "Zelazny", role = "ctb" ), person( "Rodolfo", "Marcondes Silva Souza", role = "ctb" ), person( "Jose Lucas", "Safanelli", role = "ctb" ), person( "Alexandre", "ten Caten", role = "ctb" ) )
 Maintainer: Julien Moeys <jules_m78-soiltexture@yahoo.fr>
 Depends: 
-    R (>= 3.3.2)
+    R (>= 3.4.0)
 Suggests: 
     xtable
 Description: "The Soil Texture Wizard" is a set of R functions designed to produce texture triangles (also called texture plots, texture diagrams, texture ternary plots), classify and transform soil textures data. These functions virtually allows to plot any soil texture triangle (classification) into any triangle geometry (isosceles, right-angled triangles, etc.). This set of function is expected to be useful to people using soil textures data from different soil texture classification or different particle size systems. Many (> 15) texture triangles from all around the world are predefined in the package. A simple text based graphical user interface is provided: soiltexture_gui().
