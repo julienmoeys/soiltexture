@@ -17,7 +17,7 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.4.5", 
+    pkgVersion  = "1.4.6", 
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
@@ -25,6 +25,7 @@ pkgDescription( # Done with R 3.2.0 RC
 )   
 
 
+#   install.packages(c("sp","xtable"))
 
 package.skeleton.dx( # R version 3.2.0 (2015-04-16), with inlinedocs 2015.06.19 (installed from GitHub)
     pkgdir      = file.path( pkgDir, pkgName ), 

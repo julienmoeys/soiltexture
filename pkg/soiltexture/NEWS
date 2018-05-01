@@ -1,6 +1,13 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.4.6
+    
+    2017/05/01  The bibTeX file vignettes/soiltexture_vignette.bib 
+        was sanitised for non-ascii characters, that 
+        were replaced by equivalent LaTeX command. (after 
+        a reqtest from CRAN maintainer)
+    
 CHANGES IN VERSION 1.4.5
     
     2017/09/27  Added a field "BugReports" to the package 

@@ -6,6 +6,8 @@ setwd( file.path( Sys.getenv(x = "rPackagesDir" ), "soiltexture/pkg/soiltexture/
 
 tools::showNonASCIIfile(file="soiltexture_vignette.Rnw")
 
+tools::showNonASCIIfile(file="soiltexture_vignette.bib")
+
 Stangle( "soiltexture_vignette.Rnw", encoding = "UTF-8" ) 
 
 Sweave( "soiltexture_vignette.Rnw", encoding = "UTF-8" ) 
