@@ -1,6 +1,6 @@
 Package: soiltexture
-Version: 1.4.6
-Date: 2018-05-01
+Version: 1.5.0
+Date: 2018-06-28
 Title: Functions for Soil Texture Plot, Classification and Transformation
 Author: Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor Zelazny [ctb],  Rodolfo Marcondes Silva Souza [ctb],  Jose Lucas Safanelli [ctb], Alexandre ten Caten [ctb]
 Authors@R: c( person( "Julien", "Moeys", role = c("aut", "cre"), email = "jules_m78-soiltexture@yahoo.fr" ), person( "Wei", "Shangguan", role = "ctb" ), person( "Rainer", "Petzold", role = "ctb" ), person( "Budiman", "Minasny", role = "ctb" ), person( "Bogdan", "Rosca", role = "ctb" ), person( "Nic", "Jelinski", role = "ctb" ), person( "Wiktor", "Zelazny", role = "ctb" ), person( "Rodolfo", "Marcondes Silva Souza", role = "ctb" ), person( "Jose Lucas", "Safanelli", role = "ctb" ), person( "Alexandre", "ten Caten", role = "ctb" ) )

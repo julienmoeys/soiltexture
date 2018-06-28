@@ -17,7 +17,7 @@ source( file.path( pkgDir, "..", "packageUtilities.R" ) )
 pkgDescription( # Done with R 3.2.0 RC
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.4.6", 
+    pkgVersion  = "1.5.0", 
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
@@ -32,6 +32,10 @@ package.skeleton.dx( # R version 3.2.0 (2015-04-16), with inlinedocs 2015.06.19 
     namespace   = FALSE # Must be edited manually!  
 )   
 
+
+utils::promptPackage( package = pkgName, 
+    filename = file.path( pkgDir, pkgName, "man", sprintf( "%s-package.Rd", pkgName ) ),
+    final = TRUE )
 
 file.copy(
     from      = file.path( pkgDir, "..", "prepare", "TT.env.Rd" ), 
