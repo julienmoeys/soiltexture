@@ -66,6 +66,7 @@ TT.plot( class.sys = "UK.SSEW.TT" )     # UK
 TT.plot( class.sys = "BE.TT" )          # Belgium 
 TT.plot( class.sys = "CA.FR.TT" )       # Canada (fr) 
 TT.plot( class.sys = "CA.EN.TT" )       # Canada (en) 
+TT.plot( class.sys = "CA2.EN.TT" )      # Canada (en) with official labels 
 TT.plot( class.sys = "AU2.TT" )         # Australian 
 TT.plot( class.sys = "ISSS.TT" )        # ISSS 
 TT.plot( class.sys = "ROM.TT" )         # Romanian 
