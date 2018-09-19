@@ -1,7 +1,8 @@
 # keep this
 
 oldWd <- getwd() 
-setwd( "D:/Users/julienm/Documents/_WORKS/_PROJECTS/r_packages/soiltexture/pkg/soiltexture/inst" )
+pkgName <- "soiltexture"
+setwd( file.path( Sys.getenv(x = "rPackagesDir" ), pkgName, "pkg", pkgName, "inst" ) ) 
 
 langPar2 <- data.frame( 
     "lang"  = c( "pl",                 "pt",                     "es2",                      "ro2"  ), 
