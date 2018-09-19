@@ -6,7 +6,12 @@ CHANGES IN VERSION 1.5.1
     2018/09/19  Files languages.rds and triangles.rds 
         re-generated after some issues when runiing tests 
         on Travis CI and AppVeyor. Not sure if that was needed.
-    
+        
+        Attempt to make the package running on R >= 3.1.0, 
+        rather than the latest version of R (currently R 3.5.0) 
+        using Travis CI to test if the package can be 
+        installed on that version of R.
+        
 CHANGES IN VERSION 1.5.0
     
     2018/06/28  The file soiltexture-package.Rd is now 

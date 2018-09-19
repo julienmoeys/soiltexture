@@ -17,6 +17,10 @@ warnings_are_errors: false
 env:
   - PACK_DIR=soiltexture
 
+r:
+  - release
+  - 3.1
+
 apt_packages:
   -  tk-dev
   

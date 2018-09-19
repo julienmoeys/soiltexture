@@ -35,7 +35,7 @@ pdu_pkgDescription(
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
-    RVersion    = NULL   
+    RVersion    = "R (>= 3.1.0)"   
 )   
 
 
