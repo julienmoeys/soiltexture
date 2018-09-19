@@ -324,7 +324,7 @@ pdu_rcmdinstall <- function(
     .build <- ifelse( build, "--build ", " " )
     .compactDocs <- ifelse( compactDocs, "--compact-docs ", " " )
     .byteCompile <- ifelse( build, "--byte-compile ", " " )
-    .compileBoth <- ifelse( compileBoth, "---compile-both ", " " )
+    .compileBoth <- ifelse( compileBoth, "--compile-both ", " " )
     
     cmd <- sprintf( "R CMD INSTALL %s%s%s%s%s", .build, 
         .compactDocs, .byteCompile, .compileBoth, normalizePath(f) )
