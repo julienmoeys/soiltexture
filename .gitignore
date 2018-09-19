@@ -38,6 +38,5 @@
 *.bbl
 *.log
 *.blg
-*.R
 *.tex
 *.toc
