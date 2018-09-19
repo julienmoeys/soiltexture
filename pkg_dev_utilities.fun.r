@@ -230,7 +230,7 @@ pdu_rcmdbuild <- function(
     .noVignettes <- ifelse( noVignettes, "--no-vignettes", "" )
     .compactVignettes <- ifelse( 
         (!noVignettes) & (!is.null(compactVignettes)),  
-        sprintf( '--compactVignettes="%s"', compactVignettes ), 
+        sprintf( '--compact-vignettes="%s"', compactVignettes ), 
         "" )
     .md5 <- ifelse( md5, "--md5", "" )
     
@@ -418,12 +418,22 @@ pdu_build_vignette <- function(
     ## Copy the vignette's pdf into the 'build' folder
     pdfFile <- sub( pattern = ".Rnw", replacement = ".pdf", 
         x = RnwFile, fixed = TRUE )
+
+    # pdu_message( "--- tools::compactPDF()\n" )
+    
+    # tools::compactPDF( paths = pdfFile, gs_quality = "ebook")
     
     file.copy( 
         from      = pdfFile, 
         to        = file.path( buildDir, pdfFile ), 
         overwrite = TRUE )    
     
+    # file.copy( 
+        # from      = pdfFile, 
+        # to        = file.path( pkgDir, pkgName, "inst", "doc", pdfFile ), 
+        # overwrite = TRUE )    
+    
+
     for( ext in c( "\\.tex$", "\\.bib.bak$", "\\.R$", "\\.aux$", 
         "\\.bbl$", "\\.blg$", "\\.log$", "\\.out$", "\\.toc$", "\\.pdf$", "\\.dvi$" ) ){ # 
         
