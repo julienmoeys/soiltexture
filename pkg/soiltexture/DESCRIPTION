@@ -1,5 +1,5 @@
 Package: soiltexture
-Version: 1.5.0
+Version: 1.5.1
 Date: 2018-09-19
 Title: Functions for Soil Texture Plot, Classification and Transformation
 Author: Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb], Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor Zelazny [ctb],  Rodolfo Marcondes Silva Souza [ctb],  Jose Lucas Safanelli [ctb], Alexandre ten Caten [ctb]

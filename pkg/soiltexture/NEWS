@@ -1,6 +1,12 @@
 
     package: 'soiltexture'
 
+CHANGES IN VERSION 1.5.1
+    
+    2018/09/19  Files languages.rds and triangles.rds 
+        re-generated after some issues when runiing tests 
+        on Travis CI and AppVeyor. Not sure if that was needed.
+    
 CHANGES IN VERSION 1.5.0
     
     2018/06/28  The file soiltexture-package.Rd is now 

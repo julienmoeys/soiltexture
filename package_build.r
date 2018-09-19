@@ -31,7 +31,7 @@ pdu_detach( pkgName = pkgName )
 pdu_pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.5.0", 
+    pkgVersion  = "1.5.1", 
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
@@ -89,9 +89,9 @@ pdu_rcmdinstall( pkgName = pkgName, pkgDir = pkgDir,
 pdu_rm_Rcheck( pkgName = pkgName, pkgDir = pkgDir, 
     buildDir = buildDir )
 
-#   Load and unload the package:
-library( pkgName, character.only = TRUE )
-pdu_detach( pkgName = pkgName )
+# #   Load and unload the package:
+# library( pkgName, character.only = TRUE )
+# pdu_detach( pkgName = pkgName )
 
 
 
