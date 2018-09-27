@@ -2,7 +2,7 @@ Linux: [![Linux Build Status (Travis CI)](https://travis-ci.org/julienmoeys/soil
 Windows: [![Windows Build Status (AppVeyor)](https://ci.appveyor.com/api/projects/status/github/julienmoeys/soiltexture?branch=master&svg=true)](https://ci.appveyor.com/project/julienmoeys/soiltexture)
 
 soiltexture
-===========
+============================================================
 
 Homepage of the soiltexture R package.
 
@@ -15,8 +15,17 @@ This page is under construction.
 
 Please refer to the old homepage for more information.
 
+
+
+Frequently asked questions (FAQ):
+------------------------------------------------------------
+
+See here: [FAQ.md]().
+
+
+
 User support:
--------------
+------------------------------------------------------------
 
 My current work and personal situation unfortunately does not 
 leave me much time to provide support to and answer questions 
