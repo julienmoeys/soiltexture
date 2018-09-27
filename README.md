@@ -80,7 +80,7 @@ devtools::install_github("julienmoeys/soiltexture/pkg/soiltexture")
 Frequently asked questions (FAQ):
 ------------------------------------------------------------
 
-See here: [FAQ.md]().
+See here: [FAQ.md](FAQ.md).
 
 
 
