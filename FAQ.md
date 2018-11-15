@@ -229,3 +229,79 @@ when using `TT.add()`. But you can either use
 the previous definition, or reset the package-parameters 
 before using `TT.add()` again. The parameters can be reset 
 by using `soiltexture::TT.set(reset=TRUE)`.
+
+
+
+Graphical elements (axis-ticks and axis labels) appear 
+overlapping in `soiltexture` default plots in R graphical user 
+interface on Windows
+------------------------------------------------------------
+
+Yes, they do, and it is certainly not optimal.
+
+It can be improved by tuning some of the default package 
+options, with `TT.set()`. I show an example below, adapted 
+from the package vignette (a bubble plot):
+
+```
+# Tune the package options (note, defaults are 1.5)
+TT.set(
+    "cex"      = 1,     # Symbol expansion. Not needed here
+    "cex.axis" = 1,     # Axis-ticks' labels
+    "cex.lab"  = 1,     # Axis labels
+    "cex.main" = 1 )    # Main title
+
+
+my.text <- data.frame(
+    "CLAY" = c(05,60,15,05,25,05,25,45,65,75,13,47),
+    "SILT" = c(05,08,15,25,55,85,65,45,15,15,17,43),
+    "SAND" = c(90,32,70,70,20,10,10,10,20,10,70,10),
+    "OC"   = c(20,14,15,05,12,15,07,21,25,30,05,28) ) 
+
+TT.plot(
+    class.sys = "none",
+    tri.data = my.text,
+    z.name = "OC",
+    main = "Soil texture triangle and OC bubble plot" ) 
+
+# Recompute some internal values:
+z.cex.range <- TT.get("z.cex.range")
+def.pch     <- par("pch")
+def.col     <- par("col")
+def.cex     <- TT.get("cex") 
+oc.str      <- TT.str(
+    my.text[,"OC"],
+    z.cex.range[1],
+    z.cex.range[2] ) 
+
+# The legend:
+legend(
+    x = "topright",
+    # y = 100,
+    title = expression( bold('OC [g.kg'^-1 ~ ']') ),
+    legend = formatC( c( min( my.text[,"OC"] ),
+        quantile(my.text[,"OC"] ,probs=c(25,50,75)/100),
+        max( my.text[,"OC"] ) ), format = "f", digits = 1,
+        width = 4, flag = "0" ), 
+    pt.lwd = 4,
+    col = def.col,
+    pt.cex = c( min( oc.str ), 
+        quantile(oc.str ,probs=c(25,50,75)/100), 
+        max( oc.str ) ), 
+    pch = def.pch,
+    bty = "o",
+    bg = NA,
+    box.col = NA, 
+    text.col = "black",
+    cex = def.cex, 
+    y.intersp = 1.5, 
+    x.intersp = 1.5 ) 
+
+#   Reset all parameters
+TT.set(reset=TRUE)
+```
+
+Notice that the optimal tuning will depend on the setting of 
+the graphics device where the plot is send, and may therefore 
+need to be adapted on a case by case basis.
+
