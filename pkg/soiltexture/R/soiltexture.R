@@ -7761,7 +7761,8 @@ TT.normalise.sum <- function(# Normalises the sum of the 3 particle size classes
     text.tol    = NULL, 
     #
     tri.pos.tst = NULL, 
-    residuals   = FALSE  
+    residuals   = FALSE,
+    digits      = NULL
 ){  #
     # Set rest of variables:
     TT.auto.set( set.par = FALSE ) 
@@ -7790,6 +7791,12 @@ TT.normalise.sum <- function(# Normalises the sum of the 3 particle size classes
             X * (text.sum/sum(X)) 
         }   #
     )   )   #
+    #
+      if(!is.null(digits))
+      {
+        tri.data <- round(tri.data,digits)
+        tri.data[,css.names[1]]<-100-apply(tri.data[,css.names[-1]],MARGIN = 1, sum)
+      }
     #
     if( class.ini == "data.frame" ) 
     {   #
