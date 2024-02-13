@@ -1,0 +1,12 @@
+^docs$
+^_pkgdown\.yml$
+_package_binaries
+_package_preparation
+_package_preparation_public
+inst/more_tests/results
+.gitattributes
+.gitignore
+package_build.r
+package_source.r
+pkg_dev_utilities.fun.r
+package_to-do-list.txt
