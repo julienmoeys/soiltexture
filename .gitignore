@@ -8,6 +8,7 @@
 # and pdf manual
 # -----------------------------------
 
+/pkg/soiltexture/_package_binaries/
 /pkg/*.gz
 /pkg/*.zip
 /pkg/*.pdf
