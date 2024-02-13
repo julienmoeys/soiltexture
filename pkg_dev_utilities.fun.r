@@ -214,7 +214,7 @@ pdu_rcmdbuild <- function(
     
     if( gitRevison ){
         cmd <-  sprintf( 
-            "git log -n 1 --oneline --no-notes > inst\\GIT_VERSION" )
+            "git log -n 1 --oneline --no-notes > inst\\REVISION" )
         
         pdu_message( sprintf( "COMMAND: %s\n\n", cmd ) )
         
@@ -227,15 +227,16 @@ pdu_rcmdbuild <- function(
     
     setwd( buildDir )
     
-    .noVignettes <- ifelse( noVignettes, "--no-vignettes", "" )
+    .noVignettes <- ifelse( noVignettes, " --no-build-vignettes", "" )
     .compactVignettes <- ifelse( 
         (!noVignettes) & (!is.null(compactVignettes)),  
-        sprintf( '--compact-vignettes="%s"', compactVignettes ), 
+        sprintf( ' --compact-vignettes="%s"', compactVignettes ), 
         "" )
-    .md5 <- ifelse( md5, "--md5", "" )
+    .md5 <- ifelse( md5, " --md5", "" )
     
-    cmd <- sprintf( "R CMD build %s %s %s", .compactVignettes, 
-        .md5, normalizePath(file.path(pkgDir,pkgName)) )
+    cmd <- sprintf( "R CMD build%s%s%s %s", .noVignettes, 
+        .compactVignettes, .md5, 
+        normalizePath(file.path(pkgDir,pkgName)) )
     
     pdu_message( sprintf( "COMMAND: %s\n\n", cmd ) )
     
@@ -269,8 +270,45 @@ pdu_rcmdcheck <- function(
     f <- list.files( path = buildDir, pattern = ".tar.gz" )
     f <- f[ grepl( pattern = pkgName, x = f, ignore.case = FALSE, 
         fixed = TRUE ) ]
-    f <- sort( f ) 
-    f <- f[ length(f) ] 
+    
+    #   Extract version
+    v <- gsub( 
+        x = f, 
+        pattern = paste0( pkgName, "_" ), 
+        replacement = "", 
+        fixed = TRUE )
+    
+    v <- gsub( 
+        x = v, 
+        pattern = ".tar.gz", 
+        replacement = "", 
+        fixed = TRUE )
+    
+    f <- f[ order( v ) ] 
+    v <- v[ order( v ) ] 
+    names( f ) <- v 
+    
+    # f <- sort( f ) 
+    # f <- f[ length(f) ] 
+    
+    if( length( v ) > 1L ){
+        v0 <- v[ length(v) ] 
+        
+        for( i in (length( v )-1L):1L ){
+            cv <- utils::compareVersion( a = v0, b = v[ i ] )
+            #   +1: a is later
+            #   -1: b is later
+            #    0: a and b are equal
+            
+            if( cv == -1 ){
+                v0 <- v[ i ] 
+            }   
+        }   
+        
+        v <- v0; rm( v0, i )
+    }   
+    
+    f <- as.character( f[ v ] ) 
     f <- file.path( buildDir, f )
     
     # setwd( buildDir )
@@ -299,7 +337,11 @@ pdu_rcmdinstall <- function(
     build = TRUE, 
     compactDocs = TRUE, 
     byteCompile = TRUE, 
-    compileBoth = FALSE 
+    compileBoth = FALSE, 
+    clean = TRUE, 
+    preclean = TRUE, 
+    resaveData = TRUE, 
+    predelete_zip = TRUE 
 ){  
     oldwd <- getwd() 
     on.exit( setwd( oldwd ) )
@@ -310,29 +352,110 @@ pdu_rcmdinstall <- function(
     
     
     
-    pdu_message( "--- Call R CMD check -----------------------------------\n" )
+    pdu_message( "--- Call R CMD INSTALL -----------------------------------\n" )
     #   Find latest tar.gz binary
     f <- list.files( path = buildDir, pattern = ".tar.gz" )
     f <- f[ grepl( pattern = pkgName, x = f, ignore.case = FALSE, 
         fixed = TRUE ) ]
-    f <- sort( f ) 
-    f <- f[ length(f) ] 
+    
+    #   Extract version
+    v <- gsub( 
+        x = f, 
+        pattern = paste0( pkgName, "_" ), 
+        replacement = "", 
+        fixed = TRUE )
+    
+    v <- gsub( 
+        x = v, 
+        pattern = ".tar.gz", 
+        replacement = "", 
+        fixed = TRUE )
+    
+    f <- f[ order( v ) ] 
+    v <- v[ order( v ) ] 
+    names( f ) <- v 
+    
+    # f <- sort( f ) 
+    # f <- f[ length(f) ] 
+    
+    if( length( v ) > 1L ){
+        v0 <- v[ length(v) ] 
+        
+        for( i in (length( v )-1L):1L ){
+            cv <- utils::compareVersion( a = v0, b = v[ i ] )
+            #   +1: a is later
+            #   -1: b is later
+            #    0: a and b are equal
+            
+            if( cv == -1 ){
+                v0 <- v[ i ] 
+            }   
+        }   
+        
+        v <- v0; rm( v0, i )
+    }   
+    
+    f <- as.character( f[ v ] ) 
     f <- file.path( buildDir, f )
+    
+    if( predelete_zip ){
+        zip <- gsub( x = f, pattern = "\\.tar.gz$", 
+            replacement = ".zip" )
+        
+        zip_old <- gsub( x = f, pattern = "\\.tar.gz$", 
+            replacement = ".old.zip" )
+        
+        if( file.exists( zip ) ){
+            pdu_message( "--- Pre-delete old zip binary\n" )
+            
+            copy_result <- file.copy( from = zip, to = zip_old, 
+                overwrite = TRUE )
+            
+            if( copy_result ){
+                remove_result <- file.remove( zip )
+                
+                if( !remove_result ){
+                    pdu_message( "--- Old zip binary could not be pre-deleted after backup\n" )
+                }   
+                
+            }else{
+                pdu_message( "--- Old zip binary could not be backed up before pre-deleted\n" )
+            }   
+        }else{
+            copy_result <- FALSE 
+        }   
+    }else{
+        copy_result <- FALSE 
+    }   
     
     # setwd( buildDir )
     
-    .build <- ifelse( build, "--build ", " " )
-    .compactDocs <- ifelse( compactDocs, "--compact-docs ", " " )
-    .byteCompile <- ifelse( build, "--byte-compile ", " " )
-    .compileBoth <- ifelse( compileBoth, "--compile-both ", " " )
+    .build <- ifelse( build, "--build ", "" )
+    .compactDocs <- ifelse( compactDocs, "--compact-docs ", "" )
+    .byteCompile <- ifelse( build, "--byte-compile ", "" )
+    .compileBoth <- ifelse( compileBoth, "--compile-both ", "" )
+    .clean <- ifelse( clean, "--clean ", "" )
+    .preclean <- ifelse( preclean, "--preclean ", "" )
+    .resaveData <- ifelse( resaveData, "--resave-data ", "" )
     
-    cmd <- sprintf( "R CMD INSTALL %s%s%s%s%s", .build, 
-        .compactDocs, .byteCompile, .compileBoth, normalizePath(f) )
+    cmd <- sprintf( "R CMD INSTALL %s%s%s%s%s%s%s%s", .build, 
+        .compactDocs, .byteCompile, .compileBoth, .clean, 
+        .preclean, .resaveData, normalizePath(f) )
     
     pdu_message( sprintf( "COMMAND: %s\n\n", cmd ) )
     
     out <- shell( cmd )
-      
+    
+    if( predelete_zip & copy_result ){
+        pdu_message( "--- Permanently delete old zip binary" )
+        
+        remove_result2 <- file.remove( zip_old )
+        
+        if( !remove_result2 ){
+            pdu_message( "--- Old zip binary could not be permanently deleted" )
+        }   
+    }   
+    
     return( out )
 }   
 
@@ -496,3 +619,76 @@ pdu_rd2pdf <- function(
     return( out )
 }   
 
+
+
+pdu_copy_to_repos <- function(
+    pkgName, 
+    pkgDir, 
+    buildDir = NULL, 
+    local_repos
+){  
+    if( is.null( buildDir ) ){ buildDir <- pkgDir }
+    
+    desc <- utils::packageDescription(
+        pkg     = pkgName, 
+        lib.loc = pkgDir )  
+    
+    pkg_version <- desc[[ "Version" ]] 
+    
+    name_template <- sprintf( "%s_%s.%s", pkgName, pkg_version, 
+        "%s" ) 
+    
+    binaries <- sprintf( name_template, c( "tar.gz", "zip" ) )
+    
+    test_file_copy <- file.copy(
+        from = file.path( buildDir, binaries ), 
+        to   = file.path( local_repos, binaries ), 
+        overwrite = TRUE, copy.date = FALSE ) 
+    
+    if( !all( test_file_copy ) ){
+        stop( sprintf( 
+            "Could not copy file(s) %s from %s to %s", 
+            paste( binaries[ !test_file_copy ], collapse = " " ), 
+            buildDir, local_repos 
+        ) ) 
+    }else{
+        message( sprintf( 
+            "Copied file(s) %s to %s", 
+            paste( binaries, collapse = " and " ), 
+            local_repos 
+        ) ) 
+    }   
+    
+    #   Clean up old versions
+    files_in_local_repos <- list.files( 
+        path       = local_repos, 
+        pattern    = paste0( pkgName, "_" ), 
+        full.names = FALSE, 
+        recursive  = FALSE, 
+        no..       = TRUE ) 
+    
+    files_in_local_repos <- 
+        files_in_local_repos[ !(files_in_local_repos %in% binaries) ]
+    
+    if( length( files_in_local_repos ) > 0L ){
+        test_file_rm <- file.remove( file.path( local_repos, 
+            files_in_local_repos ) )
+        
+        if( !all( test_file_rm ) ){
+            stop( sprintf( 
+                "Could not remove file(s) %s in %s", 
+                paste( files_in_local_repos[ !test_file_rm ], 
+                    collapse = " " ), 
+                local_repos 
+            ) ) 
+        }else{
+            message( sprintf( 
+                "Removed file(s) %s in %s", 
+                paste( files_in_local_repos, collapse = " " ), 
+                local_repos 
+            ) ) 
+        }   
+    }   
+    
+    return( invisible( binaries ) )
+}   
