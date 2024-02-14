@@ -100,11 +100,6 @@ pdu_rcmdbuild( pkgName = pkgName, pkgDir = pkgDir,
     noVignettes = FALSE, compactVignettes = NULL, 
     md5 = TRUE )
 
-# pdu_rcmdbuild( pkgName = pkgName, pkgDir = pkgDir, 
-    # buildDir = buildDir, gitRevison = TRUE, 
-    # noVignettes = FALSE, compactVignettes = "gs+qpdf", 
-    # md5 = TRUE )
-
 pdu_rcmdinstall( pkgName = pkgName, pkgDir = pkgDir, 
     buildDir = buildDir, build = TRUE, 
     compactDocs = TRUE, byteCompile = TRUE )
@@ -113,13 +108,7 @@ pdu_rcmdcheck( pkgName = pkgName, pkgDir = pkgDir,
     buildDir = buildDir, noExamples = FALSE, 
     noTests = FALSE, noVignettes = FALSE, asCRAN = TRUE )
 
-# pdu_rcmdcheck( pkgName = pkgName, pkgDir = pkgDir, 
-    # buildDir = buildDir, noExamples = FALSE, 
-    # noTests = FALSE, noVignettes = FALSE, asCRAN = TRUE )
 
-# pdu_rcmdinstall( pkgName = pkgName, pkgDir = pkgDir, 
-    # buildDir = buildDir, build = TRUE, 
-    # compactDocs = TRUE, byteCompile = TRUE, compileBoth = TRUE )
 
 #   Remove .Rcheck folder
 pdu_rm_Rcheck( pkgName = pkgName, pkgDir = pkgDir, 
