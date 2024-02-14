@@ -50,6 +50,10 @@
 #' #   Also works with other packages
 #' soiltextureInfo( packages = "sp" )
 #' 
+#' @importFrom utils installed.packages
+#' @importFrom utils capture.output
+#' @importFrom tools package_dependencies
+#' @export 
 soiltextureInfo <- function(# Display and / or export system and package version information
 ### Display and / or export system and package version information. 
 ###  Can be used to provide an overview of the system and the R 
@@ -100,7 +104,7 @@ soiltextureInfo <- function(# Display and / or export system and package version
     }   
     
     cap2 <- function( ..., .file = con, .append = TRUE ){ 
-        capture.output( ..., file = .file, append = .append ) 
+        utils::capture.output( ..., file = .file, append = .append ) 
     }   
     
     cat2( "INFORMATION ON SYSTEM AND PACKAGE(S) VERSION(S)\n" ) 

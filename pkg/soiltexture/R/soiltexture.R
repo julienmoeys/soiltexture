@@ -1,3 +1,8 @@
+
+
+#'@importFrom sp point.in.polygon
+NULL
+
 # Environment for storing, hiding and protecting internal variables and functions.
 #' TT env
 #' 
@@ -7,6 +12,7 @@
 #' 
 #' @name TT.env
 #' @docType data
+#' @noRd
 NULL
 TT.env <- new.env() 
 
@@ -24,6 +30,7 @@ TT.env <- new.env()
 # | LIST: TT.par                        |
 # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+
 # [ TT.par :: A list of default parameters, contained in a list, stored in the TT.env environment (~ invisible)
+#' @importFrom utils read.table
 assign( 
     envir   = TT.env,
     x       = "TT.par", 
@@ -1368,7 +1375,7 @@ assign(
             
             "main"  = "USDA 1911 (M. Whitney, 1911) - Ternary Plot", 
             
-            "tt.points" = read.table( sep = "", header = TRUE, 
+            "tt.points" = utils::read.table( sep = "", header = TRUE, 
                 text = "CLAY SILT SAND
                         0.0  0.0  1.0       # 1
                         0.2  0.0  0.8       # 2
@@ -1733,6 +1740,7 @@ assign(
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export
 TT.set <- function(# Function to change / set the default package parameters. 
 ### Function to change / set the default package parameters as they 
 ### are stored in the list TT.par in the environment TT.env. Use 
@@ -1828,6 +1836,7 @@ par.env=TT.env
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export
 TT.get <- function(# Function to retrieve / get the default package parameters. 
 ### Function to retrieve / get the default package parameters. 
 
@@ -1889,6 +1898,7 @@ TT.get <- function(# Function to retrieve / get the default package parameters.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export
 TT.add <- function(# Function to add a new default package parameters. 
 ### Function to add a new default package parameters. Mostly used 
 ### to add a new texture triangle definition.
@@ -1981,6 +1991,7 @@ TT.add <- function(# Function to add a new default package parameters.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.str <- function(# Internal. Stretch or reshape the range of value of some data set. 
 ### Function to 'stretch' or reshape the range of value of some data set. Usefull for cex parameter in plot. 
 ##keywords<< internal
@@ -2053,6 +2064,7 @@ TT.str <- function(# Internal. Stretch or reshape the range of value of some dat
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.gen.op.set  <- function(# Internal. Retrieve and set default values from options. 
 ### Retrieve and set default values from options (that do _not_ superseed par()). 
 ##keywords<< internal
@@ -2138,6 +2150,8 @@ TT.gen.op.set  <- function(# Internal. Retrieve and set default values from opti
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics par
 TT.par.op.set  <- function(# Internal. Retrieve and set default values from options with default in "par()". 
 ### Retrieve and set default values from options with default in "par()"
 ##keywords<< internal
@@ -2164,7 +2178,7 @@ TT.par.op.set  <- function(# Internal. Retrieve and set default values from opti
     {   #
         # Get the default value in par() 
         param[ param == "family.op" ]       <- "family" # for compatibility with family() 
-        param.val[ null.param ]             <- par(param[ null.param ]) 
+        param.val[ null.param ]             <- graphics::par(param[ null.param ]) 
         param[ param == "family" ]          <- "family.op" 
         # 
         # Assign the values in the higher level function
@@ -2219,6 +2233,8 @@ TT.par.op.set  <- function(# Internal. Retrieve and set default values from opti
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics par
 TT.auto.set    <- function(# Internal. Retrieve and set default values for parameters (par() or not), when NULL.
 ### Retrieve and set default values for parameters (par() or not), when NULL.
 ##keywords<< internal
@@ -2232,7 +2248,7 @@ TT.auto.set    <- function(# Internal. Retrieve and set default values for param
     #
     if( set.par )
     {   #
-        sel.par <- (param %in% names(par())) 
+        sel.par <- (param %in% names(graphics::par())) 
         #
         l1  <- TT.par.op.set( 
             param       = param[ sel.par ], 
@@ -2328,6 +2344,10 @@ TT.auto.set    <- function(# Internal. Retrieve and set default values for param
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom grDevices col2rgb
+#' @importFrom grDevices rgb 
+#' @importFrom stats weighted.mean
 TT.DJ.col <- function(# Internal. A function to obtaine a weight average 'mix' of different colors!
 ### A function to obtaine a weight average 'mix' of different colors!
 ##keywords<< internal
@@ -2336,19 +2356,19 @@ TT.DJ.col <- function(# Internal. A function to obtaine a weight average 'mix' o
     w,              # vector of weight corresponding to the colors
     gray.l  = FALSE # if TRUE Produce a gray level color, instead of a 'colored' color
 ){  #
-    cl  <- col2rgb( cl, alpha = FALSE )
+    cl  <- grDevices::col2rgb( cl, alpha = FALSE )
     #
     m.cl    <- apply( 
         X       = cl, 
         MARGIN  = 1, 
         FUN     = function(X){ 
-            weighted.mean(x=X,w=w) 
+            stats::weighted.mean(x=X,w=w) 
         }   #
     )   #
     #
     if( gray.l ){ m.cl[] <- rep(mean(m.cl),3) }     # 1:3 stands here in case of alpha value...
     #
-    rgb( 
+    grDevices::rgb( 
         red           = m.cl["red"], 
         green         = m.cl["green"], 
         blue          = m.cl["blue"], 
@@ -2372,6 +2392,9 @@ TT.DJ.col <- function(# Internal. A function to obtaine a weight average 'mix' o
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom grDevices rgb2hsv
+#' @importFrom grDevices col2rgb
 TT.col2hsv  <- function(# Internal. Convert any colors to hsv. 
 ### Convert any colors to hsv. Wrapper around rgb2hsv() and col2rgb(). 
 ##keywords<< internal
@@ -2379,8 +2402,8 @@ TT.col2hsv  <- function(# Internal. Convert any colors to hsv.
     col 
 ){  #
     t(  #
-        rgb2hsv( 
-            col2rgb( 
+        grDevices::rgb2hsv( 
+            grDevices::col2rgb( 
                 col     = col, 
                 alpha   = FALSE
             ),  #
@@ -2409,6 +2432,7 @@ TT.col2hsv  <- function(# Internal. Convert any colors to hsv.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.blr.tx.check <- function(# Internal. Check the consistency between blr.tx and css.names. 
 ### Check the consistency between blr.tx and css.names. All values 
 ### in blr.tx should be found in css.names and vice-versa.
@@ -2461,6 +2485,7 @@ TT.blr.tx.check <- function(# Internal. Check the consistency between blr.tx and
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.blr.ps.lim <- function(# Internal. Create a tabular version of clay silt sand particle size limits. 
 ### Create a tabular version of clay silt sand particle size limits. 
 ##keywords<< internal
@@ -2510,6 +2535,7 @@ TT.blr.ps.lim <- function(# Internal. Create a tabular version of clay silt sand
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.geo.set  <- function(# Internal. Takes "geo" values and assign them individually in the parent function. 
 ### Takes "geo" values and assign them individually in the parent function. 
 ##keywords<< internal
@@ -2631,6 +2657,7 @@ TT.geo.set  <- function(# Internal. Takes "geo" values and assign them individua
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.geo.get  <- function(# Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
 ### Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
 ##keywords<< internal
@@ -2725,6 +2752,7 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.data.test <- function(# Test the validity of some soil texture data table (3 particle size classes). 
 ### Test the validity of some soil texture data table. (1) Test that 
 ### it is a data.frame or matrix, (2) Test that column names contains 
@@ -2855,6 +2883,7 @@ TT.data.test <- function(# Test the validity of some soil texture data table (3 
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export
 TT.data.test.X <- function(# Test the validity of some soil texture data table (X particle size classes). 
 ### Test the validity of some soil texture data table. (1) Test that 
 ### it is a data.frame or matrix, (3) Test that there are no missing 
@@ -2945,6 +2974,7 @@ TT.data.test.X <- function(# Test the validity of some soil texture data table (
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.dia2phi <- function(# Internal. Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia/1000)
 ### Convert a soil particle diameter dia [micro-meters] into 
 ### phi = -log2(dia). See also TT.phi2dia().
@@ -2976,6 +3006,7 @@ TT.dia2phi <- function(# Internal. Convert a soil particle diameter dia [micro-m
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.phi2dia <- function(# Internal. Convert a soil particle phi value into diameter dia [micro-meters]. 
 ### Convert a soil particle phi value into diameter dia [micro-meters]. 
 ### See also TT.dia2phi(). dia = (2^-phi)*1000. Not used by the package. 
@@ -3008,6 +3039,7 @@ phi
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
 ### Check the consistency between 'base.ps.lim' and 'dat.ps.lim'. 
 ### 5 tests performed.
@@ -3119,6 +3151,8 @@ TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.l
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom stats approx
+#' @export 
 TT.text.transf <- function(# Log-linear transformation of a soil texture data table between 2 particle size systems (3 classes).
 ### Log-linear transformation of a soil texture data table 
 ### ('tri.data') from one 
@@ -3204,7 +3238,7 @@ TT.text.transf <- function(# Log-linear transformation of a soil texture data ta
         X       = tri.data, 
         MARGIN  = 1, 
         FUN     = function(X,base.css.ps.lim2,dat.css.ps.lim2){ 
-            c( X[1], diff( approx( 
+            c( X[1], diff( stats::approx( 
                 x       = dat.css.ps.lim2[ ps.start:4 ], 
                 y       = X, 
                 xout    = base.css.ps.lim2[ ps.start:4 ], 
@@ -3313,6 +3347,8 @@ TT.text.transf <- function(# Log-linear transformation of a soil texture data ta
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom stats approx
+#' @export
 TT.text.transf.X <- function(# Log-linear transformation of a soil texture data table between 2 particle size systems (X classes).
 ### Log-linear transformation of a soil texture data table 
 ### ('tri.data') from one 
@@ -3377,7 +3413,7 @@ TT.text.transf.X <- function(# Log-linear transformation of a soil texture data 
         X       = tri.data, 
         MARGIN  = 1, 
         FUN     = function(X,base.ps.lim2,dat.ps.lim2){ 
-            c( X[1], diff( approx( 
+            c( X[1], diff( stats::approx( 
                 x       = dat.ps.lim2[ ps.start:ps.end ], 
                 y       = X, 
                 xout    = base.ps.lim2[ ps.start:length(base.ps.lim) ], 
@@ -3444,6 +3480,7 @@ TT.text.transf.X <- function(# Log-linear transformation of a soil texture data 
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.deg2rad <- function(# Internal. Function to convert angle in degree to angle in radian.
 ### Function to convert angle in degree to angle in radian.
 ##keywords<< internal
@@ -3474,6 +3511,7 @@ TT.deg2rad <- function(# Internal. Function to convert angle in degree to angle 
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.ifelse <- function(# Internal. Flexible version of ifelse. 
 ### Flexible version of ifelse. 
 ##keywords<< internal
@@ -3509,6 +3547,7 @@ TT.ifelse <- function(# Internal. Flexible version of ifelse.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.switch <- function(# Internal. Used in the plot axis drawings.
 ### Used in the plot axis drawings.
 ##keywords<< internal
@@ -3561,6 +3600,7 @@ TT.switch <- function(# Internal. Used in the plot axis drawings.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.css2xy <- function(# Internal. Converts texture data (3 classes) into x-y coordinates. 
 ### Converts texture data (3 classes) into x-y coordinates. This 
 ### function is the 'heart' of most soiltexture plot functions.
@@ -3744,6 +3784,10 @@ TT.css2xy <- function(# Internal. Converts texture data (3 classes) into x-y coo
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom grDevices hsv
+#' @importFrom grDevices dev.cur
+#' @importFrom graphics points
+#' @export 
 TT.points <- function(# Plot a soil texture data table as points on an existing texture plot. 
 ### Plot a soil texture data table as points on an existing texture plot. 
 
@@ -3795,7 +3839,7 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
     TT.auto.set() 
     #
     # Basic checks
-    if( dev.cur() == 1 ) 
+    if( grDevices::dev.cur() == 1 ) 
     {   #
         stop("Cannot add points unless the TT.plot has been drawn")
     }   #
@@ -3851,7 +3895,7 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
             points.val <- TT.str(z,1.00,0.25) 
         }   #
         #
-        col <- hsv( 
+        col <- grDevices::hsv( 
             h   = z.col.hue, 
             s   = points.sat, 
             v   = points.val 
@@ -3868,7 +3912,7 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
     #
     nobs <- dim(xy.coord)[1]
     #
-    points( 
+    graphics::points( 
         x       = xy.coord$"xpos", 
         y       = xy.coord$"ypos", 
         pch     = pch1, # Added 20090617 
@@ -3881,7 +3925,7 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
     #
     if( !is.null(z.name) & z.type == "bubble" ) 
     {   #
-        points( 
+        graphics::points( 
             x       = xy.coord$"xpos", 
             y       = xy.coord$"ypos", 
             pch     = pch2, 
@@ -3938,6 +3982,9 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom grDevices dev.cur
+#' @importFrom graphics text
+#' @export 
 TT.text <- function(# Plot text labels for each values of a soil texture data table on an existing texture plot. 
 ### Plot text labels for each values of a soil texture data table on an existing texture plot. 
 
@@ -3990,7 +4037,7 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
     TT.auto.set() 
     #
     # Basic checks
-    if( dev.cur() == 1 ) 
+    if( grDevices::dev.cur() == 1 ) 
     {   #
         stop("Cannot add points unless the TT.plot has been drawn")
     }   #
@@ -4027,7 +4074,7 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
     #
     nobs <- dim(xy.coord)[1]
     #
-    text( 
+    graphics::text( 
         x       = xy.coord$"xpos", 
         y       = xy.coord$"ypos", 
         labels  = labels, 
@@ -4083,6 +4130,9 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics plot
+#' @export 
 TT.baseplot <- function(# Internal. Create an empty plot scene for a texture triangle.
 ### Create an empty plot where a texture triangle can be drawn with 
 ### other secondary functions (frame, axis, ...). Also return the 
@@ -4249,7 +4299,7 @@ TT.baseplot <- function(# Internal. Create an empty plot scene for a texture tri
     # | Ghost plot to set the limits of |
     # | the graph                       | 
     # +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+ 
-    plot( 
+    graphics::plot( 
         x           = ghost.TT$"xpos", 
         y           = ghost.TT$"ypos",
         type        = "n", 
@@ -4297,6 +4347,8 @@ TT.baseplot <- function(# Internal. Create an empty plot scene for a texture tri
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics polygon
 TT.edges <- function(# Internal. Plot the edges (bare axis) of a soil texture triangle. 
 ### Plot the edges (bare axis) of a soil texture triangle. This 
 ### is not a primary plot function, TT.baseplot() must have been 
@@ -4368,7 +4420,7 @@ TT.edges <- function(# Internal. Plot the edges (bare axis) of a soil texture tr
     #
     if( !plot.axis ){ col.axis <- NA }
     #
-    polygon( 
+    graphics::polygon( 
         x       = tri.TT$"xpos", 
         y       = tri.TT$"ypos", 
         border  = col.axis, 
@@ -4406,6 +4458,7 @@ TT.edges <- function(# Internal. Plot the edges (bare axis) of a soil texture tr
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.lines <- function(# Internal. Used to plot line elements of a texture plot axis, ticks, arrows, etc.
 ### Used to plot line elements of a texture plot axis, ticks, arrows, etc.
 
@@ -4562,6 +4615,10 @@ TT.lines <- function(# Internal. Used to plot line elements of a texture plot ax
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom grDevices rgb
+#' @importFrom grDevices hsv
+#' @importFrom graphics segments
+#' @export 
 TT.grid <- function(# Plot a grid at regular texture intervals inside an existing soil texture triangle. 
 ### Plot a grid at regular texture intervals inside an existing soil texture triangle.
 
@@ -4605,7 +4662,7 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
         {   # Check "darkness" of the background:
             night.cols  <-  TT.col2hsv(bg)[,"v"] < 0.5 
             #
-            grid.col    <- hsv( 
+            grid.col    <- grDevices::hsv( 
                 h   = class.p.bg.hue, 
                 # Below, check with class polygon color: consitency:
                 s   = ifelse(night.cols,0.45,0.45), # a little less than the min saturation (night or day)
@@ -4617,9 +4674,9 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
             if( is.null(frame.bg.col) )
             {   #  # Added 20090617 
                 # Step that will "remove" transparency:
-                bg.hsv      <- col2rgb( bg, alpha = FALSE )[,1]/255 
+                bg.hsv      <- grDevices::col2rgb( bg, alpha = FALSE )[,1]/255 
                 #
-                grid.col    <- rgb( 
+                grid.col    <- grDevices::rgb( 
                     red   = bg.hsv["red"], 
                     green = bg.hsv["green"], 
                     blue  = bg.hsv["blue"]  
@@ -4656,7 +4713,7 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
     invisible( lapply( 
             X   = grid.lns, 
             FUN = function(X){ 
-                segments( 
+                graphics::segments( 
                     x0      = X$"start"$"xpos", 
                     y0      = X$"start"$"ypos", 
                     x1      = X$"end"$"xpos", 
@@ -4696,6 +4753,8 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics segments
 TT.ticks <- function(# Internal. Plot the axis' ticks of a texture triangle plot. 
 ### Plot the axis' ticks of a texture triangle plot. 
 ##keywords<< internal
@@ -4758,7 +4817,7 @@ TT.ticks <- function(# Internal. Plot the axis' ticks of a texture triangle plot
             FUN = function(X){ 
                 if( plot.TF[X] )
                 {   #
-                    segments( 
+                    graphics::segments( 
                         x0      = grid.lns[[X]]$"start"$"xpos", 
                         y0      = grid.lns[[X]]$"start"$"ypos", 
                         x1      = grid.lns[[X]]$"end"$"xpos", 
@@ -4801,6 +4860,8 @@ TT.ticks <- function(# Internal. Plot the axis' ticks of a texture triangle plot
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics text
 TT.ticks.lab <- function(# Internal. Plot the axis ticks' labels of a texture triangle plot. 
 ### Plot the axis ticks' labels of a texture triangle plot. 
 ##keywords<< internal
@@ -4873,7 +4934,7 @@ TT.ticks.lab <- function(# Internal. Plot the axis ticks' labels of a texture tr
             FUN = function(X){ 
                 if( plot.TF[X] )
                 {   #
-                    text( 
+                    graphics::text( 
                         x           = grid.lns[[X]]$"end"$"xpos", 
                         y           = grid.lns[[X]]$"end"$"ypos", 
                         labels      = at * text.sum, 
@@ -4927,6 +4988,11 @@ TT.ticks.lab <- function(# Internal. Plot the axis ticks' labels of a texture tr
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
+#' @importFrom graphics segments
+#' @importFrom graphics points
+#' @importFrom graphics arrows 
+#' @importFrom graphics text
 TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triangle plot. 
 ### Plot the axis' arrows of a texture triangle plot. 
 ##keywords<< internal
@@ -5067,7 +5133,7 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
                     x1  <- grid.lns1[[X]]$"end"$"xpos" 
                     y1  <- grid.lns1[[X]]$"end"$"ypos" 
                     #
-                    segments( 
+                    graphics::segments( 
                         x0      = x0,   y0  = y0, 
                         x1      = x1,   y1  = y1, 
                         col     = col.lab, 
@@ -5076,7 +5142,7 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
                     )   #
                     #
                     # Add a nice little point at the arrow start point:
-                    points( 
+                    graphics::points( 
                         x       = c(x0), 
                         y       = c(y0), 
                         col     = col.lab, 
@@ -5138,7 +5204,7 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
     invisible( lapply( 
             X   = names(grid.lns2), 
             FUN = function(X){ 
-                arrows( 
+                graphics::arrows( 
                     x0      = grid.lns2[[X]]$"start"$"xpos", 
                     y0      = grid.lns2[[X]]$"start"$"ypos", 
                     x1      = grid.lns2[[X]]$"end"$"xpos", 
@@ -5220,7 +5286,7 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
     invisible( lapply( 
             X   = names(grid.lns3), 
             FUN = function(X){ 
-                text( 
+                graphics::text( 
                     x       = grid.lns3[[X]]$"start"$"xpos", 
                     y       = grid.lns3[[X]]$"start"$"ypos", 
                     labels  = blr.lab[X], # Changed 2009/06/30 
@@ -5255,7 +5321,7 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
 #     point.df    <- data.frame(  "x" = x,        "y" = y,        "z" = z     ) 
 #     grid.df     <- expand.grid( "x" = x.val,    "y" = y.val,    "z" = NA    ) 
 #     #
-#     dist.mat    <- dist( 
+#     dist.mat    <- stats::dist( 
 #         x       = rbind(point.df[,c("x","y")],grid.df[,c("x","y")]), 
 #         method  = "euclidean", 
 #         diag    = FALSE, 
@@ -5347,6 +5413,8 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom MASS mvrnorm 
+#' @export 
 TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z dataset. 
 ### Genetates a virtual cross correlated clay silt sand + Z dataset, 
 ### where Z is a virtual 4th variable correlated to the texture.
@@ -5386,7 +5454,7 @@ TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z
     #
     if(!is.null(seed.val)){ set.seed(seed.val) } 
     #
-    rand.text <- mvrnorm(n=n,mu=rep(10,4),Sigma=CovMat)
+    rand.text <- MASS::mvrnorm(n=n,mu=rep(10,4),Sigma=CovMat)
     #
     rand.text[,1:3] <- t(   apply( 
             X       = rand.text[,1:3], 
@@ -5421,6 +5489,7 @@ TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.classes.tbl <- function(# Returns the table of classes of a texture classification system.
 ### Returns the table of classes of a texture classification system. 
 ### Returns the classes abbreviations, names and the vertices numbers 
@@ -5476,6 +5545,7 @@ TT.classes.tbl <- function(# Returns the table of classes of a texture classific
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.vertices.tbl <- function(# Returns the table of vertices of a texture classification system.
 ### Returns the table of vertices of a texture classification system. 
 ### Returns the clay silt sand coordinates of each vertices. Use 
@@ -5532,6 +5602,7 @@ TT.vertices.tbl <- function(# Returns the table of vertices of a texture classif
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.vertices.plot <- function(# Internal. Plot the vertices of a texture classification system. 
 ### Plot the vertices of a texture classification system, on top 
 ### of an already drawn texture triangle plot. Also plot the 
@@ -5615,6 +5686,7 @@ TT.vertices.plot <- function(# Internal. Plot the vertices of a texture classifi
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.polygon.area <- function(# Internal. Determines the area of 1 polygon (in x-y coordinates). 
 ### Determines the area of 1 non-intersecting polygon (in x-y 
 ### coordinates). Used by TT.polygon.centroids(). pol.x[1]:pol.y[1] 
@@ -5675,6 +5747,7 @@ TT.polygon.area <- function(# Internal. Determines the area of 1 polygon (in x-y
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.polygon.centroids <- function(# Internal. Determines the centroid of 1 polygon (in x-y coordinates). 
 ### Determines the centroid of 1 non-intersecting polygon (in x-y 
 ### coordinates). Used to determine the centroid of each texture 
@@ -5762,6 +5835,11 @@ TT.polygon.centroids <- function(# Internal. Determines the centroid of 1 polygo
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom grDevices hsv
+#' @importFrom graphics par
+#' @importFrom graphics text
+#' @importFrom graphics polygon 
+#' @export 
 TT.classes <- function(# Plot the texture classes polygons in a texture triangle plot.
 ### Plot the texture classes ploygons in an existing texture 
 ### triangle plot. Draw the polygons and the labels inside each 
@@ -5927,7 +6005,7 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
                     class.val <- 0.85 + (cent.xy["y",pol]*a.y+b.y)*0.15 # range 0.85;1.00 
                 }   #
                 #
-                class.p.bg.col2 <- hsv( 
+                class.p.bg.col2 <- grDevices::hsv( 
                     h = class.p.bg.hue,  
                     s = class.sat,  # max = 0.9 
                     v = class.val   # max = 0.9 
@@ -5963,12 +6041,12 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
         #
         if( is.null( class.lty ) )
         {   #
-            class.lty   <- par("lty") 
+            class.lty   <- graphics::par("lty") 
         }   #
         #
         # Plot the classes-polygons: phase 1, the background
         #   the lines are drawn after the grid
-        polygon( 
+        graphics::polygon( 
             x       = xy.new[ sel.vec , "xpos" ], 
             y       = xy.new[ sel.vec , "ypos" ], 
             border  = class.line.col, 
@@ -6002,7 +6080,7 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
                 class.lab.cex <- 1
             }   
             #
-            text( 
+            graphics::text( 
                 x       = cent.xy["x",pol], 
                 y       = cent.xy["y",pol], 
                 labels  = class.lab, 
@@ -6464,6 +6542,7 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
 #' try( TT.plot( class.sys = "USDA.TT", lang = "pt"  ) ) # Portuguese 
 #' try( TT.plot( class.sys = "USDA.TT", lang = "es2" ) ) # Spanish
 #' try( TT.plot( class.sys = "USDA.TT", lang = "ro2" ) ) # Romanian
+#' @export 
 TT.plot <- function(# Plot soil texture triangles / diagrams.
 ### Plot a soil texture triangle (also called soil texture 
 ### diagrams, or soil texture ternary plots), with or without 
@@ -7529,6 +7608,8 @@ TT.plot <- function(# Plot soil texture triangles / diagrams.
 #'     PiC.type    = "t", 
 #'     collapse    = ";"
 #' )   #
+#'@importFrom sp point.in.polygon
+#' @export 
 TT.points.in.classes <- function(# Classify a table of soil texture data according to a soil texture triangle.
 ### The function calculate in which classe(s) of a texture triangle 
 ### (classification system defined by 'class.sys') lies each soil 
@@ -7878,7 +7959,7 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
         xpol    <- classes.points.xy[ sel.vec , "xpos" ]
         ypol    <- classes.points.xy[ sel.vec , "ypos" ]
         #
-        PiP.res <- point.in.polygon( 
+        PiP.res <- sp::point.in.polygon( 
             point.x = data.points.xy$"xpos",  
             point.y = data.points.xy$"ypos",  
             pol.x   = xpol,  
@@ -7978,6 +8059,7 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y coordinaes) in Clay silta and sand coordinates. 
 ### Internal. Convert point-data duplets (2 variables, x-y 
 ### coordinaes) in Clay silta and sand coordinates. 
@@ -8223,6 +8305,8 @@ TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y c
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom graphics locator
+#' @export 
 TT.locator <- function(# Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle.
 ### Interactive (mouse clic) retrieval the CLAY SILT SAND coordinate of points on a texture triangle. 
 
@@ -8251,7 +8335,7 @@ TT.locator <- function(# Interactive (mouse clic) retrieval the CLAY SILT SAND c
     # Set rest of variables:
     TT.auto.set(set.par=set.par) 
     # 
-    xy.data <- locator(n=n,type=type,...) 
+    xy.data <- graphics::locator(n=n,type=type,...) 
     # 
     xy.data <- data.frame( 
         "xpos"  = xy.data[["x"]], 
@@ -8300,6 +8384,7 @@ TT.locator <- function(# Interactive (mouse clic) retrieval the CLAY SILT SAND c
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @noRd
 TT.xy.grid <- function(# Internal. Create a grid in the x-y coordinate system. 
 ### Create a grid in the x-y coordinate system. Most of the function 
 ### is a reshaped extract from kde2d() from the MASS package, by 
@@ -8367,6 +8452,7 @@ TT.xy.grid <- function(# Internal. Create a grid in the x-y coordinate system.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.chemometrics.alr <- function(# Compute the additive log-ratio transformation of compositional data.
 ### Function that compute the additive 
 ### log-ratio transformation of compositional data (here texture 
@@ -8443,6 +8529,9 @@ TT.chemometrics.alr <- function(# Compute the additive log-ratio transformation 
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom stats cov 
+#' @importFrom stats mahalanobis
+#' @export 
 TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay silt and sand.
 ### Function that calculated the Mahalanobis 
 ### distance between clay silt and sand, on a regular x-y grid 
@@ -8540,13 +8629,13 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
         )   #
         #
         if( is.null(center)  ){ center  <- colMeans(tri.data) } 
-        if( is.null(cov.mat) ){ cov.mat <- cov(tri.data) } 
+        if( is.null(cov.mat) ){ cov.mat <- stats::cov(tri.data) } 
     }else{ 
         tri.data <- tri.data[,css.names[-divisorvar]] 
         tri.grid <- tri.grid[,css.names[-divisorvar]] 
         #
         if( is.null(center)  ){ center  <- colMeans(tri.data) } 
-        if( is.null(cov.mat) ){ cov.mat <- cov(tri.data) } 
+        if( is.null(cov.mat) ){ cov.mat <- stats::cov(tri.data) } 
     }   #
     #
     sel.exc <- apply( 
@@ -8559,7 +8648,7 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
     #
     maha <- rep(NA,dim(tri.grid)[1])
     #
-    maha[!sel.exc] <- mahalanobis( 
+    maha[!sel.exc] <- stats::mahalanobis( 
         x           = tri.grid[!sel.exc,], 
         center      = center, 
         cov         = cov.mat, 
@@ -8631,6 +8720,8 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom MASS kde2d  
+#' @export
 TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 ### Function that calculated the 2D probabilty 
 ### density on an x-y grid (and NOT on the clay silt sand 
@@ -8711,7 +8802,7 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
         )   #
     }   #
     #
-    dens.xy <- kde2d( 
+    dens.xy <- MASS::kde2d( 
         x       = xy.data[,"xpos"], 
         y       = xy.data[,"ypos"], 
         n       = n, 
@@ -8779,6 +8870,9 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom stats dist
+#' @importFrom stats quantile
+#' @export
 TT.iwd <- function(# Inverse weighted distance interpolation on a grid. 
 ### Inverse weighted distance interpolation on a grid. 
 
@@ -8871,7 +8965,7 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
         "z" = NA  
     )   #
     #
-    dist.mat    <- dist( 
+    dist.mat    <- stats::dist( 
         x       = rbind( 
             xy.data[,c("xpos","ypos")], 
             xy.grid[["xypos"]][,c("xpos","ypos")] 
@@ -8883,7 +8977,7 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
     #
     if( is.null( max.dist ) )
     {   #
-        max.dist    <- as.numeric( quantile( x = dist.mat, probs = q.max.dist ) ) 
+        max.dist    <- as.numeric( stats::quantile( x = dist.mat, probs = q.max.dist ) ) 
     }   #
     #
     dist.mat    <- as.matrix( dist.mat )
@@ -8994,6 +9088,9 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom graphics par 
+#' @importFrom graphics contour
+#' @export
 TT.contour <- function(# Wrapper for the contour() function adapted to texture triangles.
 ### A wrapper for the contour() function 
 ### adapted to texture triangles (plot preparation).
@@ -9111,10 +9208,10 @@ TT.contour <- function(# Wrapper for the contour() function adapted to texture t
     if( any( is.na( zlim       )) ){ zlim       <- range( x[["z"]], finite = TRUE) }  
     if( any( is.na( levels     )) ){ levels     <- pretty(zlim, nlevels) }  
     if( any( is.na( frame.plot )) ){ frame.plot <- axes }  
-    if( any( is.na( lty        )) ){ lty        <- par("lty") }  
-    if( any( is.na( lwd        )) ){ lwd        <- par("lwd") }  
+    if( any( is.na( lty        )) ){ lty        <- graphics::par("lty") }  
+    if( any( is.na( lwd        )) ){ lwd        <- graphics::par("lwd") }  
     #
-    contour( 
+    graphics::contour( 
         x           = x, 
         add         = TRUE, 
         nlevels     = nlevels, 
@@ -9180,9 +9277,9 @@ TT.contour <- function(# Wrapper for the contour() function adapted to texture t
 
 
 
-#' Wrapper for the contour() function adapted to texture triangles.
+#' Wrapper for the image() function adapted to texture triangles.
 #' 
-#' A wrapper for the contour() function adapted to texture triangles (plot
+#' A wrapper for the image() function adapted to texture triangles (plot
 #' preparation). designed to plot the results of TT.mahalanobis() or TT.kde2d()
 #' [to be written], before or after plot.
 #' 
@@ -9218,6 +9315,9 @@ TT.contour <- function(# Wrapper for the contour() function adapted to texture t
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @importFrom grDevices heat.colors 
+#' @importFrom graphics image
+#' @export 
 TT.image <- function(# Wrapper for the contour() function adapted to texture triangles.
 ### A wrapper for the contour() function 
 ### adapted to texture triangles (plot preparation).
@@ -9245,7 +9345,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
     xlim            = NA, 
     ylim            = NA, 
     zlim            = NA, 
-    col             = rev( heat.colors(12) ),
+    col             = rev( grDevices::heat.colors(12) ),
     oldstyle        = FALSE, 
     blr.clock       = NULL, 
     tlr.an          = NULL, 
@@ -9312,7 +9412,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
     if( any( is.na( ylim       )) ){ ylim       <- range( x[["y"]], finite = TRUE) }  
     if( any( is.na( zlim       )) ){ zlim       <- range( x[["z"]], finite = TRUE) }  
     #
-    image( 
+    graphics::image( 
         x           = x, 
         add         = TRUE, 
         xlim        = xlim, 
@@ -9496,6 +9596,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.normalise.sum <- function(# Normalises the sum of the 3 particle size classes.
 ### Normalises the sum of the 3 particle size classes in tri.data 
 ### to text.sum (100%).
@@ -9585,6 +9686,7 @@ TT.normalise.sum <- function(# Normalises the sum of the 3 particle size classes
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
+#' @export 
 TT.normalise.sum.X <- function(# Normalises the sum of the X particle size classes.
 ### Normalises the sum of the X particle size classes
 ### in tri.data to text.sum (100%).

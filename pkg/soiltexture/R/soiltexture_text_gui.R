@@ -1,6 +1,7 @@
 # .select.list2 
 # ==========================================================
 
+#' @rawNamespace if(.Platform$OS.type != "windows"){ importFrom( "utils", "select.list" ) } 
 .select.list2 <- function( # Wrapper around 'menu' with error handling
 ### Wrapper around 'menu' with error handling
 
@@ -72,6 +73,7 @@
 # .chooseTextFiles
 # ==========================================================
 
+#' @importFrom tcltk tk_choose.files
 .chooseTextFiles <- function( # Pop-up a menu to choose one or several text file(s) from the file system.
 ### Pop-up a menu to choose one or several text file(s) from the file system.
 
@@ -326,6 +328,11 @@
 #' soiltexture_gui()
 #' 
 #' #   ... and follow the instructions indicated to you!
+#' @importFrom utils write.table
+#' @importFrom utils browseURL
+#' @importFrom grDevices png
+#' @importFrom grDevices dev.off
+#' @export 
 soiltexture_gui <- function( # Text-based menu for plotting and classifying soil texture data
 ### Text-based menu for plotting and classifying soil texture 
 ### data. 
@@ -644,7 +651,7 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
             filename <- file.path( d, filename )
             
             
-            png(
+            grDevices::png(
                 filename = filename, 
                 width    = .size, 
                 height   = .size, 
@@ -653,7 +660,7 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
             
                 plotTexture() 
             
-            dev.off() 
+            grDevices::dev.off() 
                 
             message( sprintf( "* Figure exported in: %s", filename ) )
         }   
@@ -722,7 +729,7 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
                 
                 filename <- file.path( d, filename )
                 
-                write.table( 
+                utils::write.table( 
                     x     = dat, 
                     file  = filename, 
                     quote = TRUE, 
@@ -743,7 +750,7 @@ soiltexture_gui <- function( # Text-based menu for plotting and classifying soil
         
         if( exportFigure | classifData ){
             # shell.exec( tempdir() ) 
-            browseURL( url = tempdir() ) 
+            utils::browseURL( url = tempdir() ) 
         }   
     }else{ # Not interactive
         dat <- NULL 

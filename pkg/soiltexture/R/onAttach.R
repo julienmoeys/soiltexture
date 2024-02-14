@@ -1,4 +1,5 @@
 
+#' @importFrom utils packageVersion
 .onAttach <- function(# Internal. Message displayed when loading the package.
  libname, 
  pkgname  
