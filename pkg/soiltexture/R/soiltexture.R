@@ -1828,10 +1828,10 @@ par.env=TT.env
 #' Function to retrieve / get the default package parameters.
 #' 
 #' 
-#' @param \dots
-#' @param par.list
-#' @param bkp.par.list
-#' @param par.env
+#' @param \dots Vector of character strings. Name of arguments for which default value is to be retrieved.
+#' @param par.list Name of the list containing the parameters
+#' @param bkp.par.list Name of the backuped list containing the default parameters
+#' @param par.env name of the environment containing the parameter lists
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -1890,10 +1890,10 @@ TT.get <- function(# Function to retrieve / get the default package parameters.
 #' texture triangle definition.
 #' 
 #' 
-#' @param \dots
-#' @param par.list
-#' @param bkp.par.list
-#' @param par.env
+#' @param \dots parameters to be changed in format: "parameter_name1" = new_value1, "parameter_name2" = new_value2
+#' @param par.list Name of the list containing the parameters
+#' @param bkp.par.list Name of the backuped list containing the default parameters
+#' @param par.env name of the environment containing the parameter lists
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -1978,21 +1978,21 @@ TT.add <- function(# Function to add a new default package parameters.
 
 
 
-#' Internal. Stretch or reshape the range of value of some data set.
+#' Stretch or reshape the range of value of some data set.
 #' 
 #' Function to 'stretch' or reshape the range of value of some data set.
 #' Usefull for cex parameter in plot.
 #' 
 #' 
-#' @param x
-#' @param str.min
-#' @param str.max
+#' @param x Vector of numeric values.
+#' @param str.min Minimun value after stretching.
+#' @param str.max Maximun value after stretching.
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
-#' @noRd
-TT.str <- function(# Internal. Stretch or reshape the range of value of some data set. 
+#' @export
+TT.str <- function(# Stretch or reshape the range of value of some data set. 
 ### Function to 'stretch' or reshape the range of value of some data set. Usefull for cex parameter in plot. 
 ##keywords<< internal
 
@@ -2228,7 +2228,7 @@ TT.par.op.set  <- function(# Internal. Retrieve and set default values from opti
 #' @param fun
 #' @param assign.op
 #' @param p.env
-#' @param set.par
+#' @param set.par If TRUE parameters are set automatically to their defualt value
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -2387,7 +2387,7 @@ TT.DJ.col <- function(# Internal. A function to obtaine a weight average 'mix' o
 #' Convert any colors to hsv. Wrapper around rgb2hsv() and col2rgb().
 #' 
 #' 
-#' @param col
+#' @param col See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -2426,7 +2426,7 @@ TT.col2hsv  <- function(# Internal. Convert any colors to hsv.
 #' should be found in css.names and vice-versa.
 #' 
 #' 
-#' @param blr.tx
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
 #' @param css.names
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
@@ -2479,7 +2479,7 @@ TT.blr.tx.check <- function(# Internal. Check the consistency between blr.tx and
 #' Create a tabular version of clay silt sand particle size limits.
 #' 
 #' 
-#' @param blr.tx
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
 #' @param css.ps.lim
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
@@ -2529,7 +2529,7 @@ TT.blr.ps.lim <- function(# Internal. Create a tabular version of clay silt sand
 #' Takes "geo" values and assign them individually in the parent function.
 #' 
 #' 
-#' @param geo
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param p.env
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
@@ -2640,24 +2640,24 @@ TT.geo.set  <- function(# Internal. Takes "geo" values and assign them individua
 
 
 
-#' Internal. Retrieve and return the geometrical parameters from a list of
+#' Retrieve and return the geometrical parameters from a list of
 #' parameter values (NULL or not).
 #' 
 #' Retrieve and return the geometrical parameters from a list of parameter
 #' values (NULL or not).
 #' 
 #' 
-#' @param class.sys
-#' @param blr.clock
-#' @param tlr.an
-#' @param blr.tx
-#' @param text.sum
-#' @param base.css.ps.lim
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
-#' @noRd
+#' @export
 TT.geo.get  <- function(# Internal. Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
 ### Retrieve and return the geometrical parameters from a list of parameter values (NULL or not).
 ##keywords<< internal
@@ -2742,12 +2742,12 @@ TT.geo.get  <- function(# Internal. Retrieve and return the geometrical paramete
 #' than the 3 textuer classes (ignored).
 #' 
 #' 
-#' @param tri.data
-#' @param css.names
-#' @param text.sum
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -2874,11 +2874,11 @@ TT.data.test <- function(# Test the validity of some soil texture data table (3 
 #' else.
 #' 
 #' 
-#' @param tri.data
-#' @param text.sum
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -2961,7 +2961,7 @@ TT.data.test.X <- function(# Test the validity of some soil texture data table (
 
 
 
-#' Internal. Convert a soil particle diameter dia [micro-meters] into phi =
+#' Convert a soil particle diameter dia [micro-meters] into phi =
 #' -log2(dia/1000)
 #' 
 #' Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia).
@@ -2974,7 +2974,7 @@ TT.data.test.X <- function(# Test the validity of some soil texture data table (
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
-#' @noRd
+#' @export
 TT.dia2phi <- function(# Internal. Convert a soil particle diameter dia [micro-meters] into phi = -log2(dia/1000)
 ### Convert a soil particle diameter dia [micro-meters] into 
 ### phi = -log2(dia). See also TT.phi2dia().
@@ -3136,17 +3136,17 @@ TT.check.ps.lim <- function(# Internal. Check the consistency between 'base.ps.l
 #' with the transformed texture data.
 #' 
 #' 
-#' @param tri.data
-#' @param base.css.ps.lim
-#' @param dat.css.ps.lim
-#' @param css.names
-#' @param blr.tx
-#' @param text.sum
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param trsf.add.opt1
-#' @param trsf.add.opt2
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param dat.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt1 See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt2 See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -3336,13 +3336,13 @@ TT.text.transf <- function(# Log-linear transformation of a soil texture data ta
 #' particle classes. 'tri.data' can only contain texture data.
 #' 
 #' 
-#' @param tri.data
-#' @param base.ps.lim
-#' @param dat.ps.lim
-#' @param text.sum
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param base.ps.lim Vector of numeric value. Particle size limits of the system tri.data should be converted into.
+#' @param dat.ps.lim Vector of numeric value. Particle size limits of tri.data.
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -3537,7 +3537,7 @@ TT.ifelse <- function(# Internal. Flexible version of ifelse.
 #' Used in the plot axis drawings.
 #' 
 #' 
-#' @param blr.clock
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
 #' @param c1
 #' @param c2
 #' @param c3
@@ -3587,15 +3587,15 @@ TT.switch <- function(# Internal. Used in the plot axis drawings.
 #' 'heart' of most soiltexture plot functions.
 #' 
 #' 
-#' @param tri.data
-#' @param geo
-#' @param css.names
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param text.sum
-#' @param blr.clock
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -3753,33 +3753,33 @@ TT.css2xy <- function(# Internal. Converts texture data (3 classes) into x-y coo
 #' Plot a soil texture data table as points on an existing texture plot.
 #' 
 #' 
-#' @param tri.data
-#' @param geo
-#' @param css.names
-#' @param z.name
-#' @param base.css.ps.lim
-#' @param dat.css.ps.lim
-#' @param css.transf
-#' @param text.transf.fun
-#' @param trsf.add.opt1
-#' @param trsf.add.opt2
-#' @param text.tol
-#' @param pch
-#' @param fg
-#' @param col
-#' @param bg
-#' @param cex
-#' @param lwd
-#' @param points.type
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param z.type
-#' @param z.col.hue
-#' @param z.cex.range
-#' @param z.pch
-#' @param text.sum
-#' @param blr.clock
-#' @param blr.tx
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param z.name See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param dat.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param css.transf See \code{\link[soiltexture]{TT.plot}}
+#' @param text.transf.fun See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt1 See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt2 See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param pch See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param col See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param cex See \code{\link[soiltexture]{TT.plot}}
+#' @param lwd See \code{\link[soiltexture]{TT.plot}}
+#' @param points.type See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param z.type See \code{\link[soiltexture]{TT.plot}}
+#' @param z.col.hue See \code{\link[soiltexture]{TT.plot}}
+#' @param z.cex.range See \code{\link[soiltexture]{TT.plot}}
+#' @param z.pch See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -3954,30 +3954,30 @@ TT.points <- function(# Plot a soil texture data table as points on an existing 
 #' texture plot.
 #' 
 #' 
-#' @param tri.data
-#' @param geo
-#' @param labels
-#' @param css.names
-#' @param base.css.ps.lim
-#' @param dat.css.ps.lim
-#' @param css.transf
-#' @param text.transf.fun
-#' @param trsf.add.opt1
-#' @param trsf.add.opt2
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param fg
-#' @param col
-#' @param cex
-#' @param font
-#' @param family.op
-#' @param adj
-#' @param pos
-#' @param offset
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param blr.tx
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param labels Vector of character strings. Label to be plotted, for each point in 'tri.data'
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param dat.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param css.transf See \code{\link[soiltexture]{TT.plot}}
+#' @param text.transf.fun See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt1 See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt2 See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param col See \code{\link[graphics]{text}}
+#' @param cex See \code{\link[graphics]{text}}
+#' @param font See \code{\link[graphics]{text}}
+#' @param family.op See \code{\link[soiltexture]{TT.plot}}
+#' @param adj See \code{\link[graphics]{text}}
+#' @param pos See \code{\link[graphics]{text}}
+#' @param offset See \code{\link[graphics]{text}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4105,27 +4105,27 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
 #' needed by these secondary functions.
 #' 
 #' 
-#' @param geo
-#' @param class.sys
-#' @param blr.clock
-#' @param tlr.an
-#' @param blr.tx
-#' @param text.sum
-#' @param base.css.ps.lim
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param text.tol
-#' @param unit.ps
-#' @param unit.tx
-#' @param b.lim
-#' @param l.lim
-#' @param main
-#' @param new.mar
-#' @param bg
-#' @param fg
-#' @param col
-#' @param cex.main
-#' @param lang
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.ps See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param b.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param l.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param main See \code{\link[soiltexture]{TT.plot}}
+#' @param new.mar See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param col See \code{\link[soiltexture]{TT.plot}}
+#' @param cex.main See \code{\link[soiltexture]{TT.plot}}
+#' @param lang See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4332,17 +4332,17 @@ TT.baseplot <- function(# Internal. Create an empty plot scene for a texture tri
 #' TT.plot()).
 #' 
 #' 
-#' @param geo
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param col.axis
-#' @param plot.axis
-#' @param frame.bg.col
-#' @param lwd.axis
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param bg
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param col.axis See \code{\link[soiltexture]{TT.plot}}
+#' @param plot.axis If TRUE the 3 axes are plotted.
+#' @param frame.bg.col See \code{\link[soiltexture]{TT.plot}}
+#' @param lwd.axis See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4442,18 +4442,18 @@ TT.edges <- function(# Internal. Plot the edges (bare axis) of a soil texture tr
 #' Used to plot line elements of a texture plot axis, ticks, arrows, etc.
 #' 
 #' 
-#' @param geo
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param at.1.s
 #' @param at.2.s
 #' @param at.3.s
 #' @param at.1.e
 #' @param at.2.e
 #' @param at.3.e
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tri.sum.tst
-#' @param tri.pos.tst
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4596,21 +4596,21 @@ TT.lines <- function(# Internal. Used to plot line elements of a texture plot ax
 #' triangle.
 #' 
 #' 
-#' @param geo
-#' @param at
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param grid.col
-#' @param grid.lty
-#' @param lwd.axis
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param class.p.bg.col
-#' @param class.p.bg.hue
-#' @param frame.bg.col
-#' @param bg
-#' @param col.axis
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param at Vector of numeric values.
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param grid.col Passed to argument 'col' of \code{\link[graphics]{segments}}
+#' @param grid.lty Passed to argument 'lty' of \code{\link[graphics]{segments}}
+#' @param lwd.axis See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param class.p.bg.col See \code{\link[soiltexture]{TT.plot}}
+#' @param class.p.bg.hue See \code{\link[soiltexture]{TT.plot}}
+#' @param frame.bg.col See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param col.axis See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4739,16 +4739,16 @@ TT.grid <- function(# Plot a grid at regular texture intervals inside an existin
 #' Plot the axis' ticks of a texture triangle plot.
 #' 
 #' 
-#' @param geo
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param at
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
 #' @param tk.s
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param lwd.axis
-#' @param col.axis
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param lwd.axis See \code{\link[soiltexture]{TT.plot}}
+#' @param col.axis See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4843,19 +4843,19 @@ TT.ticks <- function(# Internal. Plot the axis' ticks of a texture triangle plot
 #' Plot the axis ticks' labels of a texture triangle plot.
 #' 
 #' 
-#' @param geo
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param at
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tlr.an
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
 #' @param tk.ls
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param col.axis
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param col.axis See \code{\link[soiltexture]{TT.plot}}
 #' @param font.axis
 #' @param cex.axis
-#' @param family.op
+#' @param family.op See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -4961,29 +4961,29 @@ TT.ticks.lab <- function(# Internal. Plot the axis ticks' labels of a texture tr
 #' Plot the axis' arrows of a texture triangle plot.
 #' 
 #' 
-#' @param geo
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param css.lab
 #' @param a.l
 #' @param a.h.s
 #' @param a.t.s
 #' @param a.t.s2
 #' @param a.b.s
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tlr.an
-#' @param base.css.ps.lim
-#' @param tri.sum.tst
-#' @param tri.pos.tst
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
 #' @param lwd.lab
 #' @param arrows.lty
 #' @param col.lab
 #' @param font.lab
 #' @param cex.lab
-#' @param family.op
-#' @param unit.ps
-#' @param unit.tx
-#' @param lang
+#' @param family.op See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.ps See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param lang See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -5405,10 +5405,10 @@ TT.axis.arrows <- function(# Internal. Plot the axis' arrows of a texture triang
 #' a virtual 4th variable correlated to the texture.
 #' 
 #' 
-#' @param n
-#' @param seed.val
-#' @param css.names
-#' @param text.sum
+#' @param n Single numeric value. Number of points to be generated.
+#' @param seed.val See \code{\link[base]{set.seed}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -5483,8 +5483,8 @@ TT.dataset <- function(# Genetates a virtual cross correlated clay silt sand + Z
 #' the triangle classes vertices.  See also TT.vertices.plot().
 #' 
 #' 
-#' @param class.sys
-#' @param collapse
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
+#' @param collapse Single character string. Default ", ". Separator when showing differents points in each class.
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -5540,7 +5540,7 @@ TT.classes.tbl <- function(# Returns the table of classes of a texture classific
 #' TT.vertices.plot().
 #' 
 #' 
-#' @param class.sys
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -5577,7 +5577,7 @@ TT.vertices.tbl <- function(# Returns the table of vertices of a texture classif
 
 
 
-#' Internal. Plot the vertices of a texture classification system.
+#' Plot the vertices of a texture classification system.
 #' 
 #' Plot the vertices of a texture classification system, on top of an already
 #' drawn texture triangle plot. Also plot the vertices numbers. See
@@ -5585,24 +5585,24 @@ TT.vertices.tbl <- function(# Returns the table of vertices of a texture classif
 #' of the plot.
 #' 
 #' 
-#' @param geo
-#' @param class.sys
-#' @param fg
-#' @param col
-#' @param cex
-#' @param font
-#' @param family.op
-#' @param adj
-#' @param pos
-#' @param offset
-#' @param blr.tx
-#' @param text.sum
-#' @param blr.clock
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param col See \code{\link[soiltexture]{TT.plot}}
+#' @param cex See \code{\link[soiltexture]{TT.plot}}
+#' @param font See \code{\link[soiltexture]{TT.plot}}
+#' @param family.op See \code{\link[soiltexture]{TT.plot}}
+#' @param adj Passed to See \code{\link[soiltexture]{TT.text}}
+#' @param pos Passed to See \code{\link[soiltexture]{TT.text}}
+#' @param offset Passed to See \code{\link[soiltexture]{TT.text}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
-#' @noRd
+#' @export
 TT.vertices.plot <- function(# Internal. Plot the vertices of a texture classification system. 
 ### Plot the vertices of a texture classification system, on top 
 ### of an already drawn texture triangle plot. Also plot the 
@@ -5802,32 +5802,32 @@ TT.polygon.centroids <- function(# Internal. Determines the centroid of 1 polygo
 #' the polygons and the labels inside each polygons.
 #' 
 #' 
-#' @param geo
-#' @param class.sys
-#' @param tri.css.ps.lim
-#' @param css.transf
-#' @param text.transf.fun
-#' @param trsf.add.opt1
-#' @param trsf.add.opt2
-#' @param text.tol
-#' @param text.sum
-#' @param base.css.ps.lim
-#' @param blr.tx
-#' @param blr.clock
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param bg
-#' @param class.lab.col
-#' @param class.p.bg.col
-#' @param class.p.bg.hue
-#' @param class.line.col
-#' @param class.lty
-#' @param class.lab.show
-#' @param cex.lab
-#' @param font.lab
-#' @param family.op
-#' @param lwd.axis
-#' @param col.axis
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param class.sys See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param css.transf See \code{\link[soiltexture]{TT.plot}}
+#' @param text.transf.fun See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt1 See \code{\link[soiltexture]{TT.plot}}
+#' @param trsf.add.opt2 See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param class.lab.col See \code{\link[soiltexture]{TT.plot}}
+#' @param class.p.bg.col See \code{\link[soiltexture]{TT.plot}}
+#' @param class.p.bg.hue See \code{\link[soiltexture]{TT.plot}}
+#' @param class.line.col See \code{\link[soiltexture]{TT.plot}}
+#' @param class.lty See \code{\link[soiltexture]{TT.plot}}
+#' @param class.lab.show See \code{\link[soiltexture]{TT.plot}}
+#' @param cex.lab See \code{\link[soiltexture]{TT.plot}}
+#' @param font.lab See \code{\link[soiltexture]{TT.plot}}
+#' @param family.op See \code{\link[soiltexture]{TT.plot}}
+#' @param lwd.axis See \code{\link[soiltexture]{TT.plot}}
+#' @param col.axis See \code{\link[soiltexture]{TT.plot}}
 #' @param new.centroid Single logical. If TRUE (default) the new method (Paul
 #' Bourke) is used to calculate the centroid. If FALSE the centroid is taken as
 #' the mean x and y coordinates of the vertices.
@@ -6117,6 +6117,7 @@ TT.classes <- function(# Plot the texture classes polygons in a texture triangle
 
 
 
+# TT.plot()
 #' Plot soil texture triangles / diagrams.
 #' 
 #' Plot a soil texture triangle (also called soil texture diagrams, or soil
@@ -8047,14 +8048,14 @@ TT.points.in.classes <- function(# Classify a table of soil texture data accordi
 #' 
 #' 
 #' @param xy.data a data.frame with xpos and ypos columns
-#' @param geo
-#' @param css.names
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param blr.clock
-#' @param text.sum
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -8292,14 +8293,14 @@ TT.xy2css <- function(# Internal. Convert point-data duplets (2 variables, x-y c
 #' on a texture triangle.
 #' 
 #' 
-#' @param geo
-#' @param css.names
-#' @param text.tol
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param n
-#' @param type
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param n Passed to \code{\link[graphics]{locator}}
+#' @param type Passed to \code{\link[graphics]{locator}}
 #' @param \dots Further argumets passed to locator()
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
@@ -8445,9 +8446,9 @@ TT.xy.grid <- function(# Internal. Create a grid in the x-y coordinate system.
 #' column name rather than column index.
 #' 
 #' 
-#' @param X
-#' @param divisorvar
-#' @param css.names
+#' @param X A data.frame containing soil texture data
+#' @param divisorvar number of ratioing variable
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -8509,28 +8510,29 @@ TT.chemometrics.alr <- function(# Compute the additive log-ratio transformation 
 #' Development Core Team (2009)
 #' 
 #' 
-#' @param geo
-#' @param tri.data
-#' @param css.names
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param n
-#' @param center
-#' @param cov.mat
-#' @param inverted
-#' @param \dots
-#' @param alr
-#' @param divisorvar
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param n Number of points in the grid.
+#' @param center Passed to \code{\link[stats]{mahalanobis}}
+#' @param cov.mat Passed to \code{\link[stats]{mahalanobis}}
+#' @param inverted Passed to \code{\link[stats]{mahalanobis}}
+#' @param \dots More argument passed to \code{\link[stats]{mahalanobis}}
+#' @param alr If TRUE an additive log-ratio transformation of the data is performed, and the Mahalanobis distance is computed on all classes but css.names[divisorvar] 
+#' @param divisorvar The Mahalanobis distance will be computed on all the texture class but css.names[divisorvar]  
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
 #' @importFrom stats cov 
 #' @importFrom stats mahalanobis
+#' @importFrom sp point.in.polygon
 #' @export 
 TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay silt and sand.
 ### Function that calculated the Mahalanobis 
@@ -8658,7 +8660,7 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
     
     # require( "sp" ) 
     
-    PiP <- as.logical(  point.in.polygon( 
+    PiP <- as.logical(  sp::point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
         point.y = xy.grid[["xypos"]][,"ypos"], 
         pol.x   = xy.bound[,"xpos"], 
@@ -8705,23 +8707,24 @@ TT.mahalanobis <- function(# Calculates the Mahalanobis distance between clay si
 #' from the MASS package.
 #' 
 #' 
-#' @param geo
-#' @param tri.data
-#' @param css.names
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param n
-#' @param lims
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param n Passed to \code{\link[MASS]{kde2d}}
+#' @param lims Passed to \code{\link[MASS]{kde2d}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
 #' @importFrom MASS kde2d  
-#' @export
+#' @importFrom sp point.in.polygon
+#' @export 
 TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 ### Function that calculated the 2D probabilty 
 ### density on an x-y grid (and NOT on the clay silt sand 
@@ -8816,7 +8819,7 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
     
     # require( "sp" ) 
     
-    PiP <- as.logical(  point.in.polygon( 
+    PiP <- as.logical(  sp::point.in.polygon( 
         point.x = ex.dens.xy[,"x"],
         point.y = ex.dens.xy[,"y"], 
         pol.x   = xy.bound[,"xpos"], 
@@ -8850,28 +8853,29 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 #' Inverse weighted distance interpolation on a grid.
 #' 
 #' 
-#' @param tri.data
-#' @param z.name
-#' @param geo
-#' @param css.names
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param z.name See \code{\link[soiltexture]{TT.plot}}
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
 #' @param tri.pol.data
-#' @param text.tol
-#' @param text.sum
-#' @param blr.clock
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param set.par
-#' @param n
-#' @param lims
-#' @param max.dist
-#' @param q.max.dist
-#' @param pow
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param set.par If TRUE parameters are set automatically to their defualt value
+#' @param n Number of points in the grid
+#' @param lims "points" or "triangle"
+#' @param max.dist Maximum distance 
+#' @param q.max.dist Passed to \code{\link[stats]{quantile}}
+#' @param pow Single numeric value. Power of the inverse weighted distance
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
 #' @importFrom stats dist
 #' @importFrom stats quantile
+#' @importFrom sp point.in.polygon
 #' @export
 TT.iwd <- function(# Inverse weighted distance interpolation on a grid. 
 ### Inverse weighted distance interpolation on a grid. 
@@ -9000,7 +9004,7 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
     
     # require( "sp" ) 
     
-    PiP <- as.logical(  point.in.polygon( 
+    PiP <- as.logical(  sp::point.in.polygon( 
         point.x = xy.grid[["xypos"]][,"xpos"],
         point.y = xy.grid[["xypos"]][,"ypos"], 
         pol.x   = xy.bound[,"xpos"], 
@@ -9048,42 +9052,42 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
 #' TT.kde2d(), before or after plot.
 #' 
 #' 
-#' @param geo
-#' @param x
-#' @param add
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param text.tol
-#' @param unit.ps
-#' @param unit.tx
-#' @param b.lim
-#' @param l.lim
-#' @param main
-#' @param new.mar
-#' @param bg
-#' @param fg
-#' @param col
-#' @param cex.main
-#' @param lang
-#' @param nlevels
-#' @param levels
-#' @param labels
-#' @param xlim
-#' @param ylim
-#' @param zlim
-#' @param labcex
-#' @param drawlabels
-#' @param method
-#' @param axes
-#' @param frame.plot
-#' @param lty
-#' @param lwd
-#' @param blr.clock
-#' @param tlr.an
-#' @param blr.tx
-#' @param text.sum
-#' @param base.css.ps.lim
-#' @param \dots
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param x A data.frame of matrix with 3 columns: x, y and z.
+#' @param add If TRUE adds the contour to an existing plot.
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.ps See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param b.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param l.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param main See \code{\link[soiltexture]{TT.plot}}
+#' @param new.mar See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param col See \code{\link[soiltexture]{TT.plot}}
+#' @param cex.main See \code{\link[soiltexture]{TT.plot}}
+#' @param lang See \code{\link[soiltexture]{TT.plot}}
+#' @param nlevels See \code{\link[graphics]{contour}}
+#' @param levels See \code{\link[graphics]{contour}}
+#' @param labels See \code{\link[graphics]{contour}}
+#' @param xlim See \code{\link[graphics]{contour}}
+#' @param ylim See \code{\link[graphics]{contour}}
+#' @param zlim See \code{\link[graphics]{contour}}
+#' @param labcex See \code{\link[graphics]{contour}}
+#' @param drawlabels See \code{\link[graphics]{contour}}
+#' @param method See \code{\link[graphics]{contour}}
+#' @param axes See \code{\link[graphics]{contour}}
+#' @param frame.plot See \code{\link[graphics]{contour}}
+#' @param lty See \code{\link[graphics]{contour}}
+#' @param lwd See \code{\link[graphics]{contour}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param \dots Additional parameters passed to  See \code{\link[graphics]{contour}}
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -9284,32 +9288,32 @@ TT.contour <- function(# Wrapper for the contour() function adapted to texture t
 #' [to be written], before or after plot.
 #' 
 #' 
-#' @param geo
-#' @param x
-#' @param add
-#' @param tri.sum.tst
-#' @param tri.pos.tst
-#' @param text.tol
-#' @param unit.ps
-#' @param unit.tx
-#' @param b.lim
-#' @param l.lim
-#' @param main
-#' @param new.mar
-#' @param bg
-#' @param fg
-#' @param cex.main
-#' @param lang
-#' @param xlim
-#' @param ylim
-#' @param zlim
-#' @param col
-#' @param oldstyle
-#' @param blr.clock
-#' @param tlr.an
-#' @param blr.tx
-#' @param text.sum
-#' @param base.css.ps.lim
+#' @param geo See \code{\link[soiltexture]{TT.plot}}
+#' @param x A list with three items, "x", "y" and "z"
+#' @param add If TRUE the image is added to an existing plot.
+#' @param tri.sum.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.ps See \code{\link[soiltexture]{TT.plot}}
+#' @param unit.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param b.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param l.lim See \code{\link[soiltexture]{TT.plot}}
+#' @param main See \code{\link[soiltexture]{TT.plot}}
+#' @param new.mar See \code{\link[soiltexture]{TT.plot}}
+#' @param bg See \code{\link[soiltexture]{TT.plot}}
+#' @param fg See \code{\link[soiltexture]{TT.plot}}
+#' @param cex.main See \code{\link[soiltexture]{TT.plot}}
+#' @param lang See \code{\link[soiltexture]{TT.plot}}
+#' @param xlim Passed to \code{\link[graphics]{image}}
+#' @param ylim Passed to \code{\link[graphics]{image}}
+#' @param zlim Passed to \code{\link[graphics]{image}}
+#' @param col Passed to \code{\link[graphics]{image}}
+#' @param oldstyle Passed to \code{\link[graphics]{image}}
+#' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
+#' @param tlr.an See \code{\link[soiltexture]{TT.plot}}
+#' @param blr.tx See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param base.css.ps.lim See \code{\link[soiltexture]{TT.plot}}
 #' @param \dots Additional parameters passed to image().
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
@@ -9345,7 +9349,7 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
     xlim            = NA, 
     ylim            = NA, 
     zlim            = NA, 
-    col             = rev( grDevices::heat.colors(12) ),
+    col             = rev( heat.colors(12) ),
     oldstyle        = FALSE, 
     blr.clock       = NULL, 
     tlr.an          = NULL, 
@@ -9586,12 +9590,12 @@ TT.image <- function(# Wrapper for the contour() function adapted to texture tri
 #' (100\%).
 #' 
 #' 
-#' @param tri.data
-#' @param css.names
-#' @param text.sum
-#' @param text.tol
-#' @param tri.pos.tst
-#' @param residuals
+#' @param tri.data See \code{\link[soiltexture]{TT.plot}}
+#' @param css.names See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param residuals If TRUE the residuals are calculated and added to the returned data.frame
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
@@ -9677,11 +9681,11 @@ TT.normalise.sum <- function(# Normalises the sum of the 3 particle size classes
 #' (100\%).
 #' 
 #' 
-#' @param tri.data
-#' @param text.sum
-#' @param text.tol
-#' @param tri.pos.tst
-#' @param residuals
+#' @param tri.data  See \code{\link[soiltexture]{TT.plot}}
+#' @param text.sum See \code{\link[soiltexture]{TT.plot}}
+#' @param text.tol See \code{\link[soiltexture]{TT.plot}}
+#' @param tri.pos.tst See \code{\link[soiltexture]{TT.plot}}
+#' @param residuals If TRUE the residuals are calculated and added to the returned data.frame
 #' @author Julien Moeys [aut, cre], Wei Shangguan [ctb], Rainer Petzold [ctb],
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
