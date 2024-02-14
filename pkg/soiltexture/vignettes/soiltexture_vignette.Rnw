@@ -2591,7 +2591,7 @@ texture class (given the system \texttt{class.sys}). Values are 0
 when the point is 'out' of the class, 1 when 'in', 2 when 'on a 
 polygon side' and 3 when 'on the polygon corner(s) (vertex / 
 vertices)' (As in the underying function 
-\texttt{point.in.polygon()} from the 'sp' package). 
+\texttt{sp::point.in.polygon()} from the 'sp' package). 
 In the examples below I will only show the results for the 5 
 first row of the dummy soil texture data created above, with the 
 European Soil Map (HYPRES) classification:
