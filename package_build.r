@@ -97,7 +97,7 @@ roxygen2::roxygenize(
 
 pdu_rcmdbuild( pkgName = pkgName, pkgDir = pkgDir, 
     buildDir = buildDir, gitRevison = TRUE, 
-    noVignettes = FALSE, compactVignettes = NULL, 
+    noVignettes = FALSE, compactVignettes = 'gs+qpdf', 
     md5 = TRUE )
 
 pdu_rcmdinstall( pkgName = pkgName, pkgDir = pkgDir, 
