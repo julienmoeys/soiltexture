@@ -2,6 +2,9 @@
 # soiltexture 1.5.2
     
 *   Package upgraded to R version 4.3.2
+
+*   Namespace was cleaned up. Internation functions were removed 
+    from the namespace.
     
 # soiltexture 1.5.1
     
