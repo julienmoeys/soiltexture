@@ -10,9 +10,9 @@ NULL
 #' functions
 #' 
 #' 
-#' @name TT.env
 #' @docType data
 #' @noRd
+
 NULL
 TT.env <- new.env() 
 
@@ -2065,6 +2065,7 @@ TT.str <- function(# Stretch or reshape the range of value of some data set.
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
 #' @noRd
+
 TT.gen.op.set  <- function(# Internal. Retrieve and set default values from options. 
 ### Retrieve and set default values from options (that do _not_ superseed par()). 
 ##keywords<< internal
@@ -4130,7 +4131,6 @@ TT.text <- function(# Plot text labels for each values of a soil texture data ta
 #' Budiman Minasny [ctb], Bogdan Rosca [ctb], Nic Jelinski [ctb], Wiktor
 #' Zelazny [ctb], Rodolfo Marcondes Silva Souza [ctb], Jose Lucas Safanelli
 #' [ctb], Alexandre ten Caten [ctb]
-#' @noRd
 #' @importFrom graphics plot
 #' @export 
 TT.baseplot <- function(# Internal. Create an empty plot scene for a texture triangle.
@@ -8857,7 +8857,6 @@ TT.kde2d <- function(# Calculated the 2D probabilty density on an x-y grid.
 #' @param z.name See \code{\link[soiltexture]{TT.plot}}
 #' @param geo See \code{\link[soiltexture]{TT.plot}}
 #' @param css.names See \code{\link[soiltexture]{TT.plot}}
-#' @param tri.pol.data
 #' @param text.tol See \code{\link[soiltexture]{TT.plot}}
 #' @param text.sum See \code{\link[soiltexture]{TT.plot}}
 #' @param blr.clock See \code{\link[soiltexture]{TT.plot}}
@@ -8885,7 +8884,7 @@ TT.iwd <- function(# Inverse weighted distance interpolation on a grid.
  geo, 
  
  css.names       = NULL, 
- tri.pol.data    = NULL,     # edges data, same format as tri.data
+# tri.pol.data    = NULL,     # edges data, same format as tri.data
  
  text.tol        = NULL, 
  text.sum        = NULL, 
