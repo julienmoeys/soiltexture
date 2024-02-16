@@ -1,4 +1,9 @@
 
+# soiltexture 1.5.3
+    
+*   Internal. Fix an documentation issue in soiltexture-package.Rd
+    giving a R CMD check NOTE with development version of R.
+    
 # soiltexture 1.5.2
     
 *   Package upgraded to R version 4.3.2

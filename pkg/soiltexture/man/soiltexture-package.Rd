@@ -2,20 +2,11 @@
 % Please edit documentation in R/soiltexture-package.R
 \docType{package}
 \name{soiltexture-package}
-\alias{soiltexture-package}
 \alias{soiltexture}
-\title{c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_title(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_title("soiltexture")}}
+\alias{soiltexture-package}
+\title{soiltexture: Functions for Soil Texture Plot, Classification and Transformation}
 \description{
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_description(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_description("soiltexture")}
-}
-\details{
-The DESCRIPTION file:
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_DESCRIPTION(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_DESCRIPTION("soiltexture")}
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_indices(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_indices("soiltexture")}
+"The Soil Texture Wizard" is a set of R functions designed to produce texture triangles (also called texture plots, texture diagrams, texture ternary plots), classify and transform soil textures data. These functions virtually allows to plot any soil texture triangle (classification) into any triangle geometry (isosceles, right-angled triangles, etc.). This set of function is expected to be useful to people using soil textures data from different soil texture classification or different particle size systems. Many (> 15) texture triangles from all around the world are predefined in the package. A simple text based graphical user interface is provided: soiltexture_gui().
 }
 \seealso{
 Useful links:
@@ -26,11 +17,20 @@ Useful links:
 
 }
 \author{
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_author(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_author("soiltexture")}
+\strong{Maintainer}: Julien Moeys \email{jules_m78-soiltexture@yahoo.fr}
 
-Maintainer:
-c("\\Sexpr[results=rd,stage=build]{tools:::Rd_package_maintainer(\"#1\")}",
-"soiltexture")\Sexpr{tools:::Rd_package_maintainer("soiltexture")}
+Other contributors:
+\itemize{
+  \item Wei Shangguan [contributor]
+  \item Rainer Petzold [contributor]
+  \item Budiman Minasny [contributor]
+  \item Bogdan Rosca [contributor]
+  \item Nic Jelinski [contributor]
+  \item Wiktor Zelazny [contributor]
+  \item Rodolfo Marcondes Silva Souza [contributor]
+  \item Jose Lucas Safanelli [contributor]
+  \item Alexandre ten Caten [contributor]
 }
-\keyword{package}
+
+}
+\keyword{internal}

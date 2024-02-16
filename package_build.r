@@ -42,7 +42,7 @@ pdu_detach( pkgName = pkgName )
 pdu_pkgDescription( 
     pkgName     = pkgName, 
     pkgDir      = pkgDir, 
-    pkgVersion  = "1.5.2", 
+    pkgVersion  = "1.5.3", 
     pkgDepends  = NULL,  
     pkgSuggests = c( "xtable" ), 
     pkgImports  = c( "sp", "MASS", "tools", "tcltk", "utils" ), 
