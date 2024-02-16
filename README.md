@@ -1,5 +1,3 @@
-Linux: [![Linux Build Status (Travis CI)](https://travis-ci.org/julienmoeys/soiltexture.svg?branch=master)](https://travis-ci.org/julienmoeys/soiltexture). 
-Windows: [![Windows Build Status (AppVeyor)](https://ci.appveyor.com/api/projects/status/github/julienmoeys/soiltexture?branch=master&svg=true)](https://ci.appveyor.com/project/julienmoeys/soiltexture)
 
 Official package release on CRAN: [https://cran.r-project.org/package=soiltexture]()
 
